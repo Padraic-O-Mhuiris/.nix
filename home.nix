@@ -1,10 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./emacs.nix ./gpg.nix ];
+  imports = [ ./emacs.nix ./gpg.nix ./i3.nix ];
   nixpkgs.config.allowUnfree = true;
-  programs.google-chrome.enable = true;
 
+  home.packages = with pkgs; [ spotify ];
   home.file.".icons/default".source =
     "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
   home.file.".config/udiskie/config.yml".text = ''
@@ -23,7 +23,11 @@
     };
     extraConfig = { http = { postBuffer = "524288000"; }; };
   };
+  programs.google-chrome.enable = true;
   programs.gpg.enable = true;
+  programs.feh.enable = true;
+  programs.zsh.enable = true;
+
   services.udiskie = {
     enable = true;
     notify = false;
@@ -34,5 +38,4 @@
     PASSWORD_STORE_TOMB_FILE = "$HOME/.secrets/graveyard.tomb";
     PASSWORD_STORE_TOMB_KEY = "/run/media/padraic/Backup/shovel.tomb";
   };
-  programs.zsh = { enable = true; };
 }

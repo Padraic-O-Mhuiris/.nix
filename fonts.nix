@@ -18,9 +18,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = ["Iosevka 13"];
-        sansSerif = ["Iosevka 13"];
-        serif = ["Iosevka Slab 13"];
+        monospace = [ "Iosevka Slab" ];
+        sansSerif = [ "Roboto" ];
+        serif = [ "Roboto Slab" ];
       };
     };
     enableDefaultFonts = true;

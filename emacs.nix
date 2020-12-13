@@ -1,13 +1,17 @@
 { pkgs, ... }:
 
 let
-  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/vlaci/nix-doom-emacs/archive/master.tar.gz;
-  }) {
-    doomPrivateDir = ./doom.d;
-  };
+  emacs = pkgs.callPackage (builtins.fetchTarball {
+    url = "https://github.com/vlaci/nix-doom-emacs/archive/master.tar.gz";
+  }) { doomPrivateDir = ./doom.d; };
 in {
-  home.packages = [ doom-emacs ];
+  programs.emacs.package = emacs;
+  programs.emacs.enable = true;
+  services.emacs = {
+    enable = true;
+    socketActivation.enable = true;
+  };
+
   home.file.".emacs.d/init.el".text = ''
     (load "default.el")
   '';

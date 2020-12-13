@@ -94,6 +94,8 @@ in {
     coreutils
     fd
     clang
+    usbutils
+    powertop
     ### Pass
     passExtensions.pass-audit
     passExtensions.pass-genphrase
@@ -143,9 +145,17 @@ in {
     ];
   };
 
-  environment.etc."sysconfig/lm_sensors".text = ''
-    HWMON_MODULES="coretemp"
-  '';
+  environment = {
+    etc = {
+      "sysconfig/lm_sensors".text = ''
+        HWMON_MODULES="coretemp"
+      '';
+      "modprobe.d/usbhid.conf".text = ''
+        options usbhid mousepoll=4
+      '';
+    };
+
+  };
   powerManagement.powertop.enable = true;
 
   services.localtime.enable = true;
@@ -162,24 +172,53 @@ in {
     };
   };
   services.blueman.enable = true;
-  services.tlp = { enable = true; };
+  services.tlp = {
+    enable = true;
+    settings = {
+      USB_AUTOSUSPEND = 0;
+      USB_BLACKLIST = "046d:c539";
+    };
+
+  };
   services.xserver = {
     enable = true;
     dpi = 180;
+    videoDrivers = [ "modesetting" ];
+    useGlamor = true;
+
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "padraic";
+      };
+    };
 
     layout = "gb";
     xkbOptions = "ctrl:swapcaps";
 
-    libinput.enable = true;
-    desktopManager = { xterm.enable = false; };
-
-    displayManager = { defaultSession = "none+i3"; };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
+    libinput = { enable = true; };
+    desktopManager = {
+      xterm.enable = false;
+      session = [{
+        name = "home-manager";
+        start = ''
+          ${pkgs.runtimeShell} $HOME/.xsession &
+          waitPID=$!
+        '';
+      }];
     };
   };
 
+  systemd.services = {
+    tune-usb-autosuspend = {
+      description = "Disable USB autosuspend";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = { Type = "oneshot"; };
+      unitConfig.RequiresMountsFor = "/sys";
+      script = ''
+        echo -1 > /sys/module/usbcore/parameters/autosuspend
+      '';
+    };
+  };
   system.stateVersion = "20.09"; # Did you read the comment?
 }
