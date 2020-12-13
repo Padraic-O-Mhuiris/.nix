@@ -4,28 +4,26 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "thinkpad_acpi" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "thinkpad_acpi" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/be57dffc-0fbc-492e-8c3e-0dd18e1fb970";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/be57dffc-0fbc-492e-8c3e-0dd18e1fb970";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/26A7-177F";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/26A7-177F";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1f0e04b1-e810-4e1d-8b2a-ffce44cbac94"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/1f0e04b1-e810-4e1d-8b2a-ffce44cbac94"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display
