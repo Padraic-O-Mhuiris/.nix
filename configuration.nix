@@ -2,21 +2,31 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
+  dapptools = import (builtins.fetchTarball {
+    url = "https://github.com/dapphub/dapptools/tarball/master";
+  }) { };
+
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager.git";
     rev = "63f299b3347aea183fc5088e4d6c4a193b334a41";
     ref = "release-20.09";
   };
 in {
+
   imports = [
     (import "${home-manager}/nixos")
     <nixos-hardware/lenovo/thinkpad/x1/7th-gen>
     ./hardware-configuration.nix
     ./fonts.nix
   ];
+
+  nix.buildCores = 4;
+  nix.binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
+  nix.binaryCachePublicKeys =
+    [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
 
   nixpkgs.config.allowUnfree = true;
   boot.loader.systemd-boot.enable = true;
@@ -37,6 +47,8 @@ in {
       preLVM = true;
     };
   };
+
+  powerManagement.enable = true;
 
   networking.hostName = "Hydrogen"; # Define your hostname.
   #networking.wireless.enable = true;
@@ -62,9 +74,9 @@ in {
 
   environment.pathsToLink = [ "/share/zsh" ];
   environment.variables = {
-    XCURSOR_SIZE = "64";
     GDK_SCALE = "2";
     GDK_DPI_SCALE = "0.5";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
     SHELL = "zsh";
   };
@@ -78,7 +90,7 @@ in {
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
 
-  home-manager.useUserPackages = true;
+  #home-manager.useUserPackages = true;
   home-manager.users.padraic = (import "/home/padraic/.nix/home.nix");
 
   environment.systemPackages = with pkgs; [
@@ -87,8 +99,8 @@ in {
     vim
     htop
     git
+    acpi
     ripgrep
-    rxvt_unicode
     xclip
     lsof
     coreutils
@@ -96,6 +108,12 @@ in {
     clang
     usbutils
     powertop
+    xorg.xdpyinfo
+    bc
+    cachix
+    hwinfo
+    i7z
+    glxinfo
     ### Pass
     passExtensions.pass-audit
     passExtensions.pass-genphrase
@@ -121,6 +139,7 @@ in {
     xorg.xbacklight
   ];
 
+  hardware.video.hidpi.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;
 
@@ -156,7 +175,6 @@ in {
     };
 
   };
-  powerManagement.powertop.enable = true;
 
   services.localtime.enable = true;
   location.provider = "geoclue2";
@@ -172,14 +190,21 @@ in {
     };
   };
   services.blueman.enable = true;
+
   services.tlp = {
     enable = true;
     settings = {
       USB_AUTOSUSPEND = 0;
       USB_BLACKLIST = "046d:c539";
-    };
+      USB_BLACKLIST_BTUSB = 1;
 
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+    };
   };
+
   services.xserver = {
     enable = true;
     dpi = 180;

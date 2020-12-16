@@ -2,14 +2,17 @@
 
 let
   cfg = config.xsession.windowManager.i3;
+  bin = "${config.home.profileDirectory}/bin";
 
   i3Config = rec {
     modifier = "Mod4";
 
     keybindings = {
       "${modifier}+q" = "kill";
-      "${modifier}+Return" = "exec i3-sensible-terminal";
-      "${modifier}+d" = "exec ${cfg.config.menu}";
+      "${modifier}+Return" = "exec ${bin}/urxvt";
+
+      "${modifier}+x" = "exec ${bin}/rofi -modi run -show run";
+      "${modifier}+d" = "exec ${bin}/rofi -modi drun -show drun";
 
       "${modifier}+Left" = "focus left";
       "${modifier}+Down" = "focus down";
@@ -71,7 +74,7 @@ let
       "XF86AudioLowerVolume" = "exec amixer set Master 4%-";
       "XF86AudioRaiseVolume" = "exec amixer set Master 4%+";
 
-      "${modifier}+Ctrl+3" = "exec emacsclient -c";
+      "${modifier}+Ctrl+3" = "exec ${bin}/emacsclient -c";
     };
 
     window.border = 0;
