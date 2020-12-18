@@ -12,7 +12,7 @@
               DPI=180
               ;;
             work)
-              DPI=100
+              DPI=110
               ;;
             *)
               echo "Unknown profle: $AUTORANDR_CURRENT_PROFILE"
@@ -36,8 +36,8 @@
               exit 1
           esac
         '';
-
-        "notify-i3" = "''${pkgs.i3-gaps}/bin/i3-msg restart";
+        "kill-redshift" = "${pkgs.redshift}/bin/redshift -x";
+        "notify-i3" = "${pkgs.i3-gaps}/bin/i3-msg restart";
       };
     };
 

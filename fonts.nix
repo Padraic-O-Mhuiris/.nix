@@ -1,6 +1,7 @@
 { pkgs, config, lib, ... }: {
   fonts = {
     fonts = with pkgs; [
+      iosevka
       terminus_font
       opensans-ttf
       roboto
@@ -12,7 +13,6 @@
       hasklig
       material-design-icons
       material-icons
-      iosevka
       emacs-all-the-icons-fonts
     ];
     fontconfig = {

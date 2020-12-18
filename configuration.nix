@@ -29,6 +29,9 @@ in {
     [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
 
   nixpkgs.config.allowUnfree = true;
+
+  hardware.opengl.driSupport32Bit = true; # steam
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -74,8 +77,8 @@ in {
 
   environment.pathsToLink = [ "/share/zsh" ];
   environment.variables = {
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
+    GDK_SCALE = "1";
+    GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
     SHELL = "zsh";
@@ -90,7 +93,6 @@ in {
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
 
-  #home-manager.useUserPackages = true;
   home-manager.users.padraic = (import "/home/padraic/.nix/home.nix");
 
   environment.systemPackages = with pkgs; [
@@ -109,11 +111,13 @@ in {
     usbutils
     powertop
     xorg.xdpyinfo
+    xorg.libxcb
     bc
     cachix
     hwinfo
     i7z
     glxinfo
+    xdotool
     ### Pass
     passExtensions.pass-audit
     passExtensions.pass-genphrase
@@ -178,17 +182,6 @@ in {
 
   services.localtime.enable = true;
   location.provider = "geoclue2";
-  services.redshift = {
-    enable = true;
-    brightness = {
-      day = "1";
-      night = "1";
-    };
-    temperature = {
-      day = 5500;
-      night = 3700;
-    };
-  };
   services.blueman.enable = true;
 
   services.tlp = {

@@ -11,8 +11,7 @@
     ];
     transparent = false;
     scroll.bar.enable = false;
-
-    extraConfig = { internalBorder = 30; };
+    extraConfig = { "internalBorder" = 50; };
   };
 
   programs.zsh = {
@@ -31,9 +30,6 @@
       theme = "lambda";
     };
 
-    # initExtra = ''
-    #   export PATH="$PATH:`yarn global bin`"
-    # '';
   };
 
 }

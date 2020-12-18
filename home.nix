@@ -6,8 +6,16 @@ let
   }) { };
 
 in {
-  imports =
-    [ ./emacs.nix ./terminal.nix ./gpg.nix ./i3.nix ./monitors.nix ./rofi.nix ];
+
+  imports = [
+    ./xresources.nix
+    ./emacs.nix
+    ./terminal.nix
+    ./gpg.nix
+    ./i3.nix
+    ./monitors.nix
+    ./rofi.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -20,6 +28,12 @@ in {
     dapptools.seth
     dapptools.dapp
     ranger
+    i3lock
+    redshift
+    libreoffice
+    gnome3.evince
+    gnome3.nautilus
+    steam
   ];
 
   home.file.".icons/default".source =
