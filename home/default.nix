@@ -8,12 +8,11 @@ let
 in {
 
   imports = [
-    ./ssh.nix
+    ./gpg.nix
     ./files.nix
     ./xresources.nix
     ./emacs
     ./terminal.nix
-    ./gpg.nix
     ./i3.nix
     ./monitors.nix
     ./rofi.nix
