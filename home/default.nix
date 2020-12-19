@@ -9,7 +9,7 @@ in {
 
   imports = [
     ./gpg.nix
-    ./files.nix
+    #./files.nix
     ./xresources.nix
     ./emacs
     ./terminal.nix
