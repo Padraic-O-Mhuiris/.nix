@@ -8,8 +8,10 @@ let
 in {
 
   imports = [
+    ./ssh.nix
+    ./files.nix
     ./xresources.nix
-    ./emacs.nix
+    ./emacs
     ./terminal.nix
     ./gpg.nix
     ./i3.nix
@@ -34,11 +36,15 @@ in {
     gnome3.evince
     gnome3.nautilus
     steam
+    isync
+    offlineimap
+    mu
+    hledger
   ];
 
   home.file.".icons/default".source =
-
     "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
+
   home.file.".config/udiskie/config.yml".text = ''
     device_config:
       - device_file: /dev/loop0

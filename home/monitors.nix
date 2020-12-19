@@ -20,7 +20,7 @@
           esac
           echo "Xft.dpi: $DPI" | ${pkgs.xorg.xrdb}/bin/xrdb -merge
         '';
-
+        "stop-nm-applet" = "systemctl --user stop nm-applet.service";
       };
       postswitch = {
         "change-background" = ''
@@ -38,6 +38,7 @@
         '';
         "kill-redshift" = "${pkgs.redshift}/bin/redshift -x";
         "notify-i3" = "${pkgs.i3-gaps}/bin/i3-msg restart";
+        "start-nm-applet" = "systemctl --user restart nm-applet.service";
       };
     };
 
@@ -73,6 +74,7 @@
           eDP-1 = {
             position = "0x0";
             mode = "3840x2160";
+            primary = true;
             crtc = 1;
             rate = "60.00";
             gamma = "1.0:0.769:0.556";

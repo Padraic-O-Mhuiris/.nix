@@ -29,6 +29,7 @@ in {
     [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
   hardware.opengl.driSupport32Bit = true; # steam
 
@@ -55,7 +56,7 @@ in {
 
   networking.hostName = "Hydrogen"; # Define your hostname.
   #networking.wireless.enable = true;
-  networking.networkmanager.enable = true;
+  networking.networkmanager = { enable = true; };
 
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
@@ -93,7 +94,7 @@ in {
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
 
-  home-manager.users.padraic = (import "/home/padraic/.nix/home.nix");
+  home-manager.users.padraic = (import ./home);
 
   environment.systemPackages = with pkgs; [
     nixfmt
@@ -102,6 +103,7 @@ in {
     htop
     git
     acpi
+    unzip
     ripgrep
     xclip
     lsof
@@ -141,7 +143,42 @@ in {
     pavucontrol
     mtools
     xorg.xbacklight
+    wordnet
+    sqlite
+    yarn
+    nodejs
+    nodePackages.bash-language-server
+    nodePackages.bitwarden-cli
+    nodePackages.typescript-language-server
+    nodePackages.typescript
+    nodePackages.node2nix
+    nodePackages.javascript-typescript-langserver
+    nodePackages.jsonlint
+
+    ## Clojure
+    leiningen
+    clj-kondo
+    gcc
+
+    # Haskell
+    haskellPackages.haskell-language-server
+    haskellPackages.ghc
+    haskellPackages.fast-tags
+    cabal-install
+    cabal2nix
+
+    rustc
+    cargo
+    niv
+    lorri
+    direnv
   ];
+
+  services.hoogle = {
+    enable = true;
+    packages = (hpkgs: with hpkgs; [ text cryptonite aeson ]);
+    haskellPackages = pkgs.haskellPackages;
+  };
 
   hardware.video.hidpi.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
