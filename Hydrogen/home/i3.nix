@@ -61,7 +61,6 @@ let
     "XF86AudioMute" = "exec amixer set Master toggle";
     "XF86AudioLowerVolume" = "exec amixer set Master 4%-";
     "XF86AudioRaiseVolume" = "exec amixer set Master 4%+";
-    "${i3Modifier}+Ctrl+3" = "exec ${pkgs.emacs}/bin/emacsclient -c";
   };
 
   i3Config = {
@@ -123,11 +122,6 @@ let
       }
       {
         command = "exec ${pkgs.feh}/bin/feh --bg-scale $HOME/.wallpaper";
-        always = true;
-        notification = false;
-      }
-      {
-        command = "exec ${pkgs.emacs}/bin/emacs --daemon";
         always = true;
         notification = false;
       }

@@ -9,9 +9,14 @@
       "xft:Iosevka Term:bold:size=12"
       "xft:Iosevka Term:bold italic:size=12"
     ];
+    keybindings = {
+      "Shift-Control-C" = "eval:selection_to_clipboard";
+      "Shift-Control-V" = "eval:paste_clipboard";
+    };
     transparent = false;
     scroll.bar.enable = false;
     extraConfig = { "internalBorder" = 50; };
+    iso14755 = true;
   };
 
   programs.zsh = {

@@ -9,7 +9,6 @@ in {
 
   imports = [
     ./gpg.nix
-    #./files.nix
     ./xresources.nix
     ./emacs
     ./terminal.nix
@@ -39,6 +38,7 @@ in {
     offlineimap
     mu
     hledger
+    zoom-us
   ];
 
   home.file.".icons/default".source =
@@ -80,5 +80,6 @@ in {
     PASSWORD_STORE_DIR = "$HOME/.secrets";
     PASSWORD_STORE_TOMB_FILE = "$HOME/.secrets/graveyard.tomb";
     PASSWORD_STORE_TOMB_KEY = "/run/media/padraic/Backup/shovel.tomb";
+    NIXOPS_STATE = "$HOME/.nix/";
   };
 }
