@@ -12,7 +12,7 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ "dm-snapshot" ];
-   };
+    };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
