@@ -12,13 +12,7 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ "dm-snapshot" ];
-      luks.devices = {
-        enc-pv = {
-          device = "/dev/disk/by-uuid/954da3dc-267e-4ad5-a15b-b5d3664f36f7";
-          preLVM = true;
-        };
-      };
-    };
+   };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
@@ -35,19 +29,7 @@
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/f7c2682b-908e-4ea4-b60a-1901673eef29"; }
-    ];
+  ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
-  hardware = {
-    video.hidpi.enable = true;
-    cpu.intel.updateMicrocode = true;
-    enableAllFirmware = true;
-  };
-
-  services = {
-    fwupd.enable = true;
-    hardware.bolt.enable = true;
-    thermald.enable = true;
-  };
 }

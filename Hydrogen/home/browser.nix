@@ -7,11 +7,6 @@ let
 in {
   programs.google-chrome = {
     enable = true;
-    extensions = [
-      bitwarden
-      metamask
-      ublock
-    ];
   };
 }
 

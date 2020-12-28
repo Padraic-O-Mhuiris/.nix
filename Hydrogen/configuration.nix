@@ -13,10 +13,7 @@ let
     ref = "release-20.09";
   };
 
-  hardwareX1Carbon = "${
-      builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }
-    }/lenovo/thinkpad/x1/7th-gen";
-
+  
 in {
   nix.buildCores = 4;
   #nix.binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
@@ -40,23 +37,11 @@ in {
 
   imports = [
     (import "${home-manager}/nixos")
-    hardwareX1Carbon
     ./hardware-configuration.nix
+    ./thinkpadX1Carbon.nix
     ./fonts.nix
+    ./boot.nix
   ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    efiSupport = true;
-    enableCryptodisk = true;
-    device = "nodev";
-    gfxmodeEfi = "1280x720";
-  };
 
   powerManagement.enable = true;
 
@@ -76,9 +61,6 @@ in {
   };
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.bluetooth.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
   environment.variables = {
@@ -183,21 +165,6 @@ in {
 
   services.localtime.enable = true;
   location.provider = "geoclue2";
-  services.blueman.enable = true;
-
-  services.tlp = {
-    enable = true;
-    settings = {
-      USB_AUTOSUSPEND = 0;
-      #USB_BLACKLIST = "046d:c539";
-      #USB_BLACKLIST_BTUSB = 1;
-
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-    };
-  };
 
   services.xserver = {
     enable = true;
