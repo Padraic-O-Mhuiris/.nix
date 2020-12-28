@@ -10,6 +10,7 @@ in {
   imports = [
     ./gpg.nix
     ./xresources.nix
+    ./browser.nix
     #./emacs
     ./terminal.nix
     ./i3.nix
@@ -55,7 +56,6 @@ in {
     extraConfig = { http = { postBuffer = "524288000"; }; };
   };
 
-  programs.google-chrome.enable = true;
   programs.feh.enable = true;
   programs.zsh = {
     enable = true;
