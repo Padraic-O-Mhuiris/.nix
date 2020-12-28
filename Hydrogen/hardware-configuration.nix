@@ -4,32 +4,50 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "nvme"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-    "thinkpad_acpi"
-    "tp-smapi"
-  ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/be57dffc-0fbc-492e-8c3e-0dd18e1fb970";
-    fsType = "ext4";
-    options = [ "noatime" "nodiratime" "discard" ];
+  boot = {
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+      kernelModules = [ "dm-snapshot" ];
+      luks.devices = {
+        enc-pv = {
+          device = "/dev/disk/by-uuid/954da3dc-267e-4ad5-a15b-b5d3664f36f7";
+          preLVM = true;
+        };
+      };
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/26A7-177F";
-    fsType = "vfat";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/a8a910e3-01db-4408-ac08-b9a6a27589eb";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/6CC1-3C40";
+      fsType = "vfat";
+    };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/1f0e04b1-e810-4e1d-8b2a-ffce44cbac94"; }];
+    [ { device = "/dev/disk/by-uuid/f7c2682b-908e-4ea4-b60a-1901673eef29"; }
+    ];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  hardware = {
+    video.hidpi.enable = true;
+    cpu.intel.updateMicrocode = true;
+    enableAllFirmware = true;
+  };
+
+  services = {
+    fwupd.enable = true;
+    hardware.bolt.enable = true;
+    thermald.enable = true;
+  };
 }

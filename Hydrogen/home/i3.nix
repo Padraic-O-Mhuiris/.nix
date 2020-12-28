@@ -68,10 +68,10 @@ let
     keybindings = i3Keybindings;
 
     window.border = 1;
-    gaps = {
-      inner = 25;
-      outer = 0;
-    };
+    #gaps = {
+    #  inner = 25;
+    #  outer = 0;
+    #};
 
     fonts = [ "Iosevka" ];
     colors = {

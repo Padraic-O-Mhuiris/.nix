@@ -4,10 +4,10 @@
   programs.urxvt = {
     enable = true;
     fonts = [
-      "xft:Iosevka Term:regular:size=12"
-      "xft:Iosevka Term:italic:size=12"
-      "xft:Iosevka Term:bold:size=12"
-      "xft:Iosevka Term:bold italic:size=12"
+      "xft:Iosevka:regular:size=12"
+      "xft:Iosevka:italic:size=12"
+      "xft:Iosevka:bold:size=12"
+      "xft:Iosevka:bold italic:size=12"
     ];
     keybindings = {
       "Shift-Control-C" = "eval:selection_to_clipboard";
@@ -16,7 +16,7 @@
     transparent = false;
     scroll.bar.enable = false;
     extraConfig = { "internalBorder" = 50; };
-    iso14755 = true;
+    iso14755 = false;
   };
 
   programs.zsh = {

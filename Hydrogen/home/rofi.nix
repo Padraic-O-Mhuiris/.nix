@@ -5,7 +5,7 @@
     enable = true;
     scrollbar = false;
     width = 1000;
-    font = "Iosevka 14";
+    font = "Iosevka 25";
     theme = builtins.toString (pkgs.writeText "rofi-theme" ''
       configuration {
         display-drun:    "Apps";

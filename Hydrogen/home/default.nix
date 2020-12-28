@@ -1,19 +1,19 @@
 { pkgs, ... }:
 
 let
-  dapptools = import (builtins.fetchTarball {
-    url = "https://github.com/dapphub/dapptools/tarball/master";
-  }) { };
+  #dapptools = import (builtins.fetchTarball {
+  #  url = "https://github.com/dapphub/dapptools/tarball/master";
+  #}) { };
 
 in {
 
   imports = [
     ./gpg.nix
     ./xresources.nix
-    ./emacs
+    #./emacs
     ./terminal.nix
     ./i3.nix
-    ./monitors.nix
+    ./vim.nix
     ./rofi.nix
   ];
 
@@ -22,23 +22,17 @@ in {
   home.keyboard = null;
 
   home.packages = with pkgs; [
-    spotify
-    nodejs
-    yarn
-    dapptools.seth
-    dapptools.dapp
+    #spotify
+    #dapptools.seth
+    #dapptools.dapp
     ranger
     i3lock
     redshift
-    libreoffice
+    #libreoffice
     gnome3.evince
     gnome3.nautilus
-    steam
     isync
-    offlineimap
     mu
-    hledger
-    zoom-us
   ];
 
   home.file.".icons/default".source =
@@ -62,13 +56,9 @@ in {
   };
 
   programs.google-chrome.enable = true;
-  programs.gpg.enable = true;
   programs.feh.enable = true;
   programs.zsh = {
     enable = true;
-    initExtra = ''
-      export PATH="$PATH:`yarn global bin`"
-    '';
   };
 
   services.udiskie = {
@@ -80,6 +70,5 @@ in {
     PASSWORD_STORE_DIR = "$HOME/.secrets";
     PASSWORD_STORE_TOMB_FILE = "$HOME/.secrets/graveyard.tomb";
     PASSWORD_STORE_TOMB_KEY = "/run/media/padraic/Backup/shovel.tomb";
-    NIXOPS_STATE = "$HOME/.nix/";
   };
 }

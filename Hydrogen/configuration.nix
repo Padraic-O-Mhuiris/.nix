@@ -5,9 +5,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  dapptools = import (builtins.fetchTarball {
-    url = "https://github.com/dapphub/dapptools/tarball/master";
-  }) { };
+  inherit (lib) fileContents;
 
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager.git";
@@ -20,16 +18,10 @@ let
     }/lenovo/thinkpad/x1/7th-gen";
 
 in {
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
   nix.buildCores = 4;
-  nix.binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
-  nix.binaryCachePublicKeys =
-    [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
+  #nix.binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
+  #nix.binaryCachePublicKeys =
+  #  [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
 
   # nix.nixPath = [''
   #   /home/padraic/.nix-defexpr/channels:"nixpkgs=${
@@ -53,8 +45,6 @@ in {
     ./fonts.nix
   ];
 
-  hardware.opengl.driSupport32Bit = true; # steam
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -65,19 +55,12 @@ in {
     efiSupport = true;
     enableCryptodisk = true;
     device = "nodev";
-  };
-
-  boot.initrd.luks.devices = {
-    enc-pv = {
-      device = "/dev/disk/by-uuid/591397ac-e675-47e3-acc1-ee3a6c3ceeb0";
-      preLVM = true;
-    };
+    gfxmodeEfi = "1280x720";
   };
 
   powerManagement.enable = true;
 
   networking.hostName = "Hydrogen"; # Define your hostname.
-  #networking.wireless.enable = true;
   networking.networkmanager = { enable = true; };
 
   networking.useDHCP = false;
@@ -95,7 +78,6 @@ in {
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
   hardware.bluetooth.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
@@ -103,24 +85,24 @@ in {
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
     SHELL = "zsh";
-    NIXOS_CONFIG = "/home/padraic/.nix/Hydrogen/configuration.nix";
   };
 
   programs.nm-applet = { enable = true; };
+
+  users.users.root.hashedPassword = fileContents /home/padraic/.nix/secrets/root;
 
   users.users.padraic = {
     uid = 1000;
     isNormalUser = true;
     group = "users";
+    hashedPassword = fileContents /home/padraic/.nix/secrets/padraic;
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
 
   home-manager.users.padraic = (import ./home);
 
   environment.systemPackages = with pkgs; [
-    nixops
     nixfmt
     wget
     vim
@@ -128,90 +110,48 @@ in {
     git
     git-crypt
     acpi
-    unzip
     ripgrep
     xclip
-    lsof
     coreutils
     fd
     clang
     usbutils
     powertop
-    xorg.xdpyinfo
     xorg.libxcb
     bc
     cachix
-    hwinfo
     i7z
     glxinfo
     xdotool
     ### Pass
-    passExtensions.pass-audit
-    passExtensions.pass-genphrase
-    passExtensions.pass-import
-    passExtensions.pass-otp
-    passExtensions.pass-tomb
-    passExtensions.pass-update
-    (pass.withExtensions (ext:
-      with ext; [
-        pass-audit
-        pass-otp
-        pass-import
-        pass-genphrase
-        pass-update
-        pass-tomb
-      ]))
-    tomb
+    #passExtensions.pass-audit
+    #passExtensions.pass-genphrase
+    #passExtensions.pass-import
+    #passExtensions.pass-otp
+    #passExtensions.pass-tomb
+    #passExtensions.pass-update
+    #(pass.withExtensions (ext:
+    #  with ext; [
+    #    pass-audit
+    #    pass-otp
+    #    pass-import
+    #    pass-genphrase
+    #    pass-update
+    #    pass-tomb
+    #  ]))
+    #tomb
     ###
     lm_sensors
     dmidecode
-    pavucontrol
     mtools
     xorg.xbacklight
     wordnet
     sqlite
-    yarn
-    nodejs
-    nodePackages.bash-language-server
-    nodePackages.bitwarden-cli
-    nodePackages.typescript-language-server
-    nodePackages.typescript
-    nodePackages.node2nix
-    nodePackages.javascript-typescript-langserver
-    nodePackages.jsonlint
 
-    ## Clojure
-    leiningen
-    clj-kondo
-    gcc
-
-    # Haskell
-    haskellPackages.haskell-language-server
-    haskellPackages.ghc
-    haskellPackages.fast-tags
-    cabal-install
-    cabal2nix
-
-    rustc
-    cargo
-    niv
-    lorri
-    direnv
+    #niv
+    #lorri
+    #direnv
   ];
-
-  services.hoogle = {
-    enable = true;
-    packages = (hpkgs: with hpkgs; [ text cryptonite aeson ]);
-    haskellPackages = pkgs.haskellPackages;
-  };
-
-  hardware.video.hidpi.enable = true;
-  hardware.cpu.intel.updateMicrocode = true;
-  hardware.enableAllFirmware = true;
-
-  services.fwupd.enable = true;
-  services.hardware.bolt.enable = true;
-  services.thermald.enable = true;
 
   programs.light.enable = true;
   services.actkbd = {
@@ -249,8 +189,8 @@ in {
     enable = true;
     settings = {
       USB_AUTOSUSPEND = 0;
-      USB_BLACKLIST = "046d:c539";
-      USB_BLACKLIST_BTUSB = 1;
+      #USB_BLACKLIST = "046d:c539";
+      #USB_BLACKLIST_BTUSB = 1;
 
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
@@ -288,16 +228,5 @@ in {
     };
   };
 
-  systemd.services = {
-    tune-usb-autosuspend = {
-      description = "Disable USB autosuspend";
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = { Type = "oneshot"; };
-      unitConfig.RequiresMountsFor = "/sys";
-      script = ''
-        echo -1 > /sys/module/usbcore/parameters/autosuspend
-      '';
-    };
-  };
   system.stateVersion = "20.09"; # Did you read the comment?
 }
