@@ -11,6 +11,7 @@ in {
    thinkpadX1Carbon 
   ];
 
+  sound.enable = true;
   hardware = {
     pulseaudio.enable = true;
     bluetooth.enable = true;
@@ -36,5 +37,4 @@ in {
     };
   };
 
-  sound.enable = true;
 }

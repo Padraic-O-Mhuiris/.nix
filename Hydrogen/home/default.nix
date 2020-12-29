@@ -32,6 +32,7 @@ in {
     #libreoffice
     gnome3.evince
     gnome3.nautilus
+    pavucontrol
     isync
     mu
   ];
