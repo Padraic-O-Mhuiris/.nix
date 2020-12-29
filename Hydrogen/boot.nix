@@ -16,7 +16,8 @@
     initrd = {
       luks.devices = {
         enc-pv = {
-          device = "/dev/disk/by-uuid/954da3dc-267e-4ad5-a15b-b5d3664f36f7";
+          device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
+
           preLVM = true;
         };
       };
