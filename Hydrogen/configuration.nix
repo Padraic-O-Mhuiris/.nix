@@ -72,19 +72,20 @@ in {
 
   programs.nm-applet = { enable = true; };
 
-  users.users.root.hashedPassword = fileContents /home/padraic/.nix/secrets/root;
+  #users.users.root.hashedPassword = fileContents ./secrets/root;
 
   users.users.padraic = {
     uid = 1000;
     isNormalUser = true;
     group = "users";
-    hashedPassword = fileContents /home/padraic/.nix/secrets/padraic;
+    #hashedPassword = fileContents ./secrets/padraic;
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
 
   home-manager.users.padraic = (import ./home);
 
   environment.systemPackages = with pkgs; [
+    bitwarden
     nixfmt
     wget
     vim
