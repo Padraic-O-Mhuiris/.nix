@@ -15,7 +15,6 @@ in {
   hardware = {
     pulseaudio.enable = true;
     bluetooth.enable = true;
-    video.hidpi.enable = true;
     cpu.intel.updateMicrocode = true;
     enableAllFirmware = true;
   };
