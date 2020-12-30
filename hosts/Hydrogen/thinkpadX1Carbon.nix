@@ -1,10 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
-  thinkpadX1Carbon = "${
-      builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }
-    }/lenovo/thinkpad/x1/7th-gen";
-
+  thinkpadX1Carbon = "${inputs.hardware}/lenovo/thinkpad/x1/7th-gen";
 in {
 
   imports = [
