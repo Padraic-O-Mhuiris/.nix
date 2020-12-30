@@ -2,18 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   inherit (lib) fileContents;
 
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "63f299b3347aea183fc5088e4d6c4a193b334a41";
-    ref = "release-20.09";
-  };
-
-  
+  inherit (inputs) home-manager; 
 in {
   nix.buildCores = 4;
   #nix.binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
@@ -36,7 +30,7 @@ in {
   nixpkgs.config.allowBroken = true;
 
   imports = [
-    (import "${home-manager}/nixos")
+    home-manager.nixosModules."home-manager"
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
     ./fonts.nix
@@ -81,7 +75,9 @@ in {
     #hashedPassword = fileContents ./secrets/padraic;
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
-
+ 
+  #home-manager.useGlobalPkgs = true;
+  #home-manager.useUserPackages = true;
   home-manager.users.padraic = (import ./home);
 
   environment.systemPackages = with pkgs; [
@@ -195,6 +191,4 @@ in {
       }];
     };
   };
-
-  system.stateVersion = "20.09"; # Did you read the comment?
 }

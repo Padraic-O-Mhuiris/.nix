@@ -15,14 +15,13 @@
     };
     initrd = {
       luks.devices = {
-        enc-pv = {
+        crypted = {
           device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
-
           preLVM = true;
         };
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    #extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 }

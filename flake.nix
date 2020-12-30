@@ -7,11 +7,12 @@
     nixpkgs-master = { url = "github:nixos/nixpkgs/master"; }; # for nixFlakes
 
     nix.url = "github:nixos/nix/master";
+
     hardware = { url = "github:nixos/nixos-hardware"; };
 
     home-manager ={
       url =  "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixos";
     };
   };
 
