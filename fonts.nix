@@ -2,6 +2,7 @@
   fonts = {
     fonts = with pkgs; [
       iosevka
+      nerd-fonts
       roboto
     ];
     fontconfig = {
