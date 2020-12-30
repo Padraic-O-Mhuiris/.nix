@@ -33,6 +33,5 @@ in {
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 }
