@@ -6,7 +6,10 @@
 
 let
   inherit (lib) fileContents;
-  inherit (inputs) home-manager; 
+  inherit (inputs) home-manager;
+
+  passwordRoot = lib.mkForce (fileContents ../../secrets/root);
+  passwordPadraic = lib.mkForce (fileContents ../../secrets/padraic);
 in {
 
   # nix.nixPath = [''
@@ -70,15 +73,21 @@ in {
 
   programs.nm-applet = { enable = true; };
 
-  #users.users.root.hashedPassword = fileContents ./secrets/root;
-
-  users.mutableUsers = false;
-  users.users.padraic = {
-    uid = 1000;
-    isNormalUser = true;
-    group = "users";
-    #hashedPassword = fileContents ./secrets/padraic;
-    extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
+  users = {
+    mutableUsers = false;
+    users = {
+      root = {
+        initialHashedPassword = passwordRoot;
+        hashedPassword = passwordRoot;
+      };
+      padraic = {
+        uid = 1000;
+        isNormalUser = true;
+        group = "users";
+        hashedPassword = passwordPadraic;
+        extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
+      };
+    };
   };
  
   #home-manager.useGlobalPkgs = true;
