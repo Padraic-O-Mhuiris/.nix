@@ -6,13 +6,8 @@
 
 let
   inherit (lib) fileContents;
-
   inherit (inputs) home-manager; 
 in {
-  nix.buildCores = 4;
-  #nix.binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
-  #nix.binaryCachePublicKeys =
-  #  [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
 
   # nix.nixPath = [''
   #   /home/padraic/.nix-defexpr/channels:"nixpkgs=${
@@ -25,6 +20,15 @@ in {
   #     pkgs.nix-plugins_4.override { nix = config.nix.package; }
   #   }/lib/nix/plugins/libnix-extra-builtins.so
   # '';
+
+  nix = {
+    buildCores = 4;
+    binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
+    binaryCachePublicKeys = [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
+    package = pkgs.nixFlakes;
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes ca-references recursive-nix";
+  };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
@@ -68,6 +72,7 @@ in {
 
   #users.users.root.hashedPassword = fileContents ./secrets/root;
 
+  users.mutableUsers = false;
   users.users.padraic = {
     uid = 1000;
     isNormalUser = true;
@@ -77,11 +82,15 @@ in {
   };
  
   #home-manager.useGlobalPkgs = true;
-  #home-manager.useUserPackages = true;
-  home-manager.users.padraic = (import ./home);
+  home-manager.useUserPackages = true;
+  home-manager.users.padraic = {
+    imports = [ ./home ];
+    home.stateVersion = "20.09";
+  };
 
   environment.systemPackages = with pkgs; [
     bitwarden
+    coreutils
     nixfmt
     wget
     vim

@@ -34,7 +34,5 @@
       plugins = [ "git" "sudo" ];
       theme = "lambda";
     };
-
   };
-
 }
