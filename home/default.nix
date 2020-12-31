@@ -1,17 +1,12 @@
 { pkgs, ... }:
 
-let
-  #dapptools = import (builtins.fetchTarball {
-  #  url = "https://github.com/dapphub/dapptools/tarball/master";
-  #}) { };
-
-in {
+{
 
   imports = [
     ./gpg.nix
     ./xresources.nix
     ./browser.nix
-    #./emacs
+    ./emacs
     ./terminal.nix
     ./i3.nix
     ./vim.nix
@@ -36,7 +31,7 @@ in {
     isync
     mu
   ];
-
+  home.stateVersion = "20.09";
   home.file.".icons/default".source =
     "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 

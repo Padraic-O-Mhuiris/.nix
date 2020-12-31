@@ -6,10 +6,11 @@
     nixpkgs-unstable = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     nixpkgs-master = { url = "github:nixos/nixpkgs/master"; }; # for nixFlakes
 
-    nix.url = "github:nixos/nix/master";
+    nix = { url = "github:nixos/nix/master"; };
 
     hardware = { url = "github:nixos/nixos-hardware"; };
 
+    nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
     home-manager ={
       url =  "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +24,15 @@
       mkSystem = pkgs_: hostname:
         pkgs_.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [(./. + "/hosts/${hostname}/configuration.nix")];
+          modules = [
+            (./. + "/hosts/${hostname}/configuration.nix")
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.padraic = import (./. + "/home");
+            }
+          ];
           specialArgs = { inherit inputs; };
         };
     in rec {

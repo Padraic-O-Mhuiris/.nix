@@ -6,24 +6,11 @@
 
 let
   inherit (lib) fileContents;
-  inherit (inputs) home-manager;
 
   passwordRoot = lib.mkForce (fileContents ../../secrets/root);
   passwordPadraic = lib.mkForce (fileContents ../../secrets/padraic);
 in {
-
-  # nix.nixPath = [''
-  #   /home/padraic/.nix-defexpr/channels:"nixpkgs=${
-  #     <nixpkgs>
-  #   }":nixos-config=/home/padraic/.nix/Hydrogen/configuration.nix
-  #    ''];
-
-  # nix.extraOptions = ''
-  #   plugin-files = ${
-  #     pkgs.nix-plugins_4.override { nix = config.nix.package; }
-  #   }/lib/nix/plugins/libnix-extra-builtins.so
-  # '';
-
+ 
   nix = {
     buildCores = 4;
     binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
@@ -37,7 +24,6 @@ in {
   nixpkgs.config.allowBroken = true;
 
   imports = [
-    home-manager.nixosModules."home-manager"
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
     ./fonts.nix
@@ -90,12 +76,11 @@ in {
     };
   };
  
-  #home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.padraic = {
-    imports = [ ./home ];
-    home.stateVersion = "20.09";
-  };
+  #home-manager.useUserPackages = true;
+  #home-manager.users.padraic = {
+  #  imports = [ ./home ];
+  #  home.stateVersion = "20.09";
+  #};
 
   environment.systemPackages = with pkgs; [
     bitwarden
