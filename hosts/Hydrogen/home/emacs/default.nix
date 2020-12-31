@@ -5,7 +5,6 @@ let
 in {
   imports = [ nix-doom-emacs.hmModule ];
 
-
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./doom.d; 

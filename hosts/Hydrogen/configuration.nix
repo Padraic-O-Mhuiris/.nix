@@ -6,7 +6,7 @@
 
 let
   inherit (lib) fileContents;
-
+  inherit (inputs) home-manager;
   passwordRoot = lib.mkForce (fileContents ../../secrets/root);
   passwordPadraic = lib.mkForce (fileContents ../../secrets/padraic);
 in {
@@ -24,6 +24,7 @@ in {
   nixpkgs.config.allowBroken = true;
 
   imports = [
+    home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
     ./fonts.nix
@@ -76,11 +77,11 @@ in {
     };
   };
  
-  #home-manager.useUserPackages = true;
-  #home-manager.users.padraic = {
-  #  imports = [ ./home ];
-  #  home.stateVersion = "20.09";
-  #};
+  home-manager.useUserPackages = true;
+  home-manager.users.padraic = {
+    imports = [ ./home ];
+    home.stateVersion = "20.09";
+  };
 
   environment.systemPackages = with pkgs; [
     bitwarden

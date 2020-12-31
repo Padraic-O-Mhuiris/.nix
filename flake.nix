@@ -24,15 +24,7 @@
       mkSystem = pkgs_: hostname:
         pkgs_.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
-            (./. + "/hosts/${hostname}/configuration.nix")
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.padraic = import (./. + "/home");
-            }
-          ];
+          modules = [(./. + "/hosts/${hostname}/configuration.nix")];
           specialArgs = { inherit inputs; };
         };
     in rec {
