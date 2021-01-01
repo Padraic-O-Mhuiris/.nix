@@ -10,9 +10,6 @@ in {
 
   nix = {
     buildCores = 4;
-    binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
-    binaryCachePublicKeys =
-      [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
     package = pkgs.nixFlakes;
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes ca-references recursive-nix";
@@ -26,6 +23,7 @@ in {
     ./thinkpadX1Carbon.nix
     ./fonts.nix
     ./boot.nix
+    ../../cachix
     ../../users
     ../../users/root
     ../../users/padraic

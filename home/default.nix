@@ -17,13 +17,14 @@
   home.keyboard = null;
 
   home.packages = with pkgs; [
-    #spotify
     #dapptools.seth
-    #dapptools.dapp
+    # dapptools.dapp
     ranger
     i3lock
     redshift
-    #libreoffice
+    spotify
+    zoom-us
+    libreoffice
     gnome3.evince
     gnome3.nautilus
     pavucontrol
