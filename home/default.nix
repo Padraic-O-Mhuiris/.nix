@@ -6,7 +6,6 @@
     ./gpg.nix
     ./xresources.nix
     ./browser.nix
-    ./emacs
     ./terminal.nix
     ./i3.nix
     ./vim.nix
@@ -31,6 +30,7 @@
     isync
     mu
   ];
+
   home.stateVersion = "20.09";
   home.file.".icons/default".source =
     "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
@@ -53,9 +53,7 @@
   };
 
   programs.feh.enable = true;
-  programs.zsh = {
-    enable = true;
-  };
+  programs.zsh = { enable = true; };
 
   services.udiskie = {
     enable = true;

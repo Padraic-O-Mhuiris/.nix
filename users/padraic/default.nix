@@ -9,12 +9,6 @@ in {
 
   imports = [ home-manager.nixosModules.home-manager ];
 
-  home-manager.useUserPackages = true;
-  home-manager.users.padraic = {
-    imports = [ ./home ];
-    home.stateVersion = "20.09";
-  };
-
   users.users.padraic = {
     uid = 1000;
     isNormalUser = true;
@@ -23,4 +17,6 @@ in {
     extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
   };
 
+  home-manager.useUserPackages = true;
+  home-manager.users.padraic = { imports = [ ../../home ]; };
 }
