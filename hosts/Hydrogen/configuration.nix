@@ -5,16 +5,14 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  inherit (lib) fileContents;
-  inherit (inputs) home-manager;
-  passwordRoot = lib.mkForce (fileContents ../../secrets/root);
-  passwordPadraic = lib.mkForce (fileContents ../../secrets/padraic);
+
 in {
- 
+
   nix = {
     buildCores = 4;
     binaryCaches = [ "https://cache.nixos.org" "https://dapp.cachix.org" ];
-    binaryCachePublicKeys = [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
+    binaryCachePublicKeys =
+      [ "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs=" ];
     package = pkgs.nixFlakes;
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes ca-references recursive-nix";
@@ -24,11 +22,14 @@ in {
   nixpkgs.config.allowBroken = true;
 
   imports = [
-    home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
     ./fonts.nix
     ./boot.nix
+    ../../users
+    ../../users/root
+    ../../users/padraic
+    ../../profiles/emacs
   ];
 
   powerManagement.enable = true;
@@ -60,32 +61,10 @@ in {
 
   programs.nm-applet = { enable = true; };
 
-  users = {
-    mutableUsers = false;
-    users = {
-      root = {
-        initialHashedPassword = passwordRoot;
-        hashedPassword = passwordRoot;
-      };
-      padraic = {
-        uid = 1000;
-        isNormalUser = true;
-        group = "users";
-        hashedPassword = passwordPadraic;
-        extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
-      };
-    };
-  };
- 
-  home-manager.useUserPackages = true;
-  home-manager.users.padraic = {
-    imports = [ ./home ];
-    home.stateVersion = "20.09";
-  };
-
   environment.systemPackages = with pkgs; [
     bitwarden
     coreutils
+    cmake
     nixfmt
     wget
     vim
@@ -93,10 +72,7 @@ in {
     git
     git-crypt
     acpi
-    ripgrep
     xclip
-    coreutils
-    fd
     clang
     usbutils
     powertop
@@ -104,8 +80,10 @@ in {
     bc
     cachix
     i7z
+
     glxinfo
     xdotool
+    clang
     ### Pass
     #passExtensions.pass-audit
     #passExtensions.pass-genphrase
