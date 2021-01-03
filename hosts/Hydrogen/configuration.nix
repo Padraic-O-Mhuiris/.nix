@@ -28,6 +28,7 @@ in {
     ../../users/root
     ../../users/padraic
     ../../profiles/emacs
+    ../../profiles/gpg
   ];
 
   powerManagement.enable = true;

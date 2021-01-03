@@ -3,7 +3,6 @@
 {
 
   imports = [
-    ./gpg.nix
     ./xresources.nix
     ./browser.nix
     ./terminal.nix
@@ -17,8 +16,6 @@
   home.keyboard = null;
 
   home.packages = with pkgs; [
-    #dapptools.seth
-    # dapptools.dapp
     ranger
     i3lock
     redshift

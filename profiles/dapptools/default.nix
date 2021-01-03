@@ -2,7 +2,10 @@
 
 let inherit (inputs) dapptools;
 in {
-  home-manager.users.padraic = {
-    home.packages = with pkgs; [ dapptools.seth dapptools.dapp ];
-  };
+
+  environment.systemPackages = with pkgs; [ dapptools.seth dapptools.dapp ];
+
+  #home-manager.users.padraic = {
+  #  home.packages = with dapptools; [ seth dapp ];
+  #};
 }

@@ -1,7 +1,0 @@
-{
-  # gpg-ssh
-  ssh = {
-    Hydrogen =
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChgGaRAFb1a69mhMyzo+3XJo2PtE91mx0rrbjv3SRYif0P9hFWlH6075mahhYs7xuZ7pKm3LXwQgUo2EGNvBgTYx/IhiZuQRV7Yafg4WP2rkbp0jB6kKOhjk5kGWQcunGhpn4mJSzfn/TygdmFWeU4ihx2bY5fwwjR1z0xUVBB3pXGd6v0mtfq8Wuq9OhxBhO7lKV3Ek7hWD9iKhJr7HhG+Ya6MLtYeMue4udo4Ie63CDz3g5aNXjzXzUfPkkR9PAoxGo2svLwrQXHCgIg4f+biUbNbwXwiE1DQwIhjVFQT6IMMmqgsuBwSgag7LCYuAlnZiQ7JqM9AbpwLVH0ntKoVm+tDA+alAVH5bqRBHfyHxV1MN83xrewjNuZBJAZoGt3N5BJeIisdC1tZFL36iLkLBDqYMkq8Nt3ioBKmIk2ZObIXVP2sr8kfSn3ScG6pg/uT8AemdEUfgg7Gge33gyZkqaSWDjcmxfwAZdgbow+L7QjzinlqHtsYhGmjtrKpMxDfJwvAF0gmxEclCG9blgr7y0ilQSSiw5zPyKDgyBMh+9o/A37A2X6OthrwIa0V1/SarUHft44AvKXyU9t/xSCJ8w6dmPIF3e2Ryaj3wbfrC+oOi3jjEoeAmXDQWob/R5VwtGHe3fpj/5rDfjLMMeZupFPTRTc/nw/qVYKbYFEBQ== (none)";
-  };
-}
