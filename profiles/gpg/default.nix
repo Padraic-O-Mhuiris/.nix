@@ -15,7 +15,7 @@
       maxCacheTtlSsh = 7200;
       enableExtraSocket = true;
 
-      pinentryFlavor = "curses";
+      pinentryFlavor = "gnome3";
       extraConfig = ''
         pinentry-timeout 100
         allow-emacs-pinentry
