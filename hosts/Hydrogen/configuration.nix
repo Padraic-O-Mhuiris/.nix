@@ -31,6 +31,7 @@ in {
     ../../profiles/gpg
 
     ../../languages/javascript
+    ../../languages/python3
   ];
 
   powerManagement.enable = true;
