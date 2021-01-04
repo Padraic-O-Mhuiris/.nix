@@ -1,6 +1,6 @@
 
 ;;; Code:
-(setq doom-font (font-spec :family "Iosevka" :size 25))
+(setq doom-font (font-spec :family "Iosevka" :size 16))
 
 (setq doom-theme 'doom-nord)
 
@@ -10,4 +10,3 @@
 (setq org-roam-db-location "~/.org/org-roam.db")
 
 (pinentry-start)
-

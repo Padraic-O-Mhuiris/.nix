@@ -3,6 +3,7 @@
 {
   services.udev.packages = with pkgs; [ yubikey-personalization libu2f-host ];
   services.pcscd.enable = true;
+  environment.systemPackages = with pkgs; [ yubikey-personalization ];
 
   home-manager.users.padraic = {
     services.gpg-agent = {

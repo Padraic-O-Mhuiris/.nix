@@ -33,13 +33,16 @@ in {
 
   powerManagement.enable = true;
 
-  networking.hostName = "Hydrogen"; # Define your hostname.
-  networking.networkmanager = { enable = true; };
-
-  networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
-
+  networking = {
+    hostName = "Hydrogen";
+    networkmanager.enable = true;
+    useDHCP = false;
+    interfaces = {
+      enp0s31f6.useDHCP = true;
+      wlp0s20f3.useDHCP = true;
+    };
+    hosts = { "192.168.0.55" = [ "Nitrogen" ]; };
+  };
   # Select internationalisation properties.
   time.timeZone = "Europe/Dublin";
   i18n = { defaultLocale = "en_IE.UTF-8"; };
@@ -108,6 +111,15 @@ in {
     wordnet
     sqlite
 
+    yarn
+    nodejs
+    nodePackages.bash-language-server
+    nodePackages.bitwarden-cli
+    nodePackages.typescript-language-server
+    nodePackages.typescript
+    nodePackages.node2nix
+    nodePackages.javascript-typescript-langserver
+    nodePackages.jsonlint
     #niv
     #lorri
     #direnv
