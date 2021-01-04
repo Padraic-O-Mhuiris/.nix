@@ -27,8 +27,10 @@ in {
     ../../users
     ../../users/root
     ../../users/padraic
+
     ../../profiles/emacs
     ../../profiles/gpg
+    ../../profiles/pass
 
     ../../languages/javascript
     ../../languages/python
@@ -91,24 +93,6 @@ in {
     glxinfo
     xdotool
     clang
-    ### Pass
-    #passExtensions.pass-audit
-    #passExtensions.pass-genphrase
-    #passExtensions.pass-import
-    #passExtensions.pass-otp
-    #passExtensions.pass-tomb
-    #passExtensions.pass-update
-    #(pass.withExtensions (ext:
-    #  with ext; [
-    #    pass-audit
-    #    pass-otp
-    #    pass-import
-    #    pass-genphrase
-    #    pass-update
-    #    pass-tomb
-    #  ]))
-    #tomb
-    ###
     lm_sensors
     dmidecode
     mtools
