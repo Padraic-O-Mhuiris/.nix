@@ -70,8 +70,9 @@ in {
   environment.systemPackages = with pkgs; [
     bitwarden
     coreutils
-    cmake
+    gnumake
     nixfmt
+    gcc
     wget
     vim
     htop
