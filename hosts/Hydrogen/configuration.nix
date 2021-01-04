@@ -29,6 +29,8 @@ in {
     ../../users/padraic
     ../../profiles/emacs
     ../../profiles/gpg
+
+    ../../languages/javascript
   ];
 
   powerManagement.enable = true;
@@ -111,15 +113,8 @@ in {
     wordnet
     sqlite
 
-    yarn
-    nodejs
     nodePackages.bash-language-server
     nodePackages.bitwarden-cli
-    nodePackages.typescript-language-server
-    nodePackages.typescript
-    nodePackages.node2nix
-    nodePackages.javascript-typescript-langserver
-    nodePackages.jsonlint
     #niv
     #lorri
     #direnv
