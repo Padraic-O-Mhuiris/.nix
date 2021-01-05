@@ -31,6 +31,7 @@ in {
     ../../profiles/emacs
     ../../profiles/gpg
     ../../profiles/pass
+    ../../profiles/docker
 
     ../../languages/javascript
     ../../languages/python
