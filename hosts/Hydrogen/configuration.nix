@@ -30,7 +30,7 @@ in {
 
     ../../profiles/emacs
     ../../profiles/gpg
-    ../../profiles/pass
+    #../../profiles/pass
     ../../profiles/docker
 
     ../../languages/javascript
