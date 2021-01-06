@@ -9,10 +9,10 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      defaultCacheTtl = 600;
-      defaultCacheTtlSsh = 600;
-      maxCacheTtl = 7200;
-      maxCacheTtlSsh = 7200;
+      defaultCacheTtl = 43200;
+      defaultCacheTtlSsh = 43200;
+      maxCacheTtl = 43200;
+      maxCacheTtlSsh = 43200;
       enableExtraSocket = true;
 
       pinentryFlavor = "gnome3";
