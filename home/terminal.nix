@@ -35,4 +35,9 @@
       theme = "lambda";
     };
   };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+  };
 }

@@ -1,0 +1,13 @@
+#+TITLE: Configuration
+
+* Mutable changes to these deployments
+** Hydrogen
+*** Cgroups
+For running Oasis Casual docker build env, ran into issues with cgroups and postgres
+
+Fix:
+- sudo mkdir /sys/fs/cgroup/systemd
+- sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
+*** prisma
+https://github.com/prisma/prisma/discussions/3120#discussioncomment-41905
+Issues with projects that use it for database middleware

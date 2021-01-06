@@ -73,6 +73,7 @@ in {
   environment.systemPackages = with pkgs; [
     bitwarden
     coreutils
+    binutils
     gnumake
     nixfmt
     gcc
@@ -91,6 +92,11 @@ in {
     cachix
     i7z
 
+    openssl
+    libusb
+    libcgroup
+    libudev0-shim
+    postgresql
     glxinfo
     xdotool
     clang
@@ -103,6 +109,8 @@ in {
 
     nodePackages.bash-language-server
     nodePackages.bitwarden-cli
+
+    cargo
     #niv
     #lorri
     #direnv
