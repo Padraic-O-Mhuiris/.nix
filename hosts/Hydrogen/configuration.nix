@@ -107,6 +107,7 @@ in {
     wordnet
     sqlite
 
+    signal-desktop
     nodePackages.bash-language-server
     nodePackages.bitwarden-cli
 
