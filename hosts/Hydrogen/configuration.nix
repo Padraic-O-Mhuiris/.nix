@@ -91,7 +91,8 @@ in {
     bc
     cachix
     i7z
-
+    unzip
+    tree
     openssl
     libusb
     libcgroup

@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-
   imports = [
     ./xresources.nix
     ./browser.nix
@@ -38,6 +37,11 @@
       - device_file: /dev/loop0
         ignore: true
   '';
+
+  home.file.".finance".source = (pkgs.fetchgit {
+    url = "git@github.com:Padraic-O-Mhuiris/.finance.git";
+    leaveDotGit = true;
+  });
 
   programs.git = {
     enable = true;
