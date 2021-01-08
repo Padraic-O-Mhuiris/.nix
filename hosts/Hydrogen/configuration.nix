@@ -32,6 +32,7 @@ in {
     ../../profiles/gpg
     #../../profiles/pass
     ../../profiles/docker
+    ../../profiles/git
 
     ../../languages/javascript
     ../../languages/python

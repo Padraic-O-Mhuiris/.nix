@@ -38,22 +38,6 @@
         ignore: true
   '';
 
-  home.file.".finance".source = (pkgs.fetchgit {
-    url = "git@github.com:Padraic-O-Mhuiris/.finance.git";
-    leaveDotGit = true;
-  });
-
-  programs.git = {
-    enable = true;
-    userName = "Padraic-O-Mhuiris";
-    userEmail = "patrick.morris.310@gmail.com";
-    signing = {
-      key = "0xBD01159F2C44F16B";
-      signByDefault = true;
-    };
-    extraConfig = { http = { postBuffer = "524288000"; }; };
-  };
-
   programs.feh.enable = true;
   programs.zsh = { enable = true; };
 
