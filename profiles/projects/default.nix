@@ -13,16 +13,11 @@ let
   };
 
   fetch-projects = pkgs.writeShellScriptBin "fetch-projects" ''
+    #!/usr/bin/env bash
     [[ ! -f ${financeProject.path}  ]] && ${pkgs.git}/bin/git clone ${financeProject.url} ${financeProject.path}
-
-    if [[ ! -f ${orgProject.path} ]]
-    then
-      ${pkgs.git}/bin/git clone ${orgProject.url} ${orgProject.path}
-    elif [[ ! -f ${orgProject.path}/inbox.org ]]
-    then
-      rm -rf ${orgProject.path}
-      ${pkgs.git}/bin/git clone ${orgProject.url} ${orgProject.path}
-    fi'';
+    [[ ! -f ${orgProject.path} ]] && ${pkgs.git}/bin/git clone ${orgProject.url} ${orgProject.path}
+    [[ ! -f ${orgProject.path}/inbox.org ]] && /run/current-system/sw/bin/rm -rf ${orgProject.path} && ${pkgs.git}/bin/git clone ${orgProject.url} ${orgProject.path}
+  '';
 in {
 
   home-manager.users.padraic = {
@@ -30,16 +25,16 @@ in {
       fetch-projects = {
         Unit = {
           Description = "Project Fetch Service";
-          After =
-            [ "ssh-agent.service" "network-online.target" "gpg-agent.service" ];
+          After = [ "ssh-agent.service" "gpg-agent.service" ];
         };
         Service = {
-          Type = "simple";
+          Type = "oneshot";
+          RemainAfterExit = true;
+          Restart = "on-failure";
+          RestartSec = 5;
           ExecStart = "${fetch-projects}/bin/fetch-projects";
-          RestartSec = 20;
-          Restart = "always";
         };
-        Install = { WantedBy = [ "default.target" "network-online.target" ]; };
+        Install = { WantedBy = [ "default.target" ]; };
       };
     };
   };
