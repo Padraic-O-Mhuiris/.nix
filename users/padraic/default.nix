@@ -14,7 +14,7 @@ in {
     isNormalUser = true;
     group = "users";
     hashedPassword = passwordPadraic;
-    extraGroups = [ "wheel" "audio" "networkmanager" "video" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "video" "docker" ];
   };
 
   home-manager.useUserPackages = true;
