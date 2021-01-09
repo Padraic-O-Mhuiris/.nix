@@ -33,7 +33,7 @@ in {
     #../../profiles/pass
     ../../profiles/docker
     ../../profiles/git
-    ../../profiles/finances
+    ../../profiles/projects
 
     ../../languages/javascript
     ../../languages/python

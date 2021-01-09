@@ -15,6 +15,7 @@
   home.keyboard = null;
 
   home.packages = with pkgs; [
+
     ranger
     i3lock
     redshift
@@ -23,6 +24,7 @@
     libreoffice
     gnome3.evince
     gnome3.nautilus
+    gnome3.zenity
     pavucontrol
     isync
     mu
