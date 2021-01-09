@@ -46,4 +46,17 @@
     notify = false;
   };
 
+  systemd.user.services.projects = {
+    Unit = {
+      Description = "Clones project repositories from external sources";
+      ConditionPathExists = "!$HOME/.finances";
+    };
+    Service = {
+      Type = "oneshot";
+      RemainAfterExit = false;
+      ExecStart =
+        "${pkgs.git}/bin/git clone git@github.com:Padraic-O-Mhuiris/.finance.git -O $HOME/.finance";
+    };
+    Install = { WantedBy = "default.target"; };
+  };
 }
