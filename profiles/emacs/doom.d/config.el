@@ -18,10 +18,30 @@
 
 (setq-hook! 'js2-mode-hook +format-with-lsp nil)
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
-(setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
+(setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil
 
 ;; Org
 (setq org-directory "~/.org")
 (setq org-roam-directory "~/.org")
 (setq org-roam-db-location "~/.org/org-roam.db")
-(setq org-todo-keywords '((sequence "TODO" "MEETING" "PHONE" "PURCHASE" "CLARIFY" "MAYBE" "WAITING" "POSTPONED" "ROUTINE" "CONSIDER" "BLOCKED" "|" "DONE" "UNABLE" "REJECTED" "PURCHASED" "INACTIVE" "CANCELLED" "AUTOMATED")))
+(setq org-archive-location "::* HISTORY")
+
+(after! org
+  (setq org-todo-keywords
+        '((sequence "TODO"
+                    "MEETING"
+                    "PHONE"
+                    "PURCHASE"
+                    "CLARIFY"
+                    "MAYBE"
+                    "WAITING"
+                    "POSTPONED"
+                    "ROUTINE"
+                    "BLOCKED"
+                    "|"
+                    "DONE"
+                    "UNABLE"
+                    "REJECTED"
+                    "PURCHASED"
+                    "INACTIVE"
+                    "CANCELLED"))))
