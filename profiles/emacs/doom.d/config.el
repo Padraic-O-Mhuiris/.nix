@@ -22,5 +22,6 @@
 
 ;; Org
 (setq org-directory "~/.org")
-(setq org-roam-directory "~/.org/notes")
+(setq org-roam-directory "~/.org")
 (setq org-roam-db-location "~/.org/org-roam.db")
+(setq org-todo-keywords '((sequence "TODO" "MEETING" "PHONE" "PURCHASE" "CLARIFY" "MAYBE" "WAITING" "POSTPONED" "ROUTINE" "CONSIDER" "BLOCKED" "|" "DONE" "UNABLE" "REJECTED" "PURCHASED" "INACTIVE" "CANCELLED" "AUTOMATED")))
