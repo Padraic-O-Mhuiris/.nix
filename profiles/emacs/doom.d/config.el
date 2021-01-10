@@ -5,9 +5,7 @@
 (setq doom-theme 'doom-nord)
 
 (setq epa-pinentry-mode 'loopback)
-(setq org-directory "~/.org")
-(setq org-roam-directory "~/.org/")
-(setq org-roam-db-location "~/.org/org-roam.db")
+
 
 (pinentry-start)
 
@@ -21,3 +19,8 @@
 (setq-hook! 'js2-mode-hook +format-with-lsp nil)
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
 (setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
+
+;; Org
+(setq org-directory "~/.org")
+(setq org-roam-directory "~/.org/notes")
+(setq org-roam-db-location "~/.org/org-roam.db")
