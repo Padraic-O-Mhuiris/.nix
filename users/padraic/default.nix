@@ -4,7 +4,7 @@ let
   inherit (inputs) home-manager;
   inherit (lib) fileContents mkForce;
 
-  #passwordPadraic = mkForce (fileContents ../../secrets/padraic);
+  passwordPadraic = mkForce (fileContents ../../secrets/padraic);
 in {
 
   imports = [ home-manager.nixosModules.home-manager ];
