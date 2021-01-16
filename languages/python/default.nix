@@ -6,6 +6,8 @@
     python
     python27Packages.pyudev
     python37Packages.pyudev
+    python27Packages.pip
+    python37Packages.pip
   ];
 
 }
