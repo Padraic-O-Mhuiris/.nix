@@ -27,4 +27,4 @@
 (setq org-roam-db-location "~/.org/org-roam.db")
 (setq org-archive-location "::* HISTORY")
 (setq org-agenda-files (directory-files-recursively "~/.org/" "\\.org$"))
-(setq org-roam-tag-sources '(prop vanilla all-directories))
+(setq org-roam-tag-sources '(prop))
