@@ -50,7 +50,11 @@ in {
       enp0s31f6.useDHCP = true;
       wlp0s20f3.useDHCP = true;
     };
-    hosts = { "192.168.0.55" = [ "Nitrogen" ]; };
+    hosts = {
+      "192.168.0.55" = [ "Nitrogen" ];
+      "1.tcp.eu.ngrok.io" = [ "Nitrogen-remote" ];
+    };
+
   };
   # Select internationalisation properties.
   time.timeZone = "Europe/Dublin";
