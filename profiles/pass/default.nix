@@ -1,12 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let
-  inherit (builtins) fetchGit;
-
-  test =
-    (import (fetchGit "ssh://git@github.com/Padraic-O-Mhuiris/.secrets.git"));
-
-in {
+{
 
   environment.systemPackages = with pkgs; [
     tomb
@@ -27,7 +21,5 @@ in {
       PASSWORD_STORE_TOMB_FILE = "$HOME/.secrets/graveyard.tomb";
       PASSWORD_STORE_TOMB_KEY = "/run/media/padraic/Backup/shovel.tomb";
     };
-
-    home.file.".secrets".source = test;
   };
 }
