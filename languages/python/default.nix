@@ -5,9 +5,14 @@
     python3
     python
     python27Packages.pyudev
-    python37Packages.pyudev
+    python38Packages.pyudev
     python27Packages.pip
-    python37Packages.pip
+    python38Packages.pip
+    python27Packages.pip-tools
+    python38Packages.pip-tools
+    python27Packages.setuptools
+    python38Packages.setuptools
+
   ];
 
 }
