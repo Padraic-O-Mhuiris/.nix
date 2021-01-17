@@ -30,3 +30,4 @@
 (setq org-roam-tag-sources '(prop))
 
 (setq ledger-post-amount-alignment-column 100)
+(setq ledger-post-account-alignment-column 2)
