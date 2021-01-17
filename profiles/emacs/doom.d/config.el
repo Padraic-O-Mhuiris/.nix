@@ -28,3 +28,5 @@
 (setq org-archive-location "::* HISTORY")
 (setq org-agenda-files (directory-files-recursively "~/.org/" "\\.org$"))
 (setq org-roam-tag-sources '(prop))
+
+(setq ledger-post-amount-alignment-column 100)
