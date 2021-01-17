@@ -15,7 +15,6 @@
   home.keyboard = null;
 
   home.packages = with pkgs; [
-
     ranger
     i3lock
     redshift

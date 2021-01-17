@@ -33,6 +33,7 @@ in {
     ../../profiles/pass
     ../../profiles/docker
     ../../profiles/git
+    ../../profiles/hledger
     ../../profiles/projects
 
     ../../languages/javascript

@@ -1,18 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    python3
+  environment.systemPackages = with pkgs.python38Packages; [
     python
-    python27Packages.pyudev
-    python38Packages.pyudev
-    python27Packages.pip
-    python38Packages.pip
-    python27Packages.pip-tools
-    python38Packages.pip-tools
-    python27Packages.setuptools
-    python38Packages.setuptools
-
+    pip
+    setuptools
+    virtualenv
   ];
 
 }
