@@ -2,7 +2,7 @@
 
 {
   environment = {
-    systemPackages = with pkgs; [ hledger hledger-ui hledger-web ];
+    systemPackages = with pkgs; [ ledger hledger hledger-ui hledger-web ];
     variables = { LEDGER_FILE = "/home/padraic/.finance/finance.journal"; };
   };
 }

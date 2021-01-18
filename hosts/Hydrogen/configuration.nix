@@ -79,6 +79,7 @@ in {
     binutils
     gnumake
     nixfmt
+    flameshot
     gcc
     wget
     vim
