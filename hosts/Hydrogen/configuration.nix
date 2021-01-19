@@ -115,7 +115,6 @@ in {
     signal-desktop
     nodePackages.bash-language-server
     nodePackages.bitwarden-cli
-
     cargo
     #niv
     #lorri
