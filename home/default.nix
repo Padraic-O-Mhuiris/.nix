@@ -39,6 +39,8 @@
         ignore: true
   '';
 
+  home.sessionPath = [ "$HOME/.yarn/bin" ];
+
   programs.feh.enable = true;
   programs.zsh = { enable = true; };
 
