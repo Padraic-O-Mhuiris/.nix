@@ -3,7 +3,7 @@
 (setq doom-font (font-spec :family "Iosevka" :size 16))
 (setq doom-big-font (font-spec :family "Iosevka" :size 28))
 
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-nord-light)
 
 (setq epa-pinentry-mode 'loopback)
 

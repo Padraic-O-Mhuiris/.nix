@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     yarn
-    nodejs
+    nodejs-12_x
     nodePackages.typescript-language-server
     nodePackages.typescript
     nodePackages.node2nix
