@@ -35,6 +35,7 @@ in {
     ../../profiles/git
     ../../profiles/hledger
     ../../profiles/projects
+    ../../profiles/browser
 
     ../../languages/javascript
     ../../languages/python

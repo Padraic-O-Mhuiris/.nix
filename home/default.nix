@@ -1,14 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./xresources.nix
-    ./browser.nix
-    ./terminal.nix
-    ./i3.nix
-    ./vim.nix
-    ./rofi.nix
-  ];
+  imports = [ ./xresources.nix ./terminal.nix ./i3.nix ./vim.nix ./rofi.nix ];
 
   nixpkgs.config.allowUnfree = true;
 
