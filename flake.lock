@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "dapptools": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1607697842,
-        "narHash": "sha256-BLSY0w430Bvq4EtM2CO3SWAk66r1FUb+ffoPwVZ9fDE=",
-        "ref": "master",
-        "rev": "693b3b9a9e9877417986e695234d50ee3968fd73",
-        "revCount": 2553,
-        "type": "git",
-        "url": "https://github.com/dapphub/dapptools"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/dapphub/dapptools"
-      }
-    },
     "doom-emacs": {
       "flake": false,
       "locked": {
@@ -427,7 +411,6 @@
     },
     "root": {
       "inputs": {
-        "dapptools": "dapptools",
         "hardware": "hardware",
         "home-manager": "home-manager",
         "nix": "nix",

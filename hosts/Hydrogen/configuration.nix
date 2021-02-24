@@ -38,6 +38,7 @@ in {
 
     ../../languages/javascript
     ../../languages/python
+    ##../../profiles/dapptools
 
   ];
 
