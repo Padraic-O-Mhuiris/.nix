@@ -41,6 +41,7 @@ in {
     ../../languages/python
     ##../../profiles/dapptools
 
+    ../../profiles/telegram
   ];
 
   powerManagement.enable = true;
