@@ -114,7 +114,7 @@ in {
     xorg.xbacklight
     wordnet
     sqlite
-
+    xdg-utils
     signal-desktop
     nodePackages.bash-language-server
     nodePackages.bitwarden-cli
