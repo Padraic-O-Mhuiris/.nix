@@ -3,7 +3,7 @@
 let inherit (inputs) nix-doom-emacs;
 
 in {
-  environment.systemPackages = with pkgs; [ fd ripgrep ];
+  environment.systemPackages = with pkgs; [ fd ripgrep parinfer-rust ];
 
   home-manager.users.padraic = {
     imports = [ nix-doom-emacs.hmModule ];
