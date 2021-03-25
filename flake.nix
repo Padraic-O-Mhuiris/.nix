@@ -19,11 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # dapptools = {
-    #   type = "git";
-    #   url = "https://github.com/dapphub/dapptools/tarball/master";
-    #   flake = false;
-    # };
+    dapptools = {
+      type = "git";
+      url = "https://github.com/dapphub/dapptools/tarball/master";
+      flake = false;
+    };
 
   };
 
