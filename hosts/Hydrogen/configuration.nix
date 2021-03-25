@@ -39,7 +39,7 @@ in {
 
     ../../languages/javascript
     ../../languages/python
-    ../../profiles/dapptools
+    ##../../profiles/dapptools
 
     ../../profiles/telegram
   ];

@@ -19,11 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dapptools = {
-      type = "git";
-      url = "https://github.com/dapphub/dapptools";
-      flake = false;
-    };
+    # dapptools = { url = "github:dapphub/dapptools"; };
 
   };
 
