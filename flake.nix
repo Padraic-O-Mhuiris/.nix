@@ -21,7 +21,7 @@
 
     dapptools = {
       type = "git";
-      url = "https://github.com/dapphub/dapptools/tarball/master";
+      url = "https://github.com/dapphub/dapptools";
       flake = false;
     };
 
