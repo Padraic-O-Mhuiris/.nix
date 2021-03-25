@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment = { systemPackages = with pkgs; [ google-chrome firefox ]; };
+  environment = { systemPackages = with pkgs; [ google-chrome ]; };
 }
