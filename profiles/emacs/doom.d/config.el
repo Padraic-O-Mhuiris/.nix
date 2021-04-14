@@ -1,7 +1,7 @@
 
 ;;; Code:
-(setq doom-font (font-spec :family "Iosevka" :size 16))
-(setq doom-big-font (font-spec :family "Iosevka" :size 28))
+(setq doom-font (font-spec :family "Iosevka" :size 14))
+(setq doom-big-font (font-spec :family "Iosevka" :size 24))
 
 (setq doom-theme 'doom-nord-light)
 
