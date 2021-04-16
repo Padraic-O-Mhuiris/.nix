@@ -36,8 +36,5 @@
         };
     in rec {
       nixosConfigurations = { Hydrogen = mkSystem inputs.nixpkgs "Hydrogen"; };
-      toplevels =
-        genAttrs (builtins.attrNames inputs.self.outputs.nixosConfigurations)
-        (attr: nixosConfigurations.${attr}.config.system.build.toplevel);
     };
 }
