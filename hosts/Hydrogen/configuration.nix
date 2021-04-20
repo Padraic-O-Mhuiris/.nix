@@ -119,6 +119,7 @@ in {
     nodePackages.bash-language-server
     nodePackages.bitwarden-cli
     cargo
+    graphviz
     #niv
     #lorri
     #direnv

@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # dapptools = { url = "github:dapphub/dapptools"; };
+    #dapptools = { url = "github:dapphub/dapptools"; };
 
   };
 

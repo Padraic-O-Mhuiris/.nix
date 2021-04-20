@@ -1,13 +1,21 @@
 #+TITLE: Configuration
 
-* Mutable changes to these deployments
-** Hydrogen
-*** Cgroups
-For running Oasis Casual docker build env, ran into issues with cgroups and postgres
 
-Fix:
-- sudo mkdir /sys/fs/cgroup/systemd
-- sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
-*** prisma
-https://github.com/prisma/prisma/discussions/3120#discussioncomment-41905
-Issues with projects that use it for database middleware
+* Goals
+Achieve modular OS system which can be readily deployed to a bare machine or vm with minimal manual setup. For physical machines there should be a specific layout with consideration to it's specific hardware setup. Also should provide solution to $HOME provisioning (all my local files/photos/music/etc). Another requirement is to enable setup of secrets and gpg keys easily
+
+* Setup
+This section lays out the steps to install the OS from scratch manually where a working implementation is installed
+
+** Keyboard layout
+Set to uk, permission required
+#+begin_src
+sudo loadkeys uk
+#+end_src
+
+** Connect to WiFi
+#+begin_src
+wpa_supplicant -B -i interface -c <(wpa_passphrase 'SSID' 'key')
+#+end_src
+
+More effective to create /etc/wpa_supplicant.conf which contains the requisite arguments. Then to connect all is required is ~sudo systemctl start wpa_supplicant.service~.
