@@ -6,11 +6,14 @@
       enable = true;
       userName = "Padraic-O-Mhuiris";
       userEmail = "patrick.morris.310@gmail.com";
+      editor = "emacs";
       signing = {
         key = "0xBD01159F2C44F16B";
         signByDefault = true;
       };
-      extraConfig = { http = { postBuffer = "524288000"; }; };
+      extraConfig = { http = { postBuffer = "524288000"; };
+                      credential = { helper = "cache"; };
+                    };
     };
 
   };
