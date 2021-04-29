@@ -120,6 +120,8 @@ in {
     nodePackages.bitwarden-cli
     cargo
     graphviz
+    jq
+    iw
     #niv
     #lorri
     #direnv
