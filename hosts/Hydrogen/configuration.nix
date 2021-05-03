@@ -123,6 +123,7 @@ in {
     jq
     iw
     clojure
+    babashka
     #niv
     #lorri
     #direnv
