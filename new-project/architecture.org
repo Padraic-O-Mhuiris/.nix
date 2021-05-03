@@ -1,0 +1,19 @@
+#+TITLE: Architecture
+
+
+* Assumptions
+This document aims to guide readers on how to install flake-based version of Nixos to a bare machine.
+Requirements:
+- wifi/ethernet connection
+- a computer which will be totally overrided with a new OS
+- USB stick x 2
+
+* Installation
+** Create a bootable NixOS live USB
+** Jump to root shell
+#+begin_src bash
+sudo -i
+#+end_src
+** Connect wifi
+** Set up ssh from local machine
+With ssh access it is easier to develop installation script that will automate partition and other setups
