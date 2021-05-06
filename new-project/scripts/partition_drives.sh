@@ -45,27 +45,7 @@ mk_other_partition () {
     done
 }
 
-tear_down () {
-    let X=1
-    for i in "${ENCRYPTED_PARTITIONS[@]}";
-    do
-        FILE="/dev/mapper/CRYPTED-$X"
-        if [[ -f "$FILE" ]]; then
-            cryptsetup remove "/dev/mapper/CRYPTED-$X"
-            ((X=X+1))
-        fi
-    done
-
-
-    for DISK in $DISKS; do
-        wipefs -af $DISK
-        sgdisk -Z $DISK
-        dd if=/dev/zero of=$DISK bs=1M count=10
-    done;
-}
-
 create_partitions() {
-    tear_down
     mk_main_partition $MAIN_DISK
     mk_other_partition $OTHER_DISKS
 }
@@ -73,13 +53,10 @@ create_partitions() {
 find_partitions () {
     array=()
     for DISK in "$@"; do
-        array+=($(lsblk -fl -o NAME $DISK | awk 'NR > 3 { print }' | sed 's/\</\/dev\//g'))
+        array+=($(lsblk -fl -o NAME $DISK | awk 'NR > 2 { print }' | sed 's/\</\/dev\//g'))
     done
     echo "${array[@]}"
 }
-
-#mkfs.vfat $BOOT_PARTITION
-
 
 get_main_partition () {
     echo $(find_partitions $MAIN_DISK)
@@ -94,45 +71,80 @@ get_all_partitions () {
 }
 
 get_boot_partition () {
-    echo $(echo $(get_all_partitions) | awk '{print $0}')
+    echo $(get_all_partitions | awk '{print $1}')
 }
 
 get_swap_partition () {
-    echo $(echo $(get_all_partitions) | awk '{print $1}')
+    echo $(get_all_partitions | awk '{print $2}')
 }
 
 get_root_partition () {
-    echo $(echo $(get_all_partitions) | awk '{print $2}')
+    echo $(get_all_partitions | awk '{print $3}')
 }
 
 get_encrypted_partitions () {
     echo $(echo $(get_all_partitions) | cut -d " " -f3-)
 }
     
+LUKS_SECRET="abc123"
 encrypt_partitions () {
-    LUKS_SECRET="abc123"
-    echo $ALL_PARTITIONS
-    echo $BOOT_PARTITION
-
-    for i in "${ENCRYPTED_PARTITIONS[@]}";
+    for PART in $(get_encrypted_partitions)
     do
-        cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 $i;
+        echo "$PART"
+        cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 "$PART"
         echo "YES\n"
         echo "$LUKS_SECRET\n"
         echo "$LUKS_SECRET\n"
     done
 
-    let i=1
-    for i in "${ENCRYPTED_PARTITIONS[@]}";
-    do
-        cryptsetup luksOpen $i "CRYPTED-$1"
-        echo "YES\n"
-        echo "$LUKS_SECRET\n"
-        echo "$LUKS_SECRET\n"
-    done
+    echo "PARTITIONS ENCRYPTED"
 }
 
-create_partitions
-get_main_partition
-get_other_partitions
-#encrypt_partitions
+open_partitions () {
+    echo "OPENING PARTITIONS"
+    let i=1
+    for PART in $(get_encrypted_partitions)
+    do
+        echo "$PART"
+        cryptsetup luksOpen "$PART" "crypted-$i"
+        echo "YES\n"
+        echo "$LUKS_SECRET\n"
+        echo "$LUKS_SECRET\n"
+    done
+    echo "PARTITIONS OPEN"
+
+}
+
+tear_down () {
+    let X=1
+    PARTITIONS="$(get_encrypted_partitions)"
+
+    for PART in $PARTITIONS;
+    do
+        FILE="/dev/mapper/CRYPTED-$X"
+        if [[ -f "$FILE" ]]; then
+            cryptsetup remove "/dev/mapper/CRYPTED-$X"
+            ((X=X+1))
+        fi
+        sgdisk -Z $PART
+        wipefs -af $PART
+        dd if=/dev/zero of=$PART bs=1M count=10
+
+    done
+
+    for DISK in $DISKS; do
+        sgdisk -Z $DISK
+        wipefs -af $DISK
+        dd if=/dev/zero of=$DISK bs=1M count=10
+    done;
+}
+
+#tear_down >/dev/null 2>&1
+# echo "TEAR DOWN COMPLETE"
+#create_partitions >/dev/null 2>&1
+# echo "CREATED PARTITIONS $(get_all_partitions)"
+# mkfs.ext4 "$(get_boot_partition)"
+# mkswap "$(get_swap_partition)"
+# encrypt_partitions
+# echo "ENCRYPTED_PARTITIONS $(get_encrypted_partitions)"
+# open_partitions

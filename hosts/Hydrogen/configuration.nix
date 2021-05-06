@@ -127,6 +127,7 @@ in {
     #niv
     #lorri
     #direnv
+    shc
   ];
 
   programs.light.enable = true;
