@@ -124,6 +124,7 @@ in {
     iw
     clojure
     babashka
+    josm
     #niv
     #lorri
     #direnv
