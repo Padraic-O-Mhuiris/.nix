@@ -129,6 +129,7 @@ in {
     #lorri
     #direnv
     shc
+    solc
   ];
 
   programs.light.enable = true;
