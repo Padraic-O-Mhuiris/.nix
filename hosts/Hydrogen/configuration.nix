@@ -130,6 +130,7 @@ in {
     #direnv
     shc
     solc
+    ethlint
   ];
 
   programs.light.enable = true;
