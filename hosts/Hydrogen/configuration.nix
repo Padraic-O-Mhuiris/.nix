@@ -130,7 +130,7 @@ in {
     #direnv
     shc
     solc
-    ethlint
+    solium
   ];
 
   programs.light.enable = true;
