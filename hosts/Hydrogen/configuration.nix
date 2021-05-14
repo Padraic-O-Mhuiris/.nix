@@ -130,7 +130,6 @@ in {
     #direnv
     shc
     solc
-    solium
   ];
 
   programs.light.enable = true;
