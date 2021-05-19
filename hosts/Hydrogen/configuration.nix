@@ -73,7 +73,7 @@ in {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     SHELL = "zsh";
   };
-
+  hardware.ledger.enable = true;
   programs.nm-applet = { enable = true; };
 
   environment.systemPackages = with pkgs; [
