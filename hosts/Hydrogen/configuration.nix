@@ -130,6 +130,7 @@ in {
     #direnv
     shc
     solc
+    pandoc
   ];
 
   programs.light.enable = true;

@@ -18,6 +18,8 @@ MOUNTPOINT_ROOT="/mnt"
 MOUNTPOINT_BOOT="/mnt/boot"
 MOUNTPOINT_HOME="/mnt/home"
 
+HOSTNAME="padraic";
+
 function all_partitions () {
     for DISK in "${DISKS[@]}"; do
         lsblk -fnpl -o NAME,TYPE,PARTLABEL $DISK
@@ -49,8 +51,8 @@ function zpools {
 }
 
 function destroy_partitions {
-    umount -R $MOUNTPOINT_ROOT
-    
+    mountpoint -q $MOUNTPOINT_ROOT && umount -R $MOUNTPOINT_ROOT
+       
     for DISK in "${DISKS[@]}"; do
         partprobe $DISK
         sleep 1
@@ -136,18 +138,17 @@ function build_nixos {
     NIXOS_CONFIG="$NIXOS_CONFIG_DIR/configuration.nix"
     NIXOS_HARDWARE="$NIXOS_CONFIG_DIR/hardware-configuration.nix"
 
-    SWAP_ENTRY="
-      swapDevices = [\{ device = \"/dev/disk/by-uuid/$(by-uuid $(swap_partition))\" \}]
-    "
+    SWAP_UUID=$(by-uuid $(swap_partition))
+    SWAP_ENTRY="swapDevices = [\{ device = "/dev/disk/by-uuid/$SWAP_UUID" \}]"
 
-    awk "{sub(/swapDevices/,$SWAP_ENTRY)}1" input.txt
+    sed -i "/swapDevices/c\  $SWAP_ENTRY" $NIXOS_HARDWARE
 
     cat $NIXOS_HARDWARE
 }
 
-destroy_partitions
-create_partitions
-encrypt_partitions
-setup_zfs
-mount_filesystem
+# destroy_partitions
+# create_partitions
+# encrypt_partitions
+# setup_zfs
+# mount_filesystem
 build_nixos
