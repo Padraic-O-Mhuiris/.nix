@@ -19,7 +19,7 @@ in {
 
   home-manager.useUserPackages = true;
   home-manager.users.padraic = { imports = [ ../../home ]; };
-
+  programs.steam.enable = true;
   environment = {
     pathsToLink = [ "/share/zsh" ];
     variables = {
