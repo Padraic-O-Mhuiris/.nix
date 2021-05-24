@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix.url = github:Mic92/sops-nix;
     #dapptools = { url = "github:dapphub/dapptools"; };
 
   };
@@ -31,7 +32,10 @@
       mkSystem = pkgs_: hostname:
         pkgs_.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ (./. + "/hosts/${hostname}/configuration.nix") ];
+          modules = [
+            (./. + "/hosts/${hostname}/configuration.nix")
+            inputs.sops-nix.nixosModules.sops
+          ];
           specialArgs = { inherit inputs; };
         };
     in rec {

@@ -18,8 +18,6 @@ MOUNTPOINT_ROOT="/mnt"
 MOUNTPOINT_BOOT="/mnt/boot"
 MOUNTPOINT_HOME="/mnt/home"
 
-HOSTNAME="padraic";
-
 function all_partitions () {
     for DISK in "${DISKS[@]}"; do
         lsblk -fnpl -o NAME,TYPE,PARTLABEL $DISK
