@@ -19,9 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix.url = github:Mic92/sops-nix;
     #dapptools = { url = "github:dapphub/dapptools"; };
-
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = inputs:
@@ -34,7 +33,7 @@
           system = "x86_64-linux";
           modules = [
             (./. + "/hosts/${hostname}/configuration.nix")
-            inputs.sops-nix.nixosModules.sops
+            inputs.agenix.nixosModules.age
           ];
           specialArgs = { inherit inputs; };
         };
