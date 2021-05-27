@@ -131,6 +131,7 @@ in {
     shc
     solc
     pandoc
+    agenix.defaultPackage.x86_64-linux 
   ];
 
   programs.light.enable = true;
