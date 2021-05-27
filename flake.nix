@@ -20,7 +20,7 @@
     };
 
     #dapptools = { url = "github:dapphub/dapptools"; };
-    inputs.sops-nix.url = github:Mic92/sops-nix;
+    inputs.sops-nix.url = "github:Mic92/sops-nix";
 
   };
 
@@ -34,7 +34,7 @@
           system = "x86_64-linux";
           modules = [
             (./. + "/hosts/${hostname}/configuration.nix")
-            inputs.sops.nixosModules.age
+            inputs.sops.nixosModules.sops
           ];
           specialArgs = { inherit inputs; };
         };
