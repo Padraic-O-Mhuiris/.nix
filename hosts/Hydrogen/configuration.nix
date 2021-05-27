@@ -24,6 +24,7 @@ in {
     ./thinkpadX1Carbon.nix
     ./fonts.nix
     ./boot.nix
+    ./sops.nix
     ../../cachix
     ../../users
     ../../users/root
@@ -43,6 +44,7 @@ in {
     ##../../profiles/dapptools
 
     ../../profiles/telegram
+
   ];
 
   powerManagement.enable = true;
