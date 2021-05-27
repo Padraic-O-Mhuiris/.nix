@@ -20,7 +20,8 @@
     };
 
     #dapptools = { url = "github:dapphub/dapptools"; };
-    agenix.url = "github:ryantm/agenix";
+    inputs.sops-nix.url = github:Mic92/sops-nix;
+
   };
 
   outputs = inputs:
@@ -33,7 +34,7 @@
           system = "x86_64-linux";
           modules = [
             (./. + "/hosts/${hostname}/configuration.nix")
-            inputs.agenix.nixosModules.age
+            inputs.sops.nixosModules.age
           ];
           specialArgs = { inherit inputs; };
         };

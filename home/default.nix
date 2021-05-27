@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ ./xresources.nix ./terminal.nix ./i3.nix ./vim.nix ./rofi.nix ];
@@ -33,10 +33,12 @@
   '';
 
   home.sessionPath = [ "$HOME/.yarn/bin" ];
+  home.file."secret1".text = config.age.secrets.secret1.path;
 
   programs.feh.enable = true;
   programs.zsh = { enable = true; };
 
+  
   services.udiskie = {
     enable = true;
     notify = false;

@@ -18,6 +18,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
+
   imports = [
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
@@ -72,6 +73,7 @@ in {
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     SHELL = "zsh";
+    EDITOR = "nvim";
   };
   hardware.ledger.enable = true;
   programs.nm-applet = { enable = true; };
@@ -131,7 +133,6 @@ in {
     shc
     solc
     pandoc
-    inputs.agenix.defaultPackage.x86_64-linux 
   ];
 
   programs.light.enable = true;
