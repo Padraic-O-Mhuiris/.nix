@@ -24,7 +24,6 @@ in {
     ./thinkpadX1Carbon.nix
     ./fonts.nix
     ./boot.nix
-    ./sops.nix
     ../../cachix
     ../../users
     ../../users/root
@@ -46,6 +45,9 @@ in {
     ../../profiles/telegram
 
   ];
+  sops.defaultSopsFile = ../../secrets.yaml;
+  sops.secrets.secret = {};
+  sops.gnupgHome = "$HOME/.gnupg";
 
   powerManagement.enable = true;
 
