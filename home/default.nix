@@ -32,7 +32,12 @@
         ignore: true
   '';
 
-  home.sessionPath = [ "$HOME/.yarn/bin" ];
+  home.sessionPath = [
+    "$HOME/.yarn/bin"
+  ];
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
   #home.file."secret1".text = config.age.secrets.secret1.path;
 
   programs.feh.enable = true;
