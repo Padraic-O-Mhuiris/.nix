@@ -73,7 +73,7 @@ in {
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     SHELL = "zsh";
-    EDITOR = "nvim";
+    EDITOR = "vim";
   };
   hardware.ledger.enable = true;
   programs.nm-applet = { enable = true; };
