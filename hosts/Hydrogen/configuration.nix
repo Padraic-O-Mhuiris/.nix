@@ -41,7 +41,7 @@
     ##../../profiles/dapptools
 
     ../../profiles/telegram
-    ../../services/foo.nix
+    ../../profiles/grafana
   ];
 
   
@@ -53,12 +53,6 @@
   sops.secrets.secret.owner = "padraic";
   sops.secrets.secret.group = "users";
 
-
-  services.foo = {
-    enables = true;
-    bar = config.sops.secrets.secret.path;
-  };
-  
   powerManagement.enable = true;
 
   networking = {
