@@ -19,7 +19,8 @@ in {
       };
 
       barOption = {
-        type = types.path;
+        type = types.str;
+        default = "qux";
         description = ''
           The bar option for foo.
         '';
@@ -34,7 +35,7 @@ in {
     # add system users
     # write config files, just as an example here:
     environment.etc."foo-bar" = {
-      text = builtins.readFile foocfg.bar; # we can use values of options for this service here
+      text = foocfg.bar; # we can use values of options for this service here
     };
   };
 }

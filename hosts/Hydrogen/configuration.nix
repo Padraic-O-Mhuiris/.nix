@@ -56,7 +56,7 @@
 
   services.foo = {
     enables = true;
-    bar = config.sops.secrets.secret.path
+    bar = config.sops.secrets.secret.path;
   };
   
   powerManagement.enable = true;
