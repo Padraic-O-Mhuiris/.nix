@@ -38,7 +38,7 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
-  home.file."secret".text = config.sops.secrets.secret.path;
+  #home.file."secret".source = config.sops.secrets.secret.path;
 
   programs.feh.enable = true;
   programs.zsh = { enable = true; };

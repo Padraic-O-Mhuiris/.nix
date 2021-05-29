@@ -2,11 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
-let
-
-in {
+{
 
   nix = {
     buildCores = 4;
@@ -43,12 +41,24 @@ in {
     ##../../profiles/dapptools
 
     ../../profiles/telegram
-
+    ../../services/foo.nix
   ];
+
+  
   sops.defaultSopsFile = ../../secrets.yaml;
   sops.secrets.secret = {};
-  sops.gnupgHome = "$HOME/.gnupg";
+  sops.secrets.secret.mode = "7777";
+  sops.gnupgHome = "/home/padraic/.gnupg";
+  sops.sshKeyPaths = [];
+  sops.secrets.secret.owner = "padraic";
+  sops.secrets.secret.group = "users";
 
+
+  services.foo = {
+    enables = true;
+    bar = config.sops.secrets.secret.path
+  };
+  
   powerManagement.enable = true;
 
   networking = {

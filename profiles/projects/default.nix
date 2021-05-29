@@ -19,6 +19,7 @@ let
 
   fetch-projects = pkgs.writeShellScriptBin "fetch-projects" ''
     #!/usr/bin/env bash
+
     [[ ! -f ${financeProject.path}  ]] && ${pkgs.git}/bin/git clone ${financeProject.url} ${financeProject.path}
 
     [[ ! -f ${orgProject.path} ]] && ${pkgs.git}/bin/git clone ${orgProject.url} ${orgProject.path}
