@@ -2,15 +2,27 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
+
+    master = {
+      url = "github:NixOS/nixpkgs/master";
+    };
+
+    unstable = {
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    };
+
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    }; # for my regular nixpkgs
-    nixpkgs-unstable = { url = "github:nixos/nixpkgs/nixos-unstable"; };
-    nixpkgs-master = { url = "github:nixos/nixpkgs/master"; }; # for nixFlakes
+      url = "github:NixOS/nixpkgs/release-20.09";
+    };
 
     nix = { url = "github:nixos/nix/master"; };
 
     hardware = { url = "github:nixos/nixos-hardware"; };
+
+    flake-utils = {
+      url = github:numtide/flake-utils;
+      inputs.nixpkgs.follows = "master";
+    };
 
     nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
 
@@ -20,26 +32,46 @@
     };
 
     #dapptools = { url = "github:dapphub/dapptools"; };
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "master";
+    };
   };
 
-  outputs = inputs:
+  outputs = inputs@{ self, nixpkgs, sops-nix, ... }:
     let
+      inherit (nixpkgs) lib;
+      utils = import ./utils.nix {
+        inherit lib system pkgs inputs self;
+      };
+      
+      system = "x86_64-linux";
+      pkgs = (utils.pkgImport nixpkgs {});
       nameValuePair = name: value: { inherit name value; };
       genAttrs = names: f:
         builtins.listToAttrs (map (n: nameValuePair n (f n)) names);
       mkSystem = pkgs_: hostname:
         pkgs_.lib.nixosSystem {
-          system = "x86_64-linux";
+          system = system;
           modules = [
             (./. + "/hosts/${hostname}/configuration.nix")
-            inputs.sops-nix.nixosModules.sops
+            sops-nix.nixosModules.sops
           ];
           specialArgs = { inherit inputs; };
         };
-    in rec {
-      nixosConfigurations = { Hydrogen = mkSystem inputs.nixpkgs "Hydrogen"; };
+    in {
+      nixosConfigurations = { Hydrogen = mkSystem nixpkgs "Hydrogen"; };
+
+      devShell.${system} = let
+      in pkgs.mkShell {
+        sopsPGPKeyDirs = [
+          "./keys"
+        ];
+        nativeBuildInputs = [
+          (pkgs.callPackage sops-nix { }).sops-pgp-hook
+        ];
+        buildInputs = [ pkgs.sops ];
+        shellhook = "zsh";
+      };
     };
 }
