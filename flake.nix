@@ -12,7 +12,7 @@
     };
 
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/release-20.09";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
     nix = { url = "github:nixos/nix/master"; };
@@ -46,7 +46,7 @@
       };
       
       system = "x86_64-linux";
-      pkgs = (utils.pkgImport nixpkgs {});
+      pkgs = (utils.pkgImport nixpkgs);
       nameValuePair = name: value: { inherit name value; };
       genAttrs = names: f:
         builtins.listToAttrs (map (n: nameValuePair n (f n)) names);

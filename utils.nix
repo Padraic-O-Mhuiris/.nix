@@ -12,8 +12,8 @@ let
 
 in
 {
-  pkgImport = pkgs: overlays: import pkgs {
-    inherit system overlays;
+  pkgImport = pkgs: import pkgs {
+    inherit system;
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [ ];
