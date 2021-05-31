@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  sops.secrets.secret = {};
+
   services.grafana = {
     enable = true;
     security.adminPasswordFile = config.sops.secrets.secret.path;

@@ -22,6 +22,7 @@
     ./thinkpadX1Carbon.nix
     ./fonts.nix
     ./boot.nix
+    ../../sops.nix
     ../../cachix
     ../../users
     ../../users/root
@@ -43,15 +44,6 @@
     ../../profiles/telegram
     ../../profiles/grafana
   ];
-
-  
-  sops.defaultSopsFile = ../../secrets.yaml;
-  sops.secrets.secret = {};
-  sops.secrets.secret.mode = "7777";
-  sops.gnupgHome = "/home/padraic/.gnupg";
-  sops.sshKeyPaths = [];
-  sops.secrets.secret.owner = "padraic";
-  sops.secrets.secret.group = "users";
 
   powerManagement.enable = true;
 
