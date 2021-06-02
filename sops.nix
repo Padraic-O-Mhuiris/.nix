@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  sops.defaultSopsFile = ./secrets.yaml;
-  sops.gnupgHome = "/var/lib/sops";
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.gnupgHome = "/home/padraic/.gnupg";
   sops.sshKeyPaths = [];
 }

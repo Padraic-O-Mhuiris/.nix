@@ -65,7 +65,7 @@
       devShell.${system} = let
       in pkgs.mkShell {
         sopsPGPKeyDirs = [
-          "./keys"
+          "./secrets/keys"
         ];
         nativeBuildInputs = [
           (pkgs.callPackage sops-nix { }).sops-pgp-hook

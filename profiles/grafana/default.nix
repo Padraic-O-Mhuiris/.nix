@@ -9,8 +9,4 @@
     addr = "0.0.0.0";
     port = 3001;
   };
-
-  users.users.grafana.extraGroups = [ "keys" ];
-  systemd.services.grafana.serviceConfig.SupplementaryGroups = [ "keys" ];
-
 }
