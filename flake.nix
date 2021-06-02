@@ -12,7 +12,7 @@
     };
 
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+      url = "github:NixOS/nixpkgs/nixpkgs-21.05";
     };
 
     nix = { url = "github:nixos/nix/master"; };
