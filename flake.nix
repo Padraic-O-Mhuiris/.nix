@@ -32,10 +32,6 @@
     };
 
     #dapptools = { url = "github:dapphub/dapptools"; };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "master";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, sops-nix, ... }:
@@ -55,7 +51,6 @@
           system = system;
           modules = [
             (./. + "/hosts/${hostname}/configuration.nix")
-            sops-nix.nixosModules.sops
           ];
           specialArgs = { inherit inputs; };
         };
@@ -64,13 +59,6 @@
 
       devShell.${system} = let
       in pkgs.mkShell {
-        sopsPGPKeyDirs = [
-          "./keys/users"
-        ];
-        nativeBuildInputs = [
-          (pkgs.callPackage sops-nix { }).sops-pgp-hook
-        ];
-        buildInputs = [ pkgs.sops ];
         shellhook = "zsh";
       };
     };

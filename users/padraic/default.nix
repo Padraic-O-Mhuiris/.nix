@@ -9,14 +9,13 @@ in {
 
   imports = [ home-manager.nixosModules.home-manager ];
 
-  users.groups.keys = {};
-
   users.users.padraic = {
     uid = 1000;
     isNormalUser = true;
+    name = "padraic";
     group = "users";
     hashedPassword = passwordPadraic;
-    extraGroups = [ "wheel" "audio" "networkmanager" "video" "docker" "keys" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "video" "docker"];
   };
 
   home-manager.useUserPackages = true;
