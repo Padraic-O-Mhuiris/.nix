@@ -34,7 +34,7 @@
     #dapptools = { url = "github:dapphub/dapptools"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, sops-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
       inherit (nixpkgs) lib;
       utils = import ./utils.nix {
