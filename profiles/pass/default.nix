@@ -19,7 +19,7 @@
     home.sessionVariables = {
       PASSWORD_STORE_DIR = "$HOME/.secrets";
       PASSWORD_STORE_TOMB_FILE = "$HOME/.secrets/graveyard.tomb";
-      PASSWORD_STORE_TOMB_KEY = "/run/media/padraic/Backup/shovel.tomb";
+      PASSWORD_STORE_TOMB_KEY = "/run/media/padraic/SHOVEL/shovel.tomb";
     };
   };
 }
