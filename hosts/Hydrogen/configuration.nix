@@ -78,6 +78,7 @@
     bitwarden
     coreutils
     deluge
+    vlc
     binutils
     gnumake
     nixfmt
