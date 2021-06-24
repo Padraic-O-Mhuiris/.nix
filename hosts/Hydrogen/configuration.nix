@@ -76,6 +76,7 @@
 
   environment.systemPackages = with pkgs; [
     bitwarden
+    bittorrent
     coreutils
     binutils
     gnumake
