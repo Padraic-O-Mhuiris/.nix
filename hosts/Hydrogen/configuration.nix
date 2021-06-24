@@ -76,8 +76,8 @@
 
   environment.systemPackages = with pkgs; [
     bitwarden
-    bittorrent
     coreutils
+    deluge
     binutils
     gnumake
     nixfmt
