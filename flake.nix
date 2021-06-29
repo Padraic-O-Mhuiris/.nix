@@ -46,7 +46,7 @@
       mkSystem = utils.mkSystem;
 
     in {
-      nixosConfigurations = { Hydrogen = mkSystem nixpkgs "Hydrogen"; };
+      nixosConfigurations = { Hydrogen = mkSystem nixpkgs "Hydrogen" []; };
 
       devShell.${system} = let
       in pkgs.mkShell {
