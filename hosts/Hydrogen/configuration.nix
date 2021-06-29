@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs,... }:
 
 {
 
@@ -17,6 +17,8 @@
   nixpkgs.config.allowBroken = true;
 
   imports = [
+    <sops-nix/modules/sops>
+  ] ++ [
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
     ./fonts.nix
@@ -41,6 +43,8 @@
 
     ../../profiles/telegram
   ];
+  sops.defaultSopsFile = ./secrets.yaml;
+  sops.secrets.example-key = {};
 
   powerManagement.enable = true;
 
@@ -131,7 +135,6 @@
     shc
     solc
     pandoc
-    inputs.agenix.defaultPackage.x86_64-linux
   ];
 
   programs.light.enable = true;

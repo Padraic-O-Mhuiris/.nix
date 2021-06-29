@@ -30,15 +30,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
 
     #dapptools = { url = "github:dapphub/dapptools"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, agenix, ... }:
+  outputs = inputs@{ self, nixpkgs, sops-nix, ... }:
     let
       inherit (nixpkgs) lib;
       utils = import ./utils.nix {
@@ -52,7 +49,7 @@
     in {
       nixosConfigurations = {
         Hydrogen = mkSystem nixpkgs "Hydrogen" [
-          agenix.nixosModules.age
+          sops-nix.nixosModules.sops
         ]; };
 
       devShell.${system} = let
