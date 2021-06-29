@@ -31,10 +31,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    inputs.agenix.url = "github:ryantm/agenix";
+
     #dapptools = { url = "github:dapphub/dapptools"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = inputs@{ self, nixpkgs, agenix, ... }:
     let
       inherit (nixpkgs) lib;
       utils = import ./utils.nix {
@@ -46,7 +48,10 @@
       mkSystem = utils.mkSystem;
 
     in {
-      nixosConfigurations = { Hydrogen = mkSystem nixpkgs "Hydrogen" []; };
+      nixosConfigurations = {
+        Hydrogen = mkSystem nixpkgs "Hydrogen" [
+          agenix.nixosModules.age
+        ]; };
 
       devShell.${system} = let
       in pkgs.mkShell {
