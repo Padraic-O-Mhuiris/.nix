@@ -41,7 +41,7 @@
 
     ../../profiles/telegram
   ];
-  sops.defaultSopsFile = "../../secrets.yaml";
+  sops.defaultSopsFile = ../../secrets.yaml;
   sops.gnupgHome = "/home/padraic/.gnupg";
   sops.secrets.hello = {};
 
