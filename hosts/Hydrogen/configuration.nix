@@ -17,8 +17,6 @@
   nixpkgs.config.allowBroken = true;
 
   imports = [
-    <sops-nix/modules/sops>
-  ] ++ [
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
     ./fonts.nix
@@ -43,8 +41,9 @@
 
     ../../profiles/telegram
   ];
-  sops.defaultSopsFile = ./secrets.yaml;
-  sops.secrets.example-key = {};
+  sops.defaultSopsFile = "../../secrets.yaml";
+  sops.gnupgHome = "/home/padraic/.gnupg";
+  sops.secrets.hello = {};
 
   powerManagement.enable = true;
 
