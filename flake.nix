@@ -43,17 +43,8 @@
       
       system = "x86_64-linux";
       pkgs = (utils.pkgImport nixpkgs);
-      nameValuePair = name: value: { inherit name value; };
-      genAttrs = names: f:
-        builtins.listToAttrs (map (n: nameValuePair n (f n)) names);
-      mkSystem = pkgs_: hostname:
-        pkgs_.lib.nixosSystem {
-          system = system;
-          modules = [
-            (./. + "/hosts/${hostname}/configuration.nix")
-          ];
-          specialArgs = { inherit inputs; };
-        };
+      mkSystem = utils.mkSystem;
+
     in {
       nixosConfigurations = { Hydrogen = mkSystem nixpkgs "Hydrogen"; };
 

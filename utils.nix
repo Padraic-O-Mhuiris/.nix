@@ -5,12 +5,7 @@
 , pkgs
 , ...
 }:
-let
-  inherit (lib) removeSuffix;
-  inherit (builtins) listToAttrs;
-  genAttrs' = values: f: listToAttrs (map f values);
 
-in
 {
   pkgImport = pkgs: import pkgs {
     inherit system;
@@ -19,5 +14,13 @@ in
       permittedInsecurePackages = [ ];
     };
   };
-
+  
+  mkSystem = pkgs_: hostname:
+    pkgs_.lib.nixosSystem {
+      system = system;
+      modules = [
+        (./. + "/hosts/${hostname}/configuration.nix")
+      ];
+      specialArgs = { inherit inputs; };
+    };
 }
