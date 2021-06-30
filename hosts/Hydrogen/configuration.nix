@@ -42,7 +42,7 @@
     ../../profiles/telegram
   ];
   sops.defaultSopsFile = ../../secrets.yaml;
-  sops.gnupgHome = "/home/padraic/nix/keys/";
+  sops.gnupgHome = "/home/padraic/.gnupg";
   sops.sshKeyPaths = [];
 
   sops.secrets.hello = {};
