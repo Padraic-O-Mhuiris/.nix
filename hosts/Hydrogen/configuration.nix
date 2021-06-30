@@ -45,7 +45,7 @@
   sops.gnupgHome = "/home/padraic/nix/keys/";
   sops.sshKeyPaths = [];
 
-  # sops.secrets.hello = {};
+  sops.secrets.hello = {};
   # sops.secrets.hello.mode = "0440";
   # sops.secrets.hello.owner = config.users.users.padraic.name;
 
