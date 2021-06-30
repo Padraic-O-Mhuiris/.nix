@@ -42,8 +42,12 @@
     ../../profiles/telegram
   ];
   sops.defaultSopsFile = ../../secrets.yaml;
-  sops.gnupgHome = "/home/padraic/.gnupg";
-  sops.secrets.hello = {};
+  sops.gnupgHome = "/home/padraic/nix/keys/";
+  sops.sshKeyPaths = [];
+
+  # sops.secrets.hello = {};
+  # sops.secrets.hello.mode = "0440";
+  # sops.secrets.hello.owner = config.users.users.padraic.name;
 
   powerManagement.enable = true;
 

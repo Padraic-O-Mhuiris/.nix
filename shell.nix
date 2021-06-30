@@ -4,7 +4,7 @@ with pkgs;
 
 mkShell {
   sopsPGPKeys = [ 
-    "./keys/padraic.asc"
+    "./keys/users/padraic.asc"
   ];
   nativeBuildInputs = [
     (pkgs.callPackage <sops-nix> {}).sops-pgp-hook
