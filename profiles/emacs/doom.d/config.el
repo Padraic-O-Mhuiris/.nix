@@ -20,6 +20,9 @@
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
 (setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
 
+(setq +format-on-save-enabled-modes
+      '(emacs-lisp-mode
+	js2-mode))
 ;; Org
 (setq org-directory "~/.org")
 (setq org-roam-directory "~/.org")
