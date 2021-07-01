@@ -30,3 +30,5 @@
 
 (setq ledger-post-amount-alignment-column 100)
 (setq ledger-post-account-alignment-column 2)
+
+(setq all-the-icons-scale-factor 1.1)
