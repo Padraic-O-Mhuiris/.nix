@@ -51,7 +51,11 @@
   # sops.secrets.hello.owner = config.users.users.padraic.name;
 
   powerManagement.enable = true;
-
+  
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.brlaser];
+  };
   networking = {
     hostName = "Hydrogen";
     networkmanager.enable = true;
