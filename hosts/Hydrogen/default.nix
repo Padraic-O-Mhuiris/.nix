@@ -23,8 +23,8 @@
     ./boot.nix
     ../../cachix
     ../../users
-    ../../users/root
-    ../../users/padraic
+    # ../../users/root
+    # ../../users/padraic
 
     ../../profiles/emacs
     ../../profiles/gpg
