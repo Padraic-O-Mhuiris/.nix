@@ -46,7 +46,7 @@ in {
         en en-computers en-science
       ]))
       # :checkers grammar
-      languagetool
+      #languagetool
       # :tools editorconfig
       editorconfig-core-c # per-project style config
       # :tools lookup & :lang org +roam
