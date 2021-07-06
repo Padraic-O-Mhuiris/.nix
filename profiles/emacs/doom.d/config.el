@@ -16,8 +16,6 @@
 (setq typescript-indent-level 2)
 (setq web-mode-code-indent-offset 2)
 
-(setq +format-with-lsp true)
-
 ;; Org
 (setq org-directory "~/.org")
 (setq org-roam-directory "~/.org")
