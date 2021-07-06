@@ -15,13 +15,13 @@ in {
 
 
   config = mkIf cfg.enable {
-    home-manager.users.${config.user.name} = {
-      imports = [ inputs.nix-doom-emacs ];
-      programs.doom-emacs = {
-        enable = true;
-        doomPrivateDir = ../../config/doom.d;
-      };
-    };
+    # home-manager.users.${config.user.name} = {
+    #   imports = [ inputs.nix-doom-emacs ];
+    #   programs.doom-emacs = {
+    #     enable = true;
+    #     doomPrivateDir = ../../config/doom.d;
+    #   };
+    # };
 
     user.packages = with pkgs; [
       ## Emacs itself
