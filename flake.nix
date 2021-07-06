@@ -38,6 +38,8 @@
   outputs = inputs@{ self, nixpkgs, sops-nix, ... }:
     let
       inherit (nixpkgs) lib;
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
+
       utils = import ./utils.nix {
         inherit lib system pkgs inputs self;
       };
@@ -47,6 +49,10 @@
       mkSystem = utils.mkSystem;
 
     in {
+
+      nixosModules =
+        { dotfiles = import ./.; } // mapModulesRec ./modules import;
+
       nixosConfigurations = {
         Hydrogen = mkSystem nixpkgs "Hydrogen" [
           sops-nix.nixosModules.sops
