@@ -41,6 +41,15 @@
 
     ../../profiles/telegram
   ];
+
+
+  modules = {
+    editors = {
+      default = "nvim";
+      vim.enable = true;
+    };
+  };
+
   #sops.defaultSopsFile = ../../secrets.yaml;
   #sops.gnupgHome = "/home/padraic/.gnupg";
   #sops.sshKeyPaths = [];
