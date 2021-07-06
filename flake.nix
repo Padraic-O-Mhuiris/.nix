@@ -7,9 +7,7 @@
       url = "github:NixOS/nixpkgs/master";
     };
 
-    unstable = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
+    nixpkgs-unstable.url = "nixpkgs/master";    # for packages on the edge
 
     nixpkgs = {
       url = "github:NixOS/nixpkgs/release-21.05";
@@ -35,9 +33,8 @@
     #dapptools = { url = "github:dapphub/dapptools"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, sops-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, ... }:
     let
-      inherit (nixpkgs) lib;
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
       utils = import ./utils.nix {
@@ -45,10 +42,19 @@
       };
       
       system = "x86_64-linux";
-      pkgs = (utils.pkgImport nixpkgs);
-      mkSystem = utils.mkSystem;
 
+      mkPkgs = pkgs: extraOverlays: import pkgs {
+        inherit system;
+        config.allowUnfree = true;  # forgive me Stallman senpai
+        overlays = extraOverlays ++ (lib.attrValues self.overlays);
+      };
+      pkgs  = mkPkgs nixpkgs [ self.overlay ];
+      pkgs' = mkPkgs nixpkgs-unstable [];
+
+      lib = nixpkgs.lib.extend
+        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
     in {
+      lib = lib.my;
 
       nixosModules =
         { dotfiles = import ./.; } // mapModulesRec ./modules import;
