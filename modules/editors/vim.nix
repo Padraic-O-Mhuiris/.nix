@@ -1,0 +1,21 @@
+{ config, options, lib, pkgs, ... }:
+
+with lib;
+let cfg = config.modules.editors.vim;
+in {
+  options.modules.editors.vim = {
+    enable = mkBoolOpt false;
+  };
+
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [
+      editorconfig-core-c
+      unstable.neovim
+    ];
+
+    environment.shellAliases = {
+      vim = "nvim";
+      v   = "nvim";
+    };
+  };
+}
