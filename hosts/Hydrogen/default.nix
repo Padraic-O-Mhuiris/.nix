@@ -25,7 +25,7 @@
     # ../../users/root
     # ../../users/padraic
 
-    ../../profiles/emacs
+    #../../profiles/emacs
     ../../profiles/gpg
     ../../profiles/pass
     ../../profiles/docker
@@ -46,6 +46,7 @@
     editors = {
       default = "nvim";
       vim.enable = true;
+      emacs.enable = true;
     };
   };
 
