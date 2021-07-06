@@ -43,6 +43,9 @@
 
 
   modules = {
+    desktop = {
+      i3.enable = true;
+    };
     editors = {
       default = "nvim";
       vim.enable = true;
@@ -51,8 +54,6 @@
     shell = {
       gnupg.enable = true;
     };
-
-
   };
 
   #sops.defaultSopsFile = ../../secrets.yaml;
