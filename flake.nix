@@ -42,7 +42,7 @@
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
         config.allowUnfree = true;  # forgive me Stallman senpai
-        overlays = extraOverlays ++ (lib.attrValues self.overlays);
+        overlays = extraOverlays;
       };
       pkgs  = mkPkgs nixpkgs [ self.overlay ];
       pkgs' = mkPkgs nixpkgs-unstable [];
@@ -57,9 +57,6 @@
           unstable = pkgs';
           my = self.packages."${system}";
         };
-
-      overlays =
-        mapModules ./overlays import;
 
       # packages."${system}" =
       #   mapModules ./packages (p: pkgs.callPackage p {});
