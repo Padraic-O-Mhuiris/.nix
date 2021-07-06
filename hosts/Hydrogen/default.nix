@@ -26,7 +26,7 @@
     # ../../users/padraic
 
     #../../profiles/emacs
-    ../../profiles/gpg
+    #../../profiles/gpg
     ../../profiles/pass
     ../../profiles/docker
     ../../profiles/git
@@ -48,6 +48,11 @@
       vim.enable = true;
       emacs.enable = true;
     };
+    shell = {
+      gnupg.enable = true;
+    };
+
+
   };
 
   #sops.defaultSopsFile = ../../secrets.yaml;

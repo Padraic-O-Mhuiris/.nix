@@ -13,13 +13,20 @@ in {
     };
   };
 
+
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+    home-manager.users.${config.user.name} = {
+      imports = [ inputs.nix-doom-emacs ];
+      programs.doom-emacs = {
+        enable = true;
+        doomPrivateDir = ../../config/doom.d;
+      };
+    };
 
     user.packages = with pkgs; [
       ## Emacs itself
       binutils       # native-comp needs 'as', provided by this
-      emacsPgtkGcc   # 28 + pgtk + native-comp
+      #emacsPgtkGcc   # 28 + pgtk + native-comp
 
       ## Doom dependencies
       git
@@ -58,7 +65,7 @@ in {
       unstable.rust-analyzer
     ];
 
-    env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
+    #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 
     #modules.shell.zsh.rcFiles = [ "${configDir}/emacs/aliases.zsh" ];
 
