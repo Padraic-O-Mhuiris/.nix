@@ -53,10 +53,13 @@
       nixosModules =
         { dotfiles = import ./.; } // mapModulesRec ./modules import;
 
-      nixosConfigurations = {
-        Hydrogen = mkSystem nixpkgs "Hydrogen" [
-          sops-nix.nixosModules.sops
-        ]; };
+      nixosConfigurations =
+        mapHosts ./hosts {};
+
+      # nixosConfigurations = {
+      #   Hydrogen = mkSystem nixpkgs "Hydrogen" [
+      #     sops-nix.nixosModules.sops
+      #   ]; };
 
       devShell.${system} = let
       in pkgs.mkShell {
