@@ -5,7 +5,6 @@
 { config, pkgs, lib, inputs,... }:
 
 {
-
   nix = {
     buildCores = 4;
     package = pkgs.nixFlakes;

@@ -13,6 +13,7 @@ in {
     dotfiles = let t = either str path; in {
       dir = mkOpt t
         (findFirst pathExists (toString ../.) [
+          "${config.user.home}/.nix"
           "${config.user.home}/.config/dotfiles"
           "/etc/dotfiles"
         ]);
