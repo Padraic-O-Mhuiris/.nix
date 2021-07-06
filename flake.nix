@@ -37,10 +37,6 @@
     let
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
-      utils = import ./utils.nix {
-        inherit lib system pkgs inputs self;
-      };
-      
       system = "x86_64-linux";
 
       mkPkgs = pkgs: extraOverlays: import pkgs {
