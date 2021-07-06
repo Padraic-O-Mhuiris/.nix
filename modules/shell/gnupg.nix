@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
-    programs.gnupg.agent {
+    programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
       enableExtraSocket = true;
