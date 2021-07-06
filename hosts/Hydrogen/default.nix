@@ -5,12 +5,12 @@
 { config, pkgs, lib, inputs,... }:
 
 {
-  nix = {
-    buildCores = 4;
-    package = pkgs.nixFlakes;
-    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes ca-references recursive-nix";
-  };
+  # nix = {
+  #   buildCores = 4;
+  #   package = pkgs.nixFlakes;
+  #   extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+  #     "experimental-features = nix-command flakes ca-references recursive-nix";
+  # };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
