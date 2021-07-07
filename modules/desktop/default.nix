@@ -110,6 +110,7 @@ in {
     services.xserver.displayManager.sessionCommands = ''
       # GTK2_RC_FILES must be available to the display manager.
       export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+      export TERMINAL="st"
     '';
 
     # Clean up leftovers, as much as we can
