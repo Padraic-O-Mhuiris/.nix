@@ -20,7 +20,12 @@ in {
     '';
 
     user.packages = with pkgs; [
-      xst  # st + nice-to-have extensions
+      #xst  # st + nice-to-have extensions
+      (st.overrideAttrs (oldAttrs: rec {
+      # Using a local file
+        configFile = writeText "config.def.h" (builtins.readFile ../../../config/st/config.h);
+        postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
+      }))
       (makeDesktopItem {
         name = "xst";
         desktopName = "Suckless Terminal";
