@@ -45,10 +45,10 @@
   modules = {
     desktop = {
      i3.enable = true;
-     #term = {
-     #  default = "xst";
-     #  st.enable = true;
-     #};
+     term = {
+       default = "xst";
+       st.enable = true;
+     };
     };
     editors = {
       default = "nvim";
@@ -57,7 +57,7 @@
     };
     shell = {
       #gnupg.enable = true;
-      #zsh.enable = true;
+      zsh.enable = true;
     };
  };
 
