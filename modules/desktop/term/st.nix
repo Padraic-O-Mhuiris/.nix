@@ -19,13 +19,17 @@ in {
       [ "$TERM" = xst-256color ] && export TERM=xterm-256color
     '';
 
+    services.xserver.displayManager.sessionCommands = ''
+      ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
+        Xcursor.theme: Adwaita
+        Xcursor.size: 64
+
+	st.font: Iosevka:pixelsize=12:antialias=true:autohint=true;
+      ''}
+    '';
+
     user.packages = with pkgs; [
-      #xst  # st + nice-to-have extensions
-      (st.overrideAttrs (oldAttrs: rec {
-      # Using a local file
-        configFile = writeText "config.def.h" (builtins.readFile ../../../config/st/config.h);
-        postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
-      }))
+      xst  # st + nice-to-have extensions
       (makeDesktopItem {
         name = "xst";
         desktopName = "Suckless Terminal";
