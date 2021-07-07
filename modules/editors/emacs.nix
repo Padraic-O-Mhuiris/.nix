@@ -22,6 +22,7 @@ in {
     #     doomPrivateDir = ../../config/doom.d;
     #   };
     # };
+    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
     user.packages = with pkgs; [
       ## Emacs itself
