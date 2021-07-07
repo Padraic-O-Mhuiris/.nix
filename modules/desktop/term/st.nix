@@ -22,9 +22,9 @@ in {
     services.xserver.displayManager.sessionCommands = ''
       ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
         Xcursor.theme: Adwaita
-        Xcursor.size: 64
+        Xcursor.size: 32
 
-	st.font: Iosevka:pixelsize=12:antialias=true:autohint=true;
+	*.font: monospace:pixelsize=26;
       ''}
     '';
 
