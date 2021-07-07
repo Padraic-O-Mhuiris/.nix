@@ -26,7 +26,7 @@
     # ../../users/padraic
 
     #../../profiles/emacs
-    #../../profiles/gpg
+    ../../profiles/gpg
     ../../profiles/pass
     ../../profiles/docker
     ../../profiles/git
@@ -44,7 +44,11 @@
 
   modules = {
     desktop = {
-      i3.enable = true;
+     i3.enable = true;
+     #term = {
+     #  default = "xst";
+     #  st.enable = true;
+     #};
     };
     editors = {
       default = "nvim";
@@ -52,9 +56,10 @@
       emacs.enable = true;
     };
     shell = {
-      gnupg.enable = true;
+      #gnupg.enable = true;
+      #zsh.enable = true;
     };
-  };
+ };
 
   #sops.defaultSopsFile = ../../secrets.yaml;
   #sops.gnupgHome = "/home/padraic/.gnupg";
