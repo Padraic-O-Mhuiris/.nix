@@ -57,7 +57,7 @@
     };
     shell = {
       #gnupg.enable = true;
-     # zsh.enable = true;
+      zsh.enable = true;
     };
  };
 
