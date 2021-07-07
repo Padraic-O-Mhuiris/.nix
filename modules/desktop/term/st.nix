@@ -23,7 +23,7 @@ in {
       ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
         Xcursor.theme: Adwaita
         Xcursor.size: 32
-	Xft.dpi: 192
+	*.dpi: 500
 	*.font: monospace:pixelsize=26;
       ''}
     '';
