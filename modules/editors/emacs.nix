@@ -26,7 +26,7 @@ in {
     user.packages = with pkgs; [
       ## Emacs itself
       binutils       # native-comp needs 'as', provided by this
-      #emacsPgtkGcc   # 28 + pgtk + native-comp
+      emacsPgtkGcc   # 28 + pgtk + native-comp
 
       ## Doom dependencies
       git
@@ -46,7 +46,7 @@ in {
         en en-computers en-science
       ]))
       # :checkers grammar
-      #languagetool
+      languagetool
       # :tools editorconfig
       editorconfig-core-c # per-project style config
       # :tools lookup & :lang org +roam
