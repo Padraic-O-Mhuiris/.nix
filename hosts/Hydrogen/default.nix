@@ -45,7 +45,7 @@
     desktop = {
       i3.enable = true;
       term = {
-        default = "xst";
+        default = "st";
         st.enable = true;
       };
     };
@@ -212,7 +212,6 @@
 
     libinput = { enable = true; };
     desktopManager = {
-      xterm.enable = false;
       session = [{
         name = "home-manager";
         start = ''

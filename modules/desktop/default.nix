@@ -8,27 +8,23 @@ in {
     assertions = [
       {
         assertion = (countAttrs (n: v: n == "enable" && value) cfg) < 2;
-        message = "Can't have more than one desktop environment enabled at a time";
+        message =
+          "Can't have more than one desktop environment enabled at a time";
       }
       {
-        assertion =
-          let srv = config.services;
-          in srv.xserver.enable ||
-             srv.sway.enable ||
-             !(anyAttrs
-               (n: v: isAttrs v &&
-                      anyAttrs (n: v: isAttrs v && v.enable))
-               cfg);
+        assertion = let srv = config.services;
+        in srv.xserver.enable || srv.sway.enable || !(anyAttrs
+          (n: v: isAttrs v && anyAttrs (n: v: isAttrs v && v.enable)) cfg);
         message = "Can't enable a desktop app without a desktop environment";
       }
     ];
 
     user.packages = with pkgs; [
-      feh       # image viewer
+      feh # image viewer
       xclip
       xdotool
       xorg.xwininfo
-      libqalculate  # calculator cli w/ currency conversion
+      libqalculate # calculator cli w/ currency conversion
       (makeDesktopItem {
         name = "scratch-calc";
         desktopName = "Calculator";
@@ -51,7 +47,8 @@ in {
     };
 
     ## Apps/Services
-    services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;
+    services.xserver.displayManager.lightdm.greeters.mini.user =
+      config.user.name;
 
     services.picom = {
       backend = "glx";
@@ -105,12 +102,14 @@ in {
     # Try really hard to get QT to respect my GTK theme.
     env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
     env.QT_QPA_PLATFORMTHEME = "gtk2";
-    qt5 = { style = "gtk2"; platformTheme = "gtk2"; };
+    qt5 = {
+      style = "gtk2";
+      platformTheme = "gtk2";
+    };
 
     services.xserver.displayManager.sessionCommands = ''
       # GTK2_RC_FILES must be available to the display manager.
       export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-      export TERMINAL="st"
     '';
 
     # Clean up leftovers, as much as we can
