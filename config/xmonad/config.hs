@@ -1,5 +1,5 @@
 import XMonad
-  import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.EZConfig (additionalKeys)
   import Control.Monad (when)
   import Text.Printf (printf)
   import System.Posix.Process (executeFile)
@@ -25,3 +25,4 @@ import XMonad
       `additionalKeys`
       [ ( (mod4Mask,xK_r), compileRestart True)
       , ( (mod4Mask,xK_q), restart "xmonad" True ) ]
+
