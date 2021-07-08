@@ -2,7 +2,7 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.i3;
+let cfg = config.modules.desktop.xmonad;
 in {
   options.modules.desktop.xmonad = { enable = mkBoolOpt false; };
 
