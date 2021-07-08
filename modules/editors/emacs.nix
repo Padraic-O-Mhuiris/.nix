@@ -64,6 +64,7 @@ in {
       unstable.rust-analyzer
       # :lang haskell
       haskell-language-server
+      stack
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
