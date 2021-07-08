@@ -49,6 +49,7 @@
         st.enable = true;
       };
       xmonad.enable = false;
+      redshift.enable = true;
     };
     editors = {
       default = "nvim";
