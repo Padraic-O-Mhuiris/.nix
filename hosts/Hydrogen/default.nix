@@ -26,7 +26,7 @@
     # ../../users/padraic
 
     #../../profiles/emacs
-    ../../profiles/gpg
+    #../../profiles/gpg
     ../../profiles/pass
     ../../profiles/docker
     #../../profiles/git
@@ -56,7 +56,7 @@
       emacs.enable = true;
     };
     shell = {
-      #gnupg.enable = true;
+      gnupg.enable = true;
       zsh.enable = true;
       git.enable = true;
     };
