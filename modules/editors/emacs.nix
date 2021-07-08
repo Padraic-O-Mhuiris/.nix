@@ -65,6 +65,7 @@ in {
       # :lang haskell
       haskell-language-server
       stack
+      ghc
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
