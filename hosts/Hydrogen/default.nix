@@ -29,7 +29,7 @@
     ../../profiles/gpg
     ../../profiles/pass
     ../../profiles/docker
-    ../../profiles/git
+    #../../profiles/git
     ../../profiles/hledger
     ../../profiles/projects
     ../../profiles/browser
@@ -57,6 +57,7 @@
     shell = {
       #gnupg.enable = true;
       zsh.enable = true;
+      git.enable = true;
     };
   };
 
@@ -118,8 +119,6 @@
     wget
     vim
     htop
-    git
-    git-crypt
     acpi
     xclip
     clang
