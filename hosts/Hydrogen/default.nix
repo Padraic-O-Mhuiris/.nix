@@ -2,15 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs,... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
-  # nix = {
-  #   buildCores = 4;
-  #   package = pkgs.nixFlakes;
-  #   extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-  #     "experimental-features = nix-command flakes ca-references recursive-nix";
-  # };
+  nix = {
+    buildCores = 4;
+    #   package = pkgs.nixFlakes;
+    #   extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+    #     "experimental-features = nix-command flakes ca-references recursive-nix";
+  };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
@@ -41,14 +41,13 @@
     ../../profiles/telegram
   ];
 
-
   modules = {
     desktop = {
-     i3.enable = true;
-     term = {
-       default = "xst";
-       st.enable = true;
-     };
+      i3.enable = true;
+      term = {
+        default = "xst";
+        st.enable = true;
+      };
     };
     editors = {
       default = "nvim";
@@ -59,7 +58,7 @@
       #gnupg.enable = true;
       zsh.enable = true;
     };
- };
+  };
 
   #sops.defaultSopsFile = ../../secrets.yaml;
   #sops.gnupgHome = "/home/padraic/.gnupg";
@@ -71,10 +70,10 @@
   # sops.secrets.hello.owner = config.users.users.padraic.name;
 
   powerManagement.enable = true;
-  
+
   services.printing = {
     enable = true;
-    drivers = [pkgs.brlaser];
+    drivers = [ pkgs.brlaser ];
   };
   networking = {
     hostName = "Hydrogen";
