@@ -13,7 +13,8 @@ in {
       gitAndTools.gh
       gitAndTools.git-open
       gitAndTools.diff-so-fancy
-      (mkIf config.modules.shell.gnupg.enable gitAndTools.git-crypt)
+      #(mkIf config.modules.shell.gnupg.enable gitAndTools.git-crypt)
+      gitAndTools.git-crypt
     ];
 
     home.configFile = {
