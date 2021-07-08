@@ -44,11 +44,11 @@
   modules = {
     desktop = {
       i3.enable = true;
-      xmonad.enable = false;
       term = {
         default = "st";
         st.enable = true;
       };
+      xmonad.enable = false;
     };
     editors = {
       default = "nvim";
