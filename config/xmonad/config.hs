@@ -25,4 +25,3 @@ import XMonad.Util.EZConfig (additionalKeys)
       `additionalKeys`
       [ ( (mod4Mask,xK_r), compileRestart True)
       , ( (mod4Mask,xK_q), restart "xmonad" True ) ]
-
