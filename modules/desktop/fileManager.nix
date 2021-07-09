@@ -12,11 +12,10 @@ in {
     user.packages = with pkgs; [ gnome.nautilus udisks udiskie ];
     programs.gnome-disks.enable = true;
 
-    services.xserver.displayManager.sessionCommands =
-      config.services.xserver.displayManager.sessionCommands + ''
-        # launches udiskie on display start and mounts drives
-        udiskie -Ns &
-      '';
+    services.xserver.displayManager.sessionCommands = ''
+      # launches udiskie on display start and mounts drives
+      udiskie -Ns &
+    '';
 
     home.configFile."udiskie/config.yml".text = ''
       ignore_device:
