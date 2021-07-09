@@ -9,6 +9,6 @@ in {
 
   config = mkIf cfg.enable {
     #programs.udevil.enable = true;
-    user.packages = with pkgs; [ udisks ];
+    user.packages = with pkgs; [ udisks udiskie ];
   };
 }
