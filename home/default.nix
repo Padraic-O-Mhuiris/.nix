@@ -26,11 +26,11 @@
   home.file.".icons/default".source =
     "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 
-  home.file.".config/udiskie/config.yml".text = ''
-    device_config:
-      - device_file: /dev/loop0
-        ignore: true
-  '';
+  # home.file.".config/udiskie/config.yml".text = ''
+  #   device_config:
+  #     - device_file: /dev/loop0
+  #       ignore: true
+  # '';
 
   home.sessionPath = [ "$HOME/.yarn/bin" ];
   home.sessionVariables = { EDITOR = "vim"; };
