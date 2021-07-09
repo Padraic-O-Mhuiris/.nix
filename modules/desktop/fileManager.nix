@@ -17,5 +17,4 @@ in {
     # launches udiskie on display start and mounts drives
     udiskie -Ns &
   '';
-
 }
