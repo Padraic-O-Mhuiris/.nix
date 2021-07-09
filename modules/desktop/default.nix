@@ -25,6 +25,7 @@ in {
       xdotool
       xorg.xwininfo
       libqalculate # calculator cli w/ currency conversion
+      gnome.nautilus
       (makeDesktopItem {
         name = "scratch-calc";
         desktopName = "Calculator";
