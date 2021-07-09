@@ -32,20 +32,15 @@
         ignore: true
   '';
 
-  home.sessionPath = [
-    "$HOME/.yarn/bin"
-  ];
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
+  home.sessionPath = [ "$HOME/.yarn/bin" ];
+  home.sessionVariables = { EDITOR = "vim"; };
   #home.file."secret".source = config.sops.secrets.secret.path;
 
   programs.feh.enable = true;
   programs.zsh = { enable = true; };
 
-  
-  services.udiskie = {
-    enable = true;
-    notify = false;
-  };
+  # services.udiskie = {
+  #   enable = true;
+  #   notify = false;
+  # };
 }

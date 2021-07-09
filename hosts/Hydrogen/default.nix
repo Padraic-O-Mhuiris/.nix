@@ -62,6 +62,7 @@
       git.enable = true;
       pass.enable = true;
     };
+    hardware = { fs.enable = true; };
   };
 
   #sops.defaultSopsFile = ../../secrets.yaml;
