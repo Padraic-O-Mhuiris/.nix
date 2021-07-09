@@ -27,7 +27,7 @@
 
     #../../profiles/emacs
     #../../profiles/gpg
-    ../../profiles/pass
+    #../../profiles/pass
     ../../profiles/docker
     #../../profiles/git
     ../../profiles/hledger
@@ -60,6 +60,7 @@
       gnupg.enable = true;
       zsh.enable = true;
       git.enable = true;
+      pass.enable = true;
     };
   };
 
