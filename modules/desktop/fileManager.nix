@@ -9,7 +9,13 @@ in {
 
   config = mkIf cfg.enable {
     #programs.udevil.enable = true;
-    user.packages = with pkgs; [ gnome.nautilus ];
+    user.packages = with pkgs; [ gnome.nautilus udisks udiskie ];
     programs.gnome-disks.enable = true;
   };
+
+  services.xserver.displayManager.sessionCommands = ''
+    # launches udiskie on display start and mounts drives
+    udiskie -Ns &
+  '';
+
 }
