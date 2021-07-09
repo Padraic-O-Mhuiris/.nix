@@ -19,6 +19,10 @@ in {
       pinentryFlavor = "gnome3";
     };
 
+    user.packages = with pkgs; [ pinentry-curses pinentry-qt paperkey ];
+    services.pcscd.enable = true;
+    services.udev.packages = [ yubikey-personalization ];
+
     # HACK Without this config file you get "No pinentry program" on 20.03.
     #      programs.gnupg.agent.pinentryFlavor doesn't appear to work, and this
     #      is cleaner than overriding the systemd unit.
