@@ -14,7 +14,7 @@ in {
 
     services.xserver.displayManager.sessionCommands = ''
       # launches udiskie on display start and mounts drives
-      udiskie -Ns
+      udiskie -Ns &
     '';
 
     home.configFile."udiskie/config.yml".text = ''
