@@ -7,5 +7,8 @@ let cfg = config.modules.hardware.fs;
 in {
   options.modules.hardware.fs = { enable = mkBoolOpt false; };
 
-  config = mkIf cfg.enable { programs.udevil.enable = true; };
+  config = mkIf cfg.enable {
+    #programs.udevil.enable = true;
+    user.packages = with pkgs; [ udisks ];
+  };
 }
