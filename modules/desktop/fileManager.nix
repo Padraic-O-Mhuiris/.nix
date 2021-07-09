@@ -1,0 +1,15 @@
+{ config, options, lib, pkgs, ... }:
+
+with lib;
+with lib.my;
+
+let cfg = config.modules.desktop.fileManager;
+in {
+  options.modules.desktop.fileManager = { enable = mkBoolOpt false; };
+
+  config = mkIf cfg.enable {
+    #programs.udevil.enable = true;
+    user.packages = with pkgs; [ gnome.nautilus ];
+    programs.gnome-disks.enable = true;
+  };
+}
