@@ -7,6 +7,7 @@
       pip
       setuptools
       virtualenv
+      pypiwin32
     ];
 
 }

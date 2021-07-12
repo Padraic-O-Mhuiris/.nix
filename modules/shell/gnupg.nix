@@ -24,6 +24,7 @@ in {
       pinentry-qt
       paperkey
       yubikey-personalization
+      yubikey-manager
     ];
     services.pcscd.enable = true;
     services.udev.packages = with pkgs; [ yubikey-personalization libu2f-host ];
