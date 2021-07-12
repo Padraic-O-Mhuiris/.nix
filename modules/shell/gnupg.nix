@@ -19,7 +19,12 @@ in {
       pinentryFlavor = "gnome3";
     };
 
-    user.packages = with pkgs; [ pinentry-curses pinentry-qt paperkey ];
+    user.packages = with pkgs; [
+      pinentry-curses
+      pinentry-qt
+      paperkey
+      yubikey-peronsalization
+    ];
     services.pcscd.enable = true;
     services.udev.packages = with pkgs; [ yubikey-personalization libu2f-host ];
 
