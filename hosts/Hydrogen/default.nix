@@ -32,7 +32,7 @@
     #../../profiles/git
     ../../profiles/hledger
     ../../profiles/projects
-    ../../profiles/browser
+    #../../profiles/browser
 
     ../../languages/javascript
     ../../languages/python
