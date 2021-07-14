@@ -42,7 +42,7 @@ in {
       # Enable userContent.css and userChrome.css for our theme modules
       "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       # Stop creating ~/Downloads!
-      "browser.download.dir" = "${config.user.home}/dl";
+      "browser.download.dir" = "${config.user.home}/downloads";
       # Don't use the built-in password manager; a nixos user is more likely
       # using an external one (you are using one, right?).
       "signon.rememberSignons" = false;
@@ -53,6 +53,7 @@ in {
       # https://support.mozilla.org/en-US/kb/new-tab-page-show-hide-and-customize-top-sites#w_how-do-i-turn-the-new-tab-page-off
       "browser.newtabpage.enabled" = false;
       "browser.newtab.url" = "about:blank";
+      "browser.startup.blankWindow" = true;
       # Disable Activity Stream
       # https://wiki.mozilla.org/Firefox/Activity_Stream
       "browser.newtabpage.activity-stream.enabled" = false;
