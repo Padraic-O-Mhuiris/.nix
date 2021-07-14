@@ -1,7 +1,7 @@
 [user]
 	name = Pádraic Ó Mhuiris
 	email = patrick.morris.310@gmail.com
-	signingKey = 0xBD01159F2C44F16B
+	signingKey = 9A51DBF629888EE75982008D9DCE7055406806F8
 [core]
 	whitespace = trailing-space
 [init]
