@@ -44,13 +44,14 @@
   modules = {
     desktop = {
       i3.enable = true;
+      xmonad.enable = false;
+      redshift.enable = true;
+      fileManager.enable = true;
       term = {
         default = "st";
         st.enable = true;
       };
-      xmonad.enable = false;
-      redshift.enable = true;
-      fileManager.enable = true;
+      media = { spotify.enable = true; };
     };
     editors = {
       default = "nvim";
