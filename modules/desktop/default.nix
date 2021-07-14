@@ -9,7 +9,7 @@ in {
       {
         assertion = (countAttrs (n: v: n == "enable" && value) cfg) < 2;
         message =
-          "Can't have more than one desktop environment enabled at a time";
+          "Cannot have more than one desktop environment enabled at a time";
       }
       {
         assertion = let srv = config.services;
