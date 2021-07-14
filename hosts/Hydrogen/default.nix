@@ -52,6 +52,11 @@
         st.enable = true;
       };
       media = { spotify.enable = true; };
+      browser = {
+        default = "brave";
+        firefox.enable = true;
+        brave.enable = true;
+      };
     };
     editors = {
       default = "nvim";
