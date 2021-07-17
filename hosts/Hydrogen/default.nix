@@ -30,12 +30,12 @@
     #../../profiles/docker
     #../../profiles/git
     #../../profiles/hledger
-    ../../profiles/projects
+    #../../profiles/projects
     #../../profiles/browser
 
-    ../../languages/javascript
-    ../../languages/python
-    ##../../profiles/dapptools
+    #../../languages/javascript
+    #../../languages/python
+    #../../profiles/dapptools
 
     ../../profiles/telegram
   ];
@@ -62,6 +62,10 @@
       default = "nvim";
       vim.enable = true;
       emacs.enable = true;
+      languages = {
+        javascript.enable = true;
+        python.enable = true;
+      };
     };
     shell = {
       gnupg.enable = true;
