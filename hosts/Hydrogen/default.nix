@@ -20,7 +20,7 @@
     ./thinkpadX1Carbon.nix
     ./fonts.nix
     ./boot.nix
-    ../../cachix
+    #../../cachix
     ../../users
     # ../../users/root
     # ../../users/padraic
