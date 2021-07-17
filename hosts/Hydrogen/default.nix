@@ -18,9 +18,8 @@
   imports = [
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
-    ./fonts.nix
+    #./fonts.nix
     ./boot.nix
-    #../../cachix
     ../../users
     # ../../users/root
     # ../../users/padraic

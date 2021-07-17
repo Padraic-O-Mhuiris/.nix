@@ -38,12 +38,27 @@ in {
       fontDir.enable = true;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
+        iosevka
         ubuntu_font_family
         dejavu_fonts
         symbola
         noto-fonts
         noto-fonts-cjk
+        liberation_ttf
+        roboto
+        fira-code
+
       ];
+      fontconfig = {
+        enable = true;
+        defaultFonts = {
+          monospace = [ "Iosevka" ];
+          sansSerif = [ "Roboto" ];
+          serif = [ "Roboto Slab" ];
+        };
+      };
+      enableDefaultFonts = true;
+
     };
 
     ## Apps/Services
