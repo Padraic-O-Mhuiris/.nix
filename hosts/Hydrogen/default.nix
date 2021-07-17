@@ -27,7 +27,7 @@
     #../../profiles/emacs
     #../../profiles/gpg
     #../../profiles/pass
-    ../../profiles/docker
+    #../../profiles/docker
     #../../profiles/git
     #../../profiles/hledger
     ../../profiles/projects
@@ -69,6 +69,7 @@
       git.enable = true;
       pass.enable = true;
     };
+    services = { docker.enable = true; };
     hardware = { fs.enable = true; };
   };
 
