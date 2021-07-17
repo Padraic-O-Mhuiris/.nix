@@ -9,7 +9,6 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       yarn
-      npm
       nodejs
       nodePackages.typescript
       nodePackages.typescript-language-server
