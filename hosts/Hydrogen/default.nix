@@ -30,7 +30,7 @@
     #../../profiles/pass
     ../../profiles/docker
     #../../profiles/git
-    ../../profiles/hledger
+    #../../profiles/hledger
     ../../profiles/projects
     #../../profiles/browser
 
@@ -43,6 +43,7 @@
 
   modules = {
     desktop = {
+      hledger.enable = true;
       i3.enable = true;
       xmonad.enable = false;
       redshift.enable = true;
