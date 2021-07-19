@@ -51,6 +51,7 @@
         default = "st";
         st.enable = true;
       };
+      tools = { libreoffice.enable = true; };
       media = { spotify.enable = true; };
       browser = {
         default = "brave";
