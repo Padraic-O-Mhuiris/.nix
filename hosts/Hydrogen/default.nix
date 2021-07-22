@@ -126,6 +126,7 @@
   environment.systemPackages = with pkgs; [
     bitwarden
     blueman
+    bluez
     pavucontrol
 
     libical
