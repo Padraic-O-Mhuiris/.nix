@@ -125,6 +125,8 @@
 
   environment.systemPackages = with pkgs; [
     bitwarden
+    blueman
+    pavucontrol
     coreutils
     deluge
     vlc
