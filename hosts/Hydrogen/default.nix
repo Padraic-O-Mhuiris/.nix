@@ -127,6 +127,10 @@
     bitwarden
     blueman
     pavucontrol
+
+    libical
+    libudev0-shim
+
     coreutils
     deluge
     vlc
