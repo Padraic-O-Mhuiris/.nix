@@ -20,10 +20,10 @@ in {
     services.xserver.displayManager.sessionCommands = ''
       ${pkgs.xorg.xrdb}/bin/xrdb -merge <${
         pkgs.writeText "Xresources" ''
-                  Xcursor.theme: Adwaita
-                  Xcursor.size: 32
-          	*.font: monospace:pixelsize=26;
-                ''
+          Xcursor.theme: Adwaita
+          Xcursor.size: 32
+          *.font: monospace:pixelsize=16;
+        ''
       }
     '';
 
