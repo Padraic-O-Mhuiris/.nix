@@ -2,13 +2,13 @@
 source $ZGEN_SOURCE
 if ! zgen saved; then
   echo "Initializing zgen"
-  zgen load hlissner/zsh-autopair autopair.zsh
-  zgen load zsh-users/zsh-history-substring-search
-  zgen load zdharma/history-search-multi-word
-  zgen load zsh-users/zsh-completions src
-  zgen load junegunn/fzf shell
-  [ -z "$SSH_CONNECTION" ] && zgen load zdharma/fast-syntax-highlighting
-  zgen save
+  # zgen load hlissner/zsh-autopair autopair.zsh
+  # zgen load zsh-users/zsh-history-substring-search
+  # zgen load zdharma/history-search-multi-word
+  # zgen load zsh-users/zsh-completions src
+  # zgen load junegunn/fzf shell
+  # [ -z "$SSH_CONNECTION" ] && zgen load zdharma/fast-syntax-highlighting
+  # zgen save
 fi
 
 source $ZDOTDIR/config.zsh
