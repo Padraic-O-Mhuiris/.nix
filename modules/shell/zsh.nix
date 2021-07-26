@@ -55,7 +55,6 @@ in {
         plugins =
           [ "git" "colored-man-pages" "command-not-found" "extract" "nix" ];
         customPkgs = with pkgs; [ nix-zsh-completions ];
-        theme = "lambda";
       };
     };
 
