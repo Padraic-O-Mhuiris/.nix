@@ -2,8 +2,8 @@
   fonts = {
     fonts = with pkgs; [
       iosevka
-      nerdfonts
       roboto
+      (nerdfonts.override { fonts = [ "Iosevka" ]; })
       emacs-all-the-icons-fonts
       xorg.fontbhlucidatypewriter100dpi
       xorg.fontbhlucidatypewriter75dpi
