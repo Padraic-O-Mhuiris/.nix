@@ -59,7 +59,7 @@ in {
     };
 
     home.configFile."starship.toml".text = ''
-      [battery]
+      [[battery.display]]
         threshold = 50
     '';
 
