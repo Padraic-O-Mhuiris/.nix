@@ -59,6 +59,8 @@ in {
     };
 
     home.configFile."starship.toml".text = ''
+      format = "$all"
+
       [[battery.display]]
         threshold = 50
     '';
