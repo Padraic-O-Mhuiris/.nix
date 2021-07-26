@@ -140,7 +140,6 @@
     nixfmt
     flameshot
     gcc
-    wget
     vim
     htop
     acpi
