@@ -22,7 +22,7 @@ in {
         pkgs.writeText "Xresources" ''
           Xcursor.theme: Adwaita
           Xcursor.size: 32
-          *.font: monospace:pixelsize=16;
+          *.font: Iosevka:pixelsize=16;
         ''
       }
     '';
