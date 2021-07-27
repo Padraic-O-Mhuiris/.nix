@@ -104,7 +104,7 @@ in {
       '';
     };
 
-    home.file."ssh/config".text = ''
+    home.file.".ssh/config".text = ''
       Host Hydrogen
            Hostname 8.8.8.8
            User ${config.user.name}
@@ -121,6 +121,7 @@ in {
            Port 26096
     '';
 
-    home.file."ssh/id_rsa.pub".source = "${config.dotfiles.keysDir}/id_rsa.pub";
+    home.file.".ssh/id_rsa.pub".source =
+      "${config.dotfiles.keysDir}/id_rsa.pub";
   };
 }
