@@ -103,5 +103,24 @@ in {
         #list-options show-unusable-subkeys
       '';
     };
+
+    home.file."ssh/config".text = ''
+      Host Hydrogen
+           Hostname 8.8.8.8
+           User ${config.user.name}
+           IdentityFile ~/.ssh/id_rsa.pub
+
+      Host Nitrogen@local
+           Hostname 192.168.0.55
+           User ${config.user.name}
+           Port 22175
+
+      Host Nitrogen@remote
+           Hostname 1.tcp.eu.ngrok.io
+           User ${config.user.name}
+           Port 26096
+    '';
+
+    home.file."ssh/id_rsa.pub".source = "${config.dotfiles.keysDir}/id_rsa.pub";
   };
 }
