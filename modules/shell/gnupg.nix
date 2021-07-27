@@ -104,6 +104,7 @@ in {
       '';
     };
 
+    # TODO Add entry for Lithium
     home.file.".ssh/config".text = ''
       Host Hydrogen
            Hostname 8.8.8.8
