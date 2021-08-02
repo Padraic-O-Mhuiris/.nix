@@ -9,5 +9,7 @@
     nodePackages.node2nix
     nodePackages.javascript-typescript-langserver
     nodePackages.jsonlint
+    nodePackages.prettier
+    nodePackages.eslint
   ];
 }
