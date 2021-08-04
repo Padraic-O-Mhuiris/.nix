@@ -15,7 +15,6 @@
     ./thinkpadX1Carbon.nix
     ./boot.nix
     ../../users
-    ../../profiles/telegram
   ];
 
   modules = {
