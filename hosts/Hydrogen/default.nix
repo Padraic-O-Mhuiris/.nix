@@ -10,12 +10,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
-  imports = [
-    ./hardware-configuration.nix
-    ./thinkpadX1Carbon.nix
-    ./boot.nix
-    ../../users
-  ];
+  imports = [ ./hardware-configuration.nix ./thinkpadX1Carbon.nix ./boot.nix ];
 
   modules = {
     desktop = {
