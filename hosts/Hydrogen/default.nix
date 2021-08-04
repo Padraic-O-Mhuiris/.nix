@@ -5,12 +5,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  nix = {
-    buildCores = 4;
-    #   package = pkgs.nixFlakes;
-    #   extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-    #     "experimental-features = nix-command flakes ca-references recursive-nix";
-  };
+  nix = { buildCores = 4; };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
@@ -18,25 +13,8 @@
   imports = [
     ./hardware-configuration.nix
     ./thinkpadX1Carbon.nix
-    #./fonts.nix
     ./boot.nix
     ../../users
-    # ../../users/root
-    # ../../users/padraic
-
-    #../../profiles/emacs
-    #../../profiles/gpg
-    #../../profiles/pass
-    #../../profiles/docker
-    #../../profiles/git
-    #../../profiles/hledger
-    #../../profiles/projects
-    #../../profiles/browser
-
-    #../../languages/javascript
-    #../../languages/python
-    #../../profiles/dapptools
-
     ../../profiles/telegram
   ];
 
