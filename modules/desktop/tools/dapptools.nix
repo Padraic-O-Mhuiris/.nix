@@ -1,15 +1,17 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs, inputs, ... }:
 
 with lib;
 with lib.my;
 
-let cfg = config.modules.desktop.tools.dapptools;
+let
+  cfg = config.modules.desktop.tools.dapptools;
+  dapptools = inputs.dapptools;
 in {
   options.modules.desktop.tools.dapptools = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
 
-    user.packages = with pkgs; [ dapp hevm seth solc z3 cvc4 ];
+    user.packages = with pkgs; [ dapptools.dapp solc z3 cvc4 ];
 
   };
 }
