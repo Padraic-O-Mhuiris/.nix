@@ -30,7 +30,8 @@
     dapptools = { url = "github:dapphub/dapptools"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, dapptools, ... }:
     let
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
@@ -57,6 +58,7 @@
       overlay = final: prev: {
         unstable = pkgs';
         my = self.packages."${system}";
+        dapptools = (dapptools + /overlay.nix);
       };
 
       # packages."${system}" =
