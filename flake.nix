@@ -3,27 +3,23 @@
 
   inputs = {
 
-    master = {
-      url = "github:NixOS/nixpkgs/master";
-    };
+    master = { url = "github:NixOS/nixpkgs/master"; };
 
-    nixpkgs-unstable.url = "nixpkgs/master";    # for packages on the edge
+    nixpkgs-unstable.url = "nixpkgs/master"; # for packages on the edge
 
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/release-21.05";
-    };
+    nixpkgs = { url = "github:NixOS/nixpkgs/release-21.05"; };
 
     nix = { url = "github:nixos/nix/master"; };
 
     hardware = { url = "github:nixos/nixos-hardware"; };
 
     flake-utils = {
-      url = github:numtide/flake-utils;
+      url = "github:numtide/flake-utils";
       inputs.nixpkgs.follows = "master";
     };
 
     nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
-    emacs-overlay.url  = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,7 +27,7 @@
     };
     sops-nix.url = "github:Mic92/sops-nix";
 
-    #dapptools = { url = "github:dapphub/dapptools"; };
+    dapptools = { url = "github:dapphub/dapptools"; };
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, ... }:
@@ -40,42 +36,43 @@
 
       system = "x86_64-linux";
 
-      mkPkgs = pkgs: extraOverlays: import pkgs {
-        inherit system;
-        config.allowUnfree = true;  # forgive me Stallman senpai
-        overlays = extraOverlays;
-      };
-      pkgs  = mkPkgs nixpkgs [ self.overlay ];
-      pkgs' = mkPkgs nixpkgs-unstable [];
+      mkPkgs = pkgs: extraOverlays:
+        import pkgs {
+          inherit system;
+          config.allowUnfree = true; # forgive me Stallman senpai
+          overlays = extraOverlays;
+        };
+      pkgs = mkPkgs nixpkgs [ self.overlay ];
+      pkgs' = mkPkgs nixpkgs-unstable [ ];
 
-      lib = nixpkgs.lib.extend
-        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib {
+          inherit pkgs inputs;
+          lib = self;
+        };
+      });
     in {
       lib = lib.my;
 
-      overlay =
-        final: prev: {
-          unstable = pkgs';
-          my = self.packages."${system}";
-        };
+      overlay = final: prev: {
+        unstable = pkgs';
+        my = self.packages."${system}";
+      };
 
       # packages."${system}" =
       #   mapModules ./packages (p: pkgs.callPackage p {});
 
-      nixosModules =
-        { dotfiles = import ./.; } // mapModulesRec ./modules import;
+      nixosModules = {
+        dotfiles = import ./.;
+      } // mapModulesRec ./modules import;
 
-      nixosConfigurations =
-        mapHosts ./hosts {};
+      nixosConfigurations = mapHosts ./hosts { };
 
       # nixosConfigurations = {
       #   Hydrogen = mkSystem nixpkgs "Hydrogen" [
       #     sops-nix.nixosModules.sops
       #   ]; };
 
-      devShell.${system} = let
-      in pkgs.mkShell {
-        shellhook = "zsh";
-      };
+      devShell.${system} = let in pkgs.mkShell { shellhook = "zsh"; };
     };
 }
