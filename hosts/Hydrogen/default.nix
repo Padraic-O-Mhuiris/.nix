@@ -23,7 +23,10 @@
         default = "st";
         st.enable = true;
       };
-      tools = { libreoffice.enable = true; };
+      tools = {
+        libreoffice.enable = true;
+        dapptools.enable = true;
+      };
       media = { spotify.enable = true; };
       browser = {
         default = "brave";
@@ -155,7 +158,6 @@
     #lorri
     #direnv
     shc
-    solc
     pandoc
   ];
 
