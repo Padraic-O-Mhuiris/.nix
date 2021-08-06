@@ -9,7 +9,7 @@ in {
 
   config = mkIf cfg.enable {
 
-    user.packages = with pkgs; [ solc z3 cvc4 ];
+    user.packages = with pkgs; [ dapp hevm seth solc z3 cvc4 ];
 
   };
 }
