@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dapptools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1628183798,
+        "narHash": "sha256-ljMckA6BO+mZi2joGjZXHVk4LYgqHLo3DoGGWIZDrCU=",
+        "owner": "dapphub",
+        "repo": "dapptools",
+        "rev": "a2b96cc2dbc28508c9fe699d6438bf6eccafc2ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dapphub",
+        "repo": "dapptools",
+        "type": "github"
+      }
+    },
     "doom-emacs": {
       "flake": false,
       "locked": {
@@ -489,6 +505,7 @@
     },
     "root": {
       "inputs": {
+        "dapptools": "dapptools",
         "emacs-overlay": "emacs-overlay",
         "flake-utils": "flake-utils",
         "hardware": "hardware",
