@@ -11,7 +11,7 @@ in {
 
   config = mkIf cfg.enable {
 
-    user.packages = with pkgs; [ dapptools.dapp solc z3 cvc4 ];
+    user.packages = with pkgs; [ dapptools solc z3 cvc4 ];
 
   };
 }
