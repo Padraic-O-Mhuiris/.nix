@@ -23,6 +23,8 @@ in {
       '';
     in mkIf config.hardware.pulseaudio.enable "${paConfigFile}/default.pa";
 
+    user.packages = with pkgs; [ pavucontrol ];
+
     user.extraGroups = [ "audio" ];
   };
 }
