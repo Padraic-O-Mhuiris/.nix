@@ -10,7 +10,12 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
-  imports = [ ./hardware-configuration.nix ./thinkpadX1Carbon.nix ./boot.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./thinkpadX1Carbon.nix
+    ./boot.nix
+    ../home.nix
+  ];
 
   modules = {
     desktop = {
@@ -78,9 +83,7 @@
     };
     hosts = { "192.168.0.55" = [ "Nitrogen" ]; };
   };
-  # Select internationalisation properties.
-  time.timeZone = "Europe/Dublin";
-  i18n = { defaultLocale = "en_IE.UTF-8"; };
+
   console = {
     font = "latarcyrheb-sun32";
     keyMap = "uk";
