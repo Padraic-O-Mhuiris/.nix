@@ -19,6 +19,7 @@
       xmonad.enable = false;
       redshift.enable = true;
       fileManager.enable = true;
+      telegram.enable = true;
       term = {
         default = "st";
         st.enable = true;
