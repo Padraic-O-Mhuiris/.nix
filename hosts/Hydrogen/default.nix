@@ -98,7 +98,6 @@
 
   environment.systemPackages = with pkgs; [
     bitwarden
-    blueman
     bluez
 
     libical

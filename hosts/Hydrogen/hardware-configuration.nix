@@ -27,7 +27,7 @@ in {
     initrd = {
       availableKernelModules =
         [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-      boot.initrd.kernelModules = [ "dm-snapshot" ];
+      kernelModules = [ "dm-snapshot" ];
 
       luks.devices = {
         crypted = {
