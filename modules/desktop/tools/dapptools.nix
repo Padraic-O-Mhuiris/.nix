@@ -6,11 +6,10 @@ with lib.my;
 let
   cfg = config.modules.desktop.tools.dapptools;
 
-  dapptools = import (builtins.fetchGit rec {
-    name = "dapptools-${rev}";
-    url = "https://github.com/dapphub/dapptools";
-    rev = "3e62bd54dfbc23b76d9234f94a7387504b360d5d";
-    ref = "dapp/0.25.0";
+  dapptools = import (builtins.fetchFromGithub {
+    "url" = "https://github.com/dapphub/dapptools";
+    "rev" = "b018508967657800e7e7c1d07e6e454c5e284feb";
+    "sha256" = "0jhlsm79vkq800ckx5ri9x7ybng0kf11s5rs32mlh9hnvlyxknzy";
   }) { };
 
 in {
