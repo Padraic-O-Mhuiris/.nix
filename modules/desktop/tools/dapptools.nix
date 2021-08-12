@@ -6,7 +6,7 @@ with lib.my;
 let
   cfg = config.modules.desktop.tools.dapptools;
 
-  dapptools = import (builtins.fetchFromGithub {
+  dapptools = import (builtins.fetchFromGitHub {
     url = "https://github.com/dapphub/dapptools";
     rev = "b018508967657800e7e7c1d07e6e454c5e284feb";
     sha256 = "0jhlsm79vkq800ckx5ri9x7ybng0kf11s5rs32mlh9hnvlyxknzy";
