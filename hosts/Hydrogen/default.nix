@@ -10,12 +10,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
-  imports = [
-    ./hardware-configuration.nix
-    ./thinkpadX1Carbon.nix
-    ./boot.nix
-    ../home.nix
-  ];
+  imports = [ ./hardware-configuration.nix ../home.nix ];
 
   modules = {
     desktop = {
@@ -55,7 +50,6 @@
       pass.enable = true;
     };
     services = { docker.enable = true; };
-    hardware = { fs.enable = true; };
   };
 
   #sops.defaultSopsFile = ../../secrets.yaml;
@@ -106,7 +100,6 @@
     bitwarden
     blueman
     bluez
-    pavucontrol
 
     libical
     libudev0-shim

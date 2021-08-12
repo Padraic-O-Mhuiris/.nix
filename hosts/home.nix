@@ -7,7 +7,7 @@ with lib; {
     hostName = config.networking.hostName;
   in mkIf (builtins.elem hostName hosts) hostConfig;
 
-  time.timeZone = mkDefault "Europe/Dubline";
+  time.timeZone = mkDefault "Europe/Dublin";
   i18n.defaultLocale = mkDefault "en_IE.UTF-8";
 
   location = {
