@@ -10,7 +10,7 @@ in {
     services.xserver = {
       layout = "gb";
       libinput.enable = true;
+      xkbOptions = "ctrl:swapcaps";
     };
-    xkbOptions = "ctrl:swapcaps";
   };
 }
