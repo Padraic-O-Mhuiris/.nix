@@ -110,9 +110,6 @@ in {
             "inkscape/templates/default.svg".source =
               ./config/inkscape/default-template.svg;
           })
-          (mkIf desktop.browser.qutebrowser.enable {
-            "qutebrowser/extra/theme.py".source = ./config/qutebrowser/theme.py;
-          })
         ];
     })
   ]);
