@@ -128,23 +128,6 @@
     pandoc
   ];
 
-  programs.light.enable = true;
-  services.actkbd = {
-    enable = true;
-    bindings = [
-      {
-        keys = [ 224 ];
-        events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -U 5";
-      }
-      {
-        keys = [ 225 ];
-        events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -A 5";
-      }
-    ];
-  };
-
   # environment = {
   #   etc = {
   #     "sysconfig/lm_sensors".text = ''
@@ -159,28 +142,13 @@
   services.xserver = {
     enable = true;
     dpi = 180;
-    videoDrivers = [ "modesetting" ];
     useGlamor = true;
 
     displayManager = {
       autoLogin = {
         enable = true;
-        user = "padraic";
+        user = config.user.name;
       };
-    };
-
-    layout = "gb";
-    xkbOptions = "ctrl:swapcaps";
-
-    libinput = { enable = true; };
-    desktopManager = {
-      session = [{
-        name = "home-manager";
-        start = ''
-          ${pkgs.runtimeShell} $HOME/.xsession &
-          waitPID=$!
-        '';
-      }];
     };
   };
 }

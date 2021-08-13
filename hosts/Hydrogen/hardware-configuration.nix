@@ -15,6 +15,7 @@ in {
     };
     wallet.enable = true;
     printing.enable = true;
+    keyboard.enable = true;
   };
 
   boot = {
@@ -58,6 +59,25 @@ in {
   hardware.video.hidpi.enable = lib.mkDefault true;
 
   hardware = { cpu.intel.updateMicrocode = true; };
+
+  programs.light.enable = true;
+  services.actkbd = {
+    enable = true;
+    bindings = [
+      {
+        keys = [ 224 ];
+        events = [ "key" ];
+        command = "/run/current-system/sw/bin/light -U 5";
+      }
+      {
+        keys = [ 225 ];
+        events = [ "key" ];
+        command = "/run/current-system/sw/bin/light -A 5";
+      }
+    ];
+  };
+
+  services.xserver.videoDrivers = [ "modesetting" ];
 
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
