@@ -60,20 +60,6 @@
   # sops.secrets.hello.mode = "0440";
   # sops.secrets.hello.owner = config.users.users.padraic.name;
 
-  networking.networkmanager.enable = true;
-  programs.nm-applet.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    nixfmt
-    acpi
-    usbutils
-    powertop
-    xorg.libxcb
-    libusb
-    libcgroup
-    libudev0-shim
-  ];
-
   services.xserver = {
     enable = true;
     dpi = 180;

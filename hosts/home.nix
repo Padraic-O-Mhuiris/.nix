@@ -16,6 +16,9 @@ with lib.my; {
     longitude = -9.03;
   };
 
+  networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
+
   user.packages = with pkgs; [
     coreutils
     binutils

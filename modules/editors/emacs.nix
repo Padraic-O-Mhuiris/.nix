@@ -76,6 +76,7 @@ in {
       graphviz
       pandoc
       wordnet
+      nixfmt
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];

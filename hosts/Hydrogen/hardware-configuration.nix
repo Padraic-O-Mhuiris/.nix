@@ -80,7 +80,9 @@ in {
   services.xserver.videoDrivers = [ "modesetting" ];
 
   powerManagement.enable = true;
+  powerManagement.powertop.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
   services = {
     fwupd.enable = true;
     hardware.bolt.enable = true;
