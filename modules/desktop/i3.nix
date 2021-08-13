@@ -10,7 +10,14 @@ in {
     environment.pathsToLink = [ "/libexec" ];
     services.xserver = {
       enable = true;
-      displayManager = { defaultSession = "none+i3"; };
+      dpi = 180;
+      displayManager = {
+        defaultSession = "none+i3";
+        autoLogin = {
+          enable = true;
+          user = config.user.name;
+        };
+      };
 
       windowManager.i3 = {
         enable = true;
