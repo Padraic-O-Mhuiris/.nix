@@ -90,6 +90,7 @@
 
   services.xserver = {
     enable = true;
+    dpi = 180;
     displayManager = {
       autoLogin = {
         enable = true;
