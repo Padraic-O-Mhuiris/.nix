@@ -77,17 +77,6 @@
     libudev0-shim
   ];
 
-  # environment = {
-  #   etc = {
-  #     "sysconfig/lm_sensors".text = ''
-  #       HWMON_MODULES="coretemp"
-  #     '';
-  #     "modprobe.d/usbhid.conf".text = ''
-  #       options usbhid mousepoll=4
-  #     '';
-  #   };
-  # };
-
   services.xserver = {
     enable = true;
     dpi = 180;
