@@ -48,6 +48,7 @@
       pass.enable = true;
     };
     services = { docker.enable = true; };
+    theme.active = "alucard";
   };
 
   #sops.defaultSopsFile = ../../secrets.yaml;
@@ -59,18 +60,8 @@
   # sops.secrets.hello.mode = "0440";
   # sops.secrets.hello.owner = config.users.users.padraic.name;
 
-  networking = {
-    hostName = "Hydrogen";
-    networkmanager.enable = true;
-    useDHCP = false;
-    interfaces = {
-      enp0s31f6.useDHCP = true;
-      wlp0s20f3.useDHCP = true;
-    };
-    hosts = { "192.168.0.55" = [ "Nitrogen" ]; };
-  };
-
-  programs.nm-applet = { enable = true; };
+  networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   environment.systemPackages = with pkgs; [
     deluge
@@ -99,9 +90,6 @@
 
   services.xserver = {
     enable = true;
-    dpi = 180;
-    useGlamor = true;
-
     displayManager = {
       autoLogin = {
         enable = true;
