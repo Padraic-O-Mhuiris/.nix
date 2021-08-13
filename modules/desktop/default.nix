@@ -24,6 +24,9 @@ in {
       xclip
       xdotool
       xorg.xwininfo
+      deluge
+      vlc
+      flameshot
       libqalculate # calculator cli w/ currency conversion
       (makeDesktopItem {
         name = "scratch-calc";
@@ -33,33 +36,6 @@ in {
         categories = "Development";
       })
     ];
-
-    fonts = {
-      fontDir.enable = true;
-      enableGhostscriptFonts = true;
-      fonts = with pkgs; [
-        iosevka
-        ubuntu_font_family
-        dejavu_fonts
-        symbola
-        noto-fonts
-        noto-fonts-cjk
-        liberation_ttf
-        roboto
-        fira-code
-
-      ];
-      fontconfig = {
-        enable = true;
-        defaultFonts = {
-          monospace = [ "Iosevka" ];
-          sansSerif = [ "Roboto" ];
-          serif = [ "Roboto Slab" ];
-        };
-      };
-      enableDefaultFonts = true;
-
-    };
 
     ## Apps/Services
     services.xserver.displayManager.lightdm.greeters.mini.user =

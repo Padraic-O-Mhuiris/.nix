@@ -34,7 +34,15 @@ in {
         paper-icon-theme # for rofi
       ];
       fonts = {
+        fontDir.enable = true;
+        enableGhostscriptFonts = true;
+
         fonts = with pkgs; [
+          iosevka
+          ubuntu_font_family
+          dejavu_fonts
+          liberation_ttf
+          roboto
           fira-code
           fira-code-symbols
           jetbrains-mono
@@ -42,8 +50,11 @@ in {
           font-awesome-ttf
         ];
         fontconfig.defaultFonts = {
-          sansSerif = [ "Fira Sans" ];
-          monospace = [ "Fira Code" ];
+          enable = true;
+          defaultFonts = {
+            monospace = [ "Iosevka" ];
+            sansSerif = [ "Roboto" ];
+          };
         };
       };
 

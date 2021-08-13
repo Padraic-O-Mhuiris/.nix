@@ -64,10 +64,7 @@
   programs.nm-applet.enable = true;
 
   environment.systemPackages = with pkgs; [
-    deluge
-    vlc
     nixfmt
-    flameshot
     acpi
     usbutils
     powertop
