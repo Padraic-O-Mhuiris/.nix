@@ -18,9 +18,6 @@ alias ports='netstat -tulanp'
 alias mk=make
 alias gurl='curl --compressed'
 
-alias shutdown='sudo shutdown'
-alias reboot='sudo reboot'
-
 # An rsync that respects gitignore
 rcp() {
   # -a = -rlptgoD
