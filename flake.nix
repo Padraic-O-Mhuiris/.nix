@@ -27,10 +27,7 @@
     };
     sops-nix.url = "github:Mic92/sops-nix";
 
-    dapptools = {
-      url = "github:dapphub/dapptools";
-      flake = false;
-    };
+    dapptools = { url = "github:dapphub/dapptools"; };
   };
 
   outputs =
@@ -61,7 +58,6 @@
       overlay = final: prev: {
         unstable = pkgs';
         my = self.packages."${system}";
-        dapptools = (dapptools + /overlay.nix);
       };
 
       # packages."${system}" =
