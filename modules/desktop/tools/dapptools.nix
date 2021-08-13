@@ -6,7 +6,7 @@ with lib.my;
 let
   cfg = config.modules.desktop.tools.dapptools;
 
-  dapptools = import (inputs.dapptools) { };
+  dapptools = import (inputs.dapptools) { system = "x86_64-linux"; };
 
 in {
   options.modules.desktop.tools.dapptools = { enable = mkBoolOpt false; };
