@@ -49,7 +49,7 @@ in {
           siji
           font-awesome-ttf
         ];
-        fontconfig.defaultFonts = {
+        fontconfig = {
           enable = true;
           defaultFonts = {
             monospace = [ "Iosevka" ];
