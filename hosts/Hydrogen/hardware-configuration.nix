@@ -77,7 +77,7 @@ in {
     ];
   };
 
-  env = {
+  environment = {
     etc = {
       "modprobe.d/usbhid.conf".text = ''
         options usbhid mousepoll=4
