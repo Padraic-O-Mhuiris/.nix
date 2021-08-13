@@ -1,6 +1,7 @@
 { config, lib, ... }:
 
-with lib; {
+with lib;
+with lib.my; {
   networking.hosts = let
     hostConfig = { "192.168.0.26" = [ "Hydrogen" ]; };
     hosts = flatten (attrValues hostConfig);
