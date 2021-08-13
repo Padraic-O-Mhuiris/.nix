@@ -77,6 +77,14 @@ in {
     ];
   };
 
+  env = {
+    etc = {
+      "modprobe.d/usbhid.conf".text = ''
+        options usbhid mousepoll=4
+      '';
+    };
+  };
+
   services.xserver.videoDrivers = [ "modesetting" ];
 
   powerManagement.enable = true;
