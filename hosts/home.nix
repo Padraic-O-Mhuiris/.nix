@@ -14,4 +14,23 @@ with lib; {
     latitude = 53.28;
     longitude = -9.03;
   };
+
+  user.packages = with pkgs; [
+    coreutils
+    binutils
+    gnumake
+    gcc
+    htop
+    xclip
+    clang
+    bc
+    vim
+    i7z
+    unzip
+    tree
+    glxinfo
+    jq
+    lm_sensors
+    cachix
+  ];
 }

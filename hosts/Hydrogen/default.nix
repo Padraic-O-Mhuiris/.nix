@@ -73,59 +73,17 @@
   programs.nm-applet = { enable = true; };
 
   environment.systemPackages = with pkgs; [
-    bitwarden
-    bluez
-
-    libical
-    libudev0-shim
-
-    coreutils
     deluge
     vlc
-    binutils
-    gnumake
     nixfmt
     flameshot
-    gcc
-    vim
-    htop
     acpi
-    xclip
-    clang
     usbutils
     powertop
     xorg.libxcb
-    bc
-    cachix
-    i7z
-    unzip
-    tree
-    openssl
     libusb
     libcgroup
     libudev0-shim
-    postgresql
-    glxinfo
-    xdotool
-    clang
-    lm_sensors
-    dmidecode
-    mtools
-    xorg.xbacklight
-    wordnet
-    sqlite
-    xdg-utils
-    signal-desktop
-    nodePackages.bash-language-server
-    nodePackages.bitwarden-cli
-    cargo
-    graphviz
-    jq
-    iw
-    clojure
-    josm
-    shc
-    pandoc
   ];
 
   # environment = {

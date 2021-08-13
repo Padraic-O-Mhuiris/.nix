@@ -68,6 +68,14 @@ in {
       ghc
       hlint
       haskellPackages.brittany
+      libical
+      libudev0-shim
+
+      # TODO may not be necessary for org-roam
+      postgresql
+      graphviz
+      pandoc
+      wordnet
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
