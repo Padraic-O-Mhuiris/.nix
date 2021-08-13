@@ -57,10 +57,7 @@ in {
 
   hardware.video.hidpi.enable = lib.mkDefault true;
 
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-    enableAllFirmware = true;
-  };
+  hardware = { cpu.intel.updateMicrocode = true; };
 
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
