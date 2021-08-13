@@ -3,9 +3,7 @@
 with lib;
 with lib.my;
 
-let
-  inherit (lib) fileContents mkForce;
-  passwordPadraic = mkForce (fileContents ../secrets/padraic);
+let inherit (lib) fileContents mkForce;
 in {
   options = with types; {
     user = mkOpt attrs { };
@@ -53,7 +51,6 @@ in {
       isNormalUser = true;
       home = "/home/${name}";
       group = "users";
-      hashedPassword = passwordPadraic;
       uid = 1000;
     };
 
