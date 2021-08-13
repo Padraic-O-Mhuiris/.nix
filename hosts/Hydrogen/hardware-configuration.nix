@@ -25,7 +25,7 @@ in {
       "fs.inotify.max_user_instances" = 256;
       "fs.inotify.max_user_watches" = 500000;
     };
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-intel" "acpi_call" ];
     kernelPackages = pkgs.linuxPackages_latest;
     loader = { efi.canTouchEfiVariables = true; };
     initrd = {
@@ -56,27 +56,13 @@ in {
   swapDevices =
     [{ device = "/dev/disk/by-uuid/3753c231-1a35-4c07-8145-79ff29be138b"; }];
 
-  hardware.video.hidpi.enable = lib.mkDefault true;
-
-  hardware = { cpu.intel.updateMicrocode = true; };
-
-  programs.light.enable = true;
-  services.actkbd = {
-    enable = true;
-    bindings = [
-      {
-        keys = [ 224 ];
-        events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -U 5";
-      }
-      {
-        keys = [ 225 ];
-        events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -A 5";
-      }
-    ];
+  hardware = {
+    video.hidpi.enable = lib.mkDefault true;
+    opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
+    cpu.intel.updateMicrocode = true;
   };
 
+  programs.light.enable = true;
   environment = {
     etc = {
       "modprobe.d/usbhid.conf".text = ''
@@ -87,12 +73,30 @@ in {
 
   services.xserver.videoDrivers = [ "modesetting" ];
 
-  powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = lib.mkDefault "powersave";
+  };
 
   user.packages = with pkgs; [ acpi ];
 
   services = {
+    actkbd = {
+      enable = true;
+      bindings = [
+        {
+          keys = [ 224 ];
+          events = [ "key" ];
+          command = "/run/current-system/sw/bin/light -U 5";
+        }
+        {
+          keys = [ 225 ];
+          events = [ "key" ];
+          command = "/run/current-system/sw/bin/light -A 5";
+        }
+      ];
+    };
+
     fwupd.enable = true;
     hardware.bolt.enable = true;
     thermald.enable = true;
