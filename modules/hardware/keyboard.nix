@@ -7,8 +7,10 @@ in {
   options.modules.hardware.keyboard = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    service.xserver.layout = "gb";
-    service.xserver.libinput = { enable = true; };
+    services.xserver = {
+      layout = "gb";
+      libinput.enable = true;
+    };
     xkbOptions = "ctrl:swapcaps";
   };
 }
