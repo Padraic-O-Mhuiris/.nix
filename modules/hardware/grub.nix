@@ -7,6 +7,11 @@ in {
   options.modules.hardware.grub = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+    console = {
+      font = "latarcyrheb-sun32";
+      keyMap = "uk";
+    };
+
     boot.loader.grub = {
       enable = true;
       version = 2;

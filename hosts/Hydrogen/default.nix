@@ -7,9 +7,6 @@
 {
   nix = { buildCores = 4; };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
-
   imports = [ ./hardware-configuration.nix ../home.nix ];
 
   modules = {
@@ -62,12 +59,6 @@
   # sops.secrets.hello.mode = "0440";
   # sops.secrets.hello.owner = config.users.users.padraic.name;
 
-  powerManagement.enable = true;
-
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.brlaser ];
-  };
   networking = {
     hostName = "Hydrogen";
     networkmanager.enable = true;
@@ -79,22 +70,6 @@
     hosts = { "192.168.0.55" = [ "Nitrogen" ]; };
   };
 
-  console = {
-    font = "latarcyrheb-sun32";
-    keyMap = "uk";
-  };
-
-  # Enable sound.
-
-  environment.pathsToLink = [ "/share/zsh" ];
-  environment.variables = {
-    GDK_SCALE = "1";
-    GDK_DPI_SCALE = "1";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    SHELL = "zsh";
-  };
-
-  hardware.ledger.enable = true;
   programs.nm-applet = { enable = true; };
 
   environment.systemPackages = with pkgs; [
@@ -148,11 +123,7 @@
     jq
     iw
     clojure
-    babashka
     josm
-    #niv
-    #lorri
-    #direnv
     shc
     pandoc
   ];
@@ -174,19 +145,16 @@
     ];
   };
 
-  environment = {
-    etc = {
-      "sysconfig/lm_sensors".text = ''
-        HWMON_MODULES="coretemp"
-      '';
-      "modprobe.d/usbhid.conf".text = ''
-        options usbhid mousepoll=4
-      '';
-    };
-  };
-
-  services.localtime.enable = true;
-  location.provider = "geoclue2";
+  # environment = {
+  #   etc = {
+  #     "sysconfig/lm_sensors".text = ''
+  #       HWMON_MODULES="coretemp"
+  #     '';
+  #     "modprobe.d/usbhid.conf".text = ''
+  #       options usbhid mousepoll=4
+  #     '';
+  #   };
+  # };
 
   services.xserver = {
     enable = true;

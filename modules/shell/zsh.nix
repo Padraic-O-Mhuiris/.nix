@@ -66,6 +66,7 @@ in {
     '';
 
     env = {
+      SHELL = "zsh";
       ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
       ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
       ZGEN_DIR = "$XDG_DATA_HOME/zsh";

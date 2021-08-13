@@ -13,6 +13,8 @@ in {
       enable = true;
       audio.enable = true;
     };
+    wallet.enable = true;
+    printing.enable = true;
   };
 
   boot = {
@@ -23,6 +25,7 @@ in {
       "fs.inotify.max_user_watches" = 500000;
     };
     kernelModules = [ "kvm-intel" ];
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = { efi.canTouchEfiVariables = true; };
     initrd = {
       availableKernelModules =
@@ -36,7 +39,6 @@ in {
         };
       };
     };
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   fileSystems = {
@@ -53,13 +55,15 @@ in {
   swapDevices =
     [{ device = "/dev/disk/by-uuid/3753c231-1a35-4c07-8145-79ff29be138b"; }];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.video.hidpi.enable = lib.mkDefault true;
+
   hardware = {
     cpu.intel.updateMicrocode = true;
     enableAllFirmware = true;
   };
 
+  powerManagement.enable = true;
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   services = {
     fwupd.enable = true;
     hardware.bolt.enable = true;
