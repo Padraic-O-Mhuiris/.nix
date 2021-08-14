@@ -142,6 +142,8 @@ function build_nixos {
     sed -i "/swapDevices/c\  $SWAP_ENTRY" $NIXOS_HARDWARE
 
     cat $NIXOS_HARDWARE
+
+    ## TODO Add hostid to config
 }
 
 destroy_partitions
