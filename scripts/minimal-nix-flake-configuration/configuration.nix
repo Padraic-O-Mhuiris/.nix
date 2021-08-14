@@ -14,6 +14,8 @@
     extraOptions = "experimental-features = nix-command flakes";
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   boot.loader.grub = {
     enable = true;
     version = 2;
