@@ -48,7 +48,7 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  networking.hostId = "0b73d82f";
+  networking.hostId = "8e60c7db";
 
   #sops.defaultSopsFile = ../../secrets.yaml;
   #sops.gnupgHome = "/home/padraic/.gnupg";
