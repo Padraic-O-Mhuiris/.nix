@@ -7,7 +7,6 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./custom.nix
   ];
 
   nix = {
@@ -27,6 +26,20 @@
     gfxmodeEfi = "1280x800";
     gfxmodeBios = "1280x800";
   };
+
+  boot.zfs.enableUnstable = true;
+  boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
+  services.zfs.autoScrub.enable = true;
+  services.zfs.autoSnapshot = {
+    enable = true;
+    frequent = 8; # keep the latest eight 15-minute snapshots (instead of four)
+    monthly = 1; # keep only one monthly snapshot (instead of twelve)
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  networking.hostId = "708a31d5";
 
   console = {
     font = "latarcyrheb-sun32";
