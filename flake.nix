@@ -5,9 +5,7 @@
 
     master = { url = "github:NixOS/nixpkgs/master"; };
 
-    nixpkgs-unstable.url = "nixpkgs/master"; # for packages on the edge
-
-    nixpkgs = { url = "github:NixOS/nixpkgs/release-21.05"; };
+    nixpkgs.url = "nixpkgs/master"; # for packages on the edge
 
     nix = { url = "github:nixos/nix/master"; };
 
@@ -44,7 +42,7 @@
           overlays = extraOverlays;
         };
       pkgs = mkPkgs nixpkgs [ self.overlay ];
-      pkgs' = mkPkgs nixpkgs-unstable [ ];
+      pkgs' = mkPkgs nixpkgs [ ];
 
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib {
