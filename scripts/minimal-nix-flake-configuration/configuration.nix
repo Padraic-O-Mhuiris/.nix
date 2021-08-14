@@ -33,12 +33,8 @@
     keyMap = "uk";
   };
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable =
-    true; # Enables wireless support via wpa_supplicant.
-
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Dublin";
 
   networking.networkmanager.enable = true;
 
