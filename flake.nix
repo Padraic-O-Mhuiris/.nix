@@ -28,8 +28,7 @@
     dapptools = { url = "github:dapphub/dapptools"; };
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, dapptools, ... }:
+  outputs = inputs@{ self, nixpkgs, sops-nix, dapptools, ... }:
     let
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
