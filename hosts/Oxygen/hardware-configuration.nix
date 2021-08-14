@@ -4,29 +4,30 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "zroot/root/nixos";
-    fsType = "zfs";
-  };
+  fileSystems."/" =
+    { device = "zroot/root/nixos";
+      fsType = "zfs";
+    };
 
-  fileSystems."/home" = {
-    device = "zroot/home";
-    fsType = "zfs";
-  };
+  fileSystems."/home" =
+    { device = "zroot/home";
+      fsType = "zfs";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D1F3-933E";
-    fsType = "vfat";
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/8A4A-3C0A";
+      fsType = "vfat";
+    };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/0ee29234-de33-422b-8b5f-d01a325bba9b"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/192126c6-9ac1-49b6-903f-3b96ba842f7b"; }];
+
 }

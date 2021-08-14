@@ -9,6 +9,14 @@ Need two usb sticks:
 
 Should be straightforward enough, depending on your machine you can find the bootloader in the BIOS somewhere and select the usb with the nixos image which has been prepared on it. If successful it should boot to a term under `[nixos@nixos] $`.
 
+### Use root
+
+Using root makes it easier
+
+``` shell
+su root
+```
+
 ### Connect to wifi
 
 In order to install the os proper, we must connect to the internet to get all the packages necessary. There is a script, `connect_wifi.sh` which should take care of this for you. It also prepares an ssh environment which makes it easy for users to manage the install from a more comfortable environment. 
@@ -31,4 +39,17 @@ The output will ask for the wifi SSID and Password so it can find and connect to
 
 ### Running os commands over ssh
 
+### 
+
+Jump into unstable nix to use flakes
+
+``` shell
+nix-shell -p nixUnstable
+```
+
+Install:
+
+``` shell
+sudo nixos-install --root /mnt --flake github:Padraic-O-Mhuiris/.nix#Oxygen
+```
 
