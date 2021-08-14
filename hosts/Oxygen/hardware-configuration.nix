@@ -29,8 +29,4 @@
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/0ee29234-de33-422b-8b5f-d01a325bba9b"; }];
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  networking.hostId = "0b73d82f";
 }

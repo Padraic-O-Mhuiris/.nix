@@ -47,6 +47,9 @@
     theme.active = "alucard";
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+  networking.hostId = "0b73d82f";
+
   #sops.defaultSopsFile = ../../secrets.yaml;
   #sops.gnupgHome = "/home/padraic/.gnupg";
   #sops.sshKeyPaths = [];
