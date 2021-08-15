@@ -46,12 +46,32 @@
     services = { docker.enable = true; };
     theme.active = "alucard";
   };
-  #sops.defaultSopsFile = ../../secrets.yaml;
-  #sops.gnupgHome = "/home/padraic/.gnupg";
-  #sops.sshKeyPaths = [];
 
-  #sops.secrets.hello = {};
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # sops.secrets.hello.mode = "0440";
-  # sops.secrets.hello.owner = config.users.users.padraic.name;
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    zfsSupport = true;
+    efiSupport = true;
+    device = "nodev";
+    fontSize = 30;
+    gfxmodeEfi = "1280x800";
+    gfxmodeBios = "1280x800";
+  };
+
+  boot.zfs.enableUnstable = true;
+  boot.zfs.requestEncryptionCredentials = true;
+  boot.zfs.devNodes = "/dev/disk/by-path";
+
+  boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
+  services.zfs.autoScrub.enable = true;
+  services.zfs.autoSnapshot.enable = true;
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  networking.hostId = "92c7e9d8";
+
 }

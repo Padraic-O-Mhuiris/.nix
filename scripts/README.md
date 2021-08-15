@@ -54,6 +54,10 @@ nix-shell -p nixUnstable
 Install:
 
 ``` shell
+nixos-install --no-root-passwd
+```
+
+``` shell
 sudo nixos-install --root /mnt --flake github:Padraic-O-Mhuiris/.nix#Oxygen
 ```
 
@@ -63,3 +67,4 @@ sudo nixos-install --root /mnt --flake github:Padraic-O-Mhuiris/.nix#Oxygen
 - pull in public gpg key
 - pull nix project into home dir
 - symlink /etc/nixos appropriately
+
