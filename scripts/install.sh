@@ -145,9 +145,9 @@ function build_nixos {
 
     sed -i "/swapDevices/c\  $SWAP_ENTRY" $NIXOS_HARDWARE
 
-    HOSTID="networking.hostid = \"$(hostid)\"";
-    sed "$(($(wc -l < $NIXOS_HARDWARE)-$2))a""$HOSTID" $NIXOS_HARDWARE
-
+    HOSTID="  networking.hostid = \"$(hostid)\"";
+    OUTPUT=$(head -n -2 file ; echo $HOSTID ; tail -2 file)
+    echo "$OUTPUT" > $NIXOS_HARDWARE
     cp $HOME/.nix/scripts/minimal-nix-flake-configuration/configuration.nix /mnt/etc/nixos
 }
 
