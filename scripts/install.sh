@@ -126,6 +126,7 @@ function mount_filesystem {
     mkdir -p $MOUNTPOINT_BOOT
     mount $(boot_partition) $MOUNTPOINT_BOOT
 
+    echo "SWAP $(swap_partition)"
     mkswap -L $(swap_partition)
 }
 
@@ -150,5 +151,5 @@ destroy_partitions
 create_partitions
 #encrypt_partitions
 setup_zfs
-mount_filesystem
-build_nixos
+#mount_filesystem
+#build_nixos
