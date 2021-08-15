@@ -150,27 +150,30 @@
         #list-options show-unusable-subkeys
       '';
 
-      home.file."config/git/config".text = ''
-        [user]
-        	name = Pádraic Ó Mhuiris
-        	email = patrick.morris.310@gmail.com
-        	signingKey = 9A51DBF629888EE75982008D9DCE7055406806F8
-        [core]
-        	whitespace = trailing-space
-        [init]
-        	defaultBranch = main
-        [github]
-        	user = Padraic-O-Mhuiris
-        [rebase]
-        	autosquash = true
-        [push]
-        	default = current
-        [pull]
-        	rebase = true
-        [commit]
-        	gpgSign = true
-        [http]
-            postBuffer = '' 524288000 "\n";
+      home.file."config/git/config" = {
+        text = ''
+          [user]
+          	name = Pádraic Ó Mhuiris
+          	email = patrick.morris.310@gmail.com
+          	signingKey = 9A51DBF629888EE75982008D9DCE7055406806F8
+          [core]
+          	whitespace = trailing-space
+          [init]
+          	defaultBranch = main
+          [github]
+          	user = Padraic-O-Mhuiris
+          [rebase]
+          	autosquash = true
+          [push]
+          	default = current
+          [pull]
+          	rebase = true
+          [commit]
+          	gpgSign = true
+          [http]
+              postBuffer = 524288000
+        '';
+      };
 
       home.file.".ssh/id_rsa.pub".text =
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgUhCu8wM3/3cVmYNhhB6tkSiMHuD5PAcundraTGb7dSesP8XbC9kKttncXGAJcKwgGeXBpsRO2OHNtksJFtUkxB5NAAsMZthxe/k1xen58rw6R4qjTqg+JrSF3X5gZJNLszE1yItgFJCYfMMNXQIQLRclbBlXYAKC32w018xMQpFw2ecvlqTwg37N7rrMxFKHi4CASbnySsrMnYQW9JrOrX3cSHQXuOB47CsKPuOhLnJ//cE+aWgEF4hLLAqnSiqLuqKQQwBxywxHGRQPaFtPNydbmmMcuJKxcNSKqKePFXw+CpZDvRGOssiDOn2hkBl66qj0ED0C4mOYNspZxA/wahiSqhkUEKK4CtuNgjV39m+q9L/z/I5m1CSRrXXPFlG5ukCbvzD5jovvEuNa4UrVl0TLUZVUaErXcXl5innSv05Y9mXhzM1myba0L4UJKCRgCxFW48FnfteLWI6+4t+yl0rXvlhzyuXCY9XS1WrmL7kBtnErEPTRBeaPLsh7fMKm5wwrfBHWYg/WTR7TLdcD/zAcHiaZPRpmFa3RIBJWHjHe9sZkWMfFxrNQLYg9y/MoSjYEqZBWzO+J9I3SkT9T1VIX3ynolasWPuzXc9ntXjxtMBslyN50SSkNR28TO+pob2KSyf+6F7d2XA37pOuvdqdoAdHBBnbZ277s/rOIAw== openpgp:0xAF0D2F25";
