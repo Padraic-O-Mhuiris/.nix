@@ -9,7 +9,7 @@
     # Must pull in home-manager from channel to run first
     # nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz home-manager
     # nix-channel --update
-    <home-manager/nixos>
+    # <home-manager/nixos>
   ];
 
   nix = {
@@ -72,115 +72,116 @@
     mutableUsers = true;
     users.padraic = {
       isNormalUser = true;
+      createHome = true;
       home = "/home/padraic";
       extraGroups = [ "wheel" "networkmanager" ];
       initialPassword = "abc123";
     };
   };
 
-  home-manager.users.padraic = {
-    home.file.".config/gnupg/gpg-agent.conf" = {
-      text = ''
-        default-cache-ttl 3600
-        pinentry-program ${pkgs.pinentry.gnome3}/bin/pinentry
-        allow-emacs-pinentry
-        allow-loopback-pinentry
+  # home-manager.users.padraic = {
+  #   home.file.".config/gnupg/gpg-agent.conf" = {
+  #     text = ''
+  #       default-cache-ttl 3600
+  #       pinentry-program ${pkgs.pinentry.gnome3}/bin/pinentry
+  #       allow-emacs-pinentry
+  #       allow-loopback-pinentry
 
-        ## test comment
-        # https://github.com/drduh/config/blob/master/gpg.conf
-        # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
-        # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html
-        # Use AES256, 192, or 128 as cipher
-        personal-cipher-preferences AES256 AES192 AES
-        # Use SHA512, 384, or 256 as digest
-        personal-digest-preferences SHA512 SHA384 SHA256
-        # Use ZLIB, BZIP2, ZIP, or no compression
-        personal-compress-preferences ZLIB BZIP2 ZIP Uncompressed
-        # Default preferences for new keys
-        default-preference-list SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
-        # SHA512 as digest to sign keys
-        cert-digest-algo SHA512
-        # SHA512 as digest for symmetric ops
-        s2k-digest-algo SHA512
-        # AES256 as cipher for symmetric ops
-        s2k-cipher-algo AES256
-        # UTF-8 support for compatibility
-        charset utf-8
-        # Show Unix timestamps
-        fixed-list-mode
-        # No comments in signature
-        no-comments
-        # No version in output
-        no-emit-version
-        # Disable banner
-        no-greeting
-        # Long hexidecimal key format
-        keyid-format 0xlong
-        # Display UID validity
-        list-options show-uid-validity
-        verify-options show-uid-validity
-        # Display all keys and their fingerprints
-        with-fingerprint
-        # Display key origins and updates
-        #with-key-origin
-        # Cross-certify subkeys are present and valid
-        require-cross-certification
-        # Disable caching of passphrase for symmetrical ops
-        no-symkey-cache
-        # Enable smartcard
-        use-agent
-        # Disable recipient key ID in messages
-        throw-keyids
-        # Default/trusted key ID to use (helpful with throw-keyids)
-        #default-key 0xFF3E7D88647EBCDB
-        #trusted-key 0xFF3E7D88647EBCDB
-        # Group recipient keys (preferred ID last)
-        #group keygroup = 0xFF00000000000001 0xFF00000000000002 0xFF3E7D88647EBCDB
-        # Keyserver URL
-        #keyserver hkps://keys.openpgp.org
-        #keyserver hkps://keyserver.ubuntu.com:443
-        #keyserver hkps://hkps.pool.sks-keyservers.net
-        #keyserver hkps://pgp.ocf.berkeley.edu
-        # Proxy to use for keyservers
-        #keyserver-options http-proxy=http://127.0.0.1:8118
-        #keyserver-options http-proxy=socks5-hostname://127.0.0.1:9050
-        # Verbose output
-        #verbose
-        # Show expired subkeys
-        #list-options show-unusable-subkeys
-      '';
+  #       ## test comment
+  #       # https://github.com/drduh/config/blob/master/gpg.conf
+  #       # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
+  #       # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html
+  #       # Use AES256, 192, or 128 as cipher
+  #       personal-cipher-preferences AES256 AES192 AES
+  #       # Use SHA512, 384, or 256 as digest
+  #       personal-digest-preferences SHA512 SHA384 SHA256
+  #       # Use ZLIB, BZIP2, ZIP, or no compression
+  #       personal-compress-preferences ZLIB BZIP2 ZIP Uncompressed
+  #       # Default preferences for new keys
+  #       default-preference-list SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
+  #       # SHA512 as digest to sign keys
+  #       cert-digest-algo SHA512
+  #       # SHA512 as digest for symmetric ops
+  #       s2k-digest-algo SHA512
+  #       # AES256 as cipher for symmetric ops
+  #       s2k-cipher-algo AES256
+  #       # UTF-8 support for compatibility
+  #       charset utf-8
+  #       # Show Unix timestamps
+  #       fixed-list-mode
+  #       # No comments in signature
+  #       no-comments
+  #       # No version in output
+  #       no-emit-version
+  #       # Disable banner
+  #       no-greeting
+  #       # Long hexidecimal key format
+  #       keyid-format 0xlong
+  #       # Display UID validity
+  #       list-options show-uid-validity
+  #       verify-options show-uid-validity
+  #       # Display all keys and their fingerprints
+  #       with-fingerprint
+  #       # Display key origins and updates
+  #       #with-key-origin
+  #       # Cross-certify subkeys are present and valid
+  #       require-cross-certification
+  #       # Disable caching of passphrase for symmetrical ops
+  #       no-symkey-cache
+  #       # Enable smartcard
+  #       use-agent
+  #       # Disable recipient key ID in messages
+  #       throw-keyids
+  #       # Default/trusted key ID to use (helpful with throw-keyids)
+  #       #default-key 0xFF3E7D88647EBCDB
+  #       #trusted-key 0xFF3E7D88647EBCDB
+  #       # Group recipient keys (preferred ID last)
+  #       #group keygroup = 0xFF00000000000001 0xFF00000000000002 0xFF3E7D88647EBCDB
+  #       # Keyserver URL
+  #       #keyserver hkps://keys.openpgp.org
+  #       #keyserver hkps://keyserver.ubuntu.com:443
+  #       #keyserver hkps://hkps.pool.sks-keyservers.net
+  #       #keyserver hkps://pgp.ocf.berkeley.edu
+  #       # Proxy to use for keyservers
+  #       #keyserver-options http-proxy=http://127.0.0.1:8118
+  #       #keyserver-options http-proxy=socks5-hostname://127.0.0.1:9050
+  #       # Verbose output
+  #       #verbose
+  #       # Show expired subkeys
+  #       #list-options show-unusable-subkeys
+  #     '';
 
-      home.file."config/git/config" = {
-        text = ''
-          [user]
-          	name = Pádraic Ó Mhuiris
-          	email = patrick.morris.310@gmail.com
-          	signingKey = 9A51DBF629888EE75982008D9DCE7055406806F8
-          [core]
-          	whitespace = trailing-space
-          [init]
-          	defaultBranch = main
-          [github]
-          	user = Padraic-O-Mhuiris
-          [rebase]
-          	autosquash = true
-          [push]
-          	default = current
-          [pull]
-          	rebase = true
-          [commit]
-          	gpgSign = true
-          [http]
-              postBuffer = 524288000
-        '';
-      };
+  #     home.file."config/git/config" = {
+  #       text = ''
+  #         [user]
+  #         	name = Pádraic Ó Mhuiris
+  #         	email = patrick.morris.310@gmail.com
+  #         	signingKey = 9A51DBF629888EE75982008D9DCE7055406806F8
+  #         [core]
+  #         	whitespace = trailing-space
+  #         [init]
+  #         	defaultBranch = main
+  #         [github]
+  #         	user = Padraic-O-Mhuiris
+  #         [rebase]
+  #         	autosquash = true
+  #         [push]
+  #         	default = current
+  #         [pull]
+  #         	rebase = true
+  #         [commit]
+  #         	gpgSign = true
+  #         [http]
+  #             postBuffer = 524288000
+  #       '';
+  #     };
 
-      home.file.".ssh/id_rsa.pub" = {
-        text =
-          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgUhCu8wM3/3cVmYNhhB6tkSiMHuD5PAcundraTGb7dSesP8XbC9kKttncXGAJcKwgGeXBpsRO2OHNtksJFtUkxB5NAAsMZthxe/k1xen58rw6R4qjTqg+JrSF3X5gZJNLszE1yItgFJCYfMMNXQIQLRclbBlXYAKC32w018xMQpFw2ecvlqTwg37N7rrMxFKHi4CASbnySsrMnYQW9JrOrX3cSHQXuOB47CsKPuOhLnJ//cE+aWgEF4hLLAqnSiqLuqKQQwBxywxHGRQPaFtPNydbmmMcuJKxcNSKqKePFXw+CpZDvRGOssiDOn2hkBl66qj0ED0C4mOYNspZxA/wahiSqhkUEKK4CtuNgjV39m+q9L/z/I5m1CSRrXXPFlG5ukCbvzD5jovvEuNa4UrVl0TLUZVUaErXcXl5innSv05Y9mXhzM1myba0L4UJKCRgCxFW48FnfteLWI6+4t+yl0rXvlhzyuXCY9XS1WrmL7kBtnErEPTRBeaPLsh7fMKm5wwrfBHWYg/WTR7TLdcD/zAcHiaZPRpmFa3RIBJWHjHe9sZkWMfFxrNQLYg9y/MoSjYEqZBWzO+J9I3SkT9T1VIX3ynolasWPuzXc9ntXjxtMBslyN50SSkNR28TO+pob2KSyf+6F7d2XA37pOuvdqdoAdHBBnbZ277s/rOIAw== openpgp:0xAF0D2F25";
-      };
-    };
-  };
+  #     home.file.".ssh/id_rsa.pub" = {
+  #       text =
+  #         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgUhCu8wM3/3cVmYNhhB6tkSiMHuD5PAcundraTGb7dSesP8XbC9kKttncXGAJcKwgGeXBpsRO2OHNtksJFtUkxB5NAAsMZthxe/k1xen58rw6R4qjTqg+JrSF3X5gZJNLszE1yItgFJCYfMMNXQIQLRclbBlXYAKC32w018xMQpFw2ecvlqTwg37N7rrMxFKHi4CASbnySsrMnYQW9JrOrX3cSHQXuOB47CsKPuOhLnJ//cE+aWgEF4hLLAqnSiqLuqKQQwBxywxHGRQPaFtPNydbmmMcuJKxcNSKqKePFXw+CpZDvRGOssiDOn2hkBl66qj0ED0C4mOYNspZxA/wahiSqhkUEKK4CtuNgjV39m+q9L/z/I5m1CSRrXXPFlG5ukCbvzD5jovvEuNa4UrVl0TLUZVUaErXcXl5innSv05Y9mXhzM1myba0L4UJKCRgCxFW48FnfteLWI6+4t+yl0rXvlhzyuXCY9XS1WrmL7kBtnErEPTRBeaPLsh7fMKm5wwrfBHWYg/WTR7TLdcD/zAcHiaZPRpmFa3RIBJWHjHe9sZkWMfFxrNQLYg9y/MoSjYEqZBWzO+J9I3SkT9T1VIX3ynolasWPuzXc9ntXjxtMBslyN50SSkNR28TO+pob2KSyf+6F7d2XA37pOuvdqdoAdHBBnbZ277s/rOIAw== openpgp:0xAF0D2F25";
+  #     };
+  #   };
+  # };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

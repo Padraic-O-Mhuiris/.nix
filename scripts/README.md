@@ -61,3 +61,5 @@ sudo nixos-install --root /mnt --flake github:Padraic-O-Mhuiris/.nix#Oxygen
 - set user password
 - set root password to something unfindable
 - pull in public gpg key
+- pull nix project into home dir
+- symlink /etc/nixos appropriately
