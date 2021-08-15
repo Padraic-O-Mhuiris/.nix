@@ -57,7 +57,8 @@
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-  enviromnment.sessionVariables = { GNUPGHOME = "$HOME/.config/gnupg"; };
+  environment.sessionVariables = { GNUPGHOME = "$HOME/.config/gnupg"; };
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
