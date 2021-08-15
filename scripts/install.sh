@@ -112,7 +112,7 @@ function setup_zfs {
 
     zfs create -o mountpoint=none $ZFS_ROOT
     zfs create -o mountpoint=legacy $ZFS_NIXOS
-    zfs create -o mountpoint=legacy o com.sun:auto-snapshot=true $ZFS_HOME
+    zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=true $ZFS_HOME
 
     zfs set compression=lz4 $ZFS_HOME
 }
