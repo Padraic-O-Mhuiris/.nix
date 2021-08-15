@@ -72,11 +72,11 @@
     isNormalUser = true;
     home = "/home/padraic";
     extraGroups = [ "wheel" "networkmanager" ];
-    users.mutableUsers = true;
+    mutableUsers = true;
     initialPassword = "abc123";
   };
 
-  users.users.root = { users.mutableUsers = true; };
+  users.users.root = { mutableUsers = true; };
 
   home-manager.users.padraic = {
     home.file.".config/gnupg/gpg-agent.conf" = {
