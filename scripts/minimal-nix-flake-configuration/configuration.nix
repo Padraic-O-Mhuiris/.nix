@@ -34,7 +34,6 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   networking.hostname = "Oxygen";
-  networking.hostId = "92c7e9d8";
 
   console = {
     font = "latarcyrheb-sun32";
