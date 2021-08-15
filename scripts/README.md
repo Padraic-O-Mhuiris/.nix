@@ -58,14 +58,14 @@ nixos-install --no-root-passwd
 ```
 
 # Post install
-- pull nix project into home dir
-- set git config
-- set gpg config
-- pull in public gpg 
+- connect wifi
+- pull nix project into home dir via https
 - delete all files /etc/nixos
+- run:
 
 ``` shell
-sudo nixos-rebuild --flake "$HOME/.nix" switch
+sudo nixos-rebuild --flake "$HOME/.nix#<HOST>" switch
 ```
 
+- 
 
