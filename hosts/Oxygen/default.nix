@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  nix = { buildCores = 4; };
+  nix = { buildCores = 16; };
 
   imports = [ ./hardware-configuration.nix ../home.nix ];
 
