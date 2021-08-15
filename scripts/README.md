@@ -44,6 +44,7 @@ The output will ask for the wifi SSID and Password so it can find and connect to
 ### Bootstrapping
 
 We need access to the install.sh script in this project so jump into a nix-shell with git for better access
+
 ``` shell
 nix-shell -p git
 ```
@@ -60,25 +61,15 @@ Edit the installation script so it specifies the correct directories. It should 
 ~/.nix/scripts/install.sh
 ```
 
-Sometimes it may fail unexpectedly due to what was on the disks prior but a second run will sort that out
-
-Get the machine-id which is used as a host identifier for zfs. 
-
-``` shell
-head -c 8 /etc/machine-id
-```
-
-This must then be inserted into the minimal config
-
-``` shell
-networking.hostId = "1234abcd";
-```
+Sometimes it may fail unexpectedly due to what was on the disks prior but a second run will sort that out. Verify that the hardware-configuration.nix is auto-generated with the swap and host id added. Also verify that the configuration.nix is the one specified in the minimal-nix-flake-configuration
 
 Install:
 
 ``` shell
 nixos-install --no-root-passwd
 ```
+
+Should run through the process without issue and reboot, removing the installation media
 
 # Post install
 - connect wifi
