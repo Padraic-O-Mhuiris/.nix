@@ -48,6 +48,10 @@ function zpools {
     zpool list -Ho name | xargs
 }
 
+function hostid {
+    head -c 8 /etc/machine-id
+}
+
 function destroy_partitions {
     mountpoint -q $MOUNTPOINT_ROOT && umount -R $MOUNTPOINT_ROOT
        
@@ -141,9 +145,10 @@ function build_nixos {
 
     sed -i "/swapDevices/c\  $SWAP_ENTRY" $NIXOS_HARDWARE
 
-    cat $NIXOS_HARDWARE
+    HOSTID="networking.hostid = \"$(hostid)\"";
+    sed -zE "s/(\n[^\n]*){2}$/\$HOSTID&/" $NIXOS_HARDWARE
 
-    ## TODO Add hostid to config
+    cp $HOME/.nix/scripts/minimal-nix-flake-configuration/configuration.nix /mnt/etc/nixos
 }
 
 destroy_partitions

@@ -41,14 +41,37 @@ Running the script should be straightforward:
 
 The output will ask for the wifi SSID and Password so it can find and connect to it. This will create a wifi.text file making it easy to connect again if necessary. Then it should ask for a password for the user so it is possible to ssh.
 
-### Running os commands over ssh
+### Bootstrapping
 
-### 
+We need access to the install.sh script in this project so jump into a nix-shell with git for better access
+``` shell
+nix-shell -p git
+```
 
-Jump into unstable nix to use flakes
+Clone the repo
 
 ``` shell
-nix-shell -p nixUnstable
+git clone https://github.com/Padraic-O-Mhuiris/.nix.git
+```
+
+Edit the installation script so it specifies the correct directories. It should already be an executable so run:
+
+``` shell
+~/.nix/scripts/install.sh
+```
+
+Sometimes it may fail unexpectedly due to what was on the disks prior but a second run will sort that out
+
+Get the machine-id which is used as a host identifier for zfs. 
+
+``` shell
+head -c 8 /etc/machine-id
+```
+
+This must then be inserted into the minimal config
+
+``` shell
+networking.hostId = "1234abcd";
 ```
 
 Install:
