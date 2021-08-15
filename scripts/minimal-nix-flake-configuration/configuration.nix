@@ -38,7 +38,7 @@
   services.zfs.autoSnapshot.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  networking.hostId = "708a31d5";
+  networking.hostId = "a935bae3";
 
   console = {
     font = "latarcyrheb-sun32";
