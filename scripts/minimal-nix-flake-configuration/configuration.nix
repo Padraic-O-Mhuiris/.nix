@@ -27,7 +27,6 @@
     gfxmodeBios = "1280x800";
   };
 
-  boot.zfs.enabled = true;
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
 
