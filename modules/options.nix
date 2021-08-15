@@ -84,8 +84,9 @@ in {
     };
 
     users.users.${config.user.name} = mkAliasDefinitions options.user;
+    users.mutableUsers = false;
 
-    nix = let users = [ "root" config.user.name ];
+    nix = let users = [ config.user.name ];
     in {
       trustedUsers = users;
       allowedUsers = users;

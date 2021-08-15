@@ -57,14 +57,15 @@ Install:
 nixos-install --no-root-passwd
 ```
 
+# Post install
+- pull nix project into home dir
+- set git config
+- set gpg config
+- pull in public gpg 
+- delete all files /etc/nixos
+
 ``` shell
-sudo nixos-install --root /mnt --flake github:Padraic-O-Mhuiris/.nix#Oxygen
+sudo nixos-rebuild --flake "$HOME/.nix" switch
 ```
 
-# Post install
-- set user password
-- set root password to something unfindable
-- pull in public gpg key
-- pull nix project into home dir
-- symlink /etc/nixos appropriately
 
