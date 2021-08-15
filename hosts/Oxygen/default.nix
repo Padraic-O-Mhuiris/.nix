@@ -31,7 +31,7 @@
     editors = {
       default = "nvim";
       vim.enable = true;
-      emacs.enable = false;
+      emacs.enable = true;
       languages = {
         javascript.enable = true;
         python.enable = true;
@@ -72,6 +72,5 @@
   services.zfs.autoSnapshot.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  networking.hostId = "92c7e9d8";
 
 }
