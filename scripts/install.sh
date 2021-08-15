@@ -108,7 +108,7 @@ function setup_zfs {
         -O mountpoint=none \
         -O encryption=aes-256-gcm \
         -O keyformat=passphrase \
-        $ZFS_POOL $(filesystem_partitions)
+        $ZFS_POOL $(filesystem_partitions) -f
 
     zfs create -o mountpoint=none $ZFS_ROOT
     zfs create -o mountpoint=legacy $ZFS_NIXOS
