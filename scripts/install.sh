@@ -146,7 +146,7 @@ function build_nixos {
     sed -i "/swapDevices/c\  $SWAP_ENTRY" $NIXOS_HARDWARE
 
     HOSTID="networking.hostid = \"$(hostid)\"";
-    sed -zE "s/(\n[^\n]*){2}$/\$HOSTID&/" $NIXOS_HARDWARE
+    sed "$(($(wc -l < $NIXOS_HARDWARE)-$2))a""$HOSTID" $NIXOS_HARDWARE
 
     cp $HOME/.nix/scripts/minimal-nix-flake-configuration/configuration.nix /mnt/etc/nixos
 }
