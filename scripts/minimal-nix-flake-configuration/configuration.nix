@@ -68,15 +68,15 @@
   services.pcscd.enable = true;
   services.udev.packages = with pkgs; [ yubikey-personalization libu2f-host ];
 
-  users.users.padraic = {
-    isNormalUser = true;
-    home = "/home/padraic";
-    extraGroups = [ "wheel" "networkmanager" ];
+  users = {
     mutableUsers = true;
-    initialPassword = "abc123";
+    users.padraic = {
+      isNormalUser = true;
+      home = "/home/padraic";
+      extraGroups = [ "wheel" "networkmanager" ];
+      initialPassword = "abc123";
+    };
   };
-
-  users.users.root = { mutableUsers = true; };
 
   home-manager.users.padraic = {
     home.file.".config/gnupg/gpg-agent.conf" = {
@@ -273,6 +273,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }
-
