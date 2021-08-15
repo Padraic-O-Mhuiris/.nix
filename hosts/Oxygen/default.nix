@@ -73,4 +73,16 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  modules.hardware = {
+    audio.enable = true;
+    fs.enable = true;
+    bluetooth = {
+      enable = true;
+      audio.enable = true;
+    };
+    wallet.enable = true;
+    printing.enable = true;
+    keyboard.enable = true;
+  };
+
 }
