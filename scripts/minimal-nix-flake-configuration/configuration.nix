@@ -16,16 +16,19 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    zfsSupport = true;
-    efiSupport = true;
-    device = "nodev";
-    fontSize = 30;
-    gfxmodeEfi = "1280x800";
-    gfxmodeBios = "1280x800";
-  };
+  # boot.loader.grub = {
+  #   enable = true;
+  #   version = 2;
+  #   zfsSupport = true;
+  #   efiSupport = true;
+  #   device = "nodev";
+  #   fontSize = 30;
+  #   gfxmodeEfi = "1280x800";
+  #   gfxmodeBios = "1280x800";
+  # };
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.zfs.enableUnstable = true;
   boot.zfs.requestEncryptionCredentials = true;
