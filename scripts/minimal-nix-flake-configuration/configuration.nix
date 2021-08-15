@@ -27,6 +27,7 @@
     gfxmodeBios = "1280x800";
   };
 
+  boot.zfs.enableUnstable = true;
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
 
@@ -37,7 +38,7 @@
   services.zfs.autoSnapshot.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  networking.hostId = "a935bae3";
+  networking.hostId = "d93bb95f";
 
   console = {
     font = "latarcyrheb-sun32";

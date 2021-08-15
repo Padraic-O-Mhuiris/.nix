@@ -105,8 +105,8 @@ function setup_zfs {
    zpool create \
         -o ashift=12 \
         -o altroot="/mnt" \
-        -O mountpoint=none -O \
-        encryption=aes-256-gcm \
+        -O mountpoint=none \
+        -O encryption=aes-256-gcm \
         -O keyformat=passphrase \
         $ZFS_POOL $(filesystem_partitions)
 
