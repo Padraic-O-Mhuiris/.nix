@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-declare -a DISKS=("/dev/nvme0n1" "/dev/sda")
+declare -a DISKS=("/dev/nvme0n1")
 
 FIRST_DISK=${DISKS[0]}
 OTHER_DISK=${DISKS[@]:1}
