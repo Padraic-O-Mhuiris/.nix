@@ -127,7 +127,6 @@ function mount_filesystem {
     mount $(boot_partition) $MOUNTPOINT_BOOT
 
     mkswap -L swap $(swap_partition)
-    swapon $(swap_partition)
 }
 
 function build_nixos {
