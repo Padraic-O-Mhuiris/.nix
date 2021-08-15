@@ -82,13 +82,13 @@ function create_partitions {
     partprobe $FIRST_DISK
     sleep 1
 
-    for DISK in "$OTHER_DISK"; do
-        ((i=i+1))
-        sgdisk -n 0:0:0 -t 0:BF01 -c "0:ZFS-$i" $DISK
-        sgdisk -p $DISK
-        partprobe $DISK
-        sleep 1
-    done
+    # for DISK in "$OTHER_DISK"; do
+    #     ((i=i+1))
+    #     sgdisk -n 0:0:0 -t 0:BF01 -c "0:ZFS-$i" $DISK
+    #     sgdisk -p $DISK
+    #     partprobe $DISK
+    #     sleep 1
+    # done
 }
 
 # function encrypt_partitions {
