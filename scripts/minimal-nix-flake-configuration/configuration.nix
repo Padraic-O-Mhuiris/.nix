@@ -2,18 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "72f3bc6fa461a2899a06c87c137c7135e410e387"; # the commit to fetch
-    ref =
-      "release-21.05"; # the branch to follow: release-xx.yy for stable nixos or master for nixos-unstable.
-  };
-in {
+{ config, pkgs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    (import "${home-manager}/nixos")
+
+    # Must pull in home-manager from channel to run first
+    # nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz home-manager
+    # nix-channel --update
+    <home-manager/nixos>
   ];
 
   nix = {
@@ -78,6 +74,8 @@ in {
     users.mutableUsers = true;
     initialPassword = "abc123";
   };
+
+  users.users.root = { users.mutableUsers = true; };
 
   home-manager.users.padraic = {
     home.file.".config/gnupg/gpg-agent.conf" = {

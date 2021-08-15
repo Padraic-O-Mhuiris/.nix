@@ -57,3 +57,7 @@ Install:
 sudo nixos-install --root /mnt --flake github:Padraic-O-Mhuiris/.nix#Oxygen
 ```
 
+# Post install
+- set user password
+- set root password to something unfindable
+- pull in public gpg key
