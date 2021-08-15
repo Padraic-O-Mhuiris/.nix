@@ -19,7 +19,7 @@
       };
       tools = {
         libreoffice.enable = true;
-        dapptools.enable = true;
+        dapptools.enable = false;
       };
       media = { spotify.enable = true; };
       browser = {
