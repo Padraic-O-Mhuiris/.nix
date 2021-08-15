@@ -58,7 +58,7 @@
 
   users = {
     mutableUsers = false;
-    root.hashedPassword = "*";
+    users.root.hashedPassword = "*";
     users.padraic = {
       isNormalUser = true;
       createHome = true;
