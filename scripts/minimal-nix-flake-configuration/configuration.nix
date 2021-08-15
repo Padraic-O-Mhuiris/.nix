@@ -33,6 +33,7 @@
   services.zfs.autoSnapshot.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  networking.hostname = "Oxygen";
   networking.hostId = "92c7e9d8";
 
   console = {
