@@ -60,6 +60,7 @@ nixos-install --no-root-passwd
 # Post install
 - connect wifi
 - pull nix project into home dir via https
+- copy /etc/nixos/hardware-configuration.nix to correct host directory
 - delete all files /etc/nixos
 - run:
 
@@ -67,5 +68,8 @@ nixos-install --no-root-passwd
 sudo nixos-rebuild --flake "$HOME/.nix#<HOST>" switch
 ```
 
-- 
+- pull public key into keyring and check if gpg is working
+- check if git is accessible and if so change project folder from https to ssh
+- cleanup files, system should be functionally configured
+- pull in other projects, secrets and org files
 
