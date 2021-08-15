@@ -15,10 +15,10 @@ Should be straightforward enough, depending on your machine you can find the boo
 
 ### Use root
 
-Using root makes it easier
+Dropping in to root environment makes it easier install things
 
 ``` shell
-su root
+sudo -i
 ```
 
 ### Connect to wifi

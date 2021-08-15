@@ -19,24 +19,23 @@
   boot.loader.grub = {
     enable = true;
     version = 2;
+    zfsSupport = true;
     efiSupport = true;
-    enableCryptodisk = true;
     device = "nodev";
     fontSize = 30;
     gfxmodeEfi = "1280x800";
     gfxmodeBios = "1280x800";
   };
 
-  boot.zfs.enableUnstable = true;
+  boot.zfs.enabled = true;
+  boot.zfs.requestEncryptionCredentials = true;
+  boot.zfs.devNodes = "/dev/disk/by-path";
+
   boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
   boot.supportedFilesystems = [ "zfs" ];
   boot.kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
   services.zfs.autoScrub.enable = true;
-  services.zfs.autoSnapshot = {
-    enable = true;
-    frequent = 8; # keep the latest eight 15-minute snapshots (instead of four)
-    monthly = 1; # keep only one monthly snapshot (instead of twelve)
-  };
+  services.zfs.autoSnapshot.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   networking.hostId = "708a31d5";
@@ -112,8 +111,9 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     firefox
-    git
     unzip
+    gitAndTools.gitFull
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

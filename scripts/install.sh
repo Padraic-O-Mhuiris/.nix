@@ -76,7 +76,7 @@ function destroy_partitions {
 function create_partitions {
     i=0
     sgdisk -n 0:0:+1GiB -t 0:EF00 -c 0:BOOT $FIRST_DISK
-    sgdisk -n 0:0:+12GiB -t 0:8200 -c 0:SWAP $FIRST_DISK
+    sgdisk -n 0:0:+32GiB -t 0:8200 -c 0:SWAP $FIRST_DISK
     sgdisk -n 0:0:0 -t 0:BF01 -c "0:ZFS-$i" $FIRST_DISK
     sgdisk -p $FIRST_DISK
     partprobe $FIRST_DISK
@@ -91,30 +91,30 @@ function create_partitions {
     done
 }
 
-function encrypt_partitions {
-    i=0
-    for PART in $(filesystem_partitions)
-    do
-        echo "$LUKS_PASSPHRASE" | cryptsetup -q luksFormat $PART
-        echo "$LUKS_PASSPHRASE" | cryptsetup -q luksOpen $PART "$LUKS_PART-$i"
-        ((i=i+1))
-    done
-}
+# function encrypt_partitions {
+#     i=0
+#     for PART in $(filesystem_partitions)
+#     do
+#         echo "$LUKS_PASSPHRASE" | cryptsetup -q luksFormat $PART
+#         echo "$LUKS_PASSPHRASE" | cryptsetup -q luksOpen $PART "$LUKS_PART-$i"
+#         ((i=i+1))
+#     done
+# }
 
 function setup_zfs {
-    zpool create \
-        -O compression=lz4 \
-        -O normalization=formD \
-        -O xattr=sa \
-        -O acltype=posixacl \
-        -O mountpoint=none \
+   zpool create \
         -o ashift=12 \
-        $ZFS_POOL $(crypted_partitions)
+        -o altroot="/mnt" \
+        -O mountpoint=none -O \
+        encryption=aes-256-gcm \
+        -O keyformat=passphrase \
+        $ZFS_POOL $(filesystem_partitions)
 
     zfs create -o mountpoint=none $ZFS_ROOT
     zfs create -o mountpoint=legacy $ZFS_NIXOS
-    zfs create -o mountpoint=legacy $ZFS_HOME
+    zfs create -o mountpoint=legacy o com.sun:auto-snapshot=true $ZFS_HOME
 
+    zfs set compression=lz4 $ZFS_HOME
 }
 
 function mount_filesystem {
@@ -126,7 +126,7 @@ function mount_filesystem {
     mkdir -p $MOUNTPOINT_BOOT
     mount $(boot_partition) $MOUNTPOINT_BOOT
 
-    mkswap $(swap_partition)
+    mkswap -L $(swap_partition)
 }
 
 function build_nixos {
@@ -148,7 +148,7 @@ function build_nixos {
 
 destroy_partitions
 create_partitions
-encrypt_partitions
+#encrypt_partitions
 setup_zfs
 mount_filesystem
 build_nixos
