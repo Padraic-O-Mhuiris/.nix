@@ -66,7 +66,6 @@
       extraGroups = [ "wheel" "networkmanager" ];
       hashedPassword =
         "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
-      initialPassword = "abc123";
     };
   };
 
