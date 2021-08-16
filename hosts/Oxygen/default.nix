@@ -8,6 +8,7 @@
   modules = {
     desktop = {
       hledger.enable = true;
+      steam.enable = true;
       i3 = {
         enable = true;
         dpi = 110;
