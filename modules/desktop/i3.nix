@@ -4,13 +4,16 @@ with lib;
 with lib.my;
 let cfg = config.modules.desktop.i3;
 in {
-  options.modules.desktop.i3 = { enable = mkBoolOpt false; };
+  options.modules.desktop.i3 = {
+    enable = mkBoolOpt false;
+    dpi = mkOpt (with types; int) 180;
+  };
 
   config = mkIf cfg.enable {
     environment.pathsToLink = [ "/libexec" ];
     services.xserver = {
       enable = true;
-      dpi = 180;
+      dpi = cfg.dpi;
       displayManager = {
         defaultSession = "none+i3";
         autoLogin = {

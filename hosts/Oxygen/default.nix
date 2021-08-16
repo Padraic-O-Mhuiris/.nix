@@ -8,7 +8,10 @@
   modules = {
     desktop = {
       hledger.enable = true;
-      i3.enable = true;
+      i3 = {
+        enable = true;
+        dpi = 110;
+      };
       xmonad.enable = false;
       redshift.enable = true;
       fileManager.enable = true;
