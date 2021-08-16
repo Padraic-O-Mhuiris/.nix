@@ -68,19 +68,59 @@ nixos-install --no-root-passwd
 
 Should run through the process without issue and reboot, removing the installation media
 
-# Post install
-- connect wifi
-- pull nix project into home dir via https
-- copy /etc/nixos/hardware-configuration.nix to correct host directory
-- delete all files /etc/nixos
-- run:
+### Post install
+
+- Connect wifi through network-manager
+- Pull nix project into home dir via https
+
+``` shell
+git clone https://github.com/Padraic-O-Mhuiris/.nix.git
+```
+
+- Copy /etc/nixos/hardware-configuration.nix to correct host directory
+
+``` shell
+cp /etc/nixos/hardware-configuration.nix ~/.nix/hosts/<HOST>
+```
+
+- Delete all files /etc/nixos
+
+``` shell
+rm -rf /etc/nixos/*
+```
+
+- Rebuild the system into the correct configuration through the flake. Reboot the system afterwards. Dapptools can be a bit hormonal as cachix does not detect the dapphub registry. Maybe this can be alleviated by ensuring cachix is installed in the minimal config but disabling during this first run saves having to rebuild the project.
 
 ``` shell
 sudo nixos-rebuild --flake "$HOME/.nix#<HOST>" switch
 ```
 
-- pull public key into keyring and check if gpg is working
-- check if git is accessible and if so change project folder from https to ssh
+- Pull public key into keyring
+
+``` shell
+gpg --import ~/.nix/keys/<GPG_ID>.gpg
+```
+
+- Change `.nix` project from https to ssh
+
+``` shell
+cd ~/.nix && git remote set-url origin git@github.com:Padraic-O-Mhuiris/.nix.git
+```
+
+- Insert the yubikey into an available usb port and validate that it is detected. Not running this command will cause the card not to be detected when committing changes
+
+``` shell
+gpg --card-edit
+```
+
+- Verify and validate gpg, git and ssh is working by committing the changes to the .nix project made when the hardware-configuration was imported.
+
+``` shell
+git commit -am "updated hardware-configuration"
+
+git push origin main
+```
+
 - cleanup files, system should be functionally configured
 - pull in other projects, secrets and org files
 
