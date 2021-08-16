@@ -22,7 +22,7 @@
       };
       tools = {
         libreoffice.enable = true;
-        dapptools.enable = false;
+        dapptools.enable = true;
       };
       media = { spotify.enable = true; };
       browser = {
