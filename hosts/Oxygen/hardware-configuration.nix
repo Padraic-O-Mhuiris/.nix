@@ -24,11 +24,11 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/34AB-75B8";
+    { device = "/dev/disk/by-uuid/A025-8EF4";
       fsType = "vfat";
     };
 
-  swapDevices = [{ device = "/dev/disk/by-uuid/ee8bf045-d91f-4bd9-a93d-1ad9ccfdad70"; }];
-  networking.hostId = "72f297f8";
+  swapDevices = [{ device = "/dev/disk/by-uuid/38f4f51a-a1eb-47e9-80f7-ac46d49fa6d2"; }];
+  networking.hostId = "ae2be7a7";
 
 }
