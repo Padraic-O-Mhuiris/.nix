@@ -1,7 +1,4 @@
 
-TODO Boot to minimal nix-config that works for that host system that enables flakes
-
-
 # Locally install system
 
 Need two usb sticks:
