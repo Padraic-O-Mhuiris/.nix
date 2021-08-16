@@ -8,7 +8,6 @@
   modules = {
     desktop = {
       hledger.enable = true;
-      steam.enable = true;
       i3 = {
         enable = true;
         dpi = 110;
@@ -22,6 +21,7 @@
         st.enable = true;
       };
       tools = {
+        steam.enable = true;
         libreoffice.enable = true;
         dapptools.enable = true;
       };
