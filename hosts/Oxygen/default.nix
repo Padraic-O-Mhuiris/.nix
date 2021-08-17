@@ -12,7 +12,7 @@
         enable = true;
         primary = "DP-0";
         mode = "5120x1440";
-        rate = 100;
+        rate = 60;
       };
       i3 = {
         enable = true;
