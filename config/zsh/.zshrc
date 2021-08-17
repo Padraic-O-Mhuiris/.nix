@@ -8,7 +8,7 @@ if ! zgen saved; then
   # zgen load zsh-users/zsh-completions src
   # zgen load junegunn/fzf shell
   # [ -z "$SSH_CONNECTION" ] && zgen load zdharma/fast-syntax-highlighting
-  # zgen save
+  zgen save
 fi
 
 source $ZDOTDIR/config.zsh
