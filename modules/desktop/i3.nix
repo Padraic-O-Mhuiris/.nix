@@ -23,6 +23,7 @@ in {
     ];
 
     services.xserver = {
+      picom.enable = true;
       enable = true;
       dpi = cfg.dpi;
       displayManager = {
