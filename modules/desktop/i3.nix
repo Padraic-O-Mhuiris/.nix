@@ -11,6 +11,17 @@ in {
 
   config = mkIf cfg.enable {
     environment.pathsToLink = [ "/libexec" ];
+
+    user.packages = with pkgs; [
+      lightdm
+      dunst
+      libnotify
+      (polybar.override {
+        pulseSupport = true;
+        nlSupport = true;
+      })
+    ];
+
     services.xserver = {
       enable = true;
       dpi = cfg.dpi;
