@@ -2,7 +2,9 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.monitors;
+let
+  cfg = config.modules.desktop.monitors;
+  configDir = config.dotfiles.configDir;
 in {
   options.modules.desktop.monitors = {
     enable = mkBoolOpt false;
@@ -13,6 +15,12 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ autorandr ];
-    services.autorandr = { enable = true; };
+
+    home.configFile."autorandr".source = "${configDir}/autorandr";
+
+    services.autorandr = {
+      enable = true;
+      defaultTarget = "Samsung_5120x1440";
+    };
   };
 }
