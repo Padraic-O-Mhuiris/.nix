@@ -12,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-
+    user.packages = with pkgs; [ autorandr ];
     services.autorandr = { enable = true; };
   };
 }
