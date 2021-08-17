@@ -8,6 +8,11 @@
   modules = {
     desktop = {
       hledger.enable = true;
+      monitors = {
+        primary = "DP-0";
+        mode = "5120x1440";
+        rate = 100;
+      };
       i3 = {
         enable = true;
         dpi = 110;
