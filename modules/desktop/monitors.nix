@@ -2,7 +2,7 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.i3;
+let cfg = config.modules.desktop.monitors;
 in {
   options.modules.desktop.monitors = {
     enable = mkBoolOpt false;
