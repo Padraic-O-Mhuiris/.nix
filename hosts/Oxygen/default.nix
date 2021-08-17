@@ -9,6 +9,7 @@
     desktop = {
       hledger.enable = true;
       monitors = {
+        enable = true;
         primary = "DP-0";
         mode = "5120x1440";
         rate = 100;
