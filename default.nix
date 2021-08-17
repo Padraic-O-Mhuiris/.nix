@@ -28,11 +28,15 @@ with lib.my; {
       "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
       "dotfiles=${config.dotfiles.dir}"
     ];
-    binaryCaches =
-      [ "https://nix-community.cachix.org" "https://dapp.cachix.org" ];
+    binaryCaches = [
+      "https://nix-community.cachix.org"
+      "https://dapp.cachix.org"
+      "https://hydra.iohk.io"
+    ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs="
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
     ];
     registry = registryInputs // { dotfiles.flake = inputs.self; };
     autoOptimiseStore = true;

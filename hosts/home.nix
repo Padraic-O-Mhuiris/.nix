@@ -36,5 +36,6 @@ with lib.my; {
     jq
     lm_sensors
     cachix
+    niv
   ];
 }
