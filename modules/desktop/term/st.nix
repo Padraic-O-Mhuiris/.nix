@@ -17,16 +17,6 @@ in {
       [ "$TERM" = xst-256color ] && export TERM=xterm-256color
     '';
 
-    services.xserver.displayManager.sessionCommands = ''
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <${
-        pkgs.writeText "Xresources" ''
-          Xcursor.theme: Adwaita
-          Xcursor.size: 32
-          *.font: Iosevka:pixelsize=16;
-        ''
-      }
-    '';
-
     user.packages = with pkgs; [
       (st.overrideAttrs (oldAttrs: rec {
         src = fetchFromGitHub {

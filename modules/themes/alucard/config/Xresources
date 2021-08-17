@@ -50,11 +50,11 @@
 
 
 !! general
-st.scratch.font: JetBrainsMono:pixelsize=16
+st.scratch.font: Iosevka:pixelsize=16
 
 
 !! xst
-st.font: JetBrainsMono:pixelsize=12
+st.font: Iosevka:pixelsize=16
 st.borderpx: 10
 
 
@@ -64,7 +64,7 @@ URxvt*.background:             blk
 URxvt*.borderless:             1
 URxvt*.buffered:               true
 URxvt*.cursorBlink:            true
-URxvt*.font:                   xft:Fira Code:pixelsize=12
+URxvt*.font:                   xft:Iosevka:pixelsize=16
 URxvt*.internalBorder:         10
 URxvt*.letterSpace:            0
 URxvt*.lineSpace:              0
