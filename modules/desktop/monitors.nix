@@ -14,7 +14,9 @@ in {
   config = mkIf cfg.enable {
 
     services.xserver.displayManager.setupCommands = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr --output ${cfg.primary} --mode ${cfg.mode} --rate ${cfg.rate}
+      ${pkgs.xorg.xrandr}/bin/xrandr --output ${cfg.primary} --mode ${cfg.mode} --rate ${
+        toString cfg.rate
+      }
     '';
   };
 }
