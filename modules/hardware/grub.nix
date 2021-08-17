@@ -2,13 +2,18 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.hardware.grub;
+let
+  cfg = config.modules.hardware.grub;
+  mode = if config.modules.desktop.monitors.enable then
+    config.modules.desktop.monitors.mode
+  else
+    "1280x800";
 in {
   options.modules.hardware.grub = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     console = {
-      font = "latarcyrheb-sun32";
+      font = "ter-v32b";
       keyMap = "uk";
     };
 
@@ -22,8 +27,8 @@ in {
           builtins.toPath pkgs.iosevka
         }/share/fonts/truetype/iosevka-regular.ttf";
       fontSize = 30;
-      gfxmodeEfi = "1280x800";
-      gfxmodeBios = "1280x800";
+      gfxmodeEfi = mode;
+      gfxmodeBios = mode;
     };
   };
 }
