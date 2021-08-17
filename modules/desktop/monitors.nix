@@ -2,9 +2,7 @@
 
 with lib;
 with lib.my;
-let
-  cfg = config.modules.desktop.monitors;
-  configDir = config.dotfiles.configDir;
+let cfg = config.modules.desktop.monitors;
 in {
   options.modules.desktop.monitors = {
     enable = mkBoolOpt false;
@@ -14,13 +12,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ autorandr ];
 
-    home.configFile."autorandr".source = "${configDir}/autorandr";
-
-    services.autorandr = {
-      enable = true;
-      defaultTarget = "Samsung_5120x1440";
-    };
+    services.xserver.displayManager.setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr --output ${cfg.primary} --mode ${cfg.mode} --rate ${cfg.rate}
+    '';
   };
 }
