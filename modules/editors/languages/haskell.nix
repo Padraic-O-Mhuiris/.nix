@@ -11,7 +11,6 @@ in {
       ghc
       cabal2nix
       haskellPackages.cabal
-      stylish-cabal
       stack
       stack2nix
       haskell-language-server
