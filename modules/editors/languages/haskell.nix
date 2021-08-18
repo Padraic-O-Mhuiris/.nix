@@ -12,7 +12,6 @@ in {
       cabal2nix
       haskellPackages.Cabal_3_4_0_0
       stack
-      stack2nix
       haskell-language-server
       stack
       hlint
