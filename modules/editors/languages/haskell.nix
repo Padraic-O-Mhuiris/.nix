@@ -10,7 +10,7 @@ in {
     user.packages = with pkgs; [
       ghc
       cabal2nix
-      haskellPackages.Cabal_3_4_0_0
+      cabal-install
       stack
       haskell-language-server
       stack
