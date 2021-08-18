@@ -59,18 +59,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    zfsSupport = true;
-    efiSupport = true;
-    device = "nodev";
-    fontSize = 30;
-    gfxmodeEfi = "1280x800";
-    gfxmodeBios = "1280x800";
-  };
-
   boot.zfs.enableUnstable = true;
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
@@ -90,6 +78,7 @@
       enable = true;
       audio.enable = true;
     };
+    grub.enable = true;
     wallet.enable = true;
     printing.enable = true;
     keyboard.enable = true;

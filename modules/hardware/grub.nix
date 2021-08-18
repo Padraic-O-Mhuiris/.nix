@@ -9,7 +9,10 @@ let
   else
     "1280x800";
 in {
-  options.modules.hardware.grub = { enable = mkBoolOpt false; };
+  options.modules.hardware.grub = {
+    enable = mkBoolOpt false;
+    luks = mkBoolOpt false;
+  };
 
   config = mkIf cfg.enable {
     console = {
@@ -21,7 +24,7 @@ in {
       enable = true;
       version = 2;
       efiSupport = true;
-      enableCryptodisk = true;
+      enableCryptodisk = luks;
       device = "nodev";
       font = "${
           builtins.toPath pkgs.iosevka
