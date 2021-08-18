@@ -38,6 +38,7 @@
         import pkgs {
           inherit system;
           config.allowUnfree = true; # forgive me Stallman senpai
+          config.allowBroken = true;
           overlays = extraOverlays;
         };
       pkgs = mkPkgs nixpkgs [ self.overlay ];
