@@ -21,7 +21,7 @@ in {
 
     user.packages = with pkgs; [
       pinentry
-      pinentry-gnome3
+      pinentry-gnome
       paperkey
       yubikey-personalization
       yubikey-manager
