@@ -24,7 +24,7 @@ in {
       enable = true;
       version = 2;
       efiSupport = true;
-      enableCryptodisk = luks;
+      enableCryptodisk = cfg.luks;
       device = "nodev";
       font = "${
           builtins.toPath pkgs.iosevka
