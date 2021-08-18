@@ -20,10 +20,7 @@ in {
     };
 
     user.packages = with pkgs; [
-      pinentry-curses
-      pinentry-qt
       pinentry
-      pinentry-gnome
       paperkey
       yubikey-personalization
       yubikey-manager
