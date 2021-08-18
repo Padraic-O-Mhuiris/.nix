@@ -26,10 +26,9 @@
         default = "st";
         st.enable = true;
       };
-      tools = {
+      apps = {
         steam.enable = true;
         libreoffice.enable = true;
-        dapptools.enable = true;
       };
       media = { spotify.enable = true; };
       browser = {
@@ -52,6 +51,7 @@
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
+      dapptools.enable = true;
     };
     services = { docker.enable = true; };
     theme.active = "alucard";
