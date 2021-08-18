@@ -16,7 +16,7 @@ in {
       enable = true;
       enableSSHSupport = true;
       enableExtraSocket = true;
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "gtk2";
     };
 
     user.packages = with pkgs; [
@@ -35,7 +35,7 @@ in {
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
-        pinentry-program ${pkgs.pinentry.gnome3}/bin/pinentry
+        pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
         allow-emacs-pinentry
         allow-loopback-pinentry
 
