@@ -63,11 +63,6 @@ in {
       rustfmt
       unstable.rust-analyzer
       # :lang haskell
-      haskell-language-server
-      stack
-      ghc
-      hlint
-      haskellPackages.brittany
       libical
       libudev0-shim
 
