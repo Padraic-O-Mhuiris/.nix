@@ -7,7 +7,6 @@
 
   modules = {
     desktop = {
-      hledger.enable = true;
       monitors = {
         enable = true;
         primary = "DP-0";
@@ -18,6 +17,7 @@
         enable = true;
         dpi = 110;
       };
+      hledger.enable = true;
       xmonad.enable = false;
       redshift.enable = true;
       fileManager.enable = true;
@@ -29,6 +29,7 @@
       apps = {
         steam.enable = true;
         libreoffice.enable = true;
+        rofi.enable = true;
       };
       media = { spotify.enable = true; };
       browser = {
