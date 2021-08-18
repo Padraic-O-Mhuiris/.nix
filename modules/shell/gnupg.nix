@@ -24,6 +24,7 @@ in {
       pinentry-qt
       pinentry
       pinentry-gnome
+      pinentry-gnome3
       paperkey
       yubikey-personalization
       yubikey-manager
