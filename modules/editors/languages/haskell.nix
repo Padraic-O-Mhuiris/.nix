@@ -10,7 +10,7 @@ in {
     user.packages = with pkgs; [
       ghc
       cabal2nix
-      haskellPackages.cabal
+      haskellPackages.Cabal_3_4_0_0
       stylish-cabal
       stack
       stack2nix
