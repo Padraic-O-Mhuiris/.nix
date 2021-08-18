@@ -24,7 +24,6 @@ in {
       pinentry-qt
       pinentry
       pinentry-gnome
-      pinentry-gnome3
       paperkey
       yubikey-personalization
       yubikey-manager
@@ -38,7 +37,7 @@ in {
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
-        pinentry-program ${pkgs.pinentry.gnome3}/bin/pinentry
+        pinentry-program ${pkgs.pinentry}/bin/pinentry
         allow-emacs-pinentry
         allow-loopback-pinentry
 
