@@ -23,7 +23,7 @@
       fileManager.enable = true;
       telegram.enable = true;
       term = {
-        default = "st";
+        default = "xst";
         st.enable = true;
       };
       apps = {
