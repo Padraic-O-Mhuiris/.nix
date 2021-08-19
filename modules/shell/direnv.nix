@@ -12,7 +12,7 @@ in {
       keep-outputs = true
       keep-derivations = true
     '';
-    environment.pathsToLink = [ "/share/nix-direnv" ];
+    environment.pathsToLink = [ "/share/nix-direnv/direnvrc" ];
 
     user.packages = with pkgs; [
       direnv
