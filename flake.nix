@@ -63,6 +63,8 @@
 
       overlays = mapModules ./overlays import;
 
+      packages."${system}" = mapModules ./packages (p: pkgs.callPackage p { });
+
       nixosModules = {
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
