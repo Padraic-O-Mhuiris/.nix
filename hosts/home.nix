@@ -37,5 +37,7 @@ with lib.my; {
     lm_sensors
     cachix
     niv
+    direnv
+    lorri
   ];
 }
