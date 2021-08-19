@@ -30,7 +30,6 @@
         libreoffice.enable = true;
         rofi.enable = true;
       };
-      tools = { libreoffice.enable = true; };
       media = { spotify.enable = true; };
       browser = {
         default = "brave";
