@@ -71,6 +71,7 @@
 
       nixosConfigurations = mapHosts ./hosts { };
 
-      devShell.${system} = let in pkgs.mkShell { shellhook = "zsh"; };
+      devShell."${system}" = import ./shell.nix { inherit pkgs; };
+
     };
 }
