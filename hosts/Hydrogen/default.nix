@@ -7,20 +7,30 @@
 
   modules = {
     desktop = {
+      monitors = {
+        enable = true;
+        primary = "eDP-1";
+        mode = "3840x2160";
+        rate = 60;
+      };
       hledger.enable = true;
-      i3.enable = true;
+      i3 = {
+        enable = true;
+        dpi = 180;
+      };
       xmonad.enable = false;
       redshift.enable = true;
       fileManager.enable = true;
       telegram.enable = true;
       term = {
-        default = "st";
+        default = "xst";
         st.enable = true;
       };
-      tools = {
+      apps = {
         libreoffice.enable = true;
-        dapptools.enable = true;
+        rofi.enable = true;
       };
+      tools = { libreoffice.enable = true; };
       media = { spotify.enable = true; };
       browser = {
         default = "brave";
@@ -42,6 +52,7 @@
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
+      dapptools.enable = true;
     };
     services = { docker.enable = true; };
     theme.active = "alucard";
