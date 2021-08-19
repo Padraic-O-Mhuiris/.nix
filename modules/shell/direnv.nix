@@ -12,7 +12,7 @@ in {
       keep-outputs = true
       keep-derivations = true
     '';
-    environment.pathsToLink = [ "/share/nix-direnv/direnvrc" ];
+    environment.pathsToLink = [ "/share/nix-direnv" ];
 
     user.packages = with pkgs; [
       direnv
@@ -22,7 +22,7 @@ in {
     modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
     home.configFile.".direnv/direnvrc".text = ''
-      source /run/current-system/sw/share/nix-direnv/direnvrc
+      source ${pkgs.unstable.nix-direnv}share/nix-direnv/direnvrc
     '';
   };
 }
