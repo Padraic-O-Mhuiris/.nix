@@ -2,17 +2,11 @@
 
 with lib;
 with lib.my;
-let
-  cfg = config.modules.shell.direnv;
-  overlay-unstable = final: prev: {
-    unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-  };
+let cfg = config.modules.shell.direnv;
 in {
   options.modules.shell.direnv = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-
-    nixpkgs.overlays = [ overlay-unstable ];
 
     nix.extraOptions = ''
       keep-outputs = true
