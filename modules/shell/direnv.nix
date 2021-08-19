@@ -14,15 +14,18 @@ in {
     '';
     environment.pathsToLink = [ "/share/nix-direnv" ];
 
-    user.packages = with pkgs; [ direnv nix-direnv ];
+    user.packages = with pkgs; [
+      direnv
+      (nix-direnv.override { enableFlakes = true; })
+    ];
 
     modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
-    nixpkgs.overlays = [
-      (self: super: {
-        nix-direnv = super.nix-direnv.override { enableFlakes = true; };
-      })
-    ];
+    # nixpkgs.overlays = [
+    #   (self: super: {
+    #     nix-direnv = super.nix-direnv.override { enableFlakes = true; };
+    #   })
+    # ];
 
     home.file.".direnvrc".text = ''
       source /run/current-system/sw/share/nix-direnv/direnvrc
