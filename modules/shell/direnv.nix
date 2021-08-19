@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, pkgs', ... }:
+{ config, options, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -18,7 +18,7 @@ in {
 
     modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
-    pkgs'.overlays = [
+    pkgs.overlays = [
       (self: super: {
         nix-direnv = super.nix-direnv.override { enableFlakes = true; };
       })
