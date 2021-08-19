@@ -42,7 +42,6 @@
           overlays = extraOverlays;
         };
       pkgs = mkPkgs nixpkgs [ self.overlay ];
-      pkgs' = mkPkgs nixpkgs [ ];
 
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib {
@@ -53,24 +52,11 @@
     in {
       lib = lib.my;
 
-      overlay = final: prev: {
-        unstable = pkgs';
-        my = self.packages."${system}";
-      };
-
-      # packages."${system}" =
-      #   mapModules ./packages (p: pkgs.callPackage p {});
-
       nixosModules = {
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
 
       nixosConfigurations = mapHosts ./hosts { };
-
-      # nixosConfigurations = {
-      #   Hydrogen = mkSystem nixpkgs "Hydrogen" [
-      #     sops-nix.nixosModules.sops
-      #   ]; };
 
       devShell.${system} = let in pkgs.mkShell { shellhook = "zsh"; };
     };
