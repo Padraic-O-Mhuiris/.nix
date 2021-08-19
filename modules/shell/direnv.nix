@@ -21,7 +21,7 @@ in {
     nixpkgs.overlays =
       [ (self: super: { nix-direnv = super.nix-direnv.override { }; }) ];
 
-    home.file."direnvrc".text = ''
+    home.file.".direnvrc".text = ''
       source /run/current-system/sw/share/nix-direnv/direnvrc
     '';
   };
