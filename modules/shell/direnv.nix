@@ -1,12 +1,18 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs, inputs, system, ... }:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.direnv;
+let
+  cfg = config.modules.shell.direnv;
+  overlay-unstable = final: prev: {
+    unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+  };
 in {
   options.modules.shell.direnv = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+
+    nixpkgs.overlays = [ overlay-unstable ];
 
     nix.extraOptions = ''
       keep-outputs = true
@@ -14,15 +20,18 @@ in {
     '';
     environment.pathsToLink = [ "/share/nix-direnv" ];
 
-    user.packages = with pkgs; [ direnv nix-direnv ];
+    user.packages = with pkgs; [
+      direnv
+      (unstable.nix-direnv.override { enableFlakes = true; })
+    ];
 
     modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
-    nixpkgs.overlays = [
-      (self: super: {
-        nix-direnv = super.nix-direnv.override { enableFlakes = true; };
-      })
-    ];
+    # nixpkgs.overlays = [
+    #   (self: super: {
+    #     nix-direnv = super.nix-direnv.override { enableFlakes = true; };
+    #   })
+    # ];
 
   };
 }
