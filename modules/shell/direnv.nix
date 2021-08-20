@@ -26,7 +26,7 @@ in {
 
     modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
-    home.configFile."direnv/direnvrc".text = ''
+    home.file.".direnvrc".text = ''
       source ${pkgs.unstable.nix-direnv}/share/nix-direnv/direnvrc
     '';
   };
