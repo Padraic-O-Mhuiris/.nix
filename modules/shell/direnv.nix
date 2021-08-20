@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, inputs, system, ... }:
+{ config, options, lib, pkgs, inputs, system, home-manager, ... }:
 
 with lib;
 with lib.my;
@@ -24,7 +24,7 @@ in {
     #   source ${pkgs.unstable.nix-direnv}/share/nix-direnv/direnvrc
     # '';
 
-    home.programs.direnv = {
+    home-manager.users.${config.user.name}.programs.direnv = {
       programs.direnv.enable = true;
       programs.direnv.nix-direnv.enable = true;
       # optional for nix flakes support
