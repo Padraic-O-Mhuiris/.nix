@@ -21,10 +21,7 @@
     nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    home-manager = { url = "github:nix-community/home-manager"; };
     sops-nix.url = "github:Mic92/sops-nix";
 
     dapptools = { url = "github:dapphub/dapptools"; };
