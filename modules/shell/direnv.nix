@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, inputs, system, home-manager, ... }:
+{ config, options, lib, pkgs, inputs, system, ... }:
 
 with lib;
 with lib.my;
@@ -11,24 +11,17 @@ in {
       keep-outputs = true
       keep-derivations = true
     '';
-    # environment.pathsToLink = [ "/share/nix-direnv" ];
+    environment.pathsToLink = [ "/share/nix-direnv" ];
 
-    # user.packages = with pkgs; [
-    #   direnv
-    #   (unstable.nix-direnv.override { enableFlakes = true; })
-    # ];
+    user.packages = with pkgs; [
+      direnv
+      (unstable.nix-direnv.override { enableFlakes = true; })
+    ];
 
-    # modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
+    modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
-    # home.configFile."direnv/direnvrc".text = ''
-    #   source ${pkgs.unstable.nix-direnv}/share/nix-direnv/direnvrc
-    # '';
-
-    home-manager.users.${config.user.name} = {
-      programs.direnv.enable = true;
-      programs.direnv.nix-direnv.enable = true;
-      # optional for nix flakes support
-      programs.direnv.nix-direnv.enableFlakes = true;
-    };
+    home.configFile."direnv/direnvrc".text = ''
+      source ${pkgs.unstable.nix-direnv}/share/nix-direnv/direnvrc
+    '';
   };
 }
