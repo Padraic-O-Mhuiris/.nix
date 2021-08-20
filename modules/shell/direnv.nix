@@ -22,6 +22,12 @@ in {
 
     home.configFile."direnv/direnvrc".text = ''
       source ${pkgs.unstable.nix-direnv}/share/nix-direnv/direnvrc
+
+      use_flake() {
+        watch_file flake.nix
+        watch_file flake.lock
+        eval "$(nix print-dev-env --profile "$(direnv_layout_dir)/flake-profile")"
+      }
     '';
   };
 }
