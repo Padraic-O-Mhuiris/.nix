@@ -24,7 +24,7 @@ in {
     #   source ${pkgs.unstable.nix-direnv}/share/nix-direnv/direnvrc
     # '';
 
-    home-manager.users.${config.user.name}.programs.direnv = {
+    home-manager.users.${config.user.name} = {
       programs.direnv.enable = true;
       programs.direnv.nix-direnv.enable = true;
       # optional for nix flakes support
