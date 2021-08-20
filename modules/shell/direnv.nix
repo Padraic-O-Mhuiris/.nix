@@ -9,10 +9,7 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [
       (self: super: {
-        nix-direnv = super.nix-direnv.override {
-          nix = self.nixFlakes;
-          enableFlakes = true;
-        };
+        nix-direnv = super.nix-direnv.override { enableFlakes = true; };
       })
     ];
 
