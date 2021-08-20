@@ -7,6 +7,14 @@ in {
   options.modules.shell.direnv = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [
+      (self: super: {
+        nix-direnv = super.nix-direnv.override {
+          nix = self.nixFlakes;
+          enableFlakes = true;
+        };
+      })
+    ];
 
     nix.extraOptions = ''
       keep-outputs = true
@@ -14,10 +22,7 @@ in {
     '';
     environment.pathsToLink = [ "/share/nix-direnv" ];
 
-    user.packages = with pkgs; [
-      direnv
-      (unstable.nix-direnv.override { enableFlakes = true; })
-    ];
+    user.packages = with pkgs; [ direnv unstable.nix-direnv ];
 
     modules.shell.zsh.rcInit = ''eval "$(direnv hook zsh)"'';
 
