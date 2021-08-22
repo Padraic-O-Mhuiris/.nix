@@ -8,12 +8,5 @@ let cfg = config.modules.desktop.apps.steam;
 in {
   options.modules.desktop.apps.steam = { enable = mkBoolOpt false; };
 
-  config = mkIf cfg.enable {
-
-    user.packages = with pkgs; [
-      (pkgs.steam.override { extraLibraries = pkgs: [ pkgs.pipewire ]; })
-      xorg.libxcb
-    ];
-
-  };
+  config = mkIf cfg.enable { programs.steam.enable = true; };
 }
