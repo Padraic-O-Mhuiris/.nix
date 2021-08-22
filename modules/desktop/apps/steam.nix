@@ -10,6 +10,6 @@ in {
 
   config = mkIf cfg.enable {
     programs.steam.enable = true;
-    user.packages = with pkgs; [ pipewire ];
+    user.packages = with pkgs; [ unstable.steam ];
   };
 }
