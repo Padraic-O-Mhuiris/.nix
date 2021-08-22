@@ -10,7 +10,10 @@ in {
 
   config = mkIf cfg.enable {
 
-    user.packages = with pkgs;
-      [ (pkgs.steam.override { extraLibraries = pkgs: [ pkgs.pipewire ]; }) ];
+    user.packages = with pkgs; [
+      (pkgs.steam.override { extraLibraries = pkgs: [ pkgs.pipewire ]; })
+      xorg.libxcb
+    ];
+
   };
 }
