@@ -16,7 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     console = {
-      font = "ter-v32b";
+      #font = "ter-v32b";
       keyMap = "uk";
     };
 
