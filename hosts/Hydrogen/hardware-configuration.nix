@@ -9,7 +9,7 @@ in {
     audio.enable = true;
     grub = {
       enable = true;
-      luks = true;
+      #      luks = true;
     };
     fs.enable = true;
     bluetooth = {
