@@ -77,10 +77,7 @@
   powerManagement.enable = true;
   hardware.nvidia = {
     nvidiaPersistenced = true;
-    powerManagement = {
-      enable = true;
-      finegrained = true;
-    };
+    powerManagement.enable = true;
   };
 
   modules.hardware = {
