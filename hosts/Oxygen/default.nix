@@ -74,6 +74,15 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  powerManagement.enable = true;
+  hardware.nvidia = {
+    nvidiaPersistenced = true;
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
+  };
+
   modules.hardware = {
     audio.enable = true;
     fs.enable = true;
