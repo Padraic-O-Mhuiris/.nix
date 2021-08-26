@@ -15,5 +15,9 @@ in {
       nodePackages.javascript-typescript-langserver
       nodePackages.jsonlint
     ];
+
+    modules.shell.zsh.rcInit = ''
+      export PATH="$(${pkgs.yarn} global bin):$PATH"
+    '';
   };
 }
