@@ -17,7 +17,7 @@ in {
     ];
 
     modules.shell.zsh.rcInit = ''
-      export PATH="$(${pkgs.yarn} global bin):$PATH"
+      export PATH="$(yarn global bin):$PATH"
     '';
   };
 }
