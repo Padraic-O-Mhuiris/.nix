@@ -99,6 +99,14 @@ in {
               recursive = true;
             };
           })
+          (mkIf (desktop.i3.enable) {
+            # "polybar" = {
+            #   source = ./config/polybar;
+            #   recursive = true;
+            # };
+            "dunst/dunstrc".source = ./config/dunstrc;
+          })
+
         ];
     })
   ]);
