@@ -72,6 +72,7 @@ in {
       pandoc
       wordnet
       nixfmt
+      jupyter
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
