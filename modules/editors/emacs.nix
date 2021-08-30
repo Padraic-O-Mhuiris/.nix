@@ -22,9 +22,6 @@ in {
       programs.emacs = {
         enable = true;
         package = pkgs.emacsGcc;
-        extraPackages = epkgs:
-          with epkgs;
-          [ (p: with p.melpaStablePackages; [ pdf-tools ]) ];
       };
     };
 
