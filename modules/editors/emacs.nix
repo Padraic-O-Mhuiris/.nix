@@ -15,22 +15,23 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+
     home-manager.users.${config.user.name} = {
-      programs.doom-emacs = {
+      programs.emacs = {
         enable = true;
-        package = unstable.emacsGcc;
+        package = pkgs.emacsGcc;
         extraPackages = epkgs:
           with epkgs;
           [ (p: with p.melpaStablePackages; [ pdf-tools ]) ];
       };
     };
 
-    # nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
-
     user.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
-      emacsPgtkGcc # 28 + pgtk + native-comp
+      # emacsPgtkGcc # 28 + pgtk + native-comp
 
       ## Doom dependencies
       git
