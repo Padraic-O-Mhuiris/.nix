@@ -76,6 +76,7 @@ in {
       jupyter
 
       anystyle-cli
+      zotero
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
