@@ -18,18 +18,17 @@ in {
 
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
-    home-manager.users.${config.user.name} = {
-      programs.emacs = {
-        enable = true;
-        package = pkgs.emacsGcc;
-        extraPackages = epkgs: [ epkgs.melpaStablePackages.pdf-tools ];
-      };
-    };
+    #   programs.emacs = {
+    #     enable = true;
+    #     package = pkgs.emacsGcc;
+    #     extraPackages = epkgs: [ epkgs.melpaStablePackages.pdf-tools ];
+    #   };
+    # };
 
     user.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
-      # emacsPgtkGcc # 28 + pgtk + native-comp
+      emacsPgtkGcc # 28 + pgtk + native-comp
 
       ## Doom dependencies
       git
