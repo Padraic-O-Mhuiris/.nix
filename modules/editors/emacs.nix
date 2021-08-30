@@ -74,6 +74,8 @@ in {
       wordnet
       nixfmt
       jupyter
+
+      anystyle-cli
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
