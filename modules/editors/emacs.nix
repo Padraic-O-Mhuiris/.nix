@@ -15,14 +15,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # home-manager.users.${config.user.name} = {
-    #   imports = [ inputs.nix-doom-emacs ];
-    #   programs.doom-emacs = {
-    #     enable = true;
-    #     doomPrivateDir = ../../config/doom.d;
-    #   };
-    # };
-    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+    home-manager.users.${config.user.name} = {
+      programs.doom-emacs = {
+        enable = true;
+        package = unstable.emacsGcc;
+        extraPackages = epkgs:
+          with epkgs;
+          [ (p: with p.melpaStablePackages; [ pdf-tools ]) ];
+      };
+    };
+
+    # nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
     user.packages = with pkgs; [
       ## Emacs itself
