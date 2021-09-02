@@ -76,6 +76,11 @@ in {
       jupyter
 
       anystyle-cli
+
+      #org-mode
+      proselint
+      texlive.combined.scheme-full
+
     ];
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
