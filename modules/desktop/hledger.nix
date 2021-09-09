@@ -8,6 +8,6 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ ledger hledger hledger-ui hledger-web ];
-    env = { LEDGER_FILE = "$HOME/.finance/finance.journal"; };
+    env = { LEDGER_FILE = "$HOME/.finance/fiat.journal"; };
   };
 }
