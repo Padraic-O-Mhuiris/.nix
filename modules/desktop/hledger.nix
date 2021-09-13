@@ -7,7 +7,13 @@ in {
   options.modules.desktop.hledger = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ ledger hledger hledger-ui hledger-web ledger ];
+    user.packages = with pkgs; [
+      ledger
+      hledger
+      hledger-ui
+      hledger-web
+      beancount
+    ];
     env = { LEDGER_FILE = "$HOME/.finance/fiat.ledger"; };
   };
 }
