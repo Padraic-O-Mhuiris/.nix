@@ -13,7 +13,8 @@ in {
       hledger-ui
       hledger-web
       beancount
-      nodePackages.beancount-langserver
+      fava
+      inputs.unstable.nodePackages.beancount-langserver
     ];
     env = { LEDGER_FILE = "$HOME/.finance/fiat.ledger"; };
   };
