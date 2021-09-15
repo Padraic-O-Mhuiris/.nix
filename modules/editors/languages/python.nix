@@ -7,12 +7,11 @@ in {
   options.modules.editors.languages.python = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs.python38Packages;
-      with pkgs.python27Packages; [
-        python
-        pip
-        setuptools
-        virtualenv
-      ];
+    user.packages = with pkgs.python38Packages; [
+      python
+      pip
+      setuptools
+      virtualenv
+    ];
   };
 }
