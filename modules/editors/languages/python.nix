@@ -7,7 +7,7 @@ in {
   options.modules.editors.languages.python = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs.python38Packages; [
+    user.packages = with pkgs.python39Packages; [
       python
       pip
       setuptools
