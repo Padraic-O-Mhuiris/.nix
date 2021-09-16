@@ -29,6 +29,7 @@
       apps = {
         libreoffice.enable = true;
         rofi.enable = true;
+        gimp.enable = true;
       };
       tools = { libreoffice.enable = true; };
       media = { spotify.enable = true; };
