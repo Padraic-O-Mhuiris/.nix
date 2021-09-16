@@ -30,6 +30,7 @@
         steam.enable = true;
         libreoffice.enable = true;
         rofi.enable = true;
+        gimp.enable = true;
       };
       media = { spotify.enable = true; };
       browser = {
