@@ -15,6 +15,7 @@ in {
       beancount
       fava
       unstable.nodePackages.beancount-langserver
+      ledger2beancount
     ];
     env = { LEDGER_FILE = "$HOME/.finance/fiat.ledger"; };
   };
