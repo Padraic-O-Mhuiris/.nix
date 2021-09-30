@@ -56,6 +56,7 @@
       pass.enable = true;
       dapptools.enable = true;
       direnv.enable = true;
+      ngrok.enable = true;
     };
     services = { docker.enable = true; };
     theme.active = "alucard";
