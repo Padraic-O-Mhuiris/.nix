@@ -61,6 +61,10 @@ in {
     home-manager = {
       useUserPackages = true;
 
+      # Suppresses version mismatch warning between home-manager and nixos
+      # hm is used minimally in the system so should not be a major issue
+      enableNixpkgsReleaseCheck = false;
+
       # I only need a subset of home-manager's capabilities. That is, access to
       # its home.file, home.xdg.configFile and home.xdg.dataFile so I can deploy
       # files easily to my $HOME, but 'home-manager.users.hlissner.home.file.*'
