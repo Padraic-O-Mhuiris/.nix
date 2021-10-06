@@ -46,7 +46,6 @@
       languages = {
         javascript.enable = true;
         python.enable = true;
-        haskell.enable = false;
       };
     };
     shell = {
