@@ -51,7 +51,7 @@
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
-      dapptools.enable = true;
+      dapptools.enable = false;
     };
     services = { docker.enable = true; };
     theme.active = "alucard";
