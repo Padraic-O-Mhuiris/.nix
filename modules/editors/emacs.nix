@@ -24,11 +24,14 @@ in {
     #     extraPackages = epkgs: [ epkgs.melpaStablePackages.pdf-tools ];
     #   };
     # };
+    services.emacs = {
+      enable = true;
+      package = pkgs.emacsPgtkGcc;
+    };
 
     user.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
-      emacsPgtkGcc # 28 + pgtk + native-comp
 
       ## Doom dependencies
       git
