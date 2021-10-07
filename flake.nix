@@ -25,8 +25,8 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     dapptools = {
-    	url = "github:dapphub/dapptools";
-	flake = false;
+      url = "github:dapphub/dapptools";
+      flake = false;
     };
   };
 
