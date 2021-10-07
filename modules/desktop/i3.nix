@@ -15,6 +15,7 @@ in {
     user.packages = with pkgs; [
       lightdm
       dunst
+      flameshot
       libnotify
       (polybar.override {
         pulseSupport = true;
@@ -56,6 +57,16 @@ in {
       serviceConfig.Restart = "always";
       serviceConfig.RestartSec = 2;
       serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
+    };
+
+    systemd.user.services."flameshot" = {
+      enable = true;
+      description = "";
+      requires = [ "tray.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig.Restart = "always";
+      serviceConfig.RestartSec = 2;
+      serviceConfig.ExecStart = "${pkgs.flameshot}/bin/flameshot";
     };
 
   };

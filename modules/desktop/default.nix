@@ -26,7 +26,6 @@ in {
       xorg.xwininfo
       deluge
       vlc
-      flameshot
       libqalculate # calculator cli w/ currency conversion
       (makeDesktopItem {
         name = "scratch-calc";
