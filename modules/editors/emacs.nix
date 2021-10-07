@@ -18,12 +18,6 @@ in {
 
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
-    #   programs.emacs = {
-    #     enable = true;
-    #     package = pkgs.emacsGcc;
-    #     extraPackages = epkgs: [ epkgs.melpaStablePackages.pdf-tools ];
-    #   };
-    # };
     services.emacs = {
       enable = true;
       package = pkgs.emacsPgtkGcc;
