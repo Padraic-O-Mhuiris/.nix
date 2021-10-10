@@ -41,6 +41,7 @@ in {
   };
 
   config = {
+
     user = let
       user = builtins.getEnv "USER";
       name = if elem user [ "" "root" ] then "padraic" else user;

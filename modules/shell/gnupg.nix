@@ -7,10 +7,12 @@ in {
   options.modules.shell.gnupg = with types; {
     enable = mkBoolOpt false;
     cacheTTL = mkOpt int 3600; # 1hr
+    gpgPublicKey = mkOpt string "9A51DBF629888EE75982008D9DCE7055406806F8";
   };
 
   config = mkIf cfg.enable {
     env.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
+    env.GPG_KEY = cfg.gpgPublicKey;
 
     programs.gnupg.agent = {
       enable = true;
