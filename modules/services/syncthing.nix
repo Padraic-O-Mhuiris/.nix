@@ -9,7 +9,10 @@ in {
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
+      user = config.user.name;
+      group = config.user.group;
       dataDir = "/home/${config.user.name}/shared";
+      configDir = "/home/${config.user.name}/.config/syncthing";
     };
   };
 }
