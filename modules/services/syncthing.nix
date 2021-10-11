@@ -11,7 +11,7 @@ in {
       enable = true;
       user = config.user.name;
       group = config.user.group;
-      dataDir = "/home/${config.user.name}/shared";
+      dataDir = "/home/${config.user.name}/sync";
       configDir = "/home/${config.user.name}/.config/syncthing";
     };
   };
