@@ -14,10 +14,7 @@ in {
       configDir = "/home/${config.user.name}/.config/syncthing";
 
       declarative.folders = {
-        "/home/${config.user.name}/sync" = {
-          id = "sync";
-          devices = [ "Hydrogen" ];
-        };
+        "/home/${config.user.name}/sync" = { id = "sync"; };
       };
     };
   };
