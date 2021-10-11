@@ -54,7 +54,7 @@ in {
             id = "org";
             devices = [ "Oxygen" "Hydrogen" ];
             watch = true;
-            type = "org";
+            type = "sendreceive";
           };
         };
       };
