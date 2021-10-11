@@ -27,7 +27,7 @@ in {
             id = "sync";
             devices = [ "Oxygen" ];
             watch = true;
-            type = "sendrecive";
+            type = "sendreceive";
           };
         };
       };
