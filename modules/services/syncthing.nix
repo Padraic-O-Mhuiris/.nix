@@ -20,12 +20,17 @@ in {
             id =
               "7TLH75M-N732WQU-YVYWRIY-FGE4JWD-ZJT2R2H-XASE7BI-232JA3R-WY4WVA4";
           };
+          "Hydrogen" = {
+            name = "Hydrogen";
+            id =
+              "SGEL4MW-HA7XWZU-GU5HZ5L-XBRWDNL-746DNQZ-UNI76NO-HKMJFFB-2LVN2Q2";
+          };
         };
 
         folders = {
           "/home/${config.user.name}/sync" = {
             id = "sync";
-            devices = [ "Oxygen" ];
+            devices = [ "Oxygen" "Hydrogen" ];
             watch = true;
             type = "sendreceive";
           };
