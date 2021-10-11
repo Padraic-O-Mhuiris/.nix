@@ -9,7 +9,6 @@ in {
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
-      useInotify = true;
       user = config.user.name;
       group = config.user.group;
       configDir = "/home/${config.user.name}/.config/syncthing";
