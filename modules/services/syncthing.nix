@@ -43,6 +43,13 @@ in {
             type = "sendreceive";
           };
 
+          "/home/${config.user.name}/.nix" = {
+            id = "nix";
+            devices = [ "Oxygen" "Hydrogen" ];
+            watch = true;
+            type = "sendreceive";
+          };
+
         };
       };
     };
