@@ -57,7 +57,10 @@
       direnv.enable = true;
       ngrok.enable = true;
     };
-    services = { docker.enable = true; };
+    services = {
+      docker.enable = true;
+      syncthing.enable = true;
+    };
     theme.active = "alucard";
   };
 

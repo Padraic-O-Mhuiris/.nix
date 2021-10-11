@@ -54,7 +54,10 @@
       dapptools.enable = true;
       direnv.enable = true;
     };
-    services = { docker.enable = true; };
+    services = {
+      docker.enable = true;
+      syncthing.enable = true;
+    };
     theme.active = "alucard";
   };
 
