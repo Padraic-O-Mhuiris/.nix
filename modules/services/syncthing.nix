@@ -28,12 +28,21 @@ in {
         };
 
         folders = {
+
           "/home/${config.user.name}/sync" = {
             id = "sync";
             devices = [ "Oxygen" "Hydrogen" ];
             watch = true;
             type = "sendreceive";
           };
+
+          "/home/${config.user.name}/.finances" = {
+            id = "finances";
+            devices = [ "Oxygen" "Hydrogen" ];
+            watch = true;
+            type = "sendreceive";
+          };
+
         };
       };
     };
