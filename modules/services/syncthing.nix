@@ -9,12 +9,28 @@ in {
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
+      useInotify = true;
       user = config.user.name;
       group = config.user.group;
       configDir = "/home/${config.user.name}/.config/syncthing";
 
-      declarative.folders = {
-        "/home/${config.user.name}/sync" = { id = "sync"; };
+      declarative = {
+        devices = {
+          "Oxygen" = {
+            name = "Oxygen";
+            id =
+              "7TLH75M-N732WQU-YVYWRIY-FGE4JWD-ZJT2R2H-XASE7BI-232JA3R-WY4WVA4";
+          };
+        };
+
+        folders = {
+          "/home/${config.user.name}/sync" = {
+            id = "sync";
+            devices = [ "Oxygen" ];
+            watch = true;
+            type = "sendrecive";
+          };
+        };
       };
     };
   };
