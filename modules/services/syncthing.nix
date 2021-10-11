@@ -50,6 +50,12 @@ in {
             type = "sendreceive";
           };
 
+          "/home/${config.user.name}/.org" = {
+            id = "org";
+            devices = [ "Oxygen" "Hydrogen" ];
+            watch = true;
+            type = "org";
+          };
         };
       };
     };
