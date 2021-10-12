@@ -48,9 +48,9 @@ in {
       grafana = {
         enable = true;
         port = 2111;
-        security = {
-          adminUser = config.user.name;
-          secretKey = "abc123"; # TODO Change
+        smtp = {
+          user = config.user.name;
+          password = "abc123"; # TODO Change
         };
       };
     };
