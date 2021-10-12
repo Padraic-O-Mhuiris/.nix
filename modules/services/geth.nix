@@ -24,8 +24,8 @@ in {
         metrics.enable = true;
         syncmode = "full";
       };
-
     };
 
+    services.prometheus = { enable = true; };
   };
 }
