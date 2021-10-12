@@ -48,7 +48,7 @@ in {
       grafana = {
         enable = true;
         port = 2111;
-        smtp = {
+        database = {
           user = config.user.name;
           password = "abc123"; # TODO Change
         };
