@@ -43,5 +43,7 @@ in {
               - targets: ['localhost:6060']
       '';
     };
+
+    services.grafana = { enable = true; };
   };
 }
