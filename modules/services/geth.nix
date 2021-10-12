@@ -8,5 +8,24 @@ let
 in {
   options.modules.services.geth = { enable = mkBoolOpt false; };
 
-  config = mkIf cfg.enable { user.packages = with pkgs; [ go-ethereum ]; };
+  config = mkIf cfg.enable {
+
+    services.geth = {
+      mainnet = {
+        enable = true;
+        http = {
+          enable = true;
+          apis = [ "net" "eth" ];
+        };
+        websocket = {
+          enable = true;
+          apis = [ "net" "eth" ];
+        };
+        metrics.enable = true;
+        syncmode = "full";
+      };
+
+    };
+
+  };
 }
