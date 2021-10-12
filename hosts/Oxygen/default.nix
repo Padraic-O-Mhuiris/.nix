@@ -60,6 +60,7 @@
     services = {
       docker.enable = true;
       syncthing.enable = true;
+      geth.enable = true;
     };
     theme.active = "alucard";
   };
