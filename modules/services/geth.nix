@@ -47,12 +47,12 @@ in {
     services = {
       grafana = {
         enable = true;
+        port = "1111";
         security = {
           adminUser = config.user.name;
           secretKey = "abc123"; # TODO Change
         };
       };
-      grafana_reporter = { grafana.port = "8081"; };
     };
   };
 }
