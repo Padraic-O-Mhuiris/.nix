@@ -46,8 +46,7 @@ in {
           metrics_path: /debug/metrics/prometheus
           scheme: http
           static_configs:
-          - targets:
-            - geth:6060
+          - targets: ['localhost:6060']
               '';
     };
   };
