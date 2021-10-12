@@ -29,11 +29,26 @@ in {
     services.prometheus = {
       enable = true;
       configText = ''
-        - job_name: 'geth node'
+        global:
+          scrape_interval: 15s
+          scrape_timeout: 10s
+          evaluation_interval: 15s
+        alerting:
+          alertmanagers:
+          - static_configs:
+            - targets: []
+            scheme: http
+            timeout: 10s
+        scrape_configs:
+        - job_name: geth
+          scrape_interval: 15s
+          scrape_timeout: 10s
           metrics_path: /debug/metrics/prometheus
+          scheme: http
           static_configs:
-          - targets: ['X.X.X.X:6060']
-      '';
+          - targets:
+            - geth:6060
+              '';
     };
   };
 }
