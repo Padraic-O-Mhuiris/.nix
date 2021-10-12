@@ -44,6 +44,15 @@ in {
       '';
     };
 
-    services.grafana = { enable = true; };
+    services = {
+      grafana = {
+        enable = true;
+        security = {
+          adminUser = config.user.name;
+          secretKey = "abc123"; # TODO Change
+        };
+      };
+      grafana_reporter = { grafana.port = "8081"; };
+    };
   };
 }
