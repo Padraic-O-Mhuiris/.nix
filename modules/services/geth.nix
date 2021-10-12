@@ -47,7 +47,7 @@ in {
     services = {
       grafana = {
         enable = true;
-        port = "1111";
+        port = 2111;
         security = {
           adminUser = config.user.name;
           secretKey = "abc123"; # TODO Change
