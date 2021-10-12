@@ -26,6 +26,14 @@ in {
       };
     };
 
-    services.prometheus = { enable = true; };
+    services.prometheus = {
+      enable = true;
+      configText = ''
+        - job_name: 'geth node'
+          metrics_path: /debug/metrics/prometheus
+          static_configs:
+          - targets: ['X.X.X.X:6060']
+      '';
+    };
   };
 }
