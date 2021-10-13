@@ -19,7 +19,7 @@ in {
         };
         metrics.enable = true;
         syncmode = "full";
-        extraArgs = "--cache 16384";
+        extraArgs = [ "--cache 16384" ];
       };
     };
 
