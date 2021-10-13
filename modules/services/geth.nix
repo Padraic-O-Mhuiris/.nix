@@ -15,11 +15,7 @@ in {
         enable = true;
         http = {
           enable = true;
-          apis = [ "net" "eth" ];
-        };
-        websocket = {
-          enable = true;
-          apis = [ "net" "eth" ];
+          apis = [ "net" "eth" "debug" "les" "miner" "txpool" ];
         };
         metrics.enable = true;
         syncmode = "full";
@@ -48,10 +44,6 @@ in {
       grafana = {
         enable = true;
         port = 2111;
-        database = {
-          user = config.user.name;
-          password = "abc123"; # TODO Change
-        };
       };
     };
   };
