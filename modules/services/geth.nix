@@ -15,7 +15,7 @@ in {
         enable = true;
         http = {
           enable = true;
-          apis = [ "net" "eth" "debug" "les" "miner" "txpool" ];
+          apis = [ "net" "eth" "debug" "miner" "txpool" ];
         };
         metrics.enable = true;
         syncmode = "full";
