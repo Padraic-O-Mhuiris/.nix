@@ -6,7 +6,7 @@ with lib;
 with lib.my;
 let
   cfg = config.modules.theme;
-  fontSize = if config.networking.hostName == "Hydrogen" then 24 else 16;
+  fontSize = if config.networking.hostName == "Hydrogen" then "24" else "16";
 in {
   config = mkIf (cfg.active == "alucard") (mkMerge [
     # Desktop-agnostic configuration
