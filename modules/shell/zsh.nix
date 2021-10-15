@@ -37,6 +37,7 @@ in {
       tldr
       ripgrep
       fortune
+      cowsay
     ];
 
     users.defaultUserShell = pkgs.zsh;
