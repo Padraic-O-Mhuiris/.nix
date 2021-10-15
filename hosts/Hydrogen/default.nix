@@ -48,6 +48,7 @@
     };
     shell = {
       gnupg.enable = true;
+      ssh.enable = true;
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;

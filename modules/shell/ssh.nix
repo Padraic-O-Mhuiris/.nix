@@ -22,9 +22,6 @@ in {
     users.users."${config.user.name}".openssh.authorizedKeys.keyFiles =
       [ "${config.dotfiles.keysDir}/id_rsa.pub" ];
 
-    # home.file.".ssh/id_rsa.pub".source =
-    #   "${config.dotfiles.keysDir}/id_rsa.pub";
-
     home.file.".ssh/config".text = ''
       Host Hydrogen
            Hostname 8.8.8.8
