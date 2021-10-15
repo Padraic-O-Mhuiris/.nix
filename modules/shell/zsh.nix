@@ -87,6 +87,8 @@ in {
         [ -f ~/.zshenv ] && source ~/.zshenv
 
         screenfetch -t
+        echo
+        echo
         fortune | cowsay -f tux
       '';
 
