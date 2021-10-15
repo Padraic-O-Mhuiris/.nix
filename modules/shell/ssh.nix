@@ -8,7 +8,7 @@ let
 in {
   options.modules.shell.ssh = {
     enable = mkBoolOpt false;
-    enableRemoteAccess = mkBookOpt false;
+    enableRemoteAccess = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
