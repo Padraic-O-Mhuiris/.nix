@@ -34,6 +34,7 @@ in {
       cursorTheme = mkOpt str "";
     };
 
+    onReload = mkOpt (attrsOf lines) { };
   };
 
   config = mkIf (cfg.active != null) (mkMerge [
@@ -102,5 +103,22 @@ in {
     (mkIf (cfg.loginWallpaper != null) {
       services.xserver.displayManager.lightdm.background = cfg.loginWallpaper;
     })
+
+    (mkIf (cfg.onReload != { }) (let
+      reloadTheme = with pkgs;
+        (writeScriptBin "reloadTheme" ''
+          #!${stdenv.shell}
+          echo "Reloading current theme: ${cfg.active}"
+          ${concatStringsSep "\n" (mapAttrsToList (name: script: ''
+            echo "[${name}]"
+            ${script}
+          '') cfg.onReload)}
+        '');
+    in {
+      user.packages = [ reloadTheme ];
+      system.userActivationScripts.reloadTheme = ''
+        [ -z "$NORELOAD" ] && ${reloadTheme}/bin/reloadTheme
+      '';
+    }))
   ]);
 }
