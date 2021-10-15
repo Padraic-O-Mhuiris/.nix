@@ -46,6 +46,7 @@ in {
       enableCompletion = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
+      syntaxHighlighting.highlighters = [ "main" "brackets" "cursor" "line" ];
       histFile = "$XDG_CACHE_HOME/zhistory";
       histSize = 1000000000;
       interactiveShellInit = ''
