@@ -10,7 +10,7 @@ let cfg = config.modules.theme;
 in {
   options.modules.theme = with types; {
     active = mkOption {
-      type = nullOr strnux mo;
+      type = nullOr str;
       default = null;
       apply = v:
         let theme = builtins.getEnv "THEME";
