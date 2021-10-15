@@ -82,7 +82,8 @@ in {
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 
-    #modules.shell.zsh.rcFiles = [ "${configDir}/emacs/aliases.zsh" ];
+    modules.shell.zsh.aliases =
+      "alias e='emacseditor \"$@\" &>/dev/null & disown'";
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 

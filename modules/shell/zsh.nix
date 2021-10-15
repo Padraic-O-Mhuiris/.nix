@@ -114,6 +114,7 @@ in {
         alias ..='cd ..'
         alias ...='cd ../..'
         alias ....='cd ../../..'
+        alias pd='cd -'
         alias q=exit
         alias clr=clear
         alias rm='rm -i'
