@@ -21,8 +21,6 @@ in {
           };
         };
 
-        shell.zsh.rcFiles = [ ./config/zsh/prompt.zsh ];
-
         desktop.browser = {
           firefox.userChrome = concatMapStringsSep "\n" readFile
             [ ./config/firefox/userChrome.css ];
@@ -35,7 +33,12 @@ in {
       user.packages = with pkgs; [
         unstable.dracula-theme
         paper-icon-theme # for rofi
+
+        starship # for zsh prompt
       ];
+
+      modules.shell.zsh.rcInit = ''eval "$(starship init zsh)"'';
+
       fonts = {
         fontDir.enable = true;
         enableGhostscriptFonts = true;

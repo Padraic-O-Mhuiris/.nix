@@ -28,7 +28,6 @@ in {
 
     user.packages = with pkgs; [
       zsh
-      starship
       nix-zsh-completions
       bat
       exa
