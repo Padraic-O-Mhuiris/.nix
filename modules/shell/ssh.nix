@@ -22,15 +22,15 @@ in {
       permitRootLogin = "no";
       knownHosts = {
         "Hydrogen" = {
-          hostNames = [ "192.168.0.26" ];
+          hostNames = [ "Hydrogen" "192.168.0.26" ];
           publicKeyFile = sshPublicKeyFile;
         };
         "Oxygen" = {
-          hostNames = [ "192.168.0.158" ];
+          hostNames = [ "Oxygen" "192.168.0.158" ];
           publicKeyFile = sshPublicKeyFile;
         };
         "Nitrogen" = {
-          hostNames = [ "192.168.0.55" "1.tcp.eu.ngrok.io" ];
+          hostNames = [ "Nitrogen" "192.168.0.55" "1.tcp.eu.ngrok.io" ];
           publicKeyFile = sshPublicKeyFile;
         };
       };
