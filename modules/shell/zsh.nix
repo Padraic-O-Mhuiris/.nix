@@ -118,8 +118,8 @@ in {
         alias q=exit
         alias clr=clear
         alias ls='ls -lc'
-        alias lt='exa -Ta --icons --level 1'
-        alias ltt='exa -Ta --icons --level 2'
+        alias l='exa -Ta --icons --level 1'
+        alias ll='exa -Ta --icons --level 2'
         alias rm='rm -i'
         alias cp='cp -i'
         alias mv='mv -i'
