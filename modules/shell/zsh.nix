@@ -117,9 +117,9 @@ in {
         alias ....='cd ../../..'
         alias q=exit
         alias clr=clear
-        alias ls=ls -lc
-        alias lt=exa -Ta --icons --level 1
-        alias ltt=exa -Ta --icons --level 2
+        alias ls='ls -lc'
+        alias lt='exa -Ta --icons --level 1'
+        alias ltt='exa -Ta --icons --level 2'
         alias rm='rm -i'
         alias cp='cp -i'
         alias mv='mv -i'
