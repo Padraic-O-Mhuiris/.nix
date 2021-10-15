@@ -16,7 +16,7 @@ in {
 
     programs.gnupg.agent = {
       enable = true;
-      enableSSHSupport = true;
+      enableSSHSupport = config.modules.shell.ssh.enable;
       enableExtraSocket = true;
       pinentryFlavor = "gtk2";
     };
@@ -41,10 +41,6 @@ in {
         allow-emacs-pinentry
         allow-loopback-pinentry
 
-        ## test comment
-        # https://github.com/drduh/config/blob/master/gpg.conf
-        # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
-        # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html
         # Use AES256, 192, or 128 as cipher
         personal-cipher-preferences AES256 AES192 AES
         # Use SHA512, 384, or 256 as digest
@@ -105,26 +101,5 @@ in {
         #list-options show-unusable-subkeys
       '';
     };
-
-    # TODO Add entry for Lithium
-    home.file.".ssh/config".text = ''
-      Host Hydrogen
-           Hostname 8.8.8.8
-           User ${config.user.name}
-           IdentityFile ~/.ssh/id_rsa.pub
-
-      Host Nitrogen_local
-           Hostname 192.168.0.55
-           User ${config.user.name}
-           Port 22175
-
-      Host Nitrogen_remote
-           Hostname 1.tcp.eu.ngrok.io
-           User ${config.user.name}
-           Port 26096
-    '';
-
-    home.file.".ssh/id_rsa.pub".source =
-      "${config.dotfiles.keysDir}/id_rsa.pub";
   };
 }
