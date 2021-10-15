@@ -36,6 +36,7 @@ in {
       fzf
       tldr
       ripgrep
+      fortune
     ];
 
     users.defaultUserShell = pkgs.zsh;
