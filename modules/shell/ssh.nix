@@ -26,9 +26,11 @@ in {
       [ sshPublicKeyFile ];
 
     home.file.".ssh/config".text = ''
-      Host Hydrogen
-           Hostname 8.8.8.8
-           User ${config.user.name}
+      Host HydrogenLocal
+           Hostname 192.168.0.26
+
+      Host OxygenLocal
+           Hostname 192.168.0.158
 
       Host NitrogenLocal
            Hostname 192.168.0.55
