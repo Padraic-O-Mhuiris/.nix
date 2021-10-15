@@ -29,12 +29,18 @@ in {
       Host Hydrogen
            Hostname 8.8.8.8
            User ${config.user.name}
-           IdentityFile ~/.ssh/id_rsa.pub
 
-      Host Nitrogen
+      Host NitrogenLocal
+           Hostname 192.168.0.55
+           Port 22175
+
+      Host NitrogenRemote
            Hostname 1.tcp.eu.ngrok.io
-           User ${config.user.name}
            Port 26096
+
+      Host *
+           User ${config.user.name}
+           IdentityFile ~/.ssh/id_rsa.pub
     '';
 
   };
