@@ -4,9 +4,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.desktop.apps.rofi;
 in {
-  options.modules.desktop.apps.rofi = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.desktop.apps.rofi = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     # link recursively so other modules can link files in its folder
@@ -40,6 +38,7 @@ in {
         icon = "folder";
         exec = "${config.dotfiles.binDir}/rofi/filemenu";
       })
+
       (makeDesktopItem {
         name = "rofi-filemenu-scratch";
         desktopName = "Open Directory in Scratch Terminal";
