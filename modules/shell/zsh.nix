@@ -73,7 +73,7 @@ in {
       # https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
       "zsh/.zshrc".text = ''
         source "$ZDOTDIR/extra.zshrc";
-        source "$ZDOTDIR/aliases.zshrc";
+        source "$ZDOTDIR/aliases.zsh";
 
         [ -f ~/.zshrc ] && source ~/.zshrc
       '';
