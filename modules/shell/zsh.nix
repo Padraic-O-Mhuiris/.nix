@@ -39,6 +39,7 @@ in {
       fortune
       cowsay
       doge
+      lolcat
     ];
 
     users.defaultUserShell = pkgs.zsh;
