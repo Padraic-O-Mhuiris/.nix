@@ -85,6 +85,9 @@ in {
       "zsh/.zshenv".text = ''
         [ -f "${"0:a:h"}/extra.zshenv" ] && source "${"0:a:h"}/extra.zshenv"
         [ -f ~/.zshenv ] && source ~/.zshenv
+
+        screenfetch -t
+        fortune | cowsay -f tux
       '';
 
       # "zsh" = {
