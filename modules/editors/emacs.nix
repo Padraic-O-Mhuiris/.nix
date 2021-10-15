@@ -82,10 +82,6 @@ in {
 
     #env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 
-    modules.shell.zsh.aliases = {
-      "e" = ''emacseditor "$@" &>/dev/null & disown'';
-    };
-
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
     # init.doomEmacs = mkIf cfg.doom.enable ''
