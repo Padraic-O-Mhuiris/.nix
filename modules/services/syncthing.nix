@@ -36,7 +36,7 @@ in {
             type = "sendreceive";
           };
 
-          "/home/${config.user.name}/.finances" = {
+          "/home/${config.user.name}/.finance" = {
             id = "finances";
             devices = [ "Oxygen" "Hydrogen" ];
             watch = true;
