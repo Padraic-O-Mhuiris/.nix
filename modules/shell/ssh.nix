@@ -32,11 +32,6 @@ in {
            IdentityFile ~/.ssh/id_rsa.pub
 
       Host Nitrogen
-           Hostname 192.168.0.55
-           User ${config.user.name}
-           Port 22175
-
-      Host Nitrogen
            Hostname 1.tcp.eu.ngrok.io
            User ${config.user.name}
            Port 26096
