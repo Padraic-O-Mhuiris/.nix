@@ -40,6 +40,7 @@ in {
       cowsay
       doge
       lolcat
+      screenfetch
     ];
 
     users.defaultUserShell = pkgs.zsh;
