@@ -117,7 +117,7 @@ in {
         alias ....='cd ../../..'
         alias q=exit
         alias clr=clear
-        alias ls=ls -l
+        alias ls=ls -lc
         alias rm='rm -i'
         alias cp='cp -i'
         alias mv='mv -i'
