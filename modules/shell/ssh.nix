@@ -20,23 +20,27 @@ in {
       enable = true;
       passwordAuthentication = false;
       permitRootLogin = "no";
-      knownHosts = {
-        "Hydrogen" = {
-          hostNames = [ "Hydrogen" "192.168.0.26" ];
-          publicKeyFile = sshPublicKeyFile;
-        };
-        "Oxygen" = {
-          hostNames = [ "Oxygen" "192.168.0.158" ];
-          publicKeyFile = sshPublicKeyFile;
-        };
-        "Nitrogen" = {
-          hostNames = [ "Nitrogen" "192.168.0.55" "1.tcp.eu.ngrok.io" ];
-          publicKeyFile = sshPublicKeyFile;
-        };
-      };
     };
 
     users.users."${config.user.name}".openssh.authorizedKeys.keyFiles =
       [ sshPublicKeyFile ];
+
+    home.file.".ssh/config".text = ''
+      Host Hydrogen
+           Hostname 8.8.8.8
+           User ${config.user.name}
+           IdentityFile ~/.ssh/id_rsa.pub
+
+      Host Nitrogen
+           Hostname 192.168.0.55
+           User ${config.user.name}
+           Port 22175
+
+      Host Nitrogen
+           Hostname 1.tcp.eu.ngrok.io
+           User ${config.user.name}
+           Port 26096
+    '';
+
   };
 }
