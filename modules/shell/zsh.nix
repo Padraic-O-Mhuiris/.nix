@@ -48,7 +48,6 @@ in {
       syntaxHighlighting.enable = true;
       interactiveShellInit = ''
         source "$(${pkgs.fzf}/bin/fzf-share)/key-bindings.zsh"
-        eval "$(starship init zsh)"
       '';
       ohMyZsh = {
         enable = true;
@@ -57,13 +56,6 @@ in {
         customPkgs = with pkgs; [ nix-zsh-completions ];
       };
     };
-
-    home.configFile."starship.toml".text = ''
-      format = "$all"
-
-      [[battery.display]]
-        threshold = 50
-    '';
 
     env = {
       SHELL = "zsh";
