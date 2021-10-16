@@ -41,7 +41,7 @@ in {
 
       Match host Nitrogen exec is_local_conn
         HostName 192.168.0.55
-        Port 26096
+        Port 22175
 
       Match host Nitrogen
         Hostname 1.tcp.eu.ngrok.io
