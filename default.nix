@@ -69,5 +69,6 @@ with lib.my; {
     wget
     gnumake
     unzip
+    iw
   ];
 }

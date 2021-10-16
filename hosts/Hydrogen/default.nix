@@ -61,13 +61,4 @@
     };
     theme.active = "alucard";
   };
-
-  #sops.defaultSopsFile = ../../secrets.yaml;
-  #sops.gnupgHome = "/home/padraic/.gnupg";
-  #sops.sshKeyPaths = [];
-
-  #sops.secrets.hello = {};
-
-  # sops.secrets.hello.mode = "0440";
-  # sops.secrets.hello.owner = config.users.users.padraic.name;
 }
