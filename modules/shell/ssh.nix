@@ -27,22 +27,31 @@ in {
 
     home.file.".ssh/config".text = ''
       Host HydrogenLocal
-           Hostname 192.168.0.26
+        Hostname 192.168.0.26
 
       Host OxygenLocal
-           Hostname 192.168.0.158
+        Hostname 192.168.0.158
 
       Host NitrogenLocal
-           Hostname 192.168.0.55
-           Port 22175
+        Hostname 192.168.0.55
+        Port 22175
 
       Host NitrogenRemote
-           Hostname 1.tcp.eu.ngrok.io
-           Port 26096
+        Hostname 1.tcp.eu.ngrok.io
+        Port 26096
+
+      Host Nitrogen
+        Match exec "nc -z 192.168.0.55 %p"
+          HostName 192.168.0.55
+          Port 26096
+        Match !exec "nc -z 192.168.0.55 %p"
+          Hostname 1.tcp.eu.ngrok.io
+          Port 26096
+
 
       Host *
-           User ${config.user.name}
-           IdentityFile ~/.ssh/id_rsa.pub
+        User ${config.user.name}
+        IdentityFile ~/.ssh/id_rsa.pub
     '';
 
   };
