@@ -66,7 +66,6 @@ in {
           "command-not-found"
           "extract"
           "nix"
-          "fzf"
         ];
         customPkgs = with pkgs; [ nix-zsh-completions ];
       };
@@ -86,7 +85,7 @@ in {
       "zsh/.zshrc".text = ''
         source "$ZDOTDIR/extra.zshrc";
         source "$ZDOTDIR/aliases.zsh";
-
+        export FZF_BASE="${pkgs.fzf/bin}"
         [ -f ~/.zshrc ] && source ~/.zshrc
       '';
 
