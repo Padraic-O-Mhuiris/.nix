@@ -32,9 +32,6 @@ in {
       Host OxygenLocal
         Hostname 192.168.0.158
 
-      Match host Nitrogen exec "nc -G 1 -z 192.168.0.55 %p"
-        HostName 192.168.0.55
-        Port 26096
       Match host Nitrogen
         Hostname 1.tcp.eu.ngrok.io
         Port 26096
