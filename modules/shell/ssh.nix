@@ -9,7 +9,9 @@ let
   sshPublicKeyFile = "${config.dotfiles.keysDir}/id_rsa.pub";
 
   is_local_conn = pkgs.writeShellScriptBin "is_local_conn" ''
-    nmcli -t -f active,ssid dev wifi | grep -q 'yes:VM9598311' && exit 0
+    nmcli -t -f active,ssid dev wifi | grep -q '^yes:VM9598311' && exit 0
+
+    exit 1
   '';
 
 in {
