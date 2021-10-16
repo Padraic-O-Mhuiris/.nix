@@ -57,7 +57,7 @@ in {
         source "$(${pkgs.fzf}/bin/fzf-share)/key-bindings.zsh"
       '';
       ohMyZsh = {
-        enable = false;
+        enable = true;
         plugins = [
           "git"
           "sudo"
