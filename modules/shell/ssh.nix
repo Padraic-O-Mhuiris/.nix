@@ -32,22 +32,12 @@ in {
       Host OxygenLocal
         Hostname 192.168.0.158
 
-      Host NitrogenLocal
-        Hostname 192.168.0.55
-        Port 22175
-
-      Host NitrogenRemote
+      Match host Nitrogen exec "nc -G 1 -z 192.168.0.55 %p"
+        HostName 192.168.0.55
+        Port 26096
+      Match host Nitrogen
         Hostname 1.tcp.eu.ngrok.io
         Port 26096
-
-      Host Nitrogen
-        Match exec "nc -z 192.168.0.55 %p"
-          HostName 192.168.0.55
-          Port 26096
-        Match !exec "nc -z 192.168.0.55 %p"
-          Hostname 1.tcp.eu.ngrok.io
-          Port 26096
-
 
       Host *
         User ${config.user.name}
