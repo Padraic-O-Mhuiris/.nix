@@ -39,11 +39,11 @@ in {
       Host OxygenLocal
         Hostname 192.168.0.158
 
-      Match host Nitrogen exec "sh -c is_local_conn"
+      Match host Nitrogen exec is_local_conn
         HostName 192.168.0.55
         Port 26096
 
-      Host Nitrogen
+      Match host Nitrogen
         Hostname 1.tcp.eu.ngrok.io
         Port 26096
 
