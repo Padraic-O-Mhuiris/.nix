@@ -85,7 +85,7 @@ in {
       "zsh/.zshrc".text = ''
         source "$ZDOTDIR/extra.zshrc";
         source "$ZDOTDIR/aliases.zsh";
-        export FZF_BASE="${pkgs.fzf/bin}"
+        export FZF_BASE="${pkgs.fzf}/bin"
         [ -f ~/.zshrc ] && source ~/.zshrc
       '';
 
