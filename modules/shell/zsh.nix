@@ -57,15 +57,23 @@ in {
         source "$(${pkgs.fzf}/bin/fzf-share)/key-bindings.zsh"
       '';
       ohMyZsh = {
-        enable = true;
-        plugins =
-          [ "git" "colored-man-pages" "command-not-found" "extract" "nix" ];
+        enable = false;
+        plugins = [
+          "git"
+          "sudo"
+          "dirhistory"
+          "colored-man-pages"
+          "command-not-found"
+          "extract"
+          "nix"
+          "fzf"
+        ];
         customPkgs = with pkgs; [ nix-zsh-completions ];
       };
     };
 
     env = {
-      SHELL = "zsh";
+      SHELL = "${pkgs.zsh}/bin/zsh";
       ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
       ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
       ZGEN_DIR = "$XDG_DATA_HOME/zsh";
