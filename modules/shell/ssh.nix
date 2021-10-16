@@ -32,6 +32,9 @@ in {
       Host OxygenLocal
         Hostname 192.168.0.158
 
+      Match host Nitrogen exec "nmcli -t -f active,ssid dev wifi | grep -q 'yes:VM9598311' && exit 0"
+        HostName 192.168.0.55
+        Port 26096
       Match host Nitrogen
         Hostname 1.tcp.eu.ngrok.io
         Port 26096
