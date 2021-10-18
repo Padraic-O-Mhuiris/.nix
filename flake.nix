@@ -56,7 +56,7 @@
     in {
       lib = lib.my;
 
-      devShell = pkgs.callPackage ./shell.nix {
+      devShell."${system}" = pkgs.callPackage ./shell.nix {
         inherit (sops-nix.packages.${pkgs.system}) sops-import-keys-hook;
       };
 
