@@ -22,7 +22,6 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     home-manager = { url = "github:nix-community/home-manager"; };
-    sops-nix.url = "github:Mic92/sops-nix";
 
     dapptools = {
       url = "github:dapphub/dapptools";
@@ -56,10 +55,6 @@
     in {
       lib = lib.my;
 
-      devShell."${system}" = pkgs.callPackage ./shell.nix {
-        inherit (sops-nix.packages.${pkgs.system}) sops-import-keys-hook;
-      };
-
       overlay = final: prev: {
         unstable = pkgs';
         my = self.packages."${system}";
@@ -73,6 +68,6 @@
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
 
-      nixosConfigurations = mapHosts ./hosts { } [ sops-nix.nixosModules.sops ];
+      nixosConfigurations = mapHosts ./hosts { } [ ];
     };
 }
