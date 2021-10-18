@@ -16,8 +16,8 @@ in {
 
     programs.gnupg.agent = {
       enable = true;
-      #enableSSHSupport = config.modules.shell.ssh.enable;
       enableExtraSocket = true;
+      enableBrowserSocket = true;
       pinentryFlavor = "gtk2";
     };
 
