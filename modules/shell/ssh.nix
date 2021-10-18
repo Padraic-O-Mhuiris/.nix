@@ -31,8 +31,13 @@ in {
       hostKeys = [ ];
     };
 
-    users.users."${config.user.name}".openssh.authorizedKeys.keyFiles =
-      [ gpgSshKeyFile ];
+    users.users."${config.user.name}".openssh.authorizedKeys = {
+      keys = [
+        "SHA256:4RvWG405TQUniAj0C1FWxFb5qzojE2RYj2XUhpxTCNU padraic@Hydrogen"
+        "SHA256:OyTk2m9egMVExbHwYXZ6OO7ttu+Otoy1Is0heztqbuc padraic@Oxygen"
+      ];
+      keyFiles = [ gpgSshKeyFile ];
+    };
 
     home.file.".ssh/config".text = ''
       Host HydrogenLocal
