@@ -52,11 +52,11 @@ in {
         IdentityFile ~/.ssh/id_rsa.pub
     '';
 
-    systemd.services.ngrok = {
-      wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
-      description = "ngrok ssh tunnel";
-      serviceConfig = { ExecStart = "${pkgs.ngrok}/bin/ngrok tcp 22"; };
-    };
+    # systemd.services.ngrok = {
+    #   wantedBy = [ "multi-user.target" ];
+    #   after = [ "network.target" ];
+    #   description = "ngrok ssh tunnel";
+    #   serviceConfig = { ExecStart = "${pkgs.ngrok}/bin/ngrok tcp 22"; };
+    # };
   };
 }
