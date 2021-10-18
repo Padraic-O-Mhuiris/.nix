@@ -567,15 +567,13 @@
       "locked": {
         "lastModified": 1633273832,
         "narHash": "sha256-oOjpMVYpkIUpiML61PeqTk+sg4juRvF7P6jroI/YvTw=",
-        "owner": "Mic92",
-        "repo": "sops-nix",
+        "path": "/nix/store/wzw0q0fqgq1vnd457z6d3nf1gnnqcdy7-source",
         "rev": "2e86e1698d53e5bd71d9de5f8b7e8f2f5458633c",
-        "type": "github"
+        "type": "path"
       },
       "original": {
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "type": "github"
+        "id": "sops-nix",
+        "type": "indirect"
       }
     }
   },
