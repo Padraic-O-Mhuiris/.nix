@@ -74,8 +74,5 @@
       } // mapModulesRec ./modules import;
 
       nixosConfigurations = mapHosts ./hosts { };
-
-      devShell."${system}" = import ./shell.nix { inherit pkgs; };
-
     };
 }
