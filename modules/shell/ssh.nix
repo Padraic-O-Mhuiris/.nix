@@ -28,7 +28,6 @@ in {
       enable = true;
       passwordAuthentication = false;
       permitRootLogin = "no";
-      hostKeys = [ ];
     };
 
     users.users."${config.user.name}".openssh.authorizedKeys = {
