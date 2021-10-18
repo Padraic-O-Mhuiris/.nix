@@ -6,7 +6,8 @@ let
   cfg = config.modules.shell.ssh;
   configDir = config.dotfiles.configDir;
 
-  sshPublicKeyFile = "${config.dotfiles.keysDir}/id_rsa.pub";
+  gpgSshKeyFile =
+    "${config.dotfiles.keysDir}/gpg/9A51DBF629888EE75982008D9DCE7055406806F8_ssh_key";
 
   is_local_conn = pkgs.writeShellScriptBin "is_local_conn" ''
     nmcli -t -f active,ssid dev wifi | grep -q '^yes:VM9598311' && exit 0
@@ -27,10 +28,11 @@ in {
       enable = true;
       passwordAuthentication = false;
       permitRootLogin = "no";
+      hostKeys = [ ];
     };
 
     users.users."${config.user.name}".openssh.authorizedKeys.keyFiles =
-      [ sshPublicKeyFile ];
+      [ gpgSshKeyFile ];
 
     home.file.".ssh/config".text = ''
       Host HydrogenLocal
