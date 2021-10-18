@@ -6,9 +6,6 @@ let
   cfg = config.modules.shell.ssh;
   configDir = config.dotfiles.configDir;
 
-  gpgSshKeyFile =
-    "${config.dotfiles.keysDir}/gpg/9A51DBF629888EE75982008D9DCE7055406806F8_ssh_key";
-
   is_local_conn = pkgs.writeShellScriptBin "is_local_conn" ''
     nmcli -t -f active,ssid dev wifi | grep -q '^yes:VM9598311' && exit 0
 
@@ -30,12 +27,8 @@ in {
       permitRootLogin = "no";
     };
 
-    users.users."${config.user.name}".openssh.authorizedKeys = {
-      keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6RXJPp92XKKfkIUpnnhX14FgqeFvcO/6JvZMTXkum7 Hydrogen - padraic-o-mhuiris@protonmail.com"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHXnABspqcYysmEtN8zKAjrUyxKy5RXm740h3csJWqy Oxygen - padraic-o-mhuiris@protonmail.com"
-      ];
-    };
+    users.users."${config.user.name}".openssh.authorizedKeys.keyFiles =
+      [ ../../keys/Hydrogen.pub ../../keys/Oxygen.pub ];
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
