@@ -38,25 +38,25 @@ in {
       keyFiles = [ gpgSshKeyFile ];
     };
 
-    home.file.".ssh/config".text = ''
-      Host HydrogenLocal
-        Hostname 192.168.0.26
+    # home.file.".ssh/config".text = ''
+    #   Host HydrogenLocal
+    #     Hostname 192.168.0.26
 
-      Host OxygenLocal
-        Hostname 192.168.0.158
+    #   Host OxygenLocal
+    #     Hostname 192.168.0.158
 
-      Match host Nitrogen exec is_local_conn
-        HostName 192.168.0.55
-        Port 22175
+    #   Match host Nitrogen exec is_local_conn
+    #     HostName 192.168.0.55
+    #     Port 22175
 
-      Match host Nitrogen
-        Hostname 1.tcp.eu.ngrok.io
-        Port 26096
+    #   Match host Nitrogen
+    #     Hostname 1.tcp.eu.ngrok.io
+    #     Port 26096
 
-      Host *
-        User ${config.user.name}
-        IdentityFile ~/.ssh/id_rsa.pub
-    '';
+    #   Host *
+    #     User ${config.user.name}
+    #     IdentityFile ~/.ssh/id_rsa.pub
+    # '';
 
     # systemd.services.ngrok = {
     #   wantedBy = [ "multi-user.target" ];
