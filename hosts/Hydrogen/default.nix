@@ -3,7 +3,7 @@
 {
   nix = { buildCores = 4; };
 
-  imports = [ ./hardware-configuration.nix ../home.nix inputs.sops-nix ];
+  imports = [ ./hardware-configuration.nix ../home.nix ];
 
   modules = {
     desktop = {
