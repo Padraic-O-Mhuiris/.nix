@@ -69,7 +69,8 @@
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
 
-      nixosConfigurations = mapHosts ./hosts { };
+      nixosConfigurations =
+        mapHosts ./hosts { sops = sops-nix.nixosModules.sops; };
 
       devShell."${system}" = import ./shell.nix { inherit pkgs; };
 
