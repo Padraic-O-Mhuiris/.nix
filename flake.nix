@@ -56,6 +56,10 @@
     in {
       lib = lib.my;
 
+      devShell = pkgs.callPackage ./shell.nix {
+        inherit (sops-nix.packages.${pkgs.system}) sops-import-keys-hook;
+      };
+
       overlay = final: prev: {
         unstable = pkgs';
         my = self.packages."${system}";

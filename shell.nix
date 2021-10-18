@@ -1,14 +1,7 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ mkShell, sops-import-keys-hook, python3 }:
 
-with pkgs;
-let
-  nixBin = writeShellScriptBin "nix" ''
-    ${nixFlakes}/bin/nix --option experimental-features "nix-command flakes" "$@"
-  '';
-in mkShell {
-  buildInputs = [ git nix-zsh-completions ];
-  shellHook = ''
-    export FLAKE="$(pwd)"
-    export PATH="$FLAKE/bin:${nixBin}/bin:$PATH"
-  '';
+mkShell {
+  sopsPGPKeyDirs = [ "./nixos/secrets/keys" ];
+  sopsCreateGPGHome = true;
+  nativeBuildInputs = [ sops-import-keys-hook python3.pkgs.invoke ];
 }
