@@ -18,7 +18,6 @@ in {
         (filterAttrs (n: v: !elem n [ "system" ]) attrs)
         ../. # /default.nix
         (import path)
-        inputs.sops-nix
       ];
     };
 
