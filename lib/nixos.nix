@@ -6,6 +6,7 @@ let sys = "x86_64-linux";
 in {
   mkHost = path:
     attrs@{ system ? sys, ... }:
+    otherModules:
     nixosSystem {
       inherit system;
       specialArgs = { inherit lib inputs system; };
@@ -18,10 +19,11 @@ in {
         (filterAttrs (n: v: !elem n [ "system" ]) attrs)
         ../. # /default.nix
         (import path)
-      ];
+      ] ++ otherModules;
     };
 
   mapHosts = dir:
     attrs@{ system ? system, ... }:
-    mapModules dir (hostPath: mkHost hostPath attrs);
+    otherModules:
+    mapModules dir (hostPath: mkHost hostPath attrs otherModules);
 }

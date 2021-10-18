@@ -73,6 +73,6 @@
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
 
-      nixosConfigurations = mapHosts ./hosts { };
+      nixosConfigurations = mapHosts ./hosts { } [ sops-nix.nixosModules.sops ];
     };
 }
