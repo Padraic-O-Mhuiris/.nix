@@ -18,6 +18,8 @@ in {
     enableRemoteAccess = mkBoolOpt false;
   };
 
+  imports = [ ../../machines.nix ];
+
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ ngrok is_local_conn ];
 
@@ -27,8 +29,8 @@ in {
       permitRootLogin = "no";
     };
 
-    users.users."${config.user.name}".openssh.authorizedKeys.keyFiles =
-      [ ../../keys/Hydrogen.pub ../../keys/Oxygen.pub ];
+    users.users."${config.user.name}".openssh.authorizedKeys.keys =
+      [ machines.Hydrogen machines.Oxygen ];
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
