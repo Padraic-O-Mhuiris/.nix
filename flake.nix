@@ -22,6 +22,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     home-manager = { url = "github:nix-community/home-manager"; };
+    agenix.url = "github:ryantm/agenix";
 
     dapptools = {
       url = "github:dapphub/dapptools";
@@ -29,8 +30,7 @@
     };
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, dapptools, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, dapptools, ... }:
     let
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
@@ -68,6 +68,6 @@
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
 
-      nixosConfigurations = mapHosts ./hosts { } [ ];
+      nixosConfigurations = mapHosts ./hosts { } [ agenix.nixosModules.age ];
     };
 }
