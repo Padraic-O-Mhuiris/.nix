@@ -3,8 +3,7 @@
 {
   nix = { buildCores = 4; };
 
-  imports =
-    [ ./hardware-configuration.nix ../home.nix ./modules/something.nix ];
+  imports = [ ./hardware-configuration.nix ../home.nix ];
 
   modules = {
     desktop = {
