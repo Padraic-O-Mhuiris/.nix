@@ -5,7 +5,7 @@ with lib;
 with lib.my;
 let
   inherit (inputs) agenix;
-  secretsDir = "${toString ../hosts}/${config.networking.hostName}/secrets";
+  secretsDir = "${toString ../../hosts}/${config.networking.hostName}/secrets";
   secretsFile = "${secretsDir}/secrets.nix";
 in {
   imports = [ agenix.nixosModules.age ];
@@ -18,7 +18,6 @@ in {
           file = "${secretsDir}/${n}";
           owner = mkDefault config.user.name;
           group = mkDefault config.user.group;
-          path = mkDefault "/home/padraic/${n}";
         }) (import secretsFile)
     else
       { };
