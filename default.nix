@@ -1,10 +1,7 @@
 { inputs, config, lib, pkgs, ... }:
 
 with lib;
-with lib.my;
-
-let agenix = inputs.agenix;
-in {
+with lib.my; {
   imports =
     # I use home-manager to deploy files to $HOME; little else
     [
@@ -73,6 +70,5 @@ in {
     gnumake
     unzip
     iw
-    agenix.defaultPackage.x86_64-linux
   ];
 }
