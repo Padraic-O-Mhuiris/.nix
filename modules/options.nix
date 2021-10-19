@@ -60,7 +60,7 @@ in {
     };
 
     keys = getHostKeys ../hosts;
-    keysList = (hostKeysList ../hosts);
+    keysList = (getHostKeysList ../hosts);
 
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
