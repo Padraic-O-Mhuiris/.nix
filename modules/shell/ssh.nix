@@ -27,8 +27,8 @@ in {
       permitRootLogin = "no";
     };
 
-    users.users."${config.user.name}".openssh.authorizedKeys.keys =
-      attrValues config.keys;
+    # users.users."${config.user.name}".openssh.authorizedKeys.keys =
+    #   attrValues config.keys;
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
