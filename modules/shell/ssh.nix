@@ -29,8 +29,8 @@ in {
 
     #home.file."myFile".text = config.keys."Hydrogen";
 
-    users.users."${config.user.name}".openssh.authorizedKeys.keys =
-      config.keysList;
+    # users.users."${config.user.name}".openssh.authorizedKeys.keys =
+    #   config.keysList;
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
