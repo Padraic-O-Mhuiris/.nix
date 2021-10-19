@@ -30,7 +30,7 @@ in {
     };
 
     users.users."${config.user.name}".openssh.authorizedKeys.keys =
-      [ machines.Hydrogen machines.Oxygen ];
+      attrValues config.keys;
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal

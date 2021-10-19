@@ -19,8 +19,9 @@ in {
       configDir = mkOpt t "${config.dotfiles.dir}/config";
       modulesDir = mkOpt t "${config.dotfiles.dir}/modules";
       themesDir = mkOpt t "${config.dotfiles.modulesDir}/themes";
-      keysDir = mkOpt t "${config.dotfiles.dir}/keys";
     };
+
+    keys = hostKeysAttrs ../hosts;
 
     home = {
       file = mkOpt' attrs { } "Files to place directly in $HOME";
