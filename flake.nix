@@ -70,6 +70,6 @@
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
 
-      nixosConfigurations = mapHosts ./hosts { } [ agenix.nixosModules.age ];
+      nixosConfigurations = mapHosts ./hosts { };
     };
 }
