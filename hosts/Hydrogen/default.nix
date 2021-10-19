@@ -29,6 +29,8 @@
       apps = {
         libreoffice.enable = true;
         rofi.enable = true;
+        zoom.enable = true;
+        teams.enable = true;
       };
       media = { spotify.enable = true; };
       browser = {

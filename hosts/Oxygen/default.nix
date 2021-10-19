@@ -31,6 +31,8 @@
         libreoffice.enable = true;
         rofi.enable = true;
         gimp.enable = true;
+        zoom.enable = true;
+        teams.enable = true;
       };
       media = { spotify.enable = true; };
       browser = {
