@@ -18,8 +18,6 @@ in {
     enableRemoteAccess = mkBoolOpt false;
   };
 
-  imports = [ ../../machines.nix ];
-
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ ngrok is_local_conn ];
 
