@@ -1,2 +1,1 @@
-let key = (builtins.readFile ../key.pub);
-in { "ngrok-authtoken".publicKeys = [ key ]; }
+let key = (builtins.readFile ../key.pub); in { }
