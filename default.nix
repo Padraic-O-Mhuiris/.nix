@@ -70,5 +70,6 @@ with lib.my; {
     gnumake
     unzip
     iw
+    agenix.defaultPackage.x86_64-linux
   ];
 }
