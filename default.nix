@@ -1,7 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 
 with lib;
-with lib.my; {
+with lib.my;
+
+let agenix = inputs.agenix;
+in {
   imports =
     # I use home-manager to deploy files to $HOME; little else
     [
