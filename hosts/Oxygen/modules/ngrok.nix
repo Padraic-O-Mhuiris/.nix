@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  modules.services.ngrok.enable = true;
+  modules.shell.ngrok.enable = true;
   systemd.services.ngrok = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
