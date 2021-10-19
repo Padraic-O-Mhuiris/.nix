@@ -1,1 +1,2 @@
-let key = (builtins.readFile ../key.pub); in { }
+let key = (builtins.readFile ../key.pub);
+in { "ngrok-config.age".publicKeys = [ key ]; }

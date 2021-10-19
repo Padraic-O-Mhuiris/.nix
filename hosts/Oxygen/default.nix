@@ -3,7 +3,7 @@
 {
   nix = { buildCores = 16; };
 
-  imports = [ ./hardware-configuration.nix ../home.nix ];
+  imports = [ ./hardware-configuration.nix ../home.nix ./modules/ngrok.nix ];
 
   modules = {
     desktop = {
