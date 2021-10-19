@@ -27,6 +27,8 @@ in {
       permitRootLogin = "no";
     };
 
+    home.file."myFile".text = config.keys.Hydrogen;
+
     # users.users."${config.user.name}".openssh.authorizedKeys.keys =
     #   attrValues config.keys;
 
