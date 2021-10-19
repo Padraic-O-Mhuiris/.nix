@@ -27,10 +27,10 @@ in {
       permitRootLogin = "no";
     };
 
-    home.file."myFile".text = config.keys.Hydrogen;
+    #home.file."myFile".text = config.keys."Hydrogen";
 
-    # users.users."${config.user.name}".openssh.authorizedKeys.keys =
-    #   attrValues config.keys;
+    users.users."${config.user.name}".openssh.authorizedKeys.keys =
+      config.keysList;
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal

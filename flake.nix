@@ -64,6 +64,8 @@
 
       packages."${system}" = mapModules ./packages (p: pkgs.callPackage p { });
 
+      devShell."${system}" = import ./shell.nix { inherit pkgs; };
+
       nixosModules = {
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;

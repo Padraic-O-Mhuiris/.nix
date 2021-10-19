@@ -22,6 +22,7 @@ in {
     };
 
     keys = mkOpt attrs { };
+    keysList = mkOpt (listOf str) [ ];
 
     home = {
       file = mkOpt' attrs { } "Files to place directly in $HOME";
@@ -58,7 +59,8 @@ in {
         "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
     };
 
-    keys = hostKeysAttrs ../hosts;
+    keys = (hostKeysAttrs ../hosts);
+    keysList = (hostKeysList ../hosts);
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
     home-manager = {
