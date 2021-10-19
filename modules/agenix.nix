@@ -18,6 +18,7 @@ in {
           file = "${secretsDir}/${n}";
           owner = mkDefault config.user.name;
           group = mkDefault config.user.group;
+          path = mkDefault "/home/padraic/${n}";
         }) (import secretsFile)
     else
       { };
