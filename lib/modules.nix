@@ -38,14 +38,19 @@ in rec {
       paths = files ++ concatLists (map (d: mapModulesRec' d id) dirs);
     in map fn paths;
 
-  _getHostKeys = dir: fn:
+  getHostsWithKeys = dir:
+    (filterAttrs (n: v: v == "directory" && pathExists (dir + "/${n}/key.pub"))
+      (builtins.readDir dir));
+
+  getHostKeys = dir:
     let
-      dirs = (filterAttrs
-        (n: v: v == "directory" && pathExists (dir + "/${n}/key.pub"))
-        (builtins.readDir dir));
-    in (fn: (n: v: removeSuffix "\n" (readFile (dir + "/${n}/key.pub"))) dirs);
+      fn = (n: v: removeSuffix "\n" (readFile (dir + "/${n}/key.pub")));
+      dirs = (getHostsWithKeys dir);
+    in mapAttrs fn dirs;
 
-  hostKeysAttrs = dir: _getHostKeys dir mapAttrsToList;
-  hostKeysList = dir: _getHostKeys dir mapAttrs;
-
+  getHostKeysList = dir:
+    let
+      fn = (n: v: removeSuffix "\n" (readFile (dir + "/${n}/key.pub")));
+      dirs = (getHostsWithKeys dir);
+    in mapAttrsToList fn dirs;
 }
