@@ -41,16 +41,4 @@ in rec {
   getHostsWithKeys = dir:
     (filterAttrs (n: v: v == "directory" && pathExists (dir + "/${n}/key.pub"))
       (builtins.readDir dir));
-
-  getHostKeys = dir:
-    let
-      fn = (n: v: removeSuffix "\n" (readFile (dir + "/${n}/key.pub")));
-      dirs = (getHostsWithKeys dir);
-    in mapAttrs fn dirs;
-
-  getHostKeysList = dir:
-    let
-      fn = (n: v: removeSuffix "\n" (readFile (dir + "/${n}/key.pub")));
-      dirs = (getHostsWithKeys dir);
-    in mapAttrsToList fn dirs;
 }
