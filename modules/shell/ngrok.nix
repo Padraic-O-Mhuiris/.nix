@@ -11,5 +11,9 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ ngrok ];
 
+    services.ngrok = {
+      enable = true;
+      configFile = config.age.secrets.ngrokConfig.path;
+    };
   };
 }
