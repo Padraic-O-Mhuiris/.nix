@@ -18,7 +18,7 @@ in {
           file = "${secretsDir}/${n}";
           owner = mkDefault config.user.name;
           group = mkDefault config.user.group;
-          mode = mkDefault "0444";
+          mode = mkDefault "0400";
         }) (import secretsFile)
     else
       { };
