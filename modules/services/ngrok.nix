@@ -3,25 +3,25 @@
 with lib;
 
 let
-  cfg = config.services.ngrok;
+  cfg = config.modules.services.ngrok;
   stateDir = "/var/lib/ngrok";
 in {
-  options = {
-    services.ngrok = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = "Enable ngrok service";
-      };
-      configFile = mkOption {
-        type = types.nullOr types.path;
-        default = null;
-        description = "Path to config.yml";
-      };
+  options.modules.services.ngrok = {
+
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Enable ngrok service";
+    };
+
+    configFile = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+      description = "Path to config.yml";
     };
   };
 
-  config = mkIf ngrok.enable {
+  config = mkIf cfg.enable {
 
     users.users = {
       ngrok = {
@@ -34,6 +34,8 @@ in {
     };
 
     users.groups.ngrok = { };
+
+    user.packages = with pkgs; [ ngrok ];
 
     systemd.services.ngrok = {
       description = "ngrok";

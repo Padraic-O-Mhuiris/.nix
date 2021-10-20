@@ -13,8 +13,10 @@ let
   '';
 
 in {
-  imports = [ ../services/ngrok.nix ];
-  options.modules.shell.ssh = { enable = mkBoolOpt false; };
+  options.modules.shell.ssh = {
+    enable = mkBoolOpt false;
+    enableRemoteAccess = mkBoolOpt false;
+  };
 
   config = mkIf cfg.enable {
 
@@ -36,8 +38,8 @@ in {
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
     ];
 
-    services.ngrok = {
-      enable = true;
+    config.modules.services.ngrok = {
+      enable = enableRemoteAccess;
       configFile = config.age.secrets.ngrokConfig.path;
     };
 
