@@ -9,6 +9,9 @@ in {
   options.modules.shell.ngrok = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+
+    imports = [ ./ngrok ]; # custom service file
+
     user.packages = with pkgs; [ ngrok ];
 
     services.ngrok = {
