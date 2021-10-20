@@ -35,7 +35,7 @@ in {
       }];
     };
 
-    user.openssh.authorizedKeys.keys = keys;
+    user.openssh.authorizedKeys.keys = cfg.keys;
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
