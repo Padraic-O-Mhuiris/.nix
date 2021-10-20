@@ -46,6 +46,7 @@ in {
       preStart = let configYml = "${stateDir}/config.yml";
       in ''
         function ngrok_setup {
+          mkdir -p ${stateDir}
           cat ${cfg.configFile} > ${configYml}
         }
         (umask 027; ngrok_setup)
@@ -55,7 +56,6 @@ in {
         Type = "simple";
         User = "ngrok";
         Group = "ngrok";
-        WorkingDirectory = stateDir;
         ExecStart =
           "${pkgs.ngrok} start --all --log=stdout --config ${stateDir}/config.yml";
         ExecStop = "${pkgs.killall} ngrok";
