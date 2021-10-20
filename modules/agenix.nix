@@ -16,8 +16,8 @@ in {
       mapAttrs' (n: _:
         nameValuePair (removeSuffix ".age" n) {
           file = "${secretsDir}/${n}";
-          owner = mkDefault config.user.name;
-          group = mkDefault config.user.group;
+          owner = mkDefault "root";
+          group = mkDefault "root";
           mode = mkDefault "0400";
         }) (import secretsFile)
     else
