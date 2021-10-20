@@ -4,6 +4,7 @@ with lib;
 with lib.my;
 let
   cfg = config.modules.shell.ssh;
+  ngrok = config.modules.services.ngrok;
   configDir = config.dotfiles.configDir;
 
   is_local_conn = pkgs.writeShellScriptBin "is_local_conn" ''
@@ -20,7 +21,7 @@ in {
 
   config = mkIf cfg.enable {
 
-    user.packages = with pkgs; [ ngrok is_local_conn ];
+    user.packages = with pkgs; [ is_local_conn ];
 
     services.openssh = {
       enable = true;
@@ -38,8 +39,8 @@ in {
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
     ];
 
-    config.modules.services.ngrok = {
-      enable = enableRemoteAccess;
+    ngrok = {
+      enable = cfg.enableRemoteAccess;
       configFile = config.age.secrets.ngrokConfig.path;
     };
 
