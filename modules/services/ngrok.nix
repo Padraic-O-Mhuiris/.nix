@@ -43,20 +43,20 @@ in {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.ngrok ];
 
-      preStart = let configYml = "${stateDir}/config.yml";
-      in ''
-        function ngrok_setup {
-          install --owner=ngrok --mode=600 -T ${cfg.configFile} ${configYml}
-        }
-        (umask 027; ngrok_setup)
-      '';
+      # preStart = let configYml = "${stateDir}/config.yml";
+      # in ''
+      #   function ngrok_setup {
+      #     install --owner=ngrok --mode=600 -T ${cfg.configFile} ${configYml}
+      #   }
+      #   (umask 027; ngrok_setup)
+      # '';
 
       serviceConfig = {
         Type = "simple";
         User = "ngrok";
         Group = "ngrok";
         ExecStart =
-          "${pkgs.ngrok} start --all --log=stdout --config ${stateDir}/config.yml";
+          "${pkgs.ngrok} start --all --log=stdout --config ${cfg.configFile}";
         ExecStop = "${pkgs.killall} ngrok";
 
       };
