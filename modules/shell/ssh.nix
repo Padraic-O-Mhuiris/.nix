@@ -26,6 +26,12 @@ in {
       passwordAuthentication = false;
       permitRootLogin = "no";
       startWhenNeeded = true;
+      hostKeys = [{
+        type = "ed25519";
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        rounds = 100;
+        comment = "${config.networking.hostname}";
+      }];
     };
 
     users.users."${config.user.name}".openssh.authorizedKeys.keys =
