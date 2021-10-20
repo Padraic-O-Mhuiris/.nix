@@ -16,6 +16,9 @@ in {
   options.modules.shell.ssh = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+
+    imports = [ ../services/ngrok.nix ];
+
     user.packages = with pkgs; [ ngrok is_local_conn ];
 
     services.openssh = {
@@ -33,6 +36,11 @@ in {
     user.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
     ];
+
+    services.ngrok = {
+      enable = true;
+      configFile = config.age.secrets.ngrokConfig.path;
+    };
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal

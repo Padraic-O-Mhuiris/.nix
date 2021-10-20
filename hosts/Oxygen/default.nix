@@ -58,9 +58,9 @@
       pass.enable = true;
       dapptools.enable = true;
       direnv.enable = true;
-      ngrok.enable = true;
     };
     services = {
+      ngrok.enable = true;
       docker.enable = true;
       syncthing.enable = true;
       geth.enable = true;
