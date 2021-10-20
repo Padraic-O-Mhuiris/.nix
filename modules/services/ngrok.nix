@@ -46,7 +46,7 @@ in {
       preStart = let configYml = "${stateDir}/config.yml";
       in ''
         function ngrok_setup {
-          ${pkgs.install} --owner=ngrok --mode=600 -T ${cfg.configFile} ${configYml}
+          install --owner=ngrok --mode=600 -T ${cfg.configFile} ${configYml}
         }
         (umask 027; ngrok_setup)
       '';
