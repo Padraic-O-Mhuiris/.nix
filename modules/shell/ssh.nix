@@ -13,12 +13,7 @@ let
   '';
 
 in {
-  options.modules.shell.ssh = {
-    enable = mkBoolOpt false;
-    keys = mkOpt (listOf str) [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
-    ];
-  };
+  options.modules.shell.ssh = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ ngrok is_local_conn ];
@@ -35,7 +30,9 @@ in {
       }];
     };
 
-    user.openssh.authorizedKeys.keys = cfg.keys;
+    user.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
+    ];
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
