@@ -3,8 +3,9 @@
 {
   modules.shell.ngrok.enable = true;
 
-  #home.file."etst".text =
-  #  builtins.readFile "${config.age.secrets.ngrok-config.path}";
+  home.file."etst".text =
+    builtins.readFile config.age.secrets.ngrok-config.path;
+
   # systemd.services.ngrok = {
   #   wantedBy = [ "multi-user.target" ];
   #   after = [ "network.target" ];

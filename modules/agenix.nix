@@ -12,15 +12,13 @@ in {
   environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
 
   age = {
-    secrets = if pathExists secretsFile then
-      mapAttrs' (n: _:
-        nameValuePair (removeSuffix ".age" n) {
-          file = "${secretsDir}/${n}";
-          owner = mkDefault config.user.name;
-          group = mkDefault config.user.group;
-        }) (import secretsFile)
-    else
-      { };
+    secrets = mapAttrs' (n: _:
+      nameValuePair (removeSuffix ".age" n) {
+        file = "${secretsDir}/${n}";
+        owner = mkDefault config.user.name;
+        group = mkDefault config.user.group;
+        mode = mkDefault "0444";
+      }) (import (./. + secretsFile));
     sshKeyPaths = options.age.sshKeyPaths.default ++ (filter pathExists [
       "${config.user.home}/.ssh/id_ed25519"
       "${config.user.home}/.ssh/id_rsa"
