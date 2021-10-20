@@ -16,7 +16,6 @@ in {
       configFile = mkOption {
         type = types.nullOr types.path;
         default = null;
-        description = "Path to config.yml";
       };
     };
   };
