@@ -13,11 +13,10 @@ let
   '';
 
 in {
+  imports = [ ../services/ngrok.nix ];
   options.modules.shell.ssh = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-
-    imports = [ ../services/ngrok.nix ];
 
     user.packages = with pkgs; [ ngrok is_local_conn ];
 
