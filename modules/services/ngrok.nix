@@ -46,7 +46,7 @@ in {
       preStart = let configYml = "${stateDir}/config.yml";
       in ''
         function ngrok_setup {
-          cat ${cfg.configFile} > ${config.yml}
+          cat ${cfg.configFile} > ${configYml}
         }
         (umask 027; ngrok_setup)
       '';
