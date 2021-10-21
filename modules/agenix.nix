@@ -30,8 +30,6 @@ in {
         nameValuePair (removeSuffix ".age" n) {
           file = "${secretsDir}/${n}";
           mode = "0400";
-          owner = v.owner;
-          group = v.group;
         }) (config.networking.hostName) (import secretsFile)
     else
       { };
