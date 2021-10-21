@@ -23,13 +23,13 @@ in {
           secrets);
 
       buildAgeSecretsByHost = fn: host: secrets:
-        mapAttrs' fn (filterByHost host (secrets));
+        mapAttrs' fn (filterByHost host secrets);
 
     in if pathExists secretsFile then
       buildAgeSecretsByHost (n: v:
         nameValuePair (removeSuffix ".age" n) {
           file = "${secretsDir}/${n}";
-          mode = v.mode;
+          mode = "0400";
           owner = v.owner;
           group = v.group;
         }) (config.networking.hostName) (import secretsFile)
