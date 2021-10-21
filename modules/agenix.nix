@@ -40,13 +40,6 @@ in {
         owner = "ngrok";
         group = "ngrok";
       };
-      secret1 = {
-        file = ../secrets/secret1.age;
-        mode = "0755";
-        owner = config.user.name;
-        group = config.user.group;
-      };
-
     };
     sshKeyPaths = [ "${config.user.home}/.ssh/id_ed25519" ];
   };

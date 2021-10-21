@@ -43,10 +43,6 @@ in {
     #   enable = cfg.enableRemoteAccess;
     #   configFile = config.age.secrets.ngrokConfig.path;
     # };
-
-    home.file."exampe".text =
-      builtins.readFile "${config.age.secrets.secrets1.path}";
-
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
     #     Hostname 192.168.0.26
