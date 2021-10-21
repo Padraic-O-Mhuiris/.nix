@@ -2,7 +2,9 @@
 
 with lib;
 
-let cfg = config.modules.services.ngrok;
+let
+  cfg = config.modules.services.ngrok;
+  user = "ngrok";
 in {
   options.modules.services.ngrok = {
     enable = mkOption {
@@ -20,14 +22,14 @@ in {
 
   config = mkIf cfg.enable {
 
-    users.users.ngrok = {
+    users.users."${user}" = {
       description = "Ngrok Service";
       useDefaultShell = true;
-      group = "ngrok";
+      group = user;
       isSystemUser = true;
     };
 
-    users.groups.ngrok = { };
+    users.groups."${user}" = { };
     user.packages = with pkgs; [ ngrok ];
 
     systemd.services.ngrok = {
@@ -35,12 +37,18 @@ in {
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.ngrok ];
+
+      preStart = let ngrokDir = "/var/lib/ngrok";
+      in ''
+        [ -d ${ngrokDir} ] || ${pkgs.coreutils}/bin/install -d -m 0700 -o ${user} -g ${user} ${ngrokDir}
+        ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configDir} ${ngrokDir}/config.yml
+      '';
       serviceConfig = {
         Type = "simple";
         User = "ngrok";
         Group = "ngrok";
         ExecStart =
-          "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${cfg.configFile}";
+          "${pkgs.ngrok}/bin/ngrok start --all --log=/var/log/ngrok --config ${ngrokDir}/config.yml";
         ExecStop = "${pkgs.killall} ngrok";
         Restart = "always";
 
