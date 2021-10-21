@@ -41,7 +41,7 @@ in {
       preStart = let ngrokDir = "/var/lib/ngrok";
       in ''
         [ -d ${ngrokDir} ] || ${pkgs.coreutils}/bin/install -d -m 0700 -o ${user} -g ${user} ${ngrokDir}
-        ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configDir} ${ngrokDir}/config.yml
+        ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configFile} ${ngrokDir}/config.yml
       '';
       serviceConfig = {
         Type = "simple";
