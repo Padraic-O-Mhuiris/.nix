@@ -5,6 +5,7 @@ with lib;
 let
   cfg = config.modules.services.ngrok;
   user = "ngrok";
+  ngrokDir = "/var/lib/ngrok";
 in {
   options.modules.services.ngrok = {
     enable = mkOption {
@@ -38,8 +39,7 @@ in {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.ngrok ];
 
-      preStart = let ngrokDir = "/var/lib/ngrok";
-      in ''
+      preStart = ''
         [ -d ${ngrokDir} ] || ${pkgs.coreutils}/bin/install -d -m 0700 -o ${user} -g ${user} ${ngrokDir}
         ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configFile} ${ngrokDir}/config.yml
       '';
