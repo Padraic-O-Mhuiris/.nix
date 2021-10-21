@@ -52,7 +52,7 @@
     shell = {
       gnupg.enable = true;
       ssh.enable = true;
-      ssh.enableRemoteAccess = true;
+      ssh.enableRemoteAccess = false;
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;

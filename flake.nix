@@ -23,7 +23,7 @@
 
     home-manager = { url = "github:nix-community/home-manager"; };
     agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.nixpkgs.follows = "nixpkgs/nixpkgs-unstable";
 
     dapptools = {
       url = "github:dapphub/dapptools";
