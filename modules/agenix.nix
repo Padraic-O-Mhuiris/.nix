@@ -15,12 +15,10 @@ in {
     secrets = let
       hostInPublicKeys = host: keyList:
         lists.any (x: x == host)
-        (lists.map (s: lists.last (list.splitString " " s)) keyList);
+        (lists.map (s: lists.last (splitString " " s)) keyList);
 
       filterByHost = host: secrets:
-        (filterAttrs
-          (n: v: hostInPublicKeys config.networking.hostName v.publicKeys)
-          secrets);
+        (filterAttrs (n: v: hostInPublicKeys host v.publicKeys) secrets);
 
       buildAgeSecretsByHost = fn: host: secrets:
         mapAttrs' fn (filterByHost host secrets);
