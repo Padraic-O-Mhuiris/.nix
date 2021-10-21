@@ -60,7 +60,6 @@
       direnv.enable = true;
     };
     services = {
-      #ngrok.enable = true;
       docker.enable = true;
       syncthing.enable = true;
       geth.enable = true;
