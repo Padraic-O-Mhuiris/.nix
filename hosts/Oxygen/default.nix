@@ -52,7 +52,6 @@
     shell = {
       gnupg.enable = true;
       ssh.enable = true;
-      ssh.enableRemoteAccess = true;
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
@@ -60,6 +59,8 @@
       direnv.enable = true;
     };
     services = {
+      ngrok.enable = true;
+      ngrok.configFile = config.age.secrets.ngrokConfig.path;
       docker.enable = true;
       syncthing.enable = true;
       geth.enable = true;
