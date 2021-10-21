@@ -42,7 +42,6 @@
       };
     };
     editors = {
-      default = "nvim";
       vim.enable = true;
       emacs.enable = true;
       languages = {
