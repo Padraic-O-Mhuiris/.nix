@@ -38,7 +38,4 @@ in rec {
       paths = files ++ concatLists (map (d: mapModulesRec' d id) dirs);
     in map fn paths;
 
-  getHostsWithKeys = dir:
-    (filterAttrs (n: v: v == "directory" && pathExists (dir + "/${n}/key.pub"))
-      (builtins.readDir dir));
 }

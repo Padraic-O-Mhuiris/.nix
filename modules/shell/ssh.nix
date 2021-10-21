@@ -40,7 +40,7 @@ in {
 
     modules.services.ngrok = {
       enable = cfg.enableRemoteAccess;
-      configFile = config.age.secrets.ngrokConfig.path;
+      configFile = age.secrets.ngrokConfig.path;
     };
 
     # home.file.".ssh/config".text = ''

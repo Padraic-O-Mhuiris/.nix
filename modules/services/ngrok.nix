@@ -5,6 +5,7 @@ with lib;
 let
   cfg = config.modules.services.ngrok;
   stateDir = "/var/lib/ngrok";
+  secretsDir = "${toString ../hosts}/${config.networking.hostName}/secrets";
 in {
   options.modules.services.ngrok = {
 
@@ -36,6 +37,12 @@ in {
     users.groups.ngrok = { };
 
     user.packages = with pkgs; [ ngrok ];
+
+    age.secrets.ngrokConfig = {
+      file = "${secretsDir}/ngrok";
+      owner = "ngrok";
+      group = "ngrok";
+    };
 
     systemd.services.ngrok = {
       description = "ngrok";
