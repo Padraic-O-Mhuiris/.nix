@@ -22,7 +22,7 @@ in {
   #       }) (import secretsFile)
   #   else
   #     { };
-    #sshKeyPaths = options.age.sshKeyPaths.default
-    #  ++ (filter pathExists [ "${config.user.home}/.ssh/id_ed25519" ]);
-  };
+  #sshKeyPaths = options.age.sshKeyPaths.default
+  #  ++ (filter pathExists [ "${config.user.home}/.ssh/id_ed25519" ]);
+
 }
