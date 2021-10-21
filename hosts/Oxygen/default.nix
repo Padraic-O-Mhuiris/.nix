@@ -52,7 +52,7 @@
     shell = {
       gnupg.enable = true;
       ssh.enable = true;
-      ssh.enableRemoteAccess = false;
+      ssh.enableRemoteAccess = true;
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
@@ -60,7 +60,7 @@
       direnv.enable = true;
     };
     services = {
-      ngrok.enable = true;
+      #ngrok.enable = true;
       docker.enable = true;
       syncthing.enable = true;
       geth.enable = true;

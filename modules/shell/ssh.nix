@@ -38,10 +38,10 @@ in {
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
     ];
 
-    modules.services.ngrok = {
-      enable = cfg.enableRemoteAccess;
-      configFile = config.age.secrets.ngrokConfig.path;
-    };
+    # modules.services.ngrok = {
+    #   enable = cfg.enableRemoteAccess;
+    #   configFile = config.age.secrets.ngrokConfig.path;
+    # };
 
     # home.file.".ssh/config".text = ''
     #   Host HydrogenLocal
