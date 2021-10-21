@@ -54,7 +54,7 @@ in {
         User = "ngrok";
         Group = "ngrok";
         ExecStart =
-          "${pkgs.ngrok} start --all --log=stdout --config ${cfg.configFile}";
+          "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${cfg.configFile}";
         ExecStop = "${pkgs.killall} ngrok";
 
       };
