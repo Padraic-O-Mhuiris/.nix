@@ -28,7 +28,6 @@ in {
     };
 
     users.groups.ngrok = { };
-
     user.packages = with pkgs; [ ngrok ];
 
     systemd.services.ngrok = {
