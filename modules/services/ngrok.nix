@@ -33,7 +33,7 @@ in {
     users.groups."${user}" = { };
     user.packages = with pkgs; [ ngrok ];
 
-    systemd.tmpfiles.rules = [ "Z '${ngrokDir}' - ${user} ${user} - -" ];
+    systemd.tmpfiles.rules = [ "d '${cfg.stateDir}' 0750 ${user} {user} - -" ];
     systemd.services.ngrok = {
       description = "ngrok";
       after = [ "network.target" ];
