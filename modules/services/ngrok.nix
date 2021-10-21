@@ -33,7 +33,7 @@ in {
     users.groups."${user}" = { };
     user.packages = with pkgs; [ ngrok ];
 
-    systemd.tmpfiles.rules = [ "d '${ngrokDir}' 0700 ${user} ${user} - -" ];
+    systemd.tmpfiles.rules = [ "d '${ngrokDir}' 0700 root root - -" ];
 
     systemd.services.ngrok = {
       description = "ngrok";
@@ -42,12 +42,10 @@ in {
       path = [ pkgs.ngrok ];
 
       preStart = ''
-        [ -f ${cfg.configFile} ] && ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configFile} ${ngrokDir}/config.yml
+        [ -f ${cfg.configFile} ] && ${pkgs.coreutils}/bin/install -m 0400 ${cfg.configFile} ${ngrokDir}/config.yml
       '';
       serviceConfig = {
         Type = "simple";
-        User = user;
-        Group = user;
         ExecStart =
           "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${ngrokDir}/config.yml";
         ExecStop = "${pkgs.killall} ngrok";
