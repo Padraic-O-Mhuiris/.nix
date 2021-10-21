@@ -33,7 +33,8 @@ in {
     users.groups."${user}" = { };
     user.packages = with pkgs; [ ngrok ];
 
-    systemd.tmpfiles.rules = [ "d '${cfg.stateDir}' 0750 ${user} {user} - -" ];
+    systemd.tmpfiles.rules = [ "d '${ngrokDir}' 0700 ${user} ${user} - -" ];
+
     systemd.services.ngrok = {
       description = "ngrok";
       after = [ "network.target" ];
@@ -48,7 +49,7 @@ in {
         User = user;
         Group = user;
         ExecStart =
-          "${pkgs.ngrok}/bin/ngrok start --all --log=/var/log/ngrok --config ${ngrokDir}/config.yml";
+          "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${ngrokDir}/config.yml";
         ExecStop = "${pkgs.killall} ngrok";
         Restart = "always";
 
