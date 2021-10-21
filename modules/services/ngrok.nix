@@ -2,13 +2,9 @@
 
 with lib;
 
-let
-  cfg = config.modules.services.ngrok;
-  stateDir = "/var/lib/ngrok";
-  secretsDir = "${toString ../hosts}/${config.networking.hostName}/secrets";
+let cfg = config.modules.services.ngrok;
 in {
   options.modules.services.ngrok = {
-
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -26,7 +22,6 @@ in {
 
     users.users.ngrok = {
       description = "Ngrok Service";
-      home = stateDir;
       useDefaultShell = true;
       group = "ngrok";
       isSystemUser = true;
@@ -35,20 +30,12 @@ in {
     users.groups.ngrok = { };
 
     user.packages = with pkgs; [ ngrok ];
+
     systemd.services.ngrok = {
       description = "ngrok";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.ngrok ];
-
-      # preStart = let configYml = "${stateDir}/config.yml";
-      # in ''
-      #   function ngrok_setup {
-      #     install --owner=ngrok --mode=600 -T ${cfg.configFile} ${configYml}
-      #   }
-      #   (umask 027; ngrok_setup)
-      # '';
-
       serviceConfig = {
         Type = "simple";
         User = "ngrok";
