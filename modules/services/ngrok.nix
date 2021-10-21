@@ -24,26 +24,17 @@ in {
 
   config = mkIf cfg.enable {
 
-    users.users = {
-      ngrok = {
-        description = "Ngrok Service";
-        home = stateDir;
-        useDefaultShell = true;
-        group = "ngrok";
-        isSystemUser = true;
-      };
+    users.users.ngrok = {
+      description = "Ngrok Service";
+      home = stateDir;
+      useDefaultShell = true;
+      group = "ngrok";
+      isSystemUser = true;
     };
 
     users.groups.ngrok = { };
 
     user.packages = with pkgs; [ ngrok ];
-
-    age.secrets.ngrokConfig = {
-      file = "${secretsDir}/ngrok";
-      owner = "ngrok";
-      group = "ngrok";
-    };
-
     systemd.services.ngrok = {
       description = "ngrok";
       after = [ "network.target" ];
