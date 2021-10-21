@@ -12,7 +12,7 @@ in {
   environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
 
   age = {
-    secrets = if pathExists secretsFile then
+    secrets = if pathExists (./. + secretsFile) then
       mapAttrs' (n: v:
         nameValuePair (removeSuffix ".age" n) {
           file = "${secretsDir}/${n}";
