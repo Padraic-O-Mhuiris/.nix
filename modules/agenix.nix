@@ -5,7 +5,7 @@ with lib;
 with lib.my;
 let
   inherit (inputs) agenix;
-  secretsDir = "${toString ../hosts}/${config.networking.hostName}/secrets";
+  secretsDir = "../secrets";
   secretsFile = "${secretsDir}/secrets.nix";
 in {
   imports = [ agenix.nixosModules.age ];
