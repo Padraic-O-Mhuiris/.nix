@@ -42,7 +42,7 @@ in {
       path = [ pkgs.ngrok ];
 
       preStart = ''
-        ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configFile} ${ngrokDir}/config.yml
+        [ -f ${cfg.configFile} ] && ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configFile} ${ngrokDir}/config.yml
       '';
       serviceConfig = {
         Type = "simple";
