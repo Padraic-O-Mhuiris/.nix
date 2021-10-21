@@ -40,7 +40,7 @@ in {
       path = [ pkgs.ngrok ];
 
       preStart = ''
-        [ -d ${ngrokDir} ] || ${pkgs.coreutils}/bin/install -d -m 0700 -o ${user} -g ${user} ${ngrokDir}
+        [ -d ${ngrokDir} ] || sudo ${pkgs.coreutils}/bin/install -m 0700 -d ${ngrokDir}
         ${pkgs.coreutils}/bin/install -m 0400 -o ${user} -g ${user} ${cfg.configFile} ${ngrokDir}/config.yml
       '';
       serviceConfig = {
