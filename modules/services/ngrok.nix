@@ -42,6 +42,7 @@ in {
         ExecStart =
           "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${cfg.configFile}";
         ExecStop = "${pkgs.killall} ngrok";
+        Restart = "always";
 
       };
     };
