@@ -24,10 +24,19 @@ in {
 
       fn = (n: v:
         nameValuePair (removeSuffix ".age" n) { file = "${secretsDir}/${n}"; });
+      fn' = (n: v: nameValuePair (removeSuffix ".age" n) { });
 
-      hostName = config.networking.hostName;
+      #hostName = config.networking.hostName;
+
+      buildAgeSecretsForHost = host: secrets:
+        mapAttrs (n: v:
+          if (hostInPublicKeys config.networking.hostName v.publicKeys) then {
+            file = "${secretsDir}/${n}";
+          } else
+            { }) secrets;
+
     in if pathExists secretsFile then
-      buildAgeSecretsByHost fn "Oxygen" (import secretsFile)
+      buildAgeSecretsForHost "$HOST" (import secretsFile)
     else
       { };
 
