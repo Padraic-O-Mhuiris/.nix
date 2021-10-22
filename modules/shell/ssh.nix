@@ -51,6 +51,8 @@ in {
 
         serviceConfig = {
           Type = "simple";
+          User = config.user.name;
+          Group = config.user.group;
           RemainAfterExit = "yes";
           StandardOutput = "journal";
           ExecStart = ''
