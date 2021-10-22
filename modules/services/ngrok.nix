@@ -4,7 +4,6 @@ with lib;
 
 let
   cfg = config.modules.services.ngrok;
-  user = "ngrok";
   ngrokDir = "/var/lib/ngrok";
 in {
   options.modules.services.ngrok = {
@@ -22,15 +21,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-
-    users.users."${user}" = {
-      description = "Ngrok Service";
-      useDefaultShell = true;
-      group = user;
-      isSystemUser = true;
-    };
-
-    users.groups."${user}" = { };
     user.packages = with pkgs; [ ngrok ];
 
     systemd.tmpfiles.rules = [ "d '${ngrokDir}' 0755 root root - -" ];

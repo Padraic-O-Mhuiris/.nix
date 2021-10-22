@@ -33,14 +33,7 @@ in {
   #     { };
 
   age = {
-    secrets = {
-      ngrokConfig = {
-        file = ../secrets/ngrokConfig.age;
-        mode = "0400";
-        owner = "ngrok";
-        group = "ngrok";
-      };
-    };
+    secrets = { ngrokConfig = { file = ../secrets/ngrokConfig.age; }; };
     sshKeyPaths = [ "${config.user.home}/.ssh/id_ed25519" ];
   };
 }
