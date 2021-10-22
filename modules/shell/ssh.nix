@@ -13,10 +13,9 @@ let
   '';
 
 in {
-  options.modules.shell.ssh = {
+  options.modules.shell.ssh = with types; {
     enable = mkBoolOpt false;
-    enableRemoteAccess = mkBoolOpt false;
-    configFile = mkOpt (either path null);
+    sshConfigFile = mkPathOpt null;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -39,23 +38,24 @@ in {
       ];
     }
 
-    (mkIf (cfg.configFile == null) {
+    (mkIf (cfg.sshConfigFile != null) {
 
       systemd.services."ssh_config_overwrite" = {
         description = "Overwrite local ssh config";
+        wantedBy = [ "multi-user.target" ];
         serviceConfig = {
-          Type = "oneshot";
+          Type = "simple";
           User = config.user.name;
           Group = config.user.group;
           RemainAfterExit = "yes";
           StandardOutput = "journal";
           ExecStart = ''
-            /bin/bash -c "echo Oneshot service - start && sleep 60 && echo Oneshot service - end"'';
+            ${pkgs.bash}/bin/bash -c "[ -f ${cfg.sshConfigFile} ] && cp ${cfg.sshConfigFile} /home/${config.user.name}/sss";
+          '';
+          Restart = "always";
         };
       };
-
     })
-
   ]);
   # modules.services.ngrok = {
   #   enable = cfg.enableRemoteAccess;

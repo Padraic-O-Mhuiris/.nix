@@ -53,6 +53,7 @@
     shell = {
       gnupg.enable = true;
       ssh.enable = true;
+      ssh.sshConfigFile = config.age.secrets.sshConfig.path;
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
