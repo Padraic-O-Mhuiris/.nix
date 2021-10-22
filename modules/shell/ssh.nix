@@ -46,7 +46,7 @@ in {
         description = "Overwrite local ssh config";
         wantedBy = [ "multi-user.target" ];
         preStart = ''
-          [ -f ${cfg.sshConfigFile} ] && ${pkgs.coreutils}/bin/install -o ${config.user.name} g ${config.user.group} -m 0400 ${cfg.sshConfigFile} ${overwriteDir}/ssh_config
+          [ -f ${cfg.sshConfigFile} ] && ${pkgs.coreutils}/bin/install -o ${config.user.name} -g ${config.user.group} -m 0400 ${cfg.sshConfigFile} ${overwriteDir}/ssh_config
         '';
 
         serviceConfig = {
