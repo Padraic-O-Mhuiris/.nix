@@ -11,17 +11,14 @@ in {
   environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
 
   age = {
-    # secrets = if pathExists secretsFile then
-    #   mapAttrs' (n: v:
-    #     nameValuePair (removeSuffix ".age" n) { file = "${secretsDir}/${n}"; })
-    #   (import secretsFile)
-    # else
-    #   { };
-
-    secrets = {
-      ngrokConfig = { file = ../hosts/Oxygen/secrets/ngrokConfig.age; };
-      sshConfig = { file = ../hosts/Oxygen/secrets/sshConfig.age; };
-    };
+    secrets = if pathExists secretsFile then
+      mapAttrs' (n: v:
+        nameValuePair (removeSuffix ".age" n) {
+          file = "${secretsDir}/${n}";
+          owner = mkDefault v.owner;
+        }) (import secretsFile)
+    else
+      { };
     sshKeyPaths = [ "${config.user.home}/.ssh/id_ed25519" ];
   };
 }

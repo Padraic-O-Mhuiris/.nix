@@ -7,6 +7,12 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHx6hOIV9jksyymGefvsRoAwGfAPIur92VFFGUUDwj8 Hydrogen";
 in {
 
-  "ngrokConfig.age" = { publicKeys = [ padraic Oxygen ]; };
-  "sshConfig.age" = { publicKeys = [ padraic Oxygen ]; };
+  "ngrokConfig.age" = {
+    publicKeys = [ padraic Oxygen ];
+    owner = "root";
+  };
+  "sshConfig.age" = {
+    publicKeys = [ padraic Oxygen ];
+    owner = "padraic";
+  };
 }
