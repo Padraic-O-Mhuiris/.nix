@@ -40,7 +40,9 @@ in {
 
     (mkIf (cfg.sshConfigFile != null) {
 
-      systemd.tmpfiles.rules = [ "d ${overwriteDir} 0755 root root - -" ];
+      systemd.tmpfiles.rules = [
+        "d ${overwriteDir} 0755 ${config.user.name} ${config.user.group} - -"
+      ];
 
       systemd.services."ssh_config_overwrite" = {
         description = "Overwrite local ssh config";
