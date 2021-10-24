@@ -41,7 +41,6 @@ in {
 
   config = {
 
-    users.groups.plugdev = { };
     user = let
       user = builtins.getEnv "USER";
       name = if elem user [ "" "root" ] then "padraic" else user;
@@ -50,7 +49,6 @@ in {
       description = "The primary user account";
       extraGroups = [
         "wheel" # sudo
-        "plugdev" # ledger
         # TODO Networkmanager
       ];
       isNormalUser = true;
