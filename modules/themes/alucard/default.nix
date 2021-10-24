@@ -44,6 +44,7 @@ in {
         enableGhostscriptFonts = true;
 
         fonts = with pkgs; [
+          corefonts
           iosevka
           ubuntu_font_family
           dejavu_fonts
