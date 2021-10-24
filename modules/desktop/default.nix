@@ -20,6 +20,7 @@ in {
     ];
 
     user.packages = with pkgs; [
+      qpdf
       feh # image viewer
       xclip
       xdotool
