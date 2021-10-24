@@ -27,6 +27,7 @@
         st.enable = true;
       };
       apps = {
+        ledger.enable = true;
         steam.enable = true;
         libreoffice.enable = true;
         rofi.enable = true;
