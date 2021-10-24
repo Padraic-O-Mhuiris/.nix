@@ -41,13 +41,18 @@ in {
 
   config = {
 
+    users.groups.plugdev = { };
     user = let
       user = builtins.getEnv "USER";
       name = if elem user [ "" "root" ] then "padraic" else user;
     in {
       inherit name;
       description = "The primary user account";
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel" # sudo
+        "plugdev" # ledger
+        # TODO Networkmanager
+      ];
       isNormalUser = true;
       home = "/home/${name}";
       group = "users";
