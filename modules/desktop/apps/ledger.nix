@@ -11,7 +11,6 @@ in {
 
     users.groups.plugdev = { };
 
-    user."${config.user.name}" = { extraGroups = [ "plugdev" ]; };
     services.udev.extraRules = ''
       # firmware 1.6.0+
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="1b7c", MODE="0660", TAG+="uaccess", TAG+="udev-acl"

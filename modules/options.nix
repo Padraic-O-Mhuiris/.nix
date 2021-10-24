@@ -49,6 +49,7 @@ in {
       description = "The primary user account";
       extraGroups = [
         "wheel" # sudo
+        "plugdev" # ledger
         # TODO Networkmanager
       ];
       isNormalUser = true;
