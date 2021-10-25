@@ -67,6 +67,7 @@
       docker.enable = true;
       syncthing.enable = true;
       geth.enable = true;
+      finances.enable = true;
     };
     theme.active = "alucard";
   };
