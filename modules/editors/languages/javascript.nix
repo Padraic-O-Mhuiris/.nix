@@ -10,6 +10,7 @@ in {
     user.packages = with pkgs; [
       yarn
       nodejs
+      nodePackages.npm
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
