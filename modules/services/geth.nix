@@ -19,6 +19,7 @@ in {
         };
         metrics.enable = true;
         syncmode = "full";
+        package = unstable.pkgs.go-ethereum.geth; # always use latest
       };
     };
 
