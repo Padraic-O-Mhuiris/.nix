@@ -16,6 +16,7 @@ in {
         http = {
           enable = true;
           apis = [ "net" "eth" "debug" "miner" "txpool" ];
+          port = 9000;
         };
         metrics.enable = true;
         syncmode = "full";
