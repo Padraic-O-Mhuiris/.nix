@@ -12,6 +12,7 @@ in {
       pip
       setuptools
       virtualenv
+      numpy
     ];
   };
 }
