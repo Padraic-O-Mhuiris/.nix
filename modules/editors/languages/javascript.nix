@@ -9,8 +9,7 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs.unstable; [
       yarn
-      nodejs-17_x
-      nodePackages.npm
+      nodejs-16_x
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
