@@ -7,9 +7,11 @@ in {
   options.modules.editors.languages.javascript = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs.unstable; [
+    user.packages = with pkgs; [
       yarn
-      nodejs-17_x
+      nodejs
+      nodePackages.npm
+      nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
       nodePackages.jsonlint
