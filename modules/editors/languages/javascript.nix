@@ -10,6 +10,7 @@ in {
     user.packages = with pkgs.unstable; [
       yarn
       nodejs-14_x
+      nodePackages.yalc
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
       nodePackages.jsonlint
