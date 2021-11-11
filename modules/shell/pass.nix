@@ -28,7 +28,6 @@ in {
           pass-update
           #pass-tomb
         ]))
-      lastpass-cli
       bitwarden
     ];
   };
