@@ -7,7 +7,6 @@ let
   configDir = config.dotfiles.configDir;
 
   is_local_conn = pkgs.writeShellScriptBin "is_local_conn" ''
-    echo "kkkkkk"
     nmcli -t -f active,ssid dev wifi | grep -q '^yes:VM9598311' && exit 0
 
     exit 1
@@ -54,8 +53,8 @@ in {
 
         serviceConfig = {
           Type = "simple";
-          User = config.user.name;
-          Group = config.user.group;
+          User = "root";
+          Group = "root";
           RemainAfterExit = "yes";
           StandardOutput = "journal";
           ExecStart = ''
