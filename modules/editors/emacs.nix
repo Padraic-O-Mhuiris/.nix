@@ -32,6 +32,7 @@ in {
       (ripgrep.override { withPCRE2 = true; })
       gnutls # for TLS connectivity
 
+      scrot
       ## Optional dependencies
       fd # faster projectile indexing
       imagemagick # for image-dired
