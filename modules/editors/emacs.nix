@@ -18,14 +18,13 @@ in {
 
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
-    #services.emacs = {
-    #  enable = false;
-    #  package = pkgs.emacsPgtkGcc;
-    #};
+    services.emacs = {
+      enable = true;
+      package = pkgs.emacsPgtkGcc;
+    };
 
     user.packages = with pkgs; [
       ## Emacs itself
-      emacsPgtkGcc
       binutils # native-comp needs 'as', provided by this
 
       ## Doom dependencies

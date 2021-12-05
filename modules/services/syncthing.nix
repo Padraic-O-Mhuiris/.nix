@@ -13,7 +13,6 @@ in {
       group = config.user.group;
       configDir = "/home/${config.user.name}/.config/syncthing";
 
-      declarative = {
         devices = {
           "Oxygen" = {
             name = "Oxygen";
@@ -57,7 +56,6 @@ in {
             type = "sendreceive";
           };
         };
-      };
     };
   };
 }
