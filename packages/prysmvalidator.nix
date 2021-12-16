@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, autoPatchelfHook }:
+{ lib, stdenv, fetchurl, my, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "prysmvalidator";
@@ -9,12 +9,8 @@ stdenv.mkDerivation rec {
       "https://github.com/prysmaticlabs/prysm/releases/download/v${version}/validator-v${version}-linux-amd64";
     sha256 = "5d1d6af1a65d5805914d21350f1c1f1a5df505a3176804090b0667d6931c3544";
   };
-  #nativeBuildInputs = [ autoPatchelfHook ];
-  sourceRoot = ".";
-  dontConfigure = true;
-  dontBuild = true;
-  dontPatchELF = true;
 
+  phases = "installPhase";
   installPhase = ''
     install -m755 -D $src $out/bin/prysmvalidator
   '';
