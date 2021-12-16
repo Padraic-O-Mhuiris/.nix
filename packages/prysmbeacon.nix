@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl }:
+{ lib, stdenv, fetchurl, my, ... }:
 
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
