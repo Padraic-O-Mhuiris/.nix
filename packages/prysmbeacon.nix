@@ -9,7 +9,11 @@ stdenv.mkDerivation rec {
       "https://github.com/prysmaticlabs/prysm/releases/download/v${version}/beacon-chain-v${version}-linux-amd64";
     sha256 = "edba2f6bb6fec8313fffaa0855805f7482f5022c4a51c19c20794371dd0e11b9";
   };
-  nativeBuildInputs = [ autoPatchelfHook ];
+  #nativeBuildInputs = [ autoPatchelfHook ];
+  sourceRoot = ".";
+  dontConfigure = true;
+  dontBuild = true;
+  dontPatchELF = true;
 
   installPhase = ''
     install -m755 -D $src $out/bin/prysmbeacon
