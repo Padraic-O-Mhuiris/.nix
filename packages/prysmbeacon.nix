@@ -1,7 +1,7 @@
 { lib, stdenv, fetchurl }:
 
 stdenv.mkDerivation rec {
-  name = "prysm-beacon-chain";
+  name = "prysmbeacon";
   version = "2.0.5";
 
   src = fetchurl {
@@ -12,7 +12,9 @@ stdenv.mkDerivation rec {
 
   phases = "installPhase";
   installPhase = ''
-    install -m755 -D $src $out/bin/beacon-chain
+    mkdir -p $out/bin
+    cp $src $out/bin/prysmbeacon
+    chmod +755 $out/bin/prysmbeacon
   '';
 
   meta = {
