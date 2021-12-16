@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, my, ... }:
+{ lib, stdenv, fetchurl, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
@@ -9,12 +9,10 @@ stdenv.mkDerivation rec {
       "https://github.com/prysmaticlabs/prysm/releases/download/v${version}/beacon-chain-v${version}-linux-amd64";
     sha256 = "edba2f6bb6fec8313fffaa0855805f7482f5022c4a51c19c20794371dd0e11b9";
   };
+  nativeBuildInputs = [ autoPatchelfHook ];
 
-  phases = "installPhase";
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src $out/bin/prysmbeacon
-    chmod 755 $out/bin/prysmbeacon
+    install -m755 -D $src $out/bin/prysmbeacon
   '';
 
   meta = {
