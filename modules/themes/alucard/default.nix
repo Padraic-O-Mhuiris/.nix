@@ -55,6 +55,7 @@ in {
           jetbrains-mono
           siji
           font-awesome-ttf
+          cascadia-code
         ];
         fontconfig = {
           enable = true;
