@@ -70,5 +70,6 @@ with lib.my; {
     gnumake
     unzip
     iw
+    nix-index
   ];
 }
