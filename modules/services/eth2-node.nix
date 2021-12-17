@@ -14,6 +14,7 @@ in {
 
     users.extraUsers.prysmbeacon = {
       isSystemUser = true;
+      shell = null;
       hashedPassword = "*";
       home = beaconChainDir;
       group = "prysmbeacon";
