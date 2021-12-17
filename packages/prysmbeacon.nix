@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
 
   preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib ];
   in ''
-    rPath="${libPath}:$out/lib"
-    patchelf \
-      --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "$rPath" \
-      $out/bin/prysmbeacon
+    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath "{libPath}" $out/bin/prysmbeacon
   '';
 
   meta = {
