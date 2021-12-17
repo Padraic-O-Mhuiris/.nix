@@ -20,6 +20,9 @@ in {
     };
     users.groups."prysmbeacon" = { };
 
+    systemd.tmpfiles.rules =
+      [ "d '${beaconChainDir}' 0700 prysmbeacon prysmbeacon - -" ];
+
     systemd.services.prysmbeacon = {
       description = "Prysm Eth2 Client Beacon Node";
       after = [ "network-online.target" ];

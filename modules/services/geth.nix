@@ -24,29 +24,29 @@ in {
       };
     };
 
-    services.prometheus = {
-      enable = true;
-      configText = ''
-        global:
-          scrape_interval: 15s
-          scrape_timeout: 10s
-          evaluation_interval: 15s
-        scrape_configs:
-          - job_name: 'geth'
-            scrape_interval: 15s
-            scrape_timeout: 10s
-            metrics_path: /debug/metrics/prometheus
-            scheme: http
-            static_configs:
-              - targets: ['localhost:6060']
-      '';
-    };
+    # services.prometheus = {
+    #   enable = true;
+    #   configText = ''
+    #     global:
+    #       scrape_interval: 15s
+    #       scrape_timeout: 10s
+    #       evaluation_interval: 15s
+    #     scrape_configs:
+    #       - job_name: 'geth'
+    #         scrape_interval: 15s
+    #         scrape_timeout: 10s
+    #         metrics_path: /debug/metrics/prometheus
+    #         scheme: http
+    #         static_configs:
+    #           - targets: ['localhost:6060']
+    #   '';
+    # };
 
-    services = {
-      grafana = {
-        enable = true;
-        port = 2111;
-      };
-    };
+    # services = {
+    #   grafana = {
+    #     enable = true;
+    #     port = 2111;
+    #   };
+    # };
   };
 }
