@@ -27,8 +27,8 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    # nix-ld.url = "github:Mic92/nix-ld";
-    # nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
     dapptools = {
       url = "github:dapphub/dapptools";
