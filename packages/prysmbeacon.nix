@@ -23,9 +23,10 @@ stdenv.mkDerivation rec {
 
   preFixup = let libPath = lib.makeLibraryPath [ pkgs.glibc ];
   in ''
+    rPath="${libPath}:$out/lib"
     patchelf \
       --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${libPath}" \
+      --set-rpath "$rPath" \
       $out/bin/prysmbeacon
   '';
 
