@@ -23,7 +23,7 @@ in {
         Restart = "always";
         RestartSec = "5";
         ExecStart =
-          "${my.prysmbeacon} --datadir=${beaconChainDir} --http-web3provider=http://127.0.0.1:8545 --accept-terms-of-use";
+          "${pkgs.my.prysmbeacon} --datadir=${beaconChainDir} --http-web3provider=http://127.0.0.1:8545 --accept-terms-of-use";
       };
     };
   };
