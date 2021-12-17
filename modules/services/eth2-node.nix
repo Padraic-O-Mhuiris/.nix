@@ -18,7 +18,7 @@ in {
       home = beaconChainDir;
       group = "prysmbeacon";
     };
-    users.extraGroups = [ "prysmbeacon" ];
+    users.groups."prysmbeacon" = { };
 
     systemd.services.prysmbeacon = {
       description = "Prysm Eth2 Client Beacon Node";
@@ -31,7 +31,7 @@ in {
         Restart = "always";
         RestartSec = "5";
         ExecStart =
-          "${pkgs.my.prysmbeacon} --datadir=${beaconChainDir} --http-web3provider=http://127.0.0.1:8545 --accept-terms-of-use";
+          "${pkgs.my.prysmbeacon}/bin/prysmbeacon --datadir=${beaconChainDir} --http-web3provider=http://127.0.0.1:8545 --accept-terms-of-use";
       };
     };
   };
