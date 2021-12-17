@@ -12,6 +12,14 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ my.prysmbeacon my.prysmvalidator ];
 
+    users.extraUsers.prysmbeacon = {
+      isSystemUser = true;
+      hashedPassword = "*";
+      home = beaconChainDir;
+      group = "prysmbeacon";
+    };
+    users.extraGroups = [ "prysmbeacon" ];
+
     systemd.services.prysmbeacon = {
       description = "Prysm Eth2 Client Beacon Node";
       after = [ "network-online.target" ];
