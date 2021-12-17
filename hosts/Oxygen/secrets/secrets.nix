@@ -17,6 +17,7 @@ in {
   };
   "validatorPassword.age" = {
     publicKeys = [ padraic Oxygen ];
-    owner = "root";
+    owner = "prysmvalidator";
+    group = "prysmvalidator";
   };
 }

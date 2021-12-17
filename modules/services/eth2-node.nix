@@ -47,7 +47,7 @@ in {
 
     systemd.tmpfiles.rules = [
       "d '${beaconChainDir}' 0700 prysmbeacon prysmbeacon - -"
-      "d '${validatorDir}' 0755 prysmvalidator prysmvalidator - -"
+      "d '${validatorDir}' 0700 prysmvalidator prysmvalidator - -"
     ];
 
     systemd.services.prysmbeacon = {
@@ -71,10 +71,6 @@ in {
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      preStart = ''
-        [ -f ${cfg.passwordFile} ] && ${pkgs.coreutils}/bin/install -m 0755 ${cfg.passwordFile} ${validatorDir}/password.txt
-      '';
-
       serviceConfig = {
         User = "prysmvalidator";
         Group = "prysmvalidator";
@@ -82,7 +78,7 @@ in {
         Restart = "always";
         RestartSec = "5";
         ExecStart =
-          "${pkgs.my.prysmvalidator}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir} --wallet-password-file=${validatorDir}.password.txt --accept-terms-of-use --enable-doppelganger";
+          "${pkgs.my.prysmvalidator}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${cfg.passwordFile} --accept-terms-of-use";
       };
     };
   };
