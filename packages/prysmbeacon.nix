@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, fetchurl, autoPatchelfHook }:
+{ pkgs, lib, glibc, stdenv, fetchurl, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
@@ -10,8 +10,8 @@ stdenv.mkDerivation rec {
     sha256 = "edba2f6bb6fec8313fffaa0855805f7482f5022c4a51c19c20794371dd0e11b9";
   };
 
-  buildInputs = with pkgs; [ glibc ];
   sourceRoot = ".";
+
   dontConfigure = true;
   dontBuild = true;
 
@@ -19,9 +19,8 @@ stdenv.mkDerivation rec {
   installPhase = ''
     install -m755 -D $src $out/bin/prysmbeacon
   '';
-  dontPatchELF = true;
 
-  preFixup = let libPath = lib.makeLibraryPath [ pkgs.glibc ];
+  preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib glibc ];
   in ''
     rPath="${libPath}:$out/lib"
     patchelf \
