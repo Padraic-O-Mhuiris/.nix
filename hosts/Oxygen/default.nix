@@ -69,6 +69,7 @@
       geth.enable = true;
       finances.enable = false;
       eth2-node.enable = true;
+      eth2-node.passwordFile = config.age.secrets.validatorPassword.path;
     };
     theme.active = "alucard";
   };
