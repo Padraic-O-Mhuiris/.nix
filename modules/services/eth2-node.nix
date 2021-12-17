@@ -47,7 +47,7 @@ in {
 
     systemd.tmpfiles.rules = [
       "d '${beaconChainDir}' 0700 prysmbeacon prysmbeacon - -"
-      "d '${validator}' 0755 prysmvalidator prysmvalidator - -"
+      "d '${validatorDir}' 0755 prysmvalidator prysmvalidator - -"
     ];
 
     systemd.services.prysmbeacon = {

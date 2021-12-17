@@ -16,7 +16,7 @@ in {
     owner = "padraic";
   };
   "validatorPassword.age" = {
-    publicKeys = [ Oxygen ];
-    owner = "prysmvalidator";
+    publicKeys = [ padraic Oxygen ];
+    owner = "root";
   };
 }
