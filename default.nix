@@ -73,5 +73,6 @@ with lib.my; {
     nix-index
     patchelf
     stdenv.cc.cc.lib
+    file
   ];
 }
