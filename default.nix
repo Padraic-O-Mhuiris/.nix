@@ -72,5 +72,6 @@ with lib.my; {
     iw
     nix-index
     patchelf
+    stdenv.cc.cc.lib
   ];
 }
