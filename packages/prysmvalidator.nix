@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, my, autoPatchelfHook }:
+{ pkgs, lib, stdenv, fetchurl, my, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "prysmvalidator";
@@ -15,6 +15,13 @@ stdenv.mkDerivation rec {
     install -m755 -D $src $out/bin/prysmvalidator
   '';
 
+  preFixup = let libPath = lib.makeLibraryPath [ pkgs.glibc ];
+  in ''
+    patchelf \
+      --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+      --set-rpath "${libPath}" \
+      $out/bin/prysmvalidator
+  '';
   meta = {
     homepage = "https://github.com/prysmaticlabs/prysm";
     description = "Validator implementation for Ethereum proof-of-stake";

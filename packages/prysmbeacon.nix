@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, autoPatchelfHook }:
+{ pkgs, lib, stdenv, fetchurl, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
@@ -13,6 +13,14 @@ stdenv.mkDerivation rec {
   phases = "installPhase";
   installPhase = ''
     install -m755 -D $src $out/bin/prysmbeacon
+  '';
+
+  preFixup = let libPath = lib.makeLibraryPath [ pkgs.glibc ];
+  in ''
+    patchelf \
+      --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+      --set-rpath "${libPath}" \
+      $out/bin/prysmbeacon
   '';
 
   meta = {
