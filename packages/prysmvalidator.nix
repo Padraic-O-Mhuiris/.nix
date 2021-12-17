@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, fetchurl, my, autoPatchelfHook }:
+{ pkgs, lib, steam-run, stdenv, fetchurl, makeWrapper }:
 
 stdenv.mkDerivation rec {
   name = "prysmvalidator";
@@ -10,16 +10,11 @@ stdenv.mkDerivation rec {
     sha256 = "5d1d6af1a65d5805914d21350f1c1f1a5df505a3176804090b0667d6931c3544";
   };
 
-  buildInputs = [ stdenv.cc.cc.lib ];
-
+  nativeBuildInputs = [ makeWrapper ];
   phases = "installPhase";
   installPhase = ''
-    install -m755 -D $src $out/bin/prysmvalidator
-  '';
-
-  preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib ];
-  in ''
-    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath "{libPath}" $out/bin/prysmvalidator
+    install -m755 -D $src $out/bin/.prysmvalidator-unwrapped
+    makeWrapper ${steam-run}/bin/steam-run $out/bin/prysmvalidator --add-flags $out/bin/.prysmvalidator-unwrapped
   '';
 
   meta = {

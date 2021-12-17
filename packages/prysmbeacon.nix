@@ -1,4 +1,4 @@
-{ pkgs, lib, glibc, stdenv, fetchurl, autoPatchelfHook }:
+{ pkgs, lib, steam-run, stdenv, fetchurl, makeWrapper }:
 
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
@@ -10,16 +10,11 @@ stdenv.mkDerivation rec {
     sha256 = "edba2f6bb6fec8313fffaa0855805f7482f5022c4a51c19c20794371dd0e11b9";
   };
 
-  buildInputs = [ stdenv.cc.cc.lib ];
-
+  nativeBuildInputs = [ makeWrapper ];
   phases = "installPhase";
   installPhase = ''
-    install -m755 -D $src $out/bin/prysmbeacon
-  '';
-
-  preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib ];
-  in ''
-    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath "{libPath}" $out/bin/prysmbeacon
+    install -m755 -D $src $out/bin/.prysmbeacon-unwrapped
+    makeWrapper ${steam-run}/bin/steam-run $out/bin/prysmbeacon --add-flags $out/bin/.prysmbeacon-unwrapped
   '';
 
   meta = {
