@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     install -m755 -D $src $out/bin/prysmbeacon
   '';
 
-  preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib glibc ];
+  preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib ];
   in ''
     rPath="${libPath}:$out/lib"
     patchelf \
