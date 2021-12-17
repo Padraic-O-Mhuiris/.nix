@@ -10,8 +10,8 @@ stdenv.mkDerivation rec {
     sha256 = "5d1d6af1a65d5805914d21350f1c1f1a5df505a3176804090b0667d6931c3544";
   };
 
-  buildInputs = with pkgs; [ glibc ];
   sourceRoot = ".";
+
   dontConfigure = true;
   dontBuild = true;
 
@@ -19,16 +19,16 @@ stdenv.mkDerivation rec {
   installPhase = ''
     install -m755 -D $src $out/bin/prysmvalidator
   '';
-  dontPatchELF = true;
 
-  preFixup = let libPath = lib.makeLibraryPath [ pkgs.glibc ];
+  preFixup = let libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib ];
   in ''
     rPath="${libPath}:$out/lib"
     patchelf \
       --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath $rPath \
+      --set-rpath "$rPath" \
       $out/bin/prysmvalidator
   '';
+
   meta = {
     homepage = "https://github.com/prysmaticlabs/prysm";
     description = "Validator implementation for Ethereum proof-of-stake";
