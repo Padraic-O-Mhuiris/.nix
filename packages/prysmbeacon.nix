@@ -10,10 +10,16 @@ stdenv.mkDerivation rec {
     sha256 = "edba2f6bb6fec8313fffaa0855805f7482f5022c4a51c19c20794371dd0e11b9";
   };
 
+  buildInputs = with pkgs; [ glibc ];
+  sourceRoot = ".";
+  dontConfigure = true;
+  dontBuild = true;
+
   phases = "installPhase";
   installPhase = ''
     install -m755 -D $src $out/bin/prysmbeacon
   '';
+  dontPatchELF = true;
 
   preFixup = let libPath = lib.makeLibraryPath [ pkgs.glibc ];
   in ''
