@@ -68,7 +68,7 @@
       syncthing.enable = true;
       geth.enable = true;
       finances.enable = false;
-      beacon-chain.enable = true;
+      eth2-node.enable = true;
     };
     theme.active = "alucard";
   };
