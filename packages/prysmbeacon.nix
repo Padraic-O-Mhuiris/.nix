@@ -10,10 +10,7 @@ stdenv.mkDerivation rec {
     sha256 = "edba2f6bb6fec8313fffaa0855805f7482f5022c4a51c19c20794371dd0e11b9";
   };
 
-  sourceRoot = ".";
-
-  dontConfigure = true;
-  dontBuild = true;
+  buildInputs = [ stdenv.cc.cc.lib ];
 
   phases = "installPhase";
   installPhase = ''

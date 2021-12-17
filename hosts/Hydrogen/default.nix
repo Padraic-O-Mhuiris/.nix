@@ -62,6 +62,7 @@
     services = {
       docker.enable = true;
       syncthing.enable = true;
+      beacon-chain.enable = true;
     };
     theme.active = "alucard";
   };
