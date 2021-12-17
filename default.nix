@@ -71,5 +71,6 @@ with lib.my; {
     unzip
     iw
     nix-index
+    patchelf
   ];
 }
