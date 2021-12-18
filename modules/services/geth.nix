@@ -9,9 +9,6 @@ in {
   options.modules.services.geth = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-
-    networking.firewall.allowedTCPPorts = [ 30303 ];
-    networking.firewall.allowedUDPPorts = [ 30301 ];
     services.geth = {
       mainnet = {
         enable = true;
