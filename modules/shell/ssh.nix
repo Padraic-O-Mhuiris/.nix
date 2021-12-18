@@ -11,6 +11,7 @@ let
 
     exit 1
   '';
+
 in {
   options.modules.shell.ssh = with types; {
     enable = mkBoolOpt false;
@@ -38,10 +39,6 @@ in {
 
     (mkIf (cfg.sshConfigFile != null) {
 
-      systemd.tmpfiles.rules = [
-        "d ${overwriteDir} 0755 ${config.user.name} ${config.user.group} - -"
-      ];
-
       systemd.services."ssh_config_overwrite" = {
         description = "Overwrite local ssh config";
         wantedBy = [ "multi-user.target" ];
@@ -53,7 +50,7 @@ in {
           RemainAfterExit = "yes";
           StandardOutput = "journal";
           ExecStart = ''
-            [ -f ${cfg.sshConfigFile} ] && ${pkgs.coreutils}/bin/install -o ${config.user.name} -g ${config.user.group} -m 0400 ${cfg.sshConfigFile} /home/${config.user.name}/ssh_config
+            [ -f ${cfg.sshConfigFile} ] && ${pkgs.coreutils}/bin/install -o ${config.user.name} -g ${config.user.group} -m 0400 ${cfg.sshConfigFile} /home/${config.user.name}/ssh/config
           '';
         };
       };
