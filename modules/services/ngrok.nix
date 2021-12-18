@@ -22,8 +22,15 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ ngrok ];
+    users.extraUsers.ngrok = {
+      isSystemUser = true;
+      shell = null;
+      hashedPassword = "*ngrok*";
+      group = "ngrok";
+    };
+    users.groups."ngrok" = { };
 
-    systemd.tmpfiles.rules = [ "d '${ngrokDir}' 0755 root root - -" ];
+    systemd.tmpfiles.rules = [ "d '${ngrokDir}' 0700 ngrok ngrok - -" ];
 
     systemd.services.ngrok = {
       description = "ngrok";
@@ -35,12 +42,13 @@ in {
         [ -f ${cfg.configFile} ] && ${pkgs.coreutils}/bin/install -m 0400 ${cfg.configFile} ${ngrokDir}/config.yml
       '';
       serviceConfig = {
+        User = "ngrok";
+        Group = "ngrok";
         Type = "simple";
+        Restart = "always";
+        RestartSec = "5";
         ExecStart =
           "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${ngrokDir}/config.yml";
-        ExecStop = "${pkgs.killall} ngrok";
-        Restart = "always";
-
       };
     };
   };

@@ -9,7 +9,8 @@ in {
 
   "ngrokConfig.age" = {
     publicKeys = [ padraic Oxygen ];
-    owner = "root";
+    owner = "ngrok";
+    group = "ngrok";
   };
   "sshConfig.age" = {
     publicKeys = [ padraic Oxygen ];

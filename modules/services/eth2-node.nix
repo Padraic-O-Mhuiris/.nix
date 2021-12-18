@@ -33,14 +33,14 @@ in {
       prysmbeacon = {
         isSystemUser = true;
         shell = null;
-        hashedPassword = "*";
+        hashedPassword = "*prysmbeacon*";
         home = beaconChainDir;
         group = "prysmbeacon";
       };
       prysmvalidator = {
         isSystemUser = true;
         shell = null;
-        hashedPassword = "*";
+        hashedPassword = "*prysmvalidator*";
         home = validatorDir;
         group = "prysmvalidator";
       };
