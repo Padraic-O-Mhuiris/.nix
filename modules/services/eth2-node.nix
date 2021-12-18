@@ -24,6 +24,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    services.ntp.enable = true;
+
     user.packages = with pkgs; [ my.prysmbeacon my.prysmvalidator ];
 
     users.extraUsers = {
