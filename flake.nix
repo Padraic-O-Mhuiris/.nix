@@ -5,7 +5,9 @@
 
     master = { url = "github:NixOS/nixpkgs/master"; };
 
-    nixpkgs.url = "nixpkgs/21.11"; # for packages on the edge
+    nixpkgs.url = "nixpkgs/21.11";
+
+    nixpkgs-2111.url = "nixpkgs/21.11";
     nixpkgs-2105.url = "nixpkgs/21.05";
 
     nixpkgs-unstable.url =
