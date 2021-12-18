@@ -52,7 +52,7 @@ in {
         '';
 
         serviceConfig = {
-          Type = "simple";
+          Type = "oneshot";
           User = "root";
           Group = "root";
           RemainAfterExit = "yes";
