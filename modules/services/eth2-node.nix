@@ -64,7 +64,7 @@ in {
         Restart = "always";
         RestartSec = "5";
         ExecStart =
-          "${pkgs.my.prysmbeacon}/bin/prysmbeacon --datadir=${beaconChainDir} --http-web3provider=http://127.0.0.1:8545 --fallback-web3provider=https://mainnet.infura.io/v3/08ec46105b6d41a3ab9b4adc779d758b --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256";
+          "${pkgs.my.prysmbeacon}/bin/prysmbeacon --datadir=${beaconChainDir} --http-web3provider=http://127.0.0.1:9000 --fallback-web3provider=https://mainnet.infura.io/v3/08ec46105b6d41a3ab9b4adc779d758b --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256";
       };
     };
 
