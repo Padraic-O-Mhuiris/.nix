@@ -25,7 +25,7 @@ in {
     users.extraUsers.ngrok = {
       isSystemUser = true;
       shell = null;
-      hashedPassword = "*ngrok*";
+      hashedPassword = "*";
       group = "ngrok";
     };
     users.groups."ngrok" = { };
