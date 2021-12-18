@@ -11,8 +11,6 @@ let
 
     exit 1
   '';
-
-  overwriteDir = "/var/lib/overwrites";
 in {
   options.modules.shell.ssh = with types; {
     enable = mkBoolOpt false;
@@ -47,9 +45,6 @@ in {
       systemd.services."ssh_config_overwrite" = {
         description = "Overwrite local ssh config";
         wantedBy = [ "multi-user.target" ];
-        preStart = ''
-          [ -f ${cfg.sshConfigFile} ] && ${pkgs.coreutils}/bin/install -o ${config.user.name} -g ${config.user.group} -m 0400 ${cfg.sshConfigFile} ${overwriteDir}/ssh_config
-        '';
 
         serviceConfig = {
           Type = "oneshot";
@@ -58,9 +53,8 @@ in {
           RemainAfterExit = "yes";
           StandardOutput = "journal";
           ExecStart = ''
-            ${pkgs.bash}/bin/bash -c "cp ${overwriteDir}/ssh_config /home/${config.user.name}/.ssh/config";
+            [ -f ${cfg.sshConfigFile} ] && ${pkgs.coreutils}/bin/install -o ${config.user.name} -g ${config.user.group} -m 0400 ${cfg.sshConfigFile} /home/${config.user.name}/ssh_config
           '';
-          Restart = "always";
         };
       };
     })
