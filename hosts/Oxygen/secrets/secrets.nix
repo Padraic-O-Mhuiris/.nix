@@ -15,6 +15,7 @@ in {
   "sshConfig.age" = {
     publicKeys = [ padraic Oxygen ];
     owner = "padraic";
+    group = "user";
   };
   "validatorPassword.age" = {
     publicKeys = [ padraic Oxygen ];

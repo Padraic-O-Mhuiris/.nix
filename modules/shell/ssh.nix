@@ -45,8 +45,8 @@ in {
 
         serviceConfig = {
           Type = "oneshot";
-          User = "root";
-          Group = "root";
+          User = "${config.user.name}";
+          Group = "${config.user.group}";
           RemainAfterExit = "yes";
           StandardOutput = "journal";
           ExecStart = ''
