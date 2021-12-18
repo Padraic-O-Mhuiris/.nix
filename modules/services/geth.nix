@@ -20,7 +20,7 @@ in {
           apis = [ "net" "eth" "debug" "miner" "txpool" ];
           port = 9000;
         };
-        metrics.enable = true;
+        metrics.enable = false;
         syncmode = "full";
         package = pkgs.unstable.go-ethereum.geth; # always use latest
       };
