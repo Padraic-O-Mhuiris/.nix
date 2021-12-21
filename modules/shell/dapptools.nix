@@ -15,7 +15,7 @@ in {
 
     home.configFile."seth/sethrc".text = ''
       export ETH_FROM=0x0000000000000000000000000000000000000000
-      export ETH_RPC_URL=http://localhost:9000
+      export ETH_RPC_URL=http://localhost:8545
     '';
 
     user.packages = with pkgs;
