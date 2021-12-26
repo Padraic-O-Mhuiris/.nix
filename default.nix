@@ -74,5 +74,6 @@ with lib.my; {
     patchelf
     stdenv.cc.cc.lib
     file
+    libsecret
   ];
 }
