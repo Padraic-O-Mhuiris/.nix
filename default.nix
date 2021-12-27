@@ -32,11 +32,14 @@ with lib.my; {
       "https://nix-community.cachix.org"
       "https://dapp.cachix.org"
       "https://hydra.iohk.io"
+      "https://iohk.cachix.org"
     ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "dapp.cachix.org-1:9GJt9Ja8IQwR7YW/aF0QvCa6OmjGmsKoZIist0dG+Rs="
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
+
     ];
     registry = registryInputs // { dotfiles.flake = inputs.self; };
     autoOptimiseStore = true;
