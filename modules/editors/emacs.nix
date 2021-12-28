@@ -20,7 +20,7 @@ in {
 
     services.emacs = {
       enable = true;
-      package = pkgs.emacsUnstableGcc;
+      package = pkgs.emacsPgtkGcc;
     };
 
     user.packages = with pkgs; [
