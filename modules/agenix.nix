@@ -15,7 +15,10 @@ in {
       mapAttrs' (n: v:
         nameValuePair (removeSuffix ".age" n) {
           file = "${secretsDir}/${n}";
-          owner = mkDefault v.owner;
+          owner = v.owner;
+          group = v.group;
+          path = v.path;
+          symlink = false;
         }) (import secretsFile)
     else
       { };

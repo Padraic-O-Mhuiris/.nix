@@ -11,15 +11,18 @@ in {
     publicKeys = [ padraic Oxygen ];
     owner = "ngrok";
     group = "ngrok";
+    path = "/var/lib/ngrok/config.yml";
   };
   "sshConfig.age" = {
     publicKeys = [ padraic Oxygen ];
     owner = "padraic";
     group = "user";
+    path = "/home/padraic/.ssh";
   };
   "validatorPassword.age" = {
     publicKeys = [ padraic Oxygen ];
     owner = "prysmvalidator";
     group = "prysmvalidator";
+    path = "/var/lib/prysm/validator/validatorPassword";
   };
 }

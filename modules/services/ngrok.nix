@@ -38,9 +38,6 @@ in {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.ngrok ];
 
-      preStart = ''
-        [ -f ${cfg.configFile} ] && ${pkgs.coreutils}/bin/install -m 0400 ${cfg.configFile} ${ngrokDir}/config.yml
-      '';
       serviceConfig = {
         User = "ngrok";
         Group = "ngrok";
@@ -48,7 +45,7 @@ in {
         Restart = "always";
         RestartSec = "5";
         ExecStart =
-          "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${ngrokDir}/config.yml";
+          "${pkgs.ngrok}/bin/ngrok start --all --log=stdout --config ${cfg.configFile}";
       };
     };
   };
