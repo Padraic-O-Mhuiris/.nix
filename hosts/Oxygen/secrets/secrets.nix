@@ -15,8 +15,8 @@ in {
   };
   "sshConfig.age" = {
     publicKeys = [ padraic Oxygen ];
-    owner = "padraic";
-    group = "user";
+    # owner = "padraic";
+    # group = "user";
     path = "/home/padraic/.ssh";
   };
   "validatorPassword.age" = {
