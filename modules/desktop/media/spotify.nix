@@ -5,5 +5,6 @@ with lib.my;
 let cfg = config.modules.desktop.media.spotify;
 in {
   options.modules.desktop.media.spotify = { enable = mkBoolOpt false; };
-  config = mkIf cfg.enable { user.packages = with pkgs; [ spotify ]; };
+  config =
+    mkIf cfg.enable { user.packages = with pkgs; [ spotify spotify-tui ]; };
 }
