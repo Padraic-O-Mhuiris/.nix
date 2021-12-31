@@ -15,8 +15,8 @@ in {
       mapAttrs' (n: v:
         nameValuePair (removeSuffix ".age" n) {
           file = "${secretsDir}/${n}";
-          owner = v.owner ? config.user.name;
-          group = v.group ? config.user.group;
+          owner = v.owner or config.user.name;
+          group = v.group or config.user.group;
           path = v.path;
           symlink = false;
         }) (import secretsFile)
