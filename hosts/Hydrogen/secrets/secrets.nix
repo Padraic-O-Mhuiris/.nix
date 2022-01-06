@@ -6,6 +6,6 @@ let
 in {
   "sshConfig.age" = {
     publicKeys = [ padraic Hydrogen ];
-    owner = "padraic";
+    path = "/home/padraic/.ssh";
   };
 }
