@@ -19,7 +19,7 @@
         dpi = 180;
       };
       xmonad.enable = false;
-      redshift.enable = true;
+      redshift.enable = false;
       fileManager.enable = true;
       telegram.enable = true;
       term = {
