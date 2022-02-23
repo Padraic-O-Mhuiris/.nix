@@ -20,11 +20,6 @@ in {
             cursorTheme = "Paper";
           };
         };
-
-        desktop.browser = {
-          firefox.userChrome = concatMapStringsSep "\n" readFile
-            [ ./config/firefox/userChrome.css ];
-        };
       };
     }
 

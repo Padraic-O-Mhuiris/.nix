@@ -133,21 +133,21 @@ in {
         Version=2
       '';
 
-      "${cfgPath}/${cfg.profileName}.default/user.js" =
-        mkIf (cfg.settings != { } || cfg.extraConfig != "") {
-          text = ''
-            ${concatStrings (mapAttrsToList (name: value: ''
-              user_pref("${name}", ${builtins.toJSON value});
-            '') cfg.settings)}
-            ${cfg.extraConfig}
-          '';
-        };
+      # "${cfgPath}/${cfg.profileName}.default/user.js" =
+      #   mkIf (cfg.settings != { } || cfg.extraConfig != "") {
+      #     text = ''
+      #       ${concatStrings (mapAttrsToList (name: value: ''
+      #         user_pref("${name}", ${builtins.toJSON value});
+      #       '') cfg.settings)}
+      #       ${cfg.extraConfig}
+      #     '';
+      #   };
 
-      "${cfgPath}/${cfg.profileName}.default/chrome/userChrome.css" =
-        mkIf (cfg.userChrome != "") { text = cfg.userChrome; };
+      # "${cfgPath}/${cfg.profileName}.default/chrome/userChrome.css" =
+      #   mkIf (cfg.userChrome != "") { text = cfg.userChrome; };
 
-      "${cfgPath}/${cfg.profileName}.default/chrome/userContent.css" =
-        mkIf (cfg.userContent != "") { text = cfg.userContent; };
+      # "${cfgPath}/${cfg.profileName}.default/chrome/userContent.css" =
+      #   mkIf (cfg.userContent != "") { text = cfg.userContent; };
     };
   }]);
 }
