@@ -27,6 +27,7 @@ in {
         solc
         z3
         cvc4
+        vyper
       ];
 
   };
