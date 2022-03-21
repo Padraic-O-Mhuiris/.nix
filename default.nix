@@ -18,6 +18,7 @@ with lib.my; {
 
   # Configure nix and nixpkgs
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
+
   nix = let
     filteredInputs = filterAttrs (n: _: n != "self") inputs;
     nixPathInputs = mapAttrsToList (n: v: "${n}=${v}") filteredInputs;
@@ -80,5 +81,6 @@ with lib.my; {
     stdenv.cc.cc.lib
     file
     libsecret
+    zlib
   ];
 }
