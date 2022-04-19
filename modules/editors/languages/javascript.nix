@@ -14,6 +14,7 @@ in {
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
       nodePackages.jsonlint
+      nodePackages.pnpm
     ];
 
     modules.shell.zsh.rcInit = ''
