@@ -20,7 +20,7 @@ in {
 
     services.emacs = {
       enable = true;
-      package = pkgs.emacsGcc;
+      package = pkgs.emacsNativeComp;
     };
 
     user.packages = with pkgs; [
