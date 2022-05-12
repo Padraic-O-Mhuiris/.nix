@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   name = "prysmvalidator";
-  version = "2.0.5";
+  version = "2.1.1";
 
   src = fetchurl {
     url =
       "https://github.com/prysmaticlabs/prysm/releases/download/v${version}/validator-v${version}-linux-amd64";
-    sha256 = "5d1d6af1a65d5805914d21350f1c1f1a5df505a3176804090b0667d6931c3544";
+    sha256 = "14fdd5799395ff54df5fba30be3761ab6e0036ddde0077ab27656d622df8d2f0";
   };
 
   nativeBuildInputs = [ makeWrapper ];
