@@ -23,6 +23,14 @@ with lib.my; {
 
   programs.nm-applet.enable = true;
 
+  
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "-";
+    item = "nofile";
+    value = "4096";
+  }];
+
   user.packages = with pkgs; [
     coreutils
     binutils
