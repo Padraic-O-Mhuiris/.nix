@@ -8,13 +8,13 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs.unstable; [
-      yarn
       nodejs-14_x
       nodePackages.yalc
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
       nodePackages.jsonlint
       nodePackages.pnpm
+      nodePackages.yarn
     ];
 
     modules.shell.zsh.rcInit = ''
