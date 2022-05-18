@@ -24,6 +24,11 @@ in {
           id =
             "SGEL4MW-HA7XWZU-GU5HZ5L-XBRWDNL-746DNQZ-UNI76NO-HKMJFFB-2LVN2Q2";
         };
+        "Lithium" = {
+          name = "Lithium";
+          id =
+            "XE3TRP4-OV33CUZ-R3TXMTW-2D4A6WJ-XGORN64-YKSAMQ6-DD6BDAH-KR24EQ7";
+        };
       };
 
       folders = {
@@ -51,7 +56,7 @@ in {
 
         "/home/${config.user.name}/.org" = {
           id = "org";
-          devices = [ "Oxygen" "Hydrogen" ];
+          devices = [ "Oxygen" "Hydrogen" "Lithium" ];
           watch = true;
           type = "sendreceive";
         };
