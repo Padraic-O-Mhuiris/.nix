@@ -13,49 +13,49 @@ in {
       group = config.user.group;
       configDir = "/home/${config.user.name}/.config/syncthing";
 
-        devices = {
-          "Oxygen" = {
-            name = "Oxygen";
-            id =
-              "7TLH75M-N732WQU-YVYWRIY-FGE4JWD-ZJT2R2H-XASE7BI-232JA3R-WY4WVA4";
-          };
-          "Hydrogen" = {
-            name = "Hydrogen";
-            id =
-              "SGEL4MW-HA7XWZU-GU5HZ5L-XBRWDNL-746DNQZ-UNI76NO-HKMJFFB-2LVN2Q2";
-          };
+      devices = {
+        "Oxygen" = {
+          name = "Oxygen";
+          id =
+            "7TLH75M-N732WQU-YVYWRIY-FGE4JWD-ZJT2R2H-XASE7BI-232JA3R-WY4WVA4";
+        };
+        "Hydrogen" = {
+          name = "Hydrogen";
+          id =
+            "SGEL4MW-HA7XWZU-GU5HZ5L-XBRWDNL-746DNQZ-UNI76NO-HKMJFFB-2LVN2Q2";
+        };
+      };
+
+      folders = {
+
+        "/home/${config.user.name}/sync" = {
+          id = "sync";
+          devices = [ "Oxygen" "Hydrogen" ];
+          watch = true;
+          type = "sendreceive";
         };
 
-        folders = {
+        # "/home/${config.user.name}/.finance" = {
+        #   id = "finances";
+        #   devices = [ "Oxygen" "Hydrogen" ];
+        #   watch = true;
+        #   type = "sendreceive";
+        # };
 
-          "/home/${config.user.name}/sync" = {
-            id = "sync";
-            devices = [ "Oxygen" "Hydrogen" ];
-            watch = true;
-            type = "sendreceive";
-          };
+        # "/home/${config.user.name}/.nix" = {
+        #   id = "nix";
+        #   devices = [ "Oxygen" "Hydrogen" ];
+        #   watch = true;
+        #   type = "sendreceive";
+        # };
 
-          "/home/${config.user.name}/.finance" = {
-            id = "finances";
-            devices = [ "Oxygen" "Hydrogen" ];
-            watch = true;
-            type = "sendreceive";
-          };
-
-          "/home/${config.user.name}/.nix" = {
-            id = "nix";
-            devices = [ "Oxygen" "Hydrogen" ];
-            watch = true;
-            type = "sendreceive";
-          };
-
-          "/home/${config.user.name}/.org" = {
-            id = "org";
-            devices = [ "Oxygen" "Hydrogen" ];
-            watch = true;
-            type = "sendreceive";
-          };
+        "/home/${config.user.name}/.org" = {
+          id = "org";
+          devices = [ "Oxygen" "Hydrogen" ];
+          watch = true;
+          type = "sendreceive";
         };
+      };
     };
   };
 }
