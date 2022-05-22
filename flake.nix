@@ -18,6 +18,7 @@
       url = "github:numtide/flake-utils";
       inputs.nixpkgs.follows = "master";
     };
+    rust-overlay.url = "github:oxalica/rust-overlay";
 
     nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
