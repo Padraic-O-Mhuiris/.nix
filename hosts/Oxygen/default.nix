@@ -67,7 +67,7 @@
       ngrok.configFile = config.age.secrets.ngrokConfig.path;
       docker.enable = true;
       syncthing.enable = true;
-      geth.enable = false;
+      geth.enable = true;
       finances.enable = false;
       eth2-node.enable = true;
       eth2-node.passwordFile = config.age.secrets.validatorPassword.path;
