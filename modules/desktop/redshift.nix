@@ -7,6 +7,13 @@ in {
   options.modules.desktop.redshift = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+    services.geoclue2.enable = true;
+    services.geoclue2.appConfig.redshift.isAllowed = true;
+    # location = {
+    #   latitude = 53.28;
+    #   longitude = -9.03;
+    # };
+
     services.redshift = {
       enable = true;
       brightness = {

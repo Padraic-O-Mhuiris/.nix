@@ -19,7 +19,7 @@
       };
       hledger.enable = true;
       xmonad.enable = false;
-      redshift.enable = false;
+      redshift.enable = true;
       fileManager.enable = true;
       telegram.enable = true;
       term = {
