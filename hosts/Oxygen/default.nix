@@ -49,6 +49,7 @@
       languages = {
         javascript.enable = true;
         python.enable = true;
+        rust.enable = true;
       };
     };
     shell = {
