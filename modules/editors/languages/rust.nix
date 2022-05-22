@@ -10,6 +10,6 @@ in {
   config = mkIf cfg.enable {
 
     nixpkgs.overlays = [ inputs.rust-overlay.overlay ];
-    user.packages = [ rust-bin.stable.latest.default rust-analyzer ];
+    user.packages = with pkgs; [ rust-bin.stable.latest.default rust-analyzer ];
   };
 }
