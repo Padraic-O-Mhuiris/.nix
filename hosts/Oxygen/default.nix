@@ -22,6 +22,7 @@
       redshift.enable = true;
       fileManager.enable = true;
       telegram.enable = true;
+      matrix.enable = true;
       term = {
         default = "xst";
         st.enable = true;
