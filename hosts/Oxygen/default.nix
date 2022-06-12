@@ -17,7 +17,6 @@
         enable = true;
         dpi = 110;
       };
-      hledger.enable = true;
       xmonad.enable = false;
       redshift.enable = true;
       fileManager.enable = true;

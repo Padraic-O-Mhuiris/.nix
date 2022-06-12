@@ -13,7 +13,6 @@
         mode = "3840x2160";
         rate = 60;
       };
-      hledger.enable = true;
       i3 = {
         enable = true;
         dpi = 180;

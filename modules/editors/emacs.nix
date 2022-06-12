@@ -53,6 +53,7 @@ in {
       ccls
       # :lang javascript
       nodePackages.javascript-typescript-langserver
+      nodePackages.beancount-langserver
       # :lang latex & :lang org (latex previews)
       texlive.combined.scheme-medium
       # :lang rust
