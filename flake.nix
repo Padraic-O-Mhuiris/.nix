@@ -2,17 +2,11 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
-
     master = { url = "github:NixOS/nixpkgs/master"; };
-
-    nixpkgs.url = "nixpkgs/21.11";
-
-    nixpkgs-unstable.url =
-      "nixpkgs/nixpkgs-unstable"; # for packages on the edge
-
-    nix = { url = "github:nixos/nix/master"; };
-
-    hardware = { url = "github:nixos/nixos-hardware"; };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix = { url = "github:NixOS/nix/master"; };
+    hardware = { url = "github:NixOS/nixos-hardware"; };
 
     flake-utils = {
       url = "github:numtide/flake-utils";

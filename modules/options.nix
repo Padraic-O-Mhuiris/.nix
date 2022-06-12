@@ -94,6 +94,8 @@ in {
     users.users.${config.user.name} = mkAliasDefinitions options.user;
     users.mutableUsers = false;
 
+    programs.nix-ld.enable = true;
+
     nix = let users = [ config.user.name ];
     in {
       trustedUsers = users;
