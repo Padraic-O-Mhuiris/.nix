@@ -54,16 +54,6 @@ with lib.my; {
   # hardware-configuration.nix or fileSystem config.
   fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
 
-  # Use the latest kernel
-  # boot = {
-  #   kernelPackages = mkDefault pkgs.linuxPackages_5_10;
-  #   loader = {
-  #     efi.canTouchEfiVariables = mkDefault true;
-  #     systemd-boot.configurationLimit = 10;
-  #     systemd-boot.enable = mkDefault true;
-  #   };
-  # };
-
   # Just the bear necessities...
   environment.systemPackages = with pkgs; [
     bind

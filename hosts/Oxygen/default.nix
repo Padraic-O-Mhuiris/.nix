@@ -75,14 +75,14 @@
     theme.active = "alucard";
   };
 
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.zfs.enableUnstable = true;
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
 
-  boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
   boot.supportedFilesystems = [ "zfs" ];
+  boot.initrd.supportedFilesystems = [ "zfs" ];
   boot.kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
