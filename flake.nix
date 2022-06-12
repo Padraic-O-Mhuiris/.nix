@@ -31,11 +31,6 @@
       url = "github:dapphub/dapptools";
       flake = false;
     };
-
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, dapptools, ... }:
