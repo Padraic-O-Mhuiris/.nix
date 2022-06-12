@@ -32,6 +32,8 @@ in {
       (ripgrep.override { withPCRE2 = true; })
       gnutls # for TLS connectivity
 
+      shellcheck
+
       scrot
       ## Optional dependencies
       fd # faster projectile indexing
