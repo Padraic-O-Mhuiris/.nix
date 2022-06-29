@@ -8,7 +8,7 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs.unstable; [
-      nodejs-14_x
+      nodejs-16_x
       nodePackages.yalc
       nodePackages.typescript-language-server
       nodePackages.javascript-typescript-langserver
