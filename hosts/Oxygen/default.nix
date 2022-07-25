@@ -25,6 +25,7 @@
       term = {
         default = "xst";
         xst.enable = true;
+        alacritty.enable = true;
       };
       apps = {
         ledger.enable = true;

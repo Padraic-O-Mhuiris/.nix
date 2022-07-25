@@ -18,5 +18,8 @@ in {
         categories = [ "Development" "System" "Utility" ];
       })
     ];
+
+    home.configFile."alacritty/alacritty.yml" = ./alacritty.yml;
   };
+
 }

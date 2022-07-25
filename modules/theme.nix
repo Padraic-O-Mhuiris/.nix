@@ -1,4 +1,5 @@
-{ inputs, }:
+{ options, config, inputs, lib, pkgs, ... }:
 
-let inherit (inputs) base16;
-in { imports = [ base16.nixosModules ]; }
+{
+  imports = [ inputs.base16.nixosModule ];
+}
