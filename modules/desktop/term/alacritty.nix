@@ -19,7 +19,8 @@ in {
       })
     ];
 
-    home.configFile."alacritty/alacritty.yml" = ./alacritty.yml;
+    home.configFile."alacritty/alacritty.yml".text =
+      builtins.readFile ./alacritty.yml;
   };
 
 }

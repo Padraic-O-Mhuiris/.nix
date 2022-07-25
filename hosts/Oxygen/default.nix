@@ -23,7 +23,7 @@
       telegram.enable = true;
       matrix.enable = true;
       term = {
-        default = "xst";
+        default = "alacritty";
         xst.enable = true;
         alacritty.enable = true;
       };
