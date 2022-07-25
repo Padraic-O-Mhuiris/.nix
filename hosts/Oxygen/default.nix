@@ -24,7 +24,7 @@
       matrix.enable = true;
       term = {
         default = "xst";
-        st.enable = true;
+        xst.enable = true;
       };
       apps = {
         ledger.enable = true;

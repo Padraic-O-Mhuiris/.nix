@@ -20,6 +20,42 @@
         "type": "github"
       }
     },
+    "base16": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1658255652,
+        "narHash": "sha256-Uzb9wmFfKTcv12UjPNA+qUxpMrkJt1GLjZ4ZMyCZqgE=",
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "rev": "4b57d524bbcbc3cdb0ee3de3f0c025dbc861732c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "type": "github"
+      }
+    },
+    "base16-schemes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1657650255,
+        "narHash": "sha256-xmBDrZXWeQNHRodVBwW9eUNQc6pwm0PGDFT66R3QWyE=",
+        "owner": "base16-project",
+        "repo": "base16-schemes",
+        "rev": "99529527e7cb3d777fb6e041c2aabbe6cdec4c4c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "base16-project",
+        "repo": "base16-schemes",
+        "type": "github"
+      }
+    },
     "dapptools": {
       "flake": false,
       "locked": {
@@ -674,6 +710,8 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "base16": "base16",
+        "base16-schemes": "base16-schemes",
         "dapptools": "dapptools",
         "emacs-overlay": "emacs-overlay",
         "flake-utils": "flake-utils_2",
