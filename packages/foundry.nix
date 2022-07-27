@@ -6,18 +6,22 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/foundry-rs/foundry/releases/download/${version}/foundry_nightly_linux_amd64.tar.gz";
+    sha256 = "1ra88drn5a4vq80v3ykjkc60g2g3y4054s619bx95aqk6bhdbfcx";
   };
 
   nativeBuildInputs = [ makeWrapper ];
   phases = "installPhase";
   installPhase = ''
-    install -m755 -D $src/forge $out/bin/forge
-    install -m755 -D $src/cast $out/bin/cast
-    install -m755 -D $src/anvil $out/bin/anvil
+    mkdir -p $out/bin
+    tar -xzf $src
 
-    makeWrapper ${steam-run}/bin/steam-run $out/bin/forge
-    makeWrapper ${steam-run}/bin/steam-run $out/bin/cast
-    makeWrapper ${steam-run}/bin/steam-run $out/bin/anvil
+    mv forge $out/bin/.forge
+    mv cast $out/bin/.cast
+    mv anvil $out/bin/.anvil
+
+    makeWrapper ${steam-run}/bin/steam-run $out/bin/forge --add-flags $out/bin/.forge
+    makeWrapper ${steam-run}/bin/steam-run $out/bin/cast --add-flags $out/bin/.cast
+    makeWrapper ${steam-run}/bin/steam-run $out/bin/anvil --add-flags $out/bin/.anvil
   '';
 
   meta = {
