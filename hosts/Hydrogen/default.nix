@@ -26,7 +26,7 @@
       };
       i3 = {
         enable = true;
-        dpi = 110;
+        dpi = 150;
       };
       xmonad.enable = false;
       redshift.enable = true;

@@ -7,22 +7,6 @@ in {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix") dellXps159520 ];
 
-  services.actkbd = {
-    enable = true;
-    bindings = [
-      {
-        keys = [ 72 ];
-        events = [ "key" ];
-        command = "/run/current-system/sw/bin light -U 5";
-      }
-      {
-        keys = [ 73 ];
-        events = [ "key" ];
-        command = "/run/current-system/sw/bin light -A 5";
-      }
-    ];
-  };
-
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
