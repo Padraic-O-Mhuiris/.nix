@@ -11,7 +11,7 @@
       fs.enable = true;
       bluetooth = {
         enable = true;
-	audio.enable = true;
+        audio.enable = true;
       };
       wallet.enable = true;
       printing.enable = true;

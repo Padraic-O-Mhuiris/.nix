@@ -2,52 +2,73 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, inputs, modulesPath, ... }:
-let
-  dellXps159520 = "${inputs.hardware}/dell/xps/15-9500";
+let dellXps159520 = "${inputs.hardware}/dell/xps/15-9500";
 in {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix") dellXps159520 ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  services.actkbd = {
+    enable = true;
+    bindings = [
+      {
+        keys = [ 72 ];
+        events = [ "key" ];
+        command = "/run/current-system/sw/bin light -U 5";
+      }
+      {
+        keys = [ 73 ];
+        events = [ "key" ];
+        command = "/run/current-system/sw/bin light -A 5";
+      }
+    ];
+  };
+
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "rpool/nixos/root";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/" = {
+    device = "rpool/nixos/root";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir" ];
+  };
 
-  fileSystems."/home" =
-    { device = "rpool/nixos/home";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/home" = {
+    device = "rpool/nixos/home";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir" ];
+  };
 
-  fileSystems."/var/lib" =
-    { device = "rpool/nixos/var/lib";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/var/lib" = {
+    device = "rpool/nixos/var/lib";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir" ];
+  };
 
-  fileSystems."/var/log" =
-    { device = "rpool/nixos/var/log";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/var/log" = {
+    device = "rpool/nixos/var/log";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "bpool/nixos/root";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/boot" = {
+    device = "bpool/nixos/root";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir" ];
+  };
 
-  fileSystems."/boot/efis/pci-0000:02:00.0-nvme-1-part1" =
-    { device = "/dev/disk/by-uuid/77B8-65C6";
-      fsType = "vfat";
-    };
+  fileSystems."/boot/efis/pci-0000:02:00.0-nvme-1-part1" = {
+    device = "/dev/disk/by-uuid/77B8-65C6";
+    fsType = "vfat";
+  };
 
-  fileSystems."/boot/efi" =
-    { device = "/boot/efis/pci-0000:02:00.0-nvme-1-part1";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/boot/efi" = {
+    device = "/boot/efis/pci-0000:02:00.0-nvme-1-part1";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
   swapDevices = [ ];
 
@@ -59,5 +80,6 @@ in {
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -23,7 +23,6 @@ with lib.my; {
 
   programs.nm-applet.enable = true;
 
-  
   security.pam.loginLimits = [{
     domain = "*";
     type = "-";
@@ -39,6 +38,7 @@ with lib.my; {
     htop
     xclip
     clang
+    pciutils
     bc
     vim
     i7z
