@@ -3,14 +3,25 @@
 {
   nix = { buildCores = 4; };
 
-  imports = [ ./hardware-configuration.nix ../home.nix ];
+  imports = [ ./hardware-configuration.nix ./zfs.nix ../home.nix ];
 
   modules = {
+    hardware = {
+      audio.enable = true;
+      fs.enable = true;
+      bluetooth = {
+        enable = true;
+	audio.enable = true;
+      };
+      wallet.enable = true;
+      printing.enable = true;
+      keyboard.enable = true;
+    };
     desktop = {
       monitors = {
         enable = true;
         primary = "eDP-1";
-        mode = "3840x2160";
+        mode = "3840x2400";
         rate = 60;
       };
       i3 = {
@@ -22,8 +33,8 @@
       fileManager.enable = true;
       telegram.enable = true;
       term = {
-        default = "xst";
-        st.enable = true;
+        default = "alacritty";
+        alacritty.enable = true;
       };
       apps = {
         ledger.enable = true;
@@ -50,9 +61,8 @@
     };
     shell = {
       gnupg.enable = true;
-      ssh.enable = true;
-      ssh.sshConfigFile = config.age.secrets.sshConfig.path;
       zsh.enable = true;
+      ssh.enable = true;
       git.enable = true;
       pass.enable = true;
       dapptools.enable = true;
