@@ -3,7 +3,7 @@
 {
   nix = { buildCores = 4; };
 
-  imports = [ ./hardware-configuration.nix ./zfs.nix ../home.nix ];
+  imports = [ ./hardware-configuration.nix ./zfs.nix ./nvidia.nix ../home.nix ];
 
   modules = {
     hardware = {
