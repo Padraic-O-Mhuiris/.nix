@@ -62,6 +62,7 @@
     shell = {
       gnupg.enable = true;
       zsh.enable = true;
+      foundry.enable = true;
       ssh.enable = true;
       git.enable = true;
       pass.enable = true;
