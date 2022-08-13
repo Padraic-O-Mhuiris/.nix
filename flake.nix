@@ -7,6 +7,9 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+
+    emacs.url = "github:nix-community/emacs-overlay";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +18,7 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hardware, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, hardware, emacs, ... }:
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
@@ -32,7 +35,7 @@
 
       overlay = import ./overlays;
 
-      sharedOverlays = [ self.overlay ];
+      sharedOverlays = [ self.overlay emacs.overlay ];
 
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager

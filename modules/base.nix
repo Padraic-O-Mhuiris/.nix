@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./networking.nix ./xdg.nix ];
+  imports = [ ./networking.nix ./xdg.nix ./editors/emacs.nix ];
 
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
 
