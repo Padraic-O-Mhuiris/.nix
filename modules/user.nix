@@ -5,8 +5,8 @@ let cfg = config.user;
 in {
   options = {
     user = {
-      name = mkOption { types = type.str; };
-      hashedPassword = mkOption { types = type.str; };
+      name = mkOption { type = types.str; };
+      hashedPassword = mkOption { type = types.str; };
     };
 
     home = {

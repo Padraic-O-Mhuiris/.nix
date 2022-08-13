@@ -40,7 +40,8 @@
       hostDefaults.modules =
         [ home-manager.nixosModules.home-manager ./modules/user.nix ];
 
-      hosts.Hydrogen.modules = [ ./hosts/Hydrogen ];
+      hosts.Hydrogen.modules =
+        [ ./hosts/Hydrogen hardware.nixosModules.dell-xps-15-9500-nvidia ];
       hosts.Oxygen.modules = [ ./hosts/Oxygen ];
     };
 
