@@ -1,4 +1,4 @@
-{ config, options, lib, home-manager, ... }:
+{ config, options, lib, hm, ... }:
 
 with lib;
 with lib.my;

@@ -14,26 +14,18 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    hm = { url = "github:nix-community/home-manager"; };
+    home-manager.url = "github:nix-community/home-manager";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, hm, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, ... }:
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
-
-      lib = nixpkgs.lib.extend (self: super: {
-        my = import ./lib {
-          inherit pkgs inputs;
-          lib = self;
-        };
-      });
-
     in mkFlake {
       inherit self inputs;
-      lib = lib.my;
 
       supportedSystems = [ "x86_64-linux" ];
 
@@ -45,7 +37,8 @@
       overlay = import ./overlays;
       sharedOverlays = [ self.overlay ];
 
-      hostDefaults.modules = [ hm.nixosModules.home-manager ];
+      hostDefaults.modules =
+        [ home-manager.nixosModules.home-manager ./modules/user.nix ];
 
       hosts.Hydrogen.modules = [ ./hosts/Hydrogen ];
       hosts.Oxygen.modules = [ ./hosts/Oxygen ];
