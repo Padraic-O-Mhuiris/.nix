@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./users ./networking.nix ];
+  imports = [ ./networking.nix ];
 
 }
