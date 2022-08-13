@@ -1,34 +1,28 @@
-{ config, lib, pkgs, ... }:
+{ config, options, lib, pkgs, ... }:
 
-with lib;
-let cfg = config.user;
-in {
+with lib; {
   options = {
     user = {
       name = mkOption { type = types.str; };
       hashedPassword = mkOption { type = types.str; };
     };
-
     home = {
-      file = { }; # $HOME
-      configFile = { }; # $XDG_CONFIG_HOME
-      dataFile = { }; # $XDG_DATA_HOME"
+      file = { };
+      configFile = { };
+      dataFile = { };
     };
   };
 
   config = {
-    user = {
-      "${cfg.name}" = {
-        isNormalUser = true;
-        home = "/home/${cfg.name}";
-        group = "users";
-        extraGroups = [ "wheel" ];
-        uid = 1000;
-        hashedPassword = "${cfg.hashedPassword}";
-        #"$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
-      };
+    users.users.${config.user.name} = {
+      isNormalUser = true;
+      home = "/home/${config.user.name}";
+      group = "users";
+      description = "";
+      extraGroups = [ "wheel" ];
+      uid = 1000;
+      hashedPassword = "${config.user.hashedPassword}";
     };
-
     home-manager = {
       useUserPackages = true;
       users.${config.user.name} = {
@@ -44,11 +38,10 @@ in {
       };
     };
 
-    users.users.${config.user.name} = mkAliasDefinitions options.user;
     users.mutableUsers = false;
     nix = {
-      trustedUsers = [ "${cfg.name}" ];
-      allowedUsers = [ "${cfg.name}" ];
+      trustedUsers = [ "${config.user.name}" ];
+      allowedUsers = [ "${config.user.name}" ];
     };
   };
 }

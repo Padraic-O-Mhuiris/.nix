@@ -1,7 +1,7 @@
 { lib, ... }:
 
-with lib;
-with types; {
+let inherit (lib) mkOption types;
+in rec {
   mkOpt = type: default: mkOption { inherit type default; };
 
   mkOpt' = type: default: description:
@@ -20,4 +20,5 @@ with types; {
       type = types.nullOr types.path;
       example = ./.;
     };
+
 }

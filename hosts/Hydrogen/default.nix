@@ -11,6 +11,15 @@
       "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
   };
 
+  time.timeZone = "Europe/Dublin";
+  i18n.defaultLocale = "en_IE.UTF-8";
+
+  location = {
+    latitude = 53.28;
+    longitude = -9.03;
+  };
+
+  system.stateVersion = "22.05";
   # modules = {
   #   hardware = {
   #     audio.enable = true;

@@ -3,9 +3,9 @@
 
   inputs = {
 
-    nix.url = "github:NixOS/nix/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     hardware.url = "github:NixOS/nixos-hardware";
 
@@ -14,8 +14,10 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    home-manager.url = "github:nix-community/home-manager";
-
+    home-manager = {
+      url = "github:nix-community/home-manager/release-22.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
@@ -24,6 +26,7 @@
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
+
     in mkFlake {
       inherit self inputs;
 
@@ -35,10 +38,14 @@
       };
 
       overlay = import ./overlays;
+
       sharedOverlays = [ self.overlay ];
 
-      hostDefaults.modules =
-        [ home-manager.nixosModules.home-manager ./modules/user.nix ];
+      hostDefaults.modules = [
+        home-manager.nixosModules.home-manager
+        ./modules/base.nix
+        ./modules/user.nix
+      ];
 
       hosts.Hydrogen.modules =
         [ ./hosts/Hydrogen hardware.nixosModules.dell-xps-15-9500-nvidia ];
