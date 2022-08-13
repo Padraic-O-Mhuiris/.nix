@@ -65,7 +65,6 @@
       ssh.enable = true;
       git.enable = true;
       pass.enable = true;
-      dapptools.enable = true;
       direnv.enable = true;
     };
     services = { syncthing.enable = true; };

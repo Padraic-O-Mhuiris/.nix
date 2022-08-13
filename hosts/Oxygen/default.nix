@@ -60,7 +60,6 @@
       zsh.enable = true;
       git.enable = true;
       pass.enable = true;
-      dapptools.enable = true;
       foundry.enable = true;
       direnv.enable = true;
     };
