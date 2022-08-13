@@ -2,18 +2,11 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-
     hardware.url = "github:NixOS/nixos-hardware";
-
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
-
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    nix-doom-emacs = { url = "github:vlaci/nix-doom-emacs"; };
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,9 +40,11 @@
         ./modules/user.nix
       ];
 
-      hosts.Hydrogen.modules =
-        [ ./hosts/Hydrogen hardware.nixosModules.dell-xps-15-9500-nvidia ];
-      hosts.Oxygen.modules = [ ./hosts/Oxygen ];
+      hosts = {
+        Hydrogen.modules =
+          [ ./hosts/Hydrogen hardware.nixosModules.dell-xps-15-9500-nvidia ];
+        Oxygen.modules = [ ./hosts/Oxygen ];
+      };
     };
 
   # outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, dapptools, ... }:

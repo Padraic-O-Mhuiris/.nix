@@ -1,16 +1,26 @@
 { config, options, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let mkOpt = type: default: mkOption { inherit type default; };
+in {
   options = {
-    user = {
-      name = mkOption { type = types.str; };
-      hashedPassword = mkOption { type = types.str; };
-    };
+    user = mkOpt types.attrs { };
     home = {
       file = { };
       configFile = { };
       dataFile = { };
     };
+
+    # dotfiles = let t = either str path;
+    # in {
+    #   dir = mkOpt t
+    #     (findFirst pathExists (toString ../.) [ "${config.user.home}/.nix" ]);
+    #   binDir = mkOpt t "${config.dotfiles.dir}/bin";
+    #   configDir = mkOpt t "${config.dotfiles.dir}/config";
+    #   modulesDir = mkOpt t "${config.dotfiles.dir}/modules";
+    #   themesDir = mkOpt t "${config.dotfiles.modulesDir}/themes";
+    # };
+
   };
 
   config = {
@@ -23,6 +33,7 @@ with lib; {
       uid = 1000;
       hashedPassword = "${config.user.hashedPassword}";
     };
+
     home-manager = {
       useUserPackages = true;
       users.${config.user.name} = {
@@ -32,6 +43,7 @@ with lib; {
           stateVersion = config.system.stateVersion;
         };
         xdg = {
+          enable = true;
           configFile = mkAliasDefinitions options.home.configFile;
           dataFile = mkAliasDefinitions options.home.dataFile;
         };
@@ -39,9 +51,6 @@ with lib; {
     };
 
     users.mutableUsers = false;
-    nix = {
-      trustedUsers = [ "${config.user.name}" ];
-      allowedUsers = [ "${config.user.name}" ];
-    };
+
   };
 }
