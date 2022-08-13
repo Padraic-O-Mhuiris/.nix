@@ -38,7 +38,7 @@
       sharedOverlays = [ self.overlay ];
 
       hostDefaults.modules =
-        [ home-manager.nixosModules.home-manager ./modules2/user.nix ];
+        [ home-manager.nixosModules.home-manager ./modules/user.nix ];
 
       hosts.Hydrogen.modules = [ ./hosts/Hydrogen ];
       hosts.Oxygen.modules = [ ./hosts/Oxygen ];
