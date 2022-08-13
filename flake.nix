@@ -20,7 +20,7 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, hardware, ... }:
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
