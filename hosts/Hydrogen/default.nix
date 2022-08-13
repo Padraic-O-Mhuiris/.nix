@@ -46,7 +46,6 @@
       media = { spotify.enable = true; };
       browser = {
         default = "brave";
-        firefox.enable = true;
         brave.enable = true;
       };
     };
@@ -69,10 +68,7 @@
       dapptools.enable = true;
       direnv.enable = true;
     };
-    services = {
-      docker.enable = true;
-      syncthing.enable = true;
-    };
+    services = { syncthing.enable = true; };
     theme.active = "alucard";
   };
 }

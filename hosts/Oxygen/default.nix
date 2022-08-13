@@ -67,7 +67,6 @@
     services = {
       ngrok.enable = true;
       ngrok.configFile = config.age.secrets.ngrokConfig.path;
-      docker.enable = true;
       syncthing.enable = true;
       geth.enable = true;
       finances.enable = false;
