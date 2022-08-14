@@ -39,7 +39,7 @@
       sharedOverlays = [ emacs.overlay rust.overlay ];
 
       hostDefaults.modules =
-        [ home-manager.nixosModules.home-manager ./modules/user.nix ];
+        [ home-manager.nixosModules.home-manager ./modules ];
 
       hosts = {
         Hydrogen.modules = [
