@@ -7,28 +7,23 @@
     ./fonts.nix
     ./keyboard.nix
     ./browser.nix
-
     ./i3.nix
-
     # dev
     ./dev/editors/emacs.nix
     ./dev/editors/vim.nix
     ./dev/languages/rust.nix
     ./dev/languages/python.nix
     ./dev/languages/javascript.nix
-
     # tools
     ./tools/pass.nix
     ./tools/gpg.nix
     ./tools/git.nix
     ./tools/redshift.nix
     ./tools/fileManager.nix
-
     # apps
     ./apps/bitwarden.nix
     ./apps/spotify.nix
     ./apps/telegram.nix
-
     # cli
     ./cli/alacritty.nix
     ./cli/zsh.nix

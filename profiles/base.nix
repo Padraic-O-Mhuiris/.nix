@@ -16,6 +16,8 @@
     allowedUsers = [ "${config.user.name}" ];
   };
 
+  programs.nix-ld.enable = true;
+
   user.packages = with pkgs; [
     coreutils
     binutils

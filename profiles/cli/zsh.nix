@@ -52,5 +52,9 @@
     screenfetch
   ];
 
+    home.configFile = {
+      "zsh/.zshrc".text = "";
+    };
+
   users.defaultUserShell = pkgs.zsh;
 }

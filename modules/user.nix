@@ -1,7 +1,6 @@
 { config, options, lib, pkgs, ... }:
 
 with lib;
-
 let mkOpt = type: default: mkOption { inherit type default; };
 in {
   options = {
@@ -24,15 +23,16 @@ in {
   };
 
   config = {
-    users.users.${config.user.name} = {
-      isNormalUser = true;
-      home = "/home/${config.user.name}";
-      group = "users";
-      description = "${config.user.fullName}";
-      extraGroups = [ "wheel" ];
-      uid = 1000;
-      hashedPassword = "${config.user.password}";
-    };
+
+    # user = {
+    #   isNormalUser = true;
+    #   home = "/home/${config.user.name}";
+    #   group = "users";
+    #   description = "${config.user.fullName}";
+    #   extraGroups = [ "wheel" ];
+    #   uid = 1000;
+    #   hashedPassword = "${config.user.password}";
+    # };
 
     home-manager = {
       useUserPackages = true;
@@ -48,6 +48,17 @@ in {
           dataFile = mkAliasDefinitions options.home.dataFile;
         };
       };
+    };
+
+    users.users.${config.user.name} = {
+      isNormalUser = true;
+      home = "/home/${config.user.name}";
+      group = "users";
+      description = "${config.user.fullName}";
+      extraGroups = [ "wheel" ];
+      uid = 1000;
+      hashedPassword = "${config.user.password}";
+      packages = config.user.packages;
     };
 
     users.mutableUsers = false;

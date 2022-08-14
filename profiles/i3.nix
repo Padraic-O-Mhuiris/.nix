@@ -144,7 +144,7 @@ in {
   services = {
     xserver = {
       enable = true;
-      dpi = 180;
+      dpi = 150;
       displayManager = {
         lightdm.greeters.mini.user = config.user.name;
         defaultSession = "none+i3";
@@ -157,7 +157,7 @@ in {
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
-        configFile = ../config/i3/config;
+        configFile = "${i3Config}/bin/i3Config";
         extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
       };
     };
