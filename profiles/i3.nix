@@ -138,11 +138,15 @@ let
 in {
 
   environment.pathsToLink = [ "/libexec" ];
+
+  user.packages = with pkgs; [ lightdm libnotify ];
+
   services = {
     xserver = {
       enable = true;
       dpi = 180;
       displayManager = {
+        lightdm.greeters.mini.user = config.user.name;
         defaultSession = "none+i3";
         autoLogin = {
           enable = true;
