@@ -24,7 +24,7 @@ let
 
       bindsym $mod+q kill
 
-      bindsym $mod+d exec --no-startup-id dmenu
+      bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
       bindsym $mod+j focus left
       bindsym $mod+k focus down
