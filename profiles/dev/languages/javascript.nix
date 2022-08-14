@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  user.packages = with pkgs; [
+  user.packages = with pkgs.unstable; [
     nodejs-14_x
     nodePackages.yalc
     nodePackages.typescript-language-server
