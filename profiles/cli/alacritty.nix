@@ -66,7 +66,7 @@
       bold_italic:
         family: monospace
         style: Bold Italic
-      size: 11
+      size: 8
 
     window:
       padding:
