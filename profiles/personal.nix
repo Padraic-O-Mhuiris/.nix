@@ -26,6 +26,8 @@
     # cli
     ./cli/alacritty.nix
     ./cli/zsh.nix
+
+    ./audio.nix
   ];
 
   user = {
