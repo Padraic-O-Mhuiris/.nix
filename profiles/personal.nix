@@ -5,6 +5,7 @@
     ./base.nix
     ./networking.nix
     ./fonts.nix
+    ./keyboard.nix
 
     # dev
     ./dev/editors/emacs.nix
@@ -17,9 +18,17 @@
     ./tools/pass.nix
     ./tools/gpg.nix
     ./tools/git.nix
+    ./tools/redshift.nix
+    ./tools/fileManager.nix
 
     # apps
     ./apps/bitwarden.nix
+    ./apps/spotify.nix
+    ./apps/telegram.nix
+
+    # cli
+    ./cli/alacritty.nix
+    ./cli/zsh.nix
   ];
 
   user = {
@@ -44,5 +53,6 @@
   env = {
     PATH = [ "$XDG_BIN_HOME" ];
     EDITOR = "emacs";
+    TERMINAL = "alacritty";
   };
 }
