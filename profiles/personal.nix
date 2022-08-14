@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./base.nix ./dev ./networking.nix ];
+  imports = [ ./base.nix ./dev ./networking.nix ./fonts.nix ];
 
   user = {
     name = "padraic";

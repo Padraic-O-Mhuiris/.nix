@@ -32,14 +32,7 @@
         allowUnsupportedSystem = true;
       };
 
-      sharedOverlays = [
-        emacs.overlay
-        (self: super: {
-          xlib = super.lib // {
-            mkOpt = type: default: super.lib.mkOption { inherit type default; };
-          };
-        })
-      ];
+      sharedOverlays = [ emacs.overlay ];
 
       hostDefaults.modules =
         [ home-manager.nixosModules.home-manager ./modules/user.nix ];

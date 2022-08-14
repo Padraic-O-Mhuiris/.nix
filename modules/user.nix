@@ -1,12 +1,15 @@
-{ config, options, lib, xlib, pkgs, ... }:
+{ config, options, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+
+let mkOpt = type: default: mkOption { inherit type default; };
+in {
   options = {
-    user = xlib.mkOpt types.attrs { };
+    user = mkOpt types.attrs { };
     home = {
-      file = { };
-      configFile = { };
-      dataFile = { };
+      file = mkOpt types.attrs { };
+      configFile = mkOpt types.attrs { };
+      dataFile = mkOpt types.attrs { };
     };
 
     # dotfiles = let t = either str path;
@@ -18,7 +21,6 @@ with lib; {
     #   modulesDir = mkOpt t "${config.dotfiles.dir}/modules";
     #   themesDir = mkOpt t "${config.dotfiles.modulesDir}/themes";
     # };
-
   };
 
   config = {
