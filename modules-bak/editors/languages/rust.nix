@@ -8,7 +8,6 @@ in {
   options.modules.editors.languages.rust = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-
     nixpkgs.overlays = [ inputs.rust-overlay.overlay ];
     user.packages = with pkgs; [ rust-bin.stable.latest.default rust-analyzer ];
   };

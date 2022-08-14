@@ -18,6 +18,7 @@
       font-awesome
       cascadia-code
     ];
+
     fontconfig = {
       enable = true;
       defaultFonts = {
