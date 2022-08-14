@@ -25,7 +25,6 @@
       pandoc
       wordnet
       nixfmt
-      jupyter
       anystyle-cli
       proselint
     ];
