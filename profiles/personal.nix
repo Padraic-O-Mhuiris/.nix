@@ -12,7 +12,7 @@
     ./dev/editors/emacs.nix
     ./dev/editors/vim.nix
     ./dev/languages/rust.nix
-    ./dev/languages/python.nix
+    #./dev/languages/python.nix
     ./dev/languages/javascript.nix
     # tools
     ./tools/pass.nix

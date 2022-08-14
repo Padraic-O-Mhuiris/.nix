@@ -4,7 +4,15 @@ with lib;
 let mkOpt = type: default: mkOption { inherit type default; };
 in {
   options = {
-    user = mkOpt types.attrs { };
+    user = {
+      name = mkOpt types.str "user";
+      fullName = mkOpt types.str "user";
+      password = mkOpt types.str "";
+      email = mkOpt types.str "user@user";
+      github = mkOpt types.str "user";
+      publicKey = mkOpt types.str "0xUSER";
+      packages = mkOpt (types.listOf types.package) [];
+    };
     home = {
       file = mkOpt types.attrs { };
       configFile = mkOpt types.attrs { };
@@ -54,10 +62,10 @@ in {
       isNormalUser = true;
       home = "/home/${config.user.name}";
       group = "users";
-      description = "${config.user.fullName}";
+      description = config.user.fullName;
       extraGroups = [ "wheel" ];
       uid = 1000;
-      hashedPassword = "${config.user.password}";
+      hashedPassword = config.user.password;
       packages = config.user.packages;
     };
 
