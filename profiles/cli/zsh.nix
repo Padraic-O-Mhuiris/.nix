@@ -8,10 +8,10 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     syntaxHighlighting.highlighters = [ "main" "brackets" "cursor" "line" ];
-    history = {
-      size = 10000;
-      path = "$XDG_CACHE_HOME/zhistory";
-    };
+
+    histFile = "$XDG_CACHE_HOME/zhistory";
+    histSize = 100000;
+
     ohMyZsh = {
       enable = true;
       plugins = [

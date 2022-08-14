@@ -7,6 +7,8 @@
     ./fonts.nix
     ./keyboard.nix
 
+    ./i3.nix
+
     # dev
     ./dev/editors/emacs.nix
     ./dev/editors/vim.nix
