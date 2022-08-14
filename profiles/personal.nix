@@ -56,5 +56,6 @@
     PATH = [ "$XDG_BIN_HOME" ];
     EDITOR = "emacs";
     TERMINAL = "alacritty";
+    BROWSER = "brave";
   };
 }

@@ -2,6 +2,7 @@
 
 {
   user.packages = with pkgs; [
+    git
     gitAndTools.gh
     gitAndTools.git-open
     gitAndTools.diff-so-fancy

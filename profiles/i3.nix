@@ -157,7 +157,7 @@ in {
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
-        configFile = i3Config;
+        configFile = ../config/i3/config;
         extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
       };
     };
