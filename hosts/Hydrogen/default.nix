@@ -1,15 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  nix = { buildCores = 4; };
+  nix = { buildCores = 32; };
 
   imports = [ ./hardware-configuration.nix ./zfs.nix ];
-
-  user = {
-    name = "padraic";
-    hashedPassword =
-      "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
-  };
 
   time.timeZone = "Europe/Dublin";
   i18n.defaultLocale = "en_IE.UTF-8";
@@ -20,6 +14,7 @@
   };
 
   system.stateVersion = "22.05";
+
   # modules = {
   #   hardware = {
   #     audio.enable = true;

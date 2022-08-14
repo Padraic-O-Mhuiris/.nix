@@ -1,10 +1,8 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, xlib, pkgs, ... }:
 
-with lib;
-let mkOpt = type: default: mkOption { inherit type default; };
-in {
+with lib; {
   options = {
-    user = mkOpt types.attrs { };
+    user = xlib.mkOpt types.attrs { };
     home = {
       file = { };
       configFile = { };
@@ -50,7 +48,15 @@ in {
       };
     };
 
-    users.mutableUsers = false;
+    environment = {
+      sessionVariables = {
+        XDG_CACHE_HOME = "$HOME/.cache";
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_DATA_HOME = "$HOME/.local/share";
+        XDG_BIN_HOME = "$HOME/.local/bin";
+      };
+    };
 
+    users.mutableUsers = false;
   };
 }

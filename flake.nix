@@ -22,7 +22,6 @@
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
-
     in mkFlake {
       inherit self inputs;
 
@@ -33,19 +32,24 @@
         allowUnsupportedSystem = true;
       };
 
-      overlay = import ./overlays;
-
-      sharedOverlays = [ self.overlay emacs.overlay ];
-
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
-        ./modules/base.nix
-        ./modules/user.nix
+      sharedOverlays = [
+        emacs.overlay
+        (self: super: {
+          xlib = super.lib // {
+            mkOpt = type: default: super.lib.mkOption { inherit type default; };
+          };
+        })
       ];
 
+      hostDefaults.modules =
+        [ home-manager.nixosModules.home-manager ./modules/user.nix ];
+
       hosts = {
-        Hydrogen.modules =
-          [ ./hosts/Hydrogen hardware.nixosModules.dell-xps-15-9500-nvidia ];
+        Hydrogen.modules = [
+          ./hosts/Hydrogen
+          hardware.nixosModules.dell-xps-15-9500-nvidia
+          ./profiles/personal.nix
+        ];
         Oxygen.modules = [ ./hosts/Oxygen ];
       };
     };
