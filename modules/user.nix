@@ -28,10 +28,10 @@ in {
       isNormalUser = true;
       home = "/home/${config.user.name}";
       group = "users";
-      description = "";
+      description = "${config.user.fullName}";
       extraGroups = [ "wheel" ];
       uid = 1000;
-      hashedPassword = "${config.user.hashedPassword}";
+      hashedPassword = "${config.user.password}";
     };
 
     home-manager = {

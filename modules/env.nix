@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 with lib; {
-  options = {
+  options = with types; {
     env = mkOption {
       type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
       apply = mapAttrs (n: v:

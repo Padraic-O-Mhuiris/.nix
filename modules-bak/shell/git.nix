@@ -19,8 +19,48 @@ in {
 
     home.configFile = {
       "git/config".source = "${configDir}/git/config";
-      "git/ignore".source = "${configDir}/git/ignore";
-      "git/attributes".source = "${configDir}/git/attributes";
-    };
+      "git/ignore".text = ''
+        # For emacs:
+        *~
+        *.*~
+        #*
+        .#*
+
+        # For vim:
+        *.swp
+        .*.sw[a-z]
+        *.un~
+        .netrwhist
+
+        # OS generated files #
+        ######################
+        .DS_Store?
+        .DS_Store
+        .CFUserTextEncoding
+        .Trash
+        .Xauthority
+        thumbs.db
+        Thumbs.db
+        Icon?
+
+        # Code stuffs #
+        ###############
+        .ccls-cache/
+        .sass-cache/
+        __pycache__/
+
+        # Compiled thangs #
+        ###################
+        *.class
+        *.exe
+        *.o
+        *.pyc
+        *.elc
+      '';
+      "git/attributes".text = ''
+*.lisp  diff=lisp
+*.el    diff=lisp
+*.org   diff=org
+'';
   };
 }
