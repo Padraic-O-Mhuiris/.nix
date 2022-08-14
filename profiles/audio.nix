@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 with lib; {
+  sound.enable = true;
   hardware = {
     pulseaudio = {
       configFile = let
@@ -22,5 +23,5 @@ with lib; {
   };
   services.blueman.enable = true;
   user.packages = with pkgs; [ pavucontrol ];
-  user.extraGroups = [ "audio" ];
+  user.groups = [ "audio" ];
 }
