@@ -6,6 +6,7 @@
     ./networking.nix
     ./fonts.nix
     ./keyboard.nix
+    ./browser.nix
 
     ./i3.nix
 
