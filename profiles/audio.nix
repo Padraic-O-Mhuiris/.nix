@@ -4,6 +4,7 @@ with lib; {
   sound.enable = true;
   hardware = {
     pulseaudio = {
+      enable = true;
       configFile = let
         inherit (pkgs) runCommand pulseaudio;
         paConfigFile = runCommand "disablePulseaudioEsoundModule" {
@@ -16,6 +17,7 @@ with lib; {
       in mkIf config.hardware.pulseaudio.enable "${paConfigFile}/default.pa";
       package = pkgs.pulseaudioFull;
     };
+
     bluetooth = {
       enable = true;
       settings = { General.Enable = "Source,Sink,Media,Socket"; };
