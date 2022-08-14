@@ -11,7 +11,8 @@ in {
       email = mkOpt types.str "user@user";
       github = mkOpt types.str "user";
       publicKey = mkOpt types.str "0xUSER";
-      packages = mkOpt (types.listOf types.package) [];
+      packages = mkOpt (types.listOf types.package) [ ];
+      groups = mkOpt (types.listOf types.str) [ ];
     };
     home = {
       file = mkOpt types.attrs { };
@@ -63,7 +64,7 @@ in {
       home = "/home/${config.user.name}";
       group = "users";
       description = config.user.fullName;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" ] ++ config.user.groups;
       uid = 1000;
       hashedPassword = config.user.password;
       packages = config.user.packages;
