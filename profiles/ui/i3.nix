@@ -145,9 +145,10 @@ in {
     xserver = {
       enable = true;
       dpi = 150;
+
       displayManager = {
-        lightdm.greeters.mini.user = config.user.name;
         defaultSession = "none+i3";
+        lightdm.greeters.mini.user = config.user.name;
         autoLogin = {
           enable = true;
           user = config.user.name;

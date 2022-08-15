@@ -7,18 +7,21 @@
     ./fonts.nix
     ./keyboard.nix
     ./browser.nix
-    ./i3.nix
+
     # dev
     ./dev/editors/emacs.nix
     ./dev/editors/vim.nix
     ./dev/languages/rust.nix
     ./dev/languages/javascript.nix
+
     # tools
     ./tools/pass.nix
     ./tools/gpg.nix
     ./tools/git.nix
     ./tools/redshift.nix
     ./tools/fileManager.nix
+    ./tools/flameshot.nix
+
     # apps
     ./apps/bitwarden.nix
     ./apps/spotify.nix
@@ -28,6 +31,8 @@
     ./cli/zsh.nix
 
     ./audio.nix
+
+    ./ui
   ];
 
   user = {
