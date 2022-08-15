@@ -6,4 +6,7 @@
     libinput.enable = true;
     xkbOptions = "ctrl:swapcaps";
   };
+  programs.light.enable = true;
+
+  user.groups = [ "video" ];
 }
