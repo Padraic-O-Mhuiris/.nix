@@ -43,6 +43,9 @@
     email = "patrick.morris.310@gmail.com";
     github = "Padraic-O-Mhuiris";
     publicKey = "9A51DBF629888EE75982008D9DCE7055406806F8";
+    ssh.authorizedKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7 padraic-o-mhuiris@protonmail.com"
+    ];
   };
 
   environment = {
