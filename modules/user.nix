@@ -15,9 +15,41 @@ in {
       groups = mkOpt (types.listOf types.str) [ ];
       ssh = { authorizedKeys = mkOpt (types.listOf types.str) [ ]; };
     };
+
+    home = {
+      file = mkOpt types.attrs { };
+      configFile = mkOpt types.attrs { };
+      dataFile = mkOpt types.attrs { };
+    };
+
+    # dotfiles = let t = either str path;
+    # in {
+    #   dir = mkOpt t
+    #     (findFirst pathExists (toString ../.) [ "${config.user.home}/.nix" ]);
+    #   binDir = mkOpt t "${config.dotfiles.dir}/bin";
+    #   configDir = mkOpt t "${config.dotfiles.dir}/config";
+    #   modulesDir = mkOpt t "${config.dotfiles.dir}/modules";
+    #   themesDir = mkOpt t "${config.dotfiles.modulesDir}/themes";
+    # };
   };
 
   config = {
+    home-manager = {
+      useUserPackages = true;
+      users.${config.user.name} = {
+        home = {
+          file = mkAliasDefinitions options.home.file;
+          enableNixpkgsReleaseCheck = false;
+          stateVersion = config.system.stateVersion;
+        };
+        xdg = {
+          enable = true;
+          configFile = mkAliasDefinitions options.home.configFile;
+          dataFile = mkAliasDefinitions options.home.dataFile;
+        };
+      };
+    };
+
     users.users.${config.user.name} = {
       isNormalUser = true;
       home = "/home/${config.user.name}";
@@ -28,6 +60,7 @@ in {
       hashedPassword = config.user.password;
       packages = config.user.packages;
     };
+
     users.mutableUsers = false;
   };
 }

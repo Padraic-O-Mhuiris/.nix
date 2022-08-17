@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./user.nix ./home.nix ./env.nix ];
+  imports = [ ./user.nix ./env.nix ];
 }
