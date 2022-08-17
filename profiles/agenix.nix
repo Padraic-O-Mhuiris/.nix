@@ -23,6 +23,6 @@ in {
         }) (import secretsFile)
     else
       { };
-    identityPaths = [ "${config.user.home}/.ssh/id_ed25519" ];
+    identityPaths = [ "${config.user.directory}/.ssh/id_ed25519" ];
   };
 }
