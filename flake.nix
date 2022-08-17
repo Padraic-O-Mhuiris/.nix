@@ -18,19 +18,18 @@
     rust.url = "github:oxalica/rust-overlay";
 
     agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager, hardware, emacs, rust, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager
+    , hardware, emacs, rust, agenix, ... }:
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
       system = "x86_64-linux";
 
-      unstable-overlay = (final: prev: { unstable = import nixpkgs-unstable {
-        inherit system;
-      }; });
+      unstable-overlay = (final: prev: {
+        unstable = import nixpkgs-unstable { inherit system; };
+      });
 
     in mkFlake {
       inherit self inputs;
@@ -45,7 +44,7 @@
       sharedOverlays = [ emacs.overlay rust.overlay unstable-overlay ];
 
       hostDefaults.modules =
-        [ home-manager.nixosModules.home-manager ./modules ];
+        [ home-manager.nixosModules.home-manager agenix.nixosModule ./modules ];
 
       hosts = {
         Hydrogen.modules = [
