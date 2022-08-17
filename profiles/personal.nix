@@ -7,6 +7,7 @@
     ./fonts.nix
     ./keyboard.nix
     ./browser.nix
+    ./agenix.nix
 
     # dev
     ./dev/editors/emacs.nix

@@ -19,7 +19,6 @@
   programs.nix-ld.enable = true;
 
   user.packages = with pkgs; [
-    agenix.defaultPackage.x86_64-linux
     coreutils
     binutils
     gnumake

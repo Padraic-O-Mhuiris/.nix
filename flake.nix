@@ -18,7 +18,6 @@
     rust.url = "github:oxalica/rust-overlay";
 
     agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager
@@ -46,7 +45,7 @@
 
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager
-        agenix.nixosModule.age
+        agenix.nixosModules.age
         ./modules
       ];
 
