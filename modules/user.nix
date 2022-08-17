@@ -6,6 +6,7 @@ in {
   options = {
     user = {
       name = mkOpt types.str "user";
+      group = mkOpt types.str "users";
       directory = mkOpt types.str "/home/user";
       fullName = mkOpt types.str "user";
       password = mkOpt types.str "";
@@ -34,9 +35,10 @@ in {
     # };
   };
 
-  user.directory = "/home/${config.user.name}";
-
   config = {
+    user.directory = "/home/${config.user.name}";
+    user.group = "users";
+
     home-manager = {
       useUserPackages = true;
       users.${config.user.name} = {
@@ -56,7 +58,7 @@ in {
     users.users.${config.user.name} = {
       isNormalUser = true;
       home = config.user.directory;
-      group = "users";
+      group = config.user.group;
       description = config.user.fullName;
       extraGroups = [ "wheel" ] ++ config.user.groups;
       uid = 1000;
