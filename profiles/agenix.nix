@@ -25,5 +25,4 @@ in {
       { };
     identityPaths = [ "${config.user.home}/.ssh/id_ed25519" ];
   };
-
 }
