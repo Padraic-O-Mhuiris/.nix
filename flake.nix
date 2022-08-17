@@ -43,11 +43,8 @@
 
       sharedOverlays = [ emacs.overlay rust.overlay unstable-overlay ];
 
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
-        agenix.nixosModules.age
-        ./modules
-      ];
+      hostDefaults.modules =
+        [ home-manager.nixosModules.home-manager agenix.nixosModule ./modules ];
 
       hosts = {
         Hydrogen.modules = [
