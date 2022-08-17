@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let mkOpt = type: default: mkOption { inherit type default; };
+in {
   options = {
     home = {
       file = mkOpt types.attrs { };
