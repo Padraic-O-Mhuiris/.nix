@@ -14,6 +14,7 @@
     ./dev/editors/vim.nix
     ./dev/languages/rust.nix
     ./dev/languages/javascript.nix
+    ./dev/languages/python.nix
 
     # tools
     ./tools/pass.nix

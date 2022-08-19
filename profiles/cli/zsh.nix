@@ -8,14 +8,16 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     syntaxHighlighting.highlighters = [ "main" "brackets" "cursor" "line" ];
-
     histFile = "$XDG_CACHE_HOME/zhistory";
     histSize = 100000;
-
+    interactiveShellInit = ''
+      source "$(${pkgs.fzf}/bin/fzf-share)/key-bindings.zsh"
+    '';
     ohMyZsh = {
       enable = true;
       plugins = [
         "git"
+        "aliases"
         "sudo"
         "dirhistory"
         "colored-man-pages"
@@ -52,9 +54,7 @@
     screenfetch
   ];
 
-    home.configFile = {
-      "zsh/.zshrc".text = "";
-    };
+  home.configFile = { "zsh/.zshrc".text = ""; };
 
   users.defaultUserShell = pkgs.zsh;
 }
