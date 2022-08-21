@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+
   programs.zsh = {
     enable = true;
     shellAliases = { ll = "ls -l"; };
@@ -19,6 +20,12 @@
         "git"
         "aliases"
         "sudo"
+        "direnv"
+        "emacs"
+        "emoji"
+        "encode64"
+        "jsontools"
+        "systemd"
         "dirhistory"
         "colored-man-pages"
         "command-not-found"
@@ -26,6 +33,14 @@
         "nix"
       ];
       customPkgs = with pkgs; [ nix-zsh-completions ];
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = "$all";
     };
   };
 
