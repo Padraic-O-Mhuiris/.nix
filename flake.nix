@@ -7,16 +7,12 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
-
     emacs.url = "github:nix-community/emacs-overlay";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     rust.url = "github:oxalica/rust-overlay";
-
     agenix.url = "github:ryantm/agenix";
   };
 

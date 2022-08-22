@@ -1,15 +1,15 @@
-{ pkgs, lib, steam-run, stdenv, fetchurl, makeWrapper }:
+{ pkgs, lib, ... }:
 
-stdenv.mkDerivation rec {
+pkgs.stdenv.mkDerivation rec {
   name = "foundry";
   version = "nightly";
-  src = fetchurl {
+  src = pkgs.fetchurl {
     url =
       "https://github.com/foundry-rs/foundry/releases/download/${version}/foundry_nightly_linux_amd64.tar.gz";
     sha256 = "0lw4975w0yq7w4x6bhjnpcxw4vvfghp8l29x57zbd09887gkh23m";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [ pkgs.makeWrapper ];
   phases = "installPhase";
   installPhase = ''
     mkdir -p $out/bin
@@ -19,9 +19,9 @@ stdenv.mkDerivation rec {
     mv cast $out/bin/.cast
     mv anvil $out/bin/.anvil
 
-    makeWrapper ${steam-run}/bin/steam-run $out/bin/forge --add-flags $out/bin/.forge
-    makeWrapper ${steam-run}/bin/steam-run $out/bin/cast --add-flags $out/bin/.cast
-    makeWrapper ${steam-run}/bin/steam-run $out/bin/anvil --add-flags $out/bin/.anvil
+    makeWrapper ${pkgs.steam-run}/bin/steam-run $out/bin/forge --add-flags $out/bin/.forge
+    makeWrapper ${pkgs.steam-run}/bin/steam-run $out/bin/cast --add-flags $out/bin/.cast
+    makeWrapper ${pkgs.steam-run}/bin/steam-run $out/bin/anvil --add-flags $out/bin/.anvil
   '';
 
   meta = {

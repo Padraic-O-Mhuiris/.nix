@@ -1,5 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  user.packages = with pkgs; [ solc (import ../../packages/foundry.nix) ];
+  user.packages = [
+    pkgs.solc
+    (import ../../../packages/foundry.nix {
+      inherit pkgs;
+      inherit lib;
+    })
+  ];
 }
