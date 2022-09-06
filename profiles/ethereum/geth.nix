@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  disabledModules = [ "services/blockchain/ethereum/geth.nix" ];
+
+  imports =
+    [ <nixos-unstable/nixos/modules/services/blockchain/ethereum/geth.nix> ];
+
   services.geth = {
     mainnet = {
       enable = true;
