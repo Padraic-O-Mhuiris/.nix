@@ -1,5 +1,6 @@
-{ pkgs, lib, steam-run, stdenv, fetchurl, makeWrapper }:
+{ pkgs }:
 
+with pkgs;
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
   version = "3.1.0";
@@ -17,11 +18,11 @@ stdenv.mkDerivation rec {
     makeWrapper ${steam-run}/bin/steam-run $out/bin/prysmbeacon --add-flags $out/bin/.prysmbeacon-unwrapped
   '';
 
-  meta = {
-    homepage = "https://github.com/prysmaticlabs/prysm";
-    description = "Beacon node implementation for Ethereum proof-of-stake";
-    license = lib.licenses.gpl3;
-    platforms = [ "x86_64-linux" ];
-    maintainers = [ ];
-  };
+  # meta = {
+  #   homepage = "https://github.com/prysmaticlabs/prysm";
+  #   description = "Beacon node implementation for Ethereum proof-of-stake";
+  #   license = lib.licenses.gpl3;
+  #   platforms = [ "x86_64-linux" ];
+  #   maintainers = [ ];
+  # };
 }

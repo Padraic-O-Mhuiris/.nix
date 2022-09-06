@@ -2,10 +2,7 @@
 
 let
   beaconChainDir = "/var/lib/prysm/beacon";
-  beaconChainPkg = (import ../../packages/prysmbeacon.nix {
-    inherit pkgs;
-    inherit lib;
-  });
+  beaconChainPkg = (import ../../packages/prysmbeacon.nix { inherit pkgs; });
 
 in {
   user.packages = [ beaconChainPkg ];

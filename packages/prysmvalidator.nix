@@ -1,5 +1,6 @@
-{ pkgs, lib, steam-run, stdenv, fetchurl, makeWrapper }:
+{ pkgs }:
 
+with pkgs;
 stdenv.mkDerivation rec {
   name = "prysmvalidator";
   version = "3.1.0";
@@ -17,11 +18,11 @@ stdenv.mkDerivation rec {
     makeWrapper ${steam-run}/bin/steam-run $out/bin/prysmvalidator --add-flags $out/bin/.prysmvalidator-unwrapped
   '';
 
-  meta = {
-    homepage = "https://github.com/prysmaticlabs/prysm";
-    description = "Validator implementation for Ethereum proof-of-stake";
-    license = lib.licenses.gpl3;
-    platforms = [ "x86_64-linux" ];
-    maintainers = [ ];
-  };
+  # meta = {
+  #   homepage = "https://github.com/prysmaticlabs/prysm";
+  #   description = "Validator implementation for Ethereum proof-of-stake";
+  #   license = lib.licenses.gpl3;
+  #   platforms = [ "x86_64-linux" ];
+  #   maintainers = [ ];
+  # };
 }

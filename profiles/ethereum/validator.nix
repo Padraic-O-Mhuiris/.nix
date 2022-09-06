@@ -2,10 +2,7 @@
 
 let
   validatorDir = "/var/lib/prysm/validator";
-  validatorPkg = (import ../../packages/prysmValidator.nix {
-    inherit pkgs;
-    inherit lib;
-  });
+  validatorPkg = (import ../../packages/prysmvalidator.nix { inherit pkgs; });
 in {
   users.extraUsers = {
     prysmvalidator = {
