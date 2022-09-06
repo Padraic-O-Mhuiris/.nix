@@ -11,6 +11,7 @@ in {
       hashedPassword = "*";
       home = validatorDir;
       group = "prysmvalidator";
+      extraGroups = [ "ethereum" ];
     };
   };
   users.groups."prysmvalidator" = { };

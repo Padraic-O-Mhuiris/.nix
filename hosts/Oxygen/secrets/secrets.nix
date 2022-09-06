@@ -20,4 +20,10 @@ in {
     group = "prysmvalidator";
     path = "/var/lib/prysm/validator/validatorPassword";
   };
+  "jwt.age" = {
+    publicKeys = [ padraic Oxygen ];
+    owner = "ethereum";
+    group = "ethereum";
+    path = "/var/lib/ethereum/jwt.hex";
+  };
 }

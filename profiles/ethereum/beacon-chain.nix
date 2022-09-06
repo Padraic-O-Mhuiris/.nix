@@ -14,6 +14,7 @@ in {
       hashedPassword = "*";
       home = beaconChainDir;
       group = "prysmbeacon";
+      extraGroups = [ "ethereum" ];
     };
   };
   users.groups."prysmbeacon" = { };
@@ -31,7 +32,7 @@ in {
       Restart = "always";
       RestartSec = "5";
       ExecStart =
-        "${beaconChainPkg}/bin/prysmbeacon --datadir=${beaconChainDir} --execution-endpoint=http://localhost:8551 --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256 --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
+        "${beaconChainPkg}/bin/prysmbeacon --datadir=${beaconChainDir} --execution-endpoint=http://localhost:8551 --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256 --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E                   --jwt-secret=${config.age.secrets.jwt.path}";
     };
   };
 }
