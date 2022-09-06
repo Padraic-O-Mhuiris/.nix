@@ -52,6 +52,7 @@
           modules = [
             ./hosts/Oxygen
             ./profiles/personal.nix
+            ./modules/ethereum/xgeth.nix
             ./profiles/ethereum
             ./profiles/ngrok.nix
           ];

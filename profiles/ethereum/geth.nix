@@ -1,9 +1,7 @@
 { config, lib, pkgs, nixpkgs-unstable, ... }:
 
 {
-  imports = [ ../../modules/ethereum/xgeth.nix ];
-
-  services.geth = {
+  services.xgeth = {
     mainnet = {
       enable = true;
       http = {
@@ -13,7 +11,7 @@
       };
       authrpc = {
         enable = true;
-        jwtSecret = config.age.secrets.jwt.path;
+        jwtsecret = config.age.secrets.jwt.path;
       };
       metrics.enable = false;
       syncmode = "full";
