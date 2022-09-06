@@ -14,7 +14,6 @@ in {
       hashedPassword = "*";
       home = beaconChainDir;
       group = "prysmbeacon";
-      extraGroups = [ "ethereum" ];
     };
   };
   users.groups."prysmbeacon" = { };

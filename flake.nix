@@ -2,7 +2,7 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
@@ -49,7 +49,6 @@
           ./profiles/personal.nix
         ];
         Oxygen = {
-          channelName = "nixpkgs-unstable";
           modules = [
             ./hosts/Oxygen
             ./profiles/personal.nix

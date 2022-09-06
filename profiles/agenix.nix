@@ -18,6 +18,7 @@ in {
           file = "${secretsDir}/${n}";
           owner = v.owner or config.user.name;
           group = v.group or config.user.group;
+          mode = v.mode or "0400";
           path = v.path;
           symlink = false;
         }) (import secretsFile)

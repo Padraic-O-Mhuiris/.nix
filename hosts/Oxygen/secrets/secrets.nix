@@ -22,9 +22,7 @@ in {
   };
   "jwt.age" = {
     publicKeys = [ padraic Oxygen ];
-    owner = "ethereum";
-    group = "ethereum";
     path = "/var/lib/ethereum/jwt.hex";
-    mode = "0440";
+    mode = "0444";
   };
 }
