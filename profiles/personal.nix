@@ -33,7 +33,9 @@
     ./cli/alacritty.nix
     ./cli/zsh.nix
 
+    # hardhware
     ./audio.nix
+    ./ledger.nix
 
     ./ui
   ];

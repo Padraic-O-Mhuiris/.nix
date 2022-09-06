@@ -48,7 +48,12 @@
           hardware.nixosModules.dell-xps-15-9500-nvidia
           ./profiles/personal.nix
         ];
-        Oxygen.modules = [ ./hosts/Oxygen ];
+        Oxygen.modules = [
+          ./hosts/Oxygen
+          ./profiles/personal.nix
+          ./profiles/ethereum
+          ./profiles/ngrok
+        ];
       };
     };
 
