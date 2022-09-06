@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
-{
+let fontSize = if config.networking.hostName == "Oxygen" then 11 else 5;
+in {
   user.packages = with pkgs; [ alacritty ];
 
   home.configFile."alacritty/alacritty.yml".text = ''
@@ -66,7 +67,7 @@
       bold_italic:
         family: monospace
         style: Bold Italic
-      size: 5
+      size: ${fontSize}
 
     window:
       padding:
