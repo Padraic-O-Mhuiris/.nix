@@ -52,7 +52,7 @@
           ./hosts/Oxygen
           ./profiles/personal.nix
           ./profiles/ethereum
-          ./profiles/ngrok
+          ./profiles/ngrok.nix
         ];
       };
     };
