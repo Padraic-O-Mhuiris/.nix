@@ -7,7 +7,7 @@
       http = {
         enable = true;
         apis = [ "net" "eth" "debug" "engine" "admin" ];
-        port = 8551;
+        port = 8545;
       };
       metrics.enable = false;
       syncmode = "full";
