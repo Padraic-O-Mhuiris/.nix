@@ -30,7 +30,7 @@ in {
       Restart = "always";
       RestartSec = "5";
       ExecStart =
-        "${pkgs.my.prysmvalidator}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${config.age.secrets.validatorPassword.path} --accept-terms-of-use --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
+        "${validatorPkg}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${config.age.secrets.validatorPassword.path} --accept-terms-of-use --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
     };
   };
 }
