@@ -6,14 +6,16 @@
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = "experimental-features = nix-command flakes";
-    binaryCaches =
-      [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
-    binaryCachePublicKeys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-    trustedUsers = [ "${config.user.name}" ];
-    allowedUsers = [ "${config.user.name}" ];
+    settings = {
+      substituters =
+        [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      ];
+      trusted-users = [ "${config.user.name}" ];
+      allowed-users = [ "${config.user.name}" ];
+    };
   };
 
   programs.nix-ld.enable = true;
