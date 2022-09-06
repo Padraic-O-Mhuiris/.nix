@@ -25,5 +25,6 @@ in {
     owner = "ethereum";
     group = "ethereum";
     path = "/var/lib/ethereum/jwt.hex";
+    mode = "0440";
   };
 }
