@@ -34,6 +34,4 @@
     gfxmodeEfi = "5120x1440";
     gfxmodeBios = "5120x1440";
   };
-
-  modules.hardware = { keyboard.enable = true; };
 }
