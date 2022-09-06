@@ -48,12 +48,15 @@
           hardware.nixosModules.dell-xps-15-9500-nvidia
           ./profiles/personal.nix
         ];
-        Oxygen.modules = [
-          ./hosts/Oxygen
-          ./profiles/personal.nix
-          ./profiles/ethereum
-          ./profiles/ngrok.nix
-        ];
+        Oxygen = {
+          channelName = "nixpkgs-unstable";
+          modules = [
+            ./hosts/Oxygen
+            ./profiles/personal.nix
+            ./profiles/ethereum
+            ./profiles/ngrok.nix
+          ];
+        };
       };
     };
 
