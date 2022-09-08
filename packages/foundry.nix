@@ -6,7 +6,7 @@ pkgs.stdenv.mkDerivation rec {
   src = pkgs.fetchurl {
     url =
       "https://github.com/foundry-rs/foundry/releases/download/${version}/foundry_nightly_linux_amd64.tar.gz";
-    sha256 = "07pnym20mklq1ccbvb2a1yrp827sp0k5xc349ghc5h97j0pffl4z";
+    sha256 = "0sm0viawi6y5v1yqlnbzn5sqrhra50j4vv0iip4iywcnkckr2ipl";
   };
 
   nativeBuildInputs = [ pkgs.makeWrapper ];
