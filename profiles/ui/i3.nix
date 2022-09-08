@@ -144,7 +144,7 @@ in {
   services = {
     xserver = {
       enable = true;
-      dpi = 180;
+      dpi = if config.networking.hostName == "Oxygen" then 110 else 180;
 
       displayManager = {
         defaultSession = "none+i3";

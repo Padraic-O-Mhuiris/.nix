@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  nix = { buildCores = 32; };
+  nix.settings.cores = 32;
 
   imports = [ ./hardware-configuration.nix ./zfs.nix ];
 
