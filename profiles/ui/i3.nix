@@ -144,7 +144,7 @@ in {
   services = {
     xserver = {
       enable = true;
-      dpi = 150;
+      dpi = 180;
 
       displayManager = {
         defaultSession = "none+i3";
