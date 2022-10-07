@@ -49,5 +49,9 @@
     file
     libsecret
     zlib
+
+    # TODO Move
+    qbittorrent
+    vlc
   ];
 }
