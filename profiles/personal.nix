@@ -29,6 +29,9 @@
     ./apps/bitwarden.nix
     ./apps/spotify.nix
     ./apps/telegram.nix
+
+    ./syncthing.nix
+
     # cli
     ./cli/alacritty.nix
     ./cli/zsh.nix
