@@ -48,7 +48,7 @@
 
       "/home/${config.user.name}/.org" = {
         id = "org";
-        devices = [ "Oxygen" "Hydrogen" "Lithium" ];
+        devices = [ "Oxygen" "Hydrogen" ];
         watch = true;
         type = "sendreceive";
       };
