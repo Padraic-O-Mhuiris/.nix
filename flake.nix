@@ -12,7 +12,7 @@
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust.url = "github:oxalica/rust-overlay";
+    #rust.url = "github:oxalica/rust-overlay";
     agenix.url = "github:ryantm/agenix";
   };
 
