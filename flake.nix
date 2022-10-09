@@ -17,7 +17,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager
-    , hardware, emacs, rust, agenix, ... }:
+    , hardware, emacs, agenix, ... }:
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
