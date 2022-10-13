@@ -12,12 +12,12 @@
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #rust.url = "github:oxalica/rust-overlay";
+    rust.url = "github:oxalica/rust-overlay";
     agenix.url = "github:ryantm/agenix";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager
-    , hardware, emacs, agenix, ... }:
+    , hardware, emacs, rust, agenix, ... }:
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
@@ -37,7 +37,7 @@
         allowUnsupportedSystem = true;
       };
 
-      sharedOverlays = [ emacs.overlay unstable-overlay ];
+      sharedOverlays = [ emacs.overlay rust.overlays.default unstable-overlay ];
 
       hostDefaults.modules =
         [ home-manager.nixosModules.home-manager agenix.nixosModule ./modules ];
