@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
+  systemDpi = if config.networking.hostName == "Oxygen" then 110 else 180;
   i3Config = pkgs.writeTextFile {
     name = "i3Config";
     executable = true;
@@ -103,6 +104,9 @@ let
       gaps outer 10
 
       for_window [class="^.*"] border pixel 3
+      for_window [window_type=dialog] resize set 1920 1080, move absolute position center
+
+      popup_during_fullscreen ignore
 
       # class                 border  backgr. text    indicator child_border
       client.focused          #ffffff #285577 #ffffff #2e9ef4   #ffffff
@@ -144,7 +148,7 @@ in {
   services = {
     xserver = {
       enable = true;
-      dpi = if config.networking.hostName == "Oxygen" then 110 else 180;
+      dpi = systemDpi;
 
       displayManager = {
         defaultSession = "none+i3";
@@ -163,5 +167,9 @@ in {
       };
     };
   };
+
+  home.file.".Xresources".text = ''
+    Xft.dpi: ${(toString systemDpi)}
+  '';
 
 }

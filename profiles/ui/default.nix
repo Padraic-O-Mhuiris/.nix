@@ -1,5 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./i3.nix ./picom.nix ./loginManager.nix ./rofi.nix ];
+  imports = [
+    ./i3.nix
+    ./picom.nix
+    ./loginManager.nix
+    ./rofi.nix
+    ./libreOffice.nix
+    ./theme.nix
+  ];
 }

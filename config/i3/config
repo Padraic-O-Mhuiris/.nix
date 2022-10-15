@@ -149,6 +149,9 @@ gaps outer 10
 
 for_window [class="^.*"] border pixel 3
 
+floating_minimum_size 75 x 50
+floating_maximum_size 1920 x 1080
+
 # class                 border  backgr. text    indicator child_border
 client.focused          #ffffff #285577 #ffffff #2e9ef4   #ffffff
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
