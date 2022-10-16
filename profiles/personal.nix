@@ -35,6 +35,7 @@
     # cli
     ./cli/alacritty.nix
     ./cli/zsh.nix
+    ./cli/direnv.nix
 
     # hardhware
     ./audio.nix

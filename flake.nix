@@ -37,7 +37,14 @@
         allowUnsupportedSystem = true;
       };
 
-      sharedOverlays = [ emacs.overlay rust.overlays.default unstable-overlay ];
+      sharedOverlays = [
+        (self: super: {
+          nix-direnv = super.nix-direnv.override { enableFlakes = true; };
+        })
+        emacs.overlay
+        rust.overlays.default
+        unstable-overlay
+      ];
 
       hostDefaults.modules =
         [ home-manager.nixosModules.home-manager agenix.nixosModule ./modules ];
