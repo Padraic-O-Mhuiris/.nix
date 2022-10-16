@@ -67,9 +67,22 @@
     doge
     lolcat
     screenfetch
+    direnv
   ];
+  services.lorri.enable = true;
 
-  home.configFile = { "zsh/.zshrc".text = ""; };
+  home.configFile = {
+    "zsh/.zshrc".text = ''
+      eval "$(direnv hook zsh)"
+    '';
+    "direnv/direnvrc".text = ''
+      use_flake() {
+        watch_file flake.nix
+        watch_file flake.lock
+        eval "$(nix print-dev-env --profile "$(direnv_layout_dir)/flake-profile")"
+      }
+    '';
+  };
 
   users.defaultUserShell = pkgs.zsh;
 }
