@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let fontSize = if config.networking.hostName == "Oxygen" then "11" else "7";
+let fontSize = if config.networking.hostName == "Oxygen" then "11" else "11";
 in {
   user.packages = with pkgs; [ alacritty ];
 
