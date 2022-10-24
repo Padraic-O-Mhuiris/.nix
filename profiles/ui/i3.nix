@@ -1,13 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  systemDpi =
-    if config.networking.hostName == "Oxygen"
-    then 110
-    else 180;
+{ config, lib, pkgs, ... }:
+let
+  systemDpi = if config.networking.hostName == "Oxygen" then 110 else 180;
+  spotifyDimensions =
+    if config.networking.hostName == "Oxygen" then "2560 1440" else "2500 1600";
   i3Config = pkgs.writeTextFile {
     name = "i3Config";
     executable = true;
@@ -113,7 +108,7 @@
       exec_always --no-startup-id "${pkgs.spotify-tray}/bin/spotify-tray -m"
 
       for_window [class="^.*"] border pixel 3
-      for_window [class="Spotify"] floating enable, resize set 2560 1600, move absolute position center
+      for_window [class="Spotify"] floating enable, resize set ${spotifyDimensions}, move absolute position center
       for_window [window_type=dialog] resize set 1920 1080, move absolute position center
 
       popup_during_fullscreen ignore
@@ -150,9 +145,9 @@
     '';
   };
 in {
-  environment.pathsToLink = ["/libexec"];
+  environment.pathsToLink = [ "/libexec" ];
 
-  user.packages = with pkgs; [lightdm libnotify];
+  user.packages = with pkgs; [ lightdm libnotify ];
 
   services = {
     xserver = {
@@ -172,7 +167,7 @@ in {
         enable = true;
         package = pkgs.i3-gaps;
         configFile = "${i3Config}/bin/i3Config";
-        extraPackages = with pkgs; [dmenu i3status i3lock i3blocks];
+        extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
       };
     };
   };
