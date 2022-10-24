@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
-
 {
-  boot.supportedFilesystems = [ "zfs" ];
+  config,
+  pkgs,
+  ...
+}: {
+  boot.supportedFilesystems = ["zfs"];
   networking.hostId = "3f90d23a";
   boot = {
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
@@ -19,8 +21,8 @@
         efiSupport = true;
         zfsSupport = true;
         font = "${
-            builtins.toPath pkgs.iosevka
-          }/share/fonts/truetype/iosevka-regular.ttf";
+          builtins.toPath pkgs.iosevka
+        }/share/fonts/truetype/iosevka-regular.ttf";
         fontSize = 30;
         gfxmodeEfi = "3840x2400";
         gfxmodeBios = "3840x2400";
@@ -39,7 +41,7 @@
           done
           rm -rf $ESP_MIRROR
         '';
-        devices = [ "/dev/disk/by-path/pci-0000:02:00.0-nvme-1" ];
+        devices = ["/dev/disk/by-path/pci-0000:02:00.0-nvme-1"];
       };
     };
   };

@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   user.packages = with pkgs; [
     git
     gitAndTools.gh
@@ -110,5 +113,4 @@
       *.org   diff=org
     '';
   };
-
 }

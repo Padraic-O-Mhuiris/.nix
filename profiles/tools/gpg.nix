@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   env.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
   env.GPG_KEY = config.user.publicKey;
 
@@ -20,7 +23,7 @@
     yubikey-manager
   ];
   services.pcscd.enable = true;
-  services.udev.packages = with pkgs; [ yubikey-personalization libu2f-host ];
+  services.udev.packages = with pkgs; [yubikey-personalization libu2f-host];
 
   home.configFile."gnupg/gpg-agent.conf" = {
     text = ''
@@ -30,5 +33,4 @@
       allow-loopback-pinentry
     '';
   };
-
 }

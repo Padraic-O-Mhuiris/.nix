@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   user.packages = with pkgs; [
     python39Full
     python-language-server
@@ -11,5 +14,4 @@
     python39Packages.pyflakes
     poetry
   ];
-
 }

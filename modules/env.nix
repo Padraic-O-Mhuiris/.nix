@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 with lib; {
   options = with types; {
     env = mkOption {
@@ -9,14 +8,14 @@ with lib; {
           concatMapStringsSep ":" (x: toString x) v
         else
           (toString v));
-      default = { };
+      default = { PATH = [ "$PATH" ]; };
     };
   };
 
   config = {
-    env.PATH = [ "$PATH" ];
-
+    environment.sessionVariables.PATH = config.env.PATH;
     environment.extraInit = concatStringsSep "\n"
-      (mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);
+      (mapAttrsToList (n: v: ''export ${n}="${v}"'')
+        (filterAttrs (n: v: n != "PATH") config.env));
   };
 }

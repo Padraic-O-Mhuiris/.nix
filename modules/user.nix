@@ -1,7 +1,12 @@
-{ config, options, lib, pkgs, ... }:
-
-with lib;
-let mkOpt = type: default: mkOption { inherit type default; };
+{
+  config,
+  options,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  mkOpt = type: default: mkOption {inherit type default;};
 in {
   options = {
     user = {
@@ -13,15 +18,15 @@ in {
       email = mkOpt types.str "user@user";
       github = mkOpt types.str "user";
       publicKey = mkOpt types.str "0xUSER";
-      packages = mkOpt (types.listOf types.package) [ ];
-      groups = mkOpt (types.listOf types.str) [ ];
-      ssh = { authorizedKeys = mkOpt (types.listOf types.str) [ ]; };
+      packages = mkOpt (types.listOf types.package) [];
+      groups = mkOpt (types.listOf types.str) [];
+      ssh = {authorizedKeys = mkOpt (types.listOf types.str) [];};
     };
 
     home = {
-      file = mkOpt types.attrs { };
-      configFile = mkOpt types.attrs { };
-      dataFile = mkOpt types.attrs { };
+      file = mkOpt types.attrs {};
+      configFile = mkOpt types.attrs {};
+      dataFile = mkOpt types.attrs {};
     };
 
     # dotfiles = let t = either str path;
@@ -60,7 +65,7 @@ in {
       home = config.user.directory;
       group = config.user.group;
       description = config.user.fullName;
-      extraGroups = [ "wheel" ] ++ config.user.groups;
+      extraGroups = ["wheel"] ++ config.user.groups;
       uid = 1000;
       hashedPassword = config.user.password;
       packages = config.user.packages;

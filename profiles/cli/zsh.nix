@@ -1,14 +1,16 @@
-{ config, lib, pkgs, ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
-    shellAliases = { ll = "ls -l"; };
+    shellAliases = {ll = "ls -l";};
     enableCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
-    syntaxHighlighting.highlighters = [ "main" "brackets" "cursor" "line" ];
+    syntaxHighlighting.highlighters = ["main" "brackets" "cursor" "line"];
     histFile = "$XDG_CACHE_HOME/zhistory";
     histSize = 100000;
     interactiveShellInit = ''
@@ -32,7 +34,7 @@
         "extract"
         "nix"
       ];
-      customPkgs = with pkgs; [ nix-zsh-completions ];
+      customPkgs = with pkgs; [nix-zsh-completions];
     };
   };
 

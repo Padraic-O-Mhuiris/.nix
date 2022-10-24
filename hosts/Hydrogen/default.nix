@@ -1,9 +1,13 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   nix.settings.cores = 32;
 
-  imports = [ ./hardware-configuration.nix ./zfs.nix ];
+  imports = [./hardware-configuration.nix ./zfs.nix];
 
   time.timeZone = "Europe/Dublin";
   i18n.defaultLocale = "en_IE.UTF-8";

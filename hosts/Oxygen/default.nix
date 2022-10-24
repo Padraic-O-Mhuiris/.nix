@@ -1,9 +1,13 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   nix.settings.cores = 16;
 
-  imports = [ ./hardware-configuration.nix ];
+  imports = [./hardware-configuration.nix];
 
   time.timeZone = "Europe/Dublin";
   i18n.defaultLocale = "en_IE.UTF-8";
@@ -21,13 +25,13 @@
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
 
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.initrd.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
+  boot.supportedFilesystems = ["zfs"];
+  boot.initrd.supportedFilesystems = ["zfs"];
+  boot.kernelParams = ["zfs.zfs_arc_max=12884901888"];
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   powerManagement.enable = true;
 
@@ -38,8 +42,8 @@
     enableCryptodisk = false;
     device = "nodev";
     font = "${
-        builtins.toPath pkgs.iosevka
-      }/share/fonts/truetype/iosevka-regular.ttf";
+      builtins.toPath pkgs.iosevka
+    }/share/fonts/truetype/iosevka-regular.ttf";
     fontSize = 30;
     gfxmodeEfi = "5120x1440";
     gfxmodeBios = "5120x1440";

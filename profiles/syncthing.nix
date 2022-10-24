@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.syncthing = {
     enable = true;
     user = config.user.name;
@@ -24,10 +27,9 @@
     };
 
     folders = {
-
       "/home/${config.user.name}/sync" = {
         id = "sync";
-        devices = [ "Oxygen" "Hydrogen" ];
+        devices = ["Oxygen" "Hydrogen"];
         watch = true;
         type = "sendreceive";
       };
@@ -48,7 +50,7 @@
 
       "/home/${config.user.name}/.org" = {
         id = "org";
-        devices = [ "Oxygen" "Hydrogen" ];
+        devices = ["Oxygen" "Hydrogen"];
         watch = true;
         type = "sendreceive";
       };

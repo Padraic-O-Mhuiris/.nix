@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
-
-let fontSize = if config.networking.hostName == "Oxygen" then "11" else "11";
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  fontSize =
+    if config.networking.hostName == "Oxygen"
+    then "11"
+    else "11";
 in {
-  user.packages = with pkgs; [ alacritty ];
+  user.packages = with pkgs; [alacritty];
 
   home.configFile."alacritty/alacritty.yml".text = ''
     colors:

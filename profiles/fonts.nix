@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
@@ -22,9 +25,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [ "Iosevka" ];
-        sansSerif = [ "Roboto" ];
-        serif = [ "Roboto" ];
+        monospace = ["Iosevka"];
+        sansSerif = ["Roboto"];
+        serif = ["Roboto"];
       };
     };
   };

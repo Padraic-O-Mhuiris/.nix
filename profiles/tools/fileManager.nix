@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
-
 {
-  user.packages = with pkgs; [ gnome.nautilus udisks udiskie ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  user.packages = with pkgs; [gnome.nautilus udisks udiskie];
 
   services.xserver.displayManager.sessionCommands = ''
     # launches udiskie on display start and mounts drives
@@ -13,5 +16,4 @@
       - device_file: /dev/loop0
         ignore: true
   '';
-
 }

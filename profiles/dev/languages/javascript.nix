@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   user.packages = with pkgs.unstable; [
     nodejs-14_x
     nodePackages.yalc

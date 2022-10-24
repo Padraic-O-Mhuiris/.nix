@@ -1,12 +1,16 @@
-{ config, lib, pkgs, nixpkgs-unstable, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  nixpkgs-unstable,
+  ...
+}: {
   services.xgeth = {
     mainnet = {
       enable = true;
       http = {
         enable = true;
-        apis = [ "net" "eth" "debug" "engine" "admin" ];
+        apis = ["net" "eth" "debug" "engine" "admin"];
         port = 8545;
       };
       authrpc = {

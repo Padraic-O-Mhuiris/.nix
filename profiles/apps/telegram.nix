@@ -1,5 +1,8 @@
-{ config, lib, pkgs, ... }:
-
 {
-  user.packages = with pkgs; [ tdesktop ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  user.packages = with pkgs; [tdesktop];
 }

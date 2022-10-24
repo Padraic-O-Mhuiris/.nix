@@ -1,5 +1,9 @@
-{ config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+{
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix];
 
   nix = {
     package = pkgs.nixFlakes;
@@ -26,13 +30,13 @@
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
 
-  boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
+  boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
+  boot.supportedFilesystems = ["zfs"];
+  boot.kernelParams = ["zfs.zfs_arc_max=12884901888"];
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   networking.hostName = "Oxygen";
 
   console = {
@@ -45,7 +49,7 @@
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-  environment.sessionVariables = { GNUPGHOME = "$HOME/.config/gnupg"; };
+  environment.sessionVariables = {GNUPGHOME = "$HOME/.config/gnupg";};
 
   programs.gnupg.agent = {
     enable = true;
@@ -54,7 +58,7 @@
     pinentryFlavor = "gnome3";
   };
   services.pcscd.enable = true;
-  services.udev.packages = with pkgs; [ yubikey-personalization libu2f-host ];
+  services.udev.packages = with pkgs; [yubikey-personalization libu2f-host];
 
   users = {
     mutableUsers = false;
@@ -63,9 +67,8 @@
       isNormalUser = true;
       createHome = true;
       home = "/home/padraic";
-      extraGroups = [ "wheel" "networkmanager" ];
-      hashedPassword =
-        "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
+      extraGroups = ["wheel" "networkmanager"];
+      hashedPassword = "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
     };
   };
 
@@ -77,7 +80,7 @@
     libinput.enable = true;
     xkbOptions = "ctrl:swapcaps";
 
-    displayManager = { defaultSession = "none+i3"; };
+    displayManager = {defaultSession = "none+i3";};
 
     windowManager.i3 = {
       enable = true;

@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   user.packages = [
     pkgs.solc
     (import ../../../packages/foundry.nix {

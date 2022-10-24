@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.geoclue2.enable = true;
   services.geoclue2.appConfig.redshift.isAllowed = true;
 
@@ -16,5 +19,4 @@
       night = 3700;
     };
   };
-
 }

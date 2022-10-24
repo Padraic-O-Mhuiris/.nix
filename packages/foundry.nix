@@ -1,15 +1,17 @@
-{ pkgs, lib, ... }:
-
+{
+  pkgs,
+  lib,
+  ...
+}:
 pkgs.stdenv.mkDerivation rec {
   name = "foundry";
   version = "nightly";
   src = pkgs.fetchurl {
-    url =
-      "https://github.com/foundry-rs/foundry/releases/download/${version}/foundry_nightly_linux_amd64.tar.gz";
+    url = "https://github.com/foundry-rs/foundry/releases/download/${version}/foundry_nightly_linux_amd64.tar.gz";
     sha256 = "1r1zzf61lbks5ila14nhabcgh0rb5bgrphcx70pzmlv9kmpsvmhy";
   };
 
-  nativeBuildInputs = [ pkgs.makeWrapper ];
+  nativeBuildInputs = [pkgs.makeWrapper];
   phases = "installPhase";
   installPhase = ''
     mkdir -p $out/bin
@@ -30,7 +32,7 @@ pkgs.stdenv.mkDerivation rec {
       Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.
     '';
     license = lib.licenses.mit;
-    platforms = [ "x86_64-linux" ];
-    maintainers = [ ];
+    platforms = ["x86_64-linux"];
+    maintainers = [];
   };
 }

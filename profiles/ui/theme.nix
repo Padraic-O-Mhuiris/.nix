@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   gtkTheme = "Dracula";
   gtkIconTheme = "Paper";
   gtkCursorTheme = "Paper";
@@ -25,5 +28,5 @@ in {
       gtk-font-name="Sans 10"
     '';
   };
-  user.packages = with pkgs; [ dracula-theme paper-icon-theme ];
+  user.packages = with pkgs; [dracula-theme paper-icon-theme];
 }

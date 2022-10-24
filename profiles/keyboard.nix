@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.xserver = {
     layout = "gb";
     libinput.enable = true;
@@ -11,16 +14,16 @@
     enable = true;
     bindings = [
       {
-        keys = [ 233 ];
-        events = [ "key" ];
+        keys = [233];
+        events = ["key"];
         command = "${pkgs.light}/bin/light -A 3";
       }
       {
-        keys = [ 232 ];
-        events = [ "key" ];
+        keys = [232];
+        events = ["key"];
         command = "${pkgs.light}/bin/light -U 3";
       }
     ];
   };
-  user.groups = [ "video" ];
+  user.groups = ["video"];
 }

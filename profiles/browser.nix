@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   user.packages = with pkgs; [
     brave
     (makeDesktopItem {
@@ -9,7 +12,7 @@
       genericName = "Opens personal Brave profile";
       icon = "brave";
       exec = ''${brave}/bin/brave --profile-directory="Default"'';
-      categories = [ "Network" ];
+      categories = ["Network"];
     })
     (makeDesktopItem {
       name = "brave-work";
@@ -17,7 +20,7 @@
       genericName = "Opens work Brave profile";
       icon = "brave";
       exec = ''${brave}/bin/brave --profile-directory="Profile 1"'';
-      categories = [ "Network" ];
+      categories = ["Network"];
     })
   ];
 }
