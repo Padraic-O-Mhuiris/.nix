@@ -1,11 +1,15 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+let
+  rustupDirLocation = "$HOME/.rustup";
+  toolchain = "nightly";
+in {
   environment.sessionVariables = {
-    RUSTUP_HOME = "$HOME/.rustup";
-    RUSTUP_TOOLCHAIN = "nightly"; # setting this will override current toolchain
+    RUSTUP_HOME = rustupDirLocation;
+    RUSTUP_TOOLCHAIN = toolchain; # setting this will override current toolchain
   };
 
   env.PATH = [
-    "$RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN-x86_64-unknown-linux-gnu/bin"
+    "${rustupDirLocation}/toolchains/${toolchain}-x86_64-unknown-linux-gnu/bin"
   ];
 
   user.packages = with pkgs; [ rustup ];
