@@ -1,8 +1,1 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  user.packages = with pkgs; [bitwarden];
-}
+{ config, lib, pkgs, ... }: { user.packages = with pkgs; [ bitwarden ]; }
