@@ -2,7 +2,7 @@
 let
   systemDpi = if config.networking.hostName == "Oxygen" then 110 else 180;
   spotifyDimensions =
-    if config.networking.hostName == "Oxygen" then "2560 1440" else "2500 1600";
+    if config.networking.hostName == "Oxygen" then "1600 900" else "2500 1600";
   i3Config = pkgs.writeTextFile {
     name = "i3Config";
     executable = true;
