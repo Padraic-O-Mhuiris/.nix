@@ -63,7 +63,7 @@ in {
       uid = 1000;
       hashedPassword = config.user.password;
       packages = config.user.packages;
-      openssh.authorizedKeys.keys = config.ssh.authorizedKeys;
+      openssh.authorizedKeys.keys = config.user.ssh.authorizedKeys;
     };
 
     users.mutableUsers = false;
