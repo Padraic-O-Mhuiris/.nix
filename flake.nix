@@ -74,7 +74,7 @@
             fastConnection = false;
             remoteBuild = true;
             user = "root";
-            sshUser = "root";
+            sshUser = "admin";
             profiles = {
               example = {
 
