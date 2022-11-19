@@ -26,17 +26,17 @@
     hosts = { "127.0.0.1" = [ config.networking.hostName ]; };
   };
 
-  services.openssh = {
-    enable = true;
-    passwordAuthentication = false;
-    permitRootLogin = "prohibit-password";
-    hostKeys = [{
-      type = "ed25519";
-      path = "/etc/ssh/ssh_host_ed25519_key";
-      rounds = 100;
-      comment = "${config.networking.hostName}";
-    }];
-  };
+  # services.openssh = {
+  #   enable = true;
+  #   passwordAuthentication = false;
+  #   permitRootLogin = "prohibit-password";
+  #   hostKeys = [{
+  #     type = "ed25519";
+  #     path = "/etc/ssh/ssh_host_ed25519_key";
+  #     rounds = 100;
+  #     comment = "${config.networking.hostName}";
+  #   }];
+  # };
 
   user.packages = with pkgs; [ git vim ];
 
