@@ -13,12 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager
-    , hardware, emacs,
-    #rust,
-    agenix, ... }:
+    , hardware, emacs, agenix, deploy-rs, ... }:
+
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
@@ -63,49 +63,38 @@
             ./profiles/ngrok.nix
           ];
         };
+        Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
       };
+
+      # deploy-rs config
+      deploy = {
+        nodes = {
+          Nitrogen = {
+            hostname = "ec2-52-16-215-4.eu-west-1.compute.amazonaws.com";
+            fastConnection = false;
+            remoteBuild = true;
+            user = "root";
+            sshUser = "root";
+            profiles = {
+              example = {
+
+                path = deploy-rs.lib.x86_64-linux.activate.nixos
+                  self.nixosConfigurations.Nitrogen;
+              };
+
+            };
+          };
+        };
+      };
+
+      outputsBuilder = (channels: {
+        devShell = channels.nixpkgs.mkShell {
+          name = "nix-deploy-shell";
+          buildInputs = with channels.nixpkgs; [
+            nixUnstable
+            inputs.deploy-rs.defaultPackage.${system}
+          ];
+        };
+      });
     };
-
-  # outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, dapptools, ... }:
-  #   let
-  #     inherit (lib.my) mapModules mapModulesRec mapHosts;
-
-  #     system = "x86_64-linux";
-
-  #     mkPkgs = pkgs: extraOverlays:
-  #       import pkgs {
-  #         inherit system;
-  #         config.allowUnfree = true; # forgive me Stallman senpai
-  #         config.allowBroken = true;
-  #         overlays = extraOverlays ++ (lib.attrValues self.overlays);
-  #       };
-  #     pkgs = mkPkgs nixpkgs [ self.overlay ];
-  #     pkgs' = mkPkgs nixpkgs-unstable [ ];
-
-  #     lib = nixpkgs.lib.extend (self: super: {
-  #       my = import ./lib {
-  #         inherit pkgs inputs;
-  #         lib = self;
-  #       };
-  #     });
-  #   in {
-  #     lib = lib.my;
-
-  #     overlay = final: prev: {
-  #       unstable = pkgs';
-  #       my = self.packages."${system}";
-  #     };
-
-  #     overlays = mapModules ./overlays import;
-
-  #     packages."${system}" = mapModules ./packages (p: pkgs.callPackage p { });
-
-  #     devShell."${system}" = import ./shell.nix { inherit pkgs; };
-
-  #     nixosModules = {
-  #       dotfiles = import ./.;
-  #     } // mapModulesRec ./modules import;
-
-  #     nixosConfigurations = mapHosts ./hosts { };
-  #   };
 }
