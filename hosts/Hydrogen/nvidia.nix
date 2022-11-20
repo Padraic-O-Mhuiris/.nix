@@ -5,6 +5,10 @@
     video.hidpi.enable = true;
     opengl.enable = true;
     nvidia = {
+      powermanagement = {
+        enable = true;
+        finegrained = true;
+      };
       modesetting.enable = true;
       prime = {
         sync.enable = true;
@@ -14,7 +18,10 @@
       };
     };
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
-  boot.kernelParams =
-    [ "module_blacklist=i915" ]; # blocks intel integrated graphics
+  services.xserver = {
+    videoDrivers = [ "nvidia" ];
+    displayManager.setupCommands = "";
+  };
+
+  user.packages = with pkgs; [ glxinfo nvtop ];
 }
