@@ -69,10 +69,7 @@
   hardware.opengl.enable = true;
 
   hardware.nvidia = {
-    powerManagement = {
-      enable = true;
-      finegrained = true;
-    };
+    powerManagement = { enable = true; };
     modesetting.enable = true;
     prime = {
       sync.enable = true;
