@@ -52,7 +52,7 @@
         Hydrogen.modules = [
           ./profiles/personal.nix
           ./hosts/Hydrogen
-          hardware.nixosModules.dell-xps-15-9500-nvidia
+          hardware.nixosModules.dell-xps-15-9500
         ];
         Oxygen = {
           modules = [
