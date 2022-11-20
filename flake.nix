@@ -25,8 +25,14 @@
       system = "x86_64-linux";
 
       packages-overlay = final: prev: {
-        unstable = import nixpkgs-unstable { inherit system; };
-        master = import nixpkgs-master { inherit system; };
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        master = import nixpkgs-master {
+          inherit system;
+          config.allowUnfree = true;
+        };
       };
     in mkFlake {
       inherit self inputs;
