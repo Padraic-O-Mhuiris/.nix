@@ -12,6 +12,7 @@ in {
     video.hidpi.enable = true;
     opengl.enable = true;
     nvidia = {
+      package = pkgs.linuxPackages_latest.nvidiaPackages.stable;
       modesetting.enable = true;
       prime = {
         offload.enable = true;
@@ -25,9 +26,7 @@ in {
     };
   };
 
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   user.packages = with pkgs; [ glxinfo nvtop nvidia-offload ];
 }
