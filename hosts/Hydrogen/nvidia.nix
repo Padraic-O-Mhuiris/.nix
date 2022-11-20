@@ -27,7 +27,7 @@ in {
 
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   user.packages = with pkgs; [ glxinfo nvtop nvidia-offload ];
 }
