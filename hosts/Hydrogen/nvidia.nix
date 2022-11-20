@@ -5,7 +5,7 @@
     video.hidpi.enable = true;
     opengl.enable = true;
     nvidia = {
-      powermanagement = {
+      powerManagement = {
         enable = true;
         finegrained = true;
       };
