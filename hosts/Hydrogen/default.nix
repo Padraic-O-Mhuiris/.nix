@@ -2,7 +2,6 @@
   nix.settings.cores = 32;
 
   imports = [ ./hardware-configuration.nix ./zfs.nix ./nvidia.nix ];
-  nixpkgs.config.allowUnfree = true;
   time.timeZone = "Europe/Dublin";
   i18n.defaultLocale = "en_IE.UTF-8";
 

@@ -16,16 +16,17 @@
     deploy-rs.url = "github:serokell/deploy-rs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, utils, home-manager
-    , hardware, emacs, agenix, deploy-rs, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-master, utils
+    , home-manager, hardware, emacs, agenix, deploy-rs, ... }:
 
     let
       inherit (utils.lib) mkFlake exportModules;
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
       system = "x86_64-linux";
 
-      unstable-overlay = final: prev: {
+      packages-overlay = final: prev: {
         unstable = import nixpkgs-unstable { inherit system; };
+        master = import nixpkgs-master { inherit system; };
       };
     in mkFlake {
       inherit self inputs;
@@ -42,7 +43,7 @@
           nix-direnv = super.nix-direnv.override { enableFlakes = true; };
         })
         emacs.overlay
-        unstable-overlay
+        packages-overlay
       ];
 
       hostDefaults.modules =

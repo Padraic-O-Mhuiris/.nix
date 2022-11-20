@@ -12,7 +12,7 @@ in {
     video.hidpi.enable = true;
     opengl.enable = true;
     nvidia = {
-      package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.latest;
+      package = pkgs.master.linuxPackages_latest.nvidiaPackages.latest;
       modesetting.enable = true;
       prime = {
         offload.enable = true;
