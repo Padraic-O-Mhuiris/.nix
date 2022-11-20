@@ -24,5 +24,9 @@ in {
       };
     };
   };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
   user.packages = with pkgs; [ glxinfo nvtop nvidia-offload ];
 }
