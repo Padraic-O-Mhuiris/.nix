@@ -2,7 +2,7 @@
 
 let
   pythonPkgs = pkgs.python310.withPackages
-    (p: with p; [ black poetry pip cython pytest nose pyflakes isort conda ]);
+    (p: with p; [ black poetry pip cython pytest nose pyflakes isort ]);
 in {
   user.packages = [
     pythonPkgs
