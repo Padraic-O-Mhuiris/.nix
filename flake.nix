@@ -72,21 +72,22 @@
             ./profiles/ngrok.nix
           ];
         };
-        Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
+        Nitrogen = { modules = [ ./hosts/Nitrogen ./modules/default.nix ]; };
       };
 
       # deploy-rs config
       deploy = {
+        user = "padraic";
+        sshUser = "padraic";
+        autoRollback = true;
+        tempPath = "/home/padraic/.deploy-rs";
+        remoteBuild = true;
+        fastConnection = false;
         nodes = {
           Nitrogen = {
-            hostname = "ec2-52-16-215-4.eu-west-1.compute.amazonaws.com";
-            fastConnection = false;
-            remoteBuild = true;
-            user = "root";
-            sshUser = "admin";
+            hostname = "ec2-3-250-174-155.eu-west-1.compute.amazonaws.com";
             profiles = {
-              example = {
-
+              system = {
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.Nitrogen;
               };
@@ -95,6 +96,9 @@
           };
         };
       };
+
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       outputsBuilder = (channels: {
         devShell = channels.nixpkgs.mkShell {

@@ -5,8 +5,6 @@
   imports = [ "${modulesPath}/virtualisation/amazon-image.nix" ];
   ec2.hvm = true;
 
-  services.nginx.enable = true;
-
   user = {
     name = "padraic";
     fullName = "Pádraic Ó Mhuiris";
@@ -26,19 +24,19 @@
     hosts = { "127.0.0.1" = [ config.networking.hostName ]; };
   };
 
-  # services.openssh = {
-  #   enable = true;
-  #   passwordAuthentication = false;
-  #   permitRootLogin = "prohibit-password";
-  #   hostKeys = [{
-  #     type = "ed25519";
-  #     path = "/etc/ssh/ssh_host_ed25519_key";
-  #     rounds = 100;
-  #     comment = "${config.networking.hostName}";
-  #   }];
-  # };
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+    permitRootLogin = "prohibit-password";
+    hostKeys = [{
+      type = "ed25519";
+      path = "/etc/ssh/ssh_host_ed25519_key";
+      rounds = 100;
+      comment = "${config.networking.hostName}";
+    }];
+  };
 
-  user.packages = with pkgs; [ git vim ];
+  environment.systemPackages = with pkgs; [ vim git ];
 
   nix = {
     package = pkgs.nixUnstable;
@@ -55,4 +53,5 @@
     };
   };
 
+  system.stateVersion = "22.05";
 }
