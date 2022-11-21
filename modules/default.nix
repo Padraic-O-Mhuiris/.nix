@@ -1,8 +1,1 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  imports = [./user.nix ./env.nix];
-}
+{ config, lib, pkgs, ... }: { imports = [ ./user.nix ./env.nix ]; }

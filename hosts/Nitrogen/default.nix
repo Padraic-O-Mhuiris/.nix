@@ -36,10 +36,15 @@
     }];
   };
 
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
+
   environment.systemPackages = with pkgs; [ vim git ];
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
     settings = {
       substituters =
