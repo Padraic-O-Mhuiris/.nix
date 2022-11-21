@@ -1,17 +1,18 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  user.packages = with pkgs; [
-    python39Full
-    python-language-server
-    nodePackages.pyright
-    black
-    python39Packages.nose
-    python39Packages.isort
-    python39Packages.pyflakes
-    poetry
-  ];
+{ config, lib, pkgs, ... }: {
+  user.packages = with pkgs;
+    (let
+      pythonPkgs = p:
+        with p; [
+          black
+          poetry
+          pip
+          cython
+          pytest
+          nose
+          pyflakes
+          isort
+          conda
+        ];
+    in python310.withPackages pythonPkgs)
+    ++ [ python-language-server nodePackages.pyright pipenv ];
 }
