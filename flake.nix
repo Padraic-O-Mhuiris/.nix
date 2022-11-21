@@ -28,10 +28,12 @@
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
+          config.allowBroken = true;
         };
         master = import nixpkgs-master {
           inherit system;
           config.allowUnfree = true;
+          config.allowBroken = true;
         };
       };
     in mkFlake {
