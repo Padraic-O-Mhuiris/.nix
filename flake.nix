@@ -75,19 +75,18 @@
         Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
       };
 
-      # deploy-rs config
       deploy = {
         autoRollback = true;
         tempPath = "/home/padraic/.deploy-rs";
         remoteBuild = true;
         fastConnection = false;
+        user = "root";
+        sshUser = "padraic";
         nodes = {
           Nitrogen = {
             hostname = "ec2-3-250-174-155.eu-west-1.compute.amazonaws.com";
             profiles = {
               system = {
-                user = "padraic";
-                sshUser = "padraic";
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.Nitrogen;
               };

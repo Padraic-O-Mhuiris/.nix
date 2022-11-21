@@ -36,6 +36,7 @@
     enable = true;
     wheelNeedsPassword = false;
   };
+
   environment.systemPackages = with pkgs; [ vim git htop ];
 
   services.openssh.enable = true;
