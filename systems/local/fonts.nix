@@ -1,4 +1,6 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+
+{
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
@@ -16,13 +18,12 @@
       font-awesome
       cascadia-code
     ];
-
     fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [ "Iosevka" "Ubuntu" ];
-        sansSerif = [ "Ubuntu" ];
-        serif = [ "Ubuntu" ];
+        monospace = [ "Iosevka" ];
+        sansSerif = [ "Roboto" ];
+        serif = [ "Roboto" ];
       };
     };
   };

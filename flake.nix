@@ -65,11 +65,11 @@
         ];
         Oxygen = {
           modules = [
-            ./hosts/Oxygen
-            ./profiles/personal.nix
-            ./modules/ethereum/xgeth.nix
+            ./hardware/Oxygen
+            ./system/local
+            ./user/padraic
             ./profiles/ethereum
-            ./profiles/ngrok.nix
+            #./profiles/ngrok.nix
           ];
         };
         Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
