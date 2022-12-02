@@ -5,8 +5,8 @@
   services.dbus.apparmor = "enabled";
   services.dbus.packages = with pkgs; [ dconf ];
 
-  security.doas.enable = true;
-  security.sudo.disable = true;
+  #security.doas.enable = true;
+  #security.sudo.enable = false;
   security.polkit.enable = true;
 
   services.clamav = {

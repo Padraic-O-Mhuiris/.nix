@@ -8,7 +8,6 @@
     ./kernel.nix
     ./networking.nix
     ./zfs.nix
-    ../common/keyboard.nix
   ];
 
   nix.settings.cores = 32;

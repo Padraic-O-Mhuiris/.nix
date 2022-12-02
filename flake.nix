@@ -14,10 +14,11 @@
     };
     agenix.url = "github:ryantm/agenix";
     deploy-rs.url = "github:serokell/deploy-rs";
+    fenix.url = "github:nix-community/fenix";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-master, utils
-    , home-manager, hardware, emacs, agenix, deploy-rs, ... }:
+    , home-manager, hardware, emacs, agenix, deploy-rs, fenix, ... }:
 
     let
       inherit (utils.lib) mkFlake exportModules;
@@ -52,10 +53,14 @@
         })
         emacs.overlay
         packages-overlay
+        fenix.overlays.default
       ];
 
-      hostDefaults.modules =
-        [ home-manager.nixosModules.home-manager agenix.nixosModule ./modules ];
+      hostDefaults.modules = [
+        home-manager.nixosModules.home-manager
+        agenix.nixosModule
+        ./modules/secrets.nix
+      ];
 
       hosts = {
         Hydrogen.modules = [
@@ -68,7 +73,7 @@
             ./hardware/Oxygen
             ./system/local
             ./user/padraic
-            ./profiles/ethereum
+            #./profiles/ethereum
             #./profiles/ngrok.nix
           ];
         };

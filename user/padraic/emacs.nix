@@ -6,9 +6,9 @@
     package = pkgs.emacsNativeComp;
   };
 
-  fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
+  fonts.fonts = with pkgs; [ pkgs.emacs-all-the-icons-fonts ];
 
-  environment.systemPackages = with pkgs; [
+  users.users.padraic.packages = with pkgs; [
     (ripgrep.override { withPCRE2 = true; })
     editorconfig-core-c
     sqlite

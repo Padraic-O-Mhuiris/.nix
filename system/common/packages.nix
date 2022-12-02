@@ -18,5 +18,6 @@
     lm_sensors
     jq
     steam-run
+    dconf
   ];
 }
