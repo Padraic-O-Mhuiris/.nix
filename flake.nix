@@ -2,13 +2,11 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     emacs.url = "github:nix-community/emacs-overlay";
-    home-manager = {
+    hm = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -17,101 +15,110 @@
     fenix.url = "github:nix-community/fenix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-master, utils
-    , home-manager, hardware, emacs, agenix, deploy-rs, fenix, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-master, hm, hardware, emacs, agenix
+    , deploy-rs, fenix, ... }:
 
     let
-      inherit (utils.lib) mkFlake exportModules;
-      pkgs = self.pkgs.x86_64-linux.nixpkgs;
+      pkgs = nixpkgs;
       system = "x86_64-linux";
 
-      packages-overlay = final: prev: {
-        unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-          config.allowBroken = true;
-        };
-        master = import nixpkgs-master {
-          inherit system;
-          config.allowUnfree = true;
-          config.allowBroken = true;
-        };
-      };
-    in mkFlake {
-      inherit self inputs;
+      # packages-overlay = final: prev: {
+      #   unstable = import nixpkgs-unstable {
+      #     inherit system;
+      #     config.allowUnfree = true;
+      #     config.allowBroken = true;
+      #   };
+      #   master = import nixpkgs-master {
+      #     inherit system;
+      #     config.allowUnfree = true;
+      #     config.allowBroken = true;
+      #   };
+      # };
 
+      # lib = pkgs.lib.extend (final: prev: {
+      #   local = (import ./lib {
+      #     lib = prev;
+      #     inherit pkgs;
+      #     nixosConfigurations
+      #   });
+      # });
+
+    in {
       supportedSystems = [ "x86_64-linux" ];
 
-      channelsConfig = {
-        allowUnfree = true;
-        allowUnsupportedSystem = true;
-      };
+      # sharedOverlays = [
+      #   (self: super: {
+      #     nix-direnv = super.nix-direnv.override { enableFlakes = true; };
+      #   })
+      #   emacs.overlay
+      #   packages-overlay
+      #   fenix.overlays.default
+      # ];
 
-      sharedOverlays = [
-        (self: super: {
-          nix-direnv = super.nix-direnv.override { enableFlakes = true; };
-        })
-        emacs.overlay
-        packages-overlay
-        fenix.overlays.default
-      ];
+      # hostDefaults.modules = [
+      #   home-manager.nixosModules.home-manager
+      #   agenix.nixosModule
+      #   ./modules/secrets.nix
+      # ];
 
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
-        agenix.nixosModule
-        ./modules/secrets.nix
-      ];
+      # hosts = pkgs.lib.mkMerge [
+      #   {
+      #     Hydrogen.modules = [
+      #       ./profiles/personal.nix
+      #       ./hosts/Hydrogen
+      #       hardware.nixosModules.dell-xps-15-9500
+      #     ];
+      #   }
+      #   (lib.mkHost {
+      #     name = "Oxygen";
+      #     modules = [ ./hardware/Oxygen ./system/local ./user/padraic ];
+      #   })
+      #   # Oxygen = {
+      #   #   modules = [
+      #   #     ./hardware/Oxygen
+      #   #     ./system/local
+      #   #     ./user/padraic
+      #   #     #./profiles/ethereum
+      #   #     #./profiles/ngrok.nix
+      #   #   ];
+      #   #   specialArgs = { lib = lib // { host = (lib.local.host "Oxygen"); }; };
+      #   # };
+      #   # Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
+      # ];
 
-      hosts = {
-        Hydrogen.modules = [
-          ./profiles/personal.nix
-          ./hosts/Hydrogen
-          hardware.nixosModules.dell-xps-15-9500
-        ];
-        Oxygen = {
-          modules = [
-            ./hardware/Oxygen
-            ./system/local
-            ./user/padraic
-            #./profiles/ethereum
-            #./profiles/ngrok.nix
-          ];
-        };
-        Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
-      };
+      # deploy = {
+      #   autoRollback = true;
+      #   tempPath = "/home/padraic/.deploy-rs";
+      #   remoteBuild = true;
+      #   fastConnection = false;
+      #   user = "root";
+      #   sshUser = "padraic";
+      #   nodes = {
+      #     Nitrogen = {
+      #       hostname = "ec2-3-250-174-155.eu-west-1.compute.amazonaws.com";
+      #       profiles = {
+      #         system = {
+      #           path = deploy-rs.lib.x86_64-linux.activate.nixos
+      #             self.nixosConfigurations.Nitrogen;
+      #         };
 
-      deploy = {
-        autoRollback = true;
-        tempPath = "/home/padraic/.deploy-rs";
-        remoteBuild = true;
-        fastConnection = false;
-        user = "root";
-        sshUser = "padraic";
-        nodes = {
-          Nitrogen = {
-            hostname = "ec2-3-250-174-155.eu-west-1.compute.amazonaws.com";
-            profiles = {
-              system = {
-                path = deploy-rs.lib.x86_64-linux.activate.nixos
-                  self.nixosConfigurations.Nitrogen;
-              };
+      #       };
+      #     };
+      #   };
+      # };
 
-            };
-          };
-        };
-      };
+      # checks = builtins.mapAttrs
+      #   (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
-      checks = builtins.mapAttrs
-        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      # outputsBuilder = (channels: {
+      #   devShell = channels.nixpkgs.mkShell {
+      #     name = "nix-deploy-shell";
+      #     buildInputs = with channels.nixpkgs; [
+      #       nixUnstable
+      #       inputs.deploy-rs.defaultPackage.${system}
+      #     ];
+      #   };
 
-      outputsBuilder = (channels: {
-        devShell = channels.nixpkgs.mkShell {
-          name = "nix-deploy-shell";
-          buildInputs = with channels.nixpkgs; [
-            nixUnstable
-            inputs.deploy-rs.defaultPackage.${system}
-          ];
-        };
-      });
+      #});
     };
 }

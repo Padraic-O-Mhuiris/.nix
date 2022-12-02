@@ -13,26 +13,30 @@ in {
     dataFile = mkOpt types.attrs { };
   };
 
-  config = {
+  config = mkMerge [
+    {
 
-    users.users.padraic = {
-      isNormalUser = true;
-      createHome = true;
-      shell = pkgs.zsh;
-      group = "users";
-      extraGroups = [ "wheel" "docker" "libvirt" ];
-      passwordFile = config.age.secrets."user.padraic.password".path;
-    };
-
-    home-manager.users.padraic = {
-      home = {
-        file = mkAliasDefinitions options.home.file;
-        enableNixpkgsReleaseCheck = false;
-        stateVersion = config.system.stateVersion;
+      users.users.padraic = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "docker" "libvirt" ];
+        passwordFile = config.age.secrets.user.padraic.password.path;
       };
-      xdg.enable = true;
-      xdg.configFile = mkAliasDefinitions options.home.configFile;
-      xdg.dataFile = mkAliasDefinitions options.home.dataFile;
-    };
-  };
+
+      home-manager.users.padraic = {
+        home.enableNixpkgsReleaseCheck = false;
+        home.stateVersion = config.system.stateVersion;
+        xdg.enable = true;
+      };
+
+      #     file = mkAliasDefinitions options.home.file;
+      #     enableNixpkgsReleaseCheck = false;
+      #     stateVersion = config.system.stateVersion;
+      #   };
+      #   xdg.enable = true;
+      #   xdg.configFile = mkAliasDefinitions options.home.configFile;
+      #   xdg.dataFile = mkAliasDefinitions options.home.dataFile;
+      # };
+    }
+    (lib.host.mkHomeFile "padraic" "xxx" "helloworld")
+  ];
 }
