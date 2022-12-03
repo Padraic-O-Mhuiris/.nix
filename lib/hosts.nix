@@ -8,7 +8,6 @@ with lib; {
       c)) config.users.users;
 
   # userLib = (user: {
-
   # })
 
   mkHomeFile = (user: file: content: {

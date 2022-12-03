@@ -7,12 +7,6 @@ in {
 
   imports = [ ./neovim.nix ./emacs.nix ];
 
-  options.home = {
-    file = mkOpt types.attrs { };
-    configFile = mkOpt types.attrs { };
-    dataFile = mkOpt types.attrs { };
-  };
-
   config = mkMerge [
     {
 

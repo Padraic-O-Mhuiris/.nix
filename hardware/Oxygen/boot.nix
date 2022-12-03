@@ -12,5 +12,4 @@
     theme = pkgs.nixos-grub2-theme;
   };
   boot.loader.efi.canTouchEfiVariables = true;
-
 }

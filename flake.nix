@@ -6,7 +6,7 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
     emacs.url = "github:nix-community/emacs-overlay";
-    hm = {
+    home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -15,13 +15,23 @@
     fenix.url = "github:nix-community/fenix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-master, hm, hardware, emacs, agenix
-    , deploy-rs, fenix, ... }:
+  outputs = { self, nixpkgs, nixpkgs-master, home-manager, hardware, emacs
+    , agenix, deploy-rs, fenix, ... }@inputs:
 
     let
-      pkgs = nixpkgs;
+      inherit (nixpkgs) lib;
       system = "x86_64-linux";
 
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ ];
+      };
+
+      util = import ./lib {
+        inherit system pkgs home-manager lib;
+        overlays = (pkgs.overlays);
+      };
       # packages-overlay = final: prev: {
       #   unstable = import nixpkgs-unstable {
       #     inherit system;
