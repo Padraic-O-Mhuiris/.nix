@@ -146,6 +146,7 @@ in {
   os.ui.active = true;
   services.xserver = {
     enable = true;
+    dpi = config.os.ui.dpi;
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
@@ -153,4 +154,13 @@ in {
       extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
     };
   };
+
+  programs.light.enable = true;
+  environment.systemPackages = with pkgs; [ xorg.xdpyinfo xorg.xbacklight ];
+
+  environment.variables = {
+    GDK_SCALE = "2";
+    GDK_DPI_SCALE = "0.5";
+  };
+
 }

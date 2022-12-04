@@ -9,6 +9,7 @@ with lib.os;
     hashedPassword = mkOpt types.str "";
     email = mkOpt types.str "nixos@nixos";
     github = mkOpt types.str "nixos";
+    groups = mkOpt (types.listOf types.str) [ ];
     keys = {
       ssh = mkOpt types.str "";
       gpg = mkOpt types.str "";
@@ -38,7 +39,7 @@ with lib.os;
       shell = if config.os.user.shell == "zsh" then pkgs.zsh else pkgs.bash;
       #group = config.user.group;
       #description = config.user.fullName;
-      extraGroups = [ "wheel" ]; # ++ config.user.groups;
+      extraGroups = [ "wheel" ] ++ config.os.user.groups;
       uid = 1000;
       #passwordFile = config.user.passwordFile;
       hashedPassword = config.os.user.hashedPassword;

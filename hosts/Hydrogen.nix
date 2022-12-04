@@ -65,6 +65,10 @@
   };
 
   os = {
+    ui = {
+      dpi = 192;
+      cli.font.size = 7;
+    };
     machine.cores = 20;
     user = {
       name = "padraic";
