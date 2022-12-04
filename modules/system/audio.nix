@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
-with lib; {
+
+with lib;
+
+{
   sound.enable = true;
   hardware = {
     pulseaudio = {
@@ -16,13 +19,7 @@ with lib; {
       in mkIf config.hardware.pulseaudio.enable "${paConfigFile}/default.pa";
       package = pkgs.pulseaudioFull;
     };
-
-    bluetooth = {
-      enable = true;
-      settings = { General.Enable = "Source,Sink,Media,Socket"; };
-    };
   };
-  services.blueman.enable = true;
-  user.packages = with pkgs; [ pavucontrol ];
-  user.groups = [ "audio" ];
+
+  environment.systemPackages = with pkgs; [ pavucontrol ];
 }
