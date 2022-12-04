@@ -2,75 +2,63 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
     emacs.url = "github:nix-community/emacs-overlay";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
     agenix.url = "github:ryantm/agenix";
     deploy-rs.url = "github:serokell/deploy-rs";
     fenix.url = "github:nix-community/fenix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-master, home-manager, hardware, emacs
-    , agenix, deploy-rs, fenix, ... }@inputs:
-
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager
+    , hardware, emacs, fup, agenix, deploy-rs, fenix, ... }@inputs:
     let
-      inherit (nixpkgs) lib;
-      system = "x86_64-linux";
+      inherit (fup.lib) mkFlake;
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [ ];
+      pkgs = nixpkgs;
+      lib = nixpkgs.lib.extend (import ./lib);
+
+    in mkFlake {
+      inherit self inputs lib;
+
+      channels.unstable.input = nixpkgs-unstable;
+      channels.master.input = nixpkgs-master;
+      channels.nixpkgs.overlaysBuilder = channels:
+        [ (final: prev: { inherit (channels) unstable master; }) ];
+
+      channelsConfig = {
+        allowBroken = true;
+        allowUnfree = true;
       };
 
-      util = import ./lib {
-        inherit system pkgs home-manager lib;
-        overlays = (pkgs.overlays);
-      };
-      # packages-overlay = final: prev: {
-      #   unstable = import nixpkgs-unstable {
-      #     inherit system;
-      #     config.allowUnfree = true;
-      #     config.allowBroken = true;
-      #   };
-      #   master = import nixpkgs-master {
-      #     inherit system;
-      #     config.allowUnfree = true;
-      #     config.allowBroken = true;
-      #   };
-      # };
+      hostDefaults.system = "x86_64-linux";
 
-      # lib = pkgs.lib.extend (final: prev: {
-      #   local = (import ./lib {
-      #     lib = prev;
-      #     inherit pkgs;
-      #     nixosConfigurations
-      #   });
-      # });
+      hostDefaults.modules = [
+        home-manager.nixosModules.home-manager
+        agenix.nixosModule
+        #./modules/os.nix
+        #./modules/secrets.nix
+      ];
 
-    in {
-      supportedSystems = [ "x86_64-linux" ];
+      sharedOverlays = [
+        (self: super: {
+          nix-direnv = super.nix-direnv.override { enableFlakes = true; };
+        })
+        emacs.overlay
+        fenix.overlays.default
+      ];
 
-      # sharedOverlays = [
-      #   (self: super: {
-      #     nix-direnv = super.nix-direnv.override { enableFlakes = true; };
-      #   })
-      #   emacs.overlay
-      #   packages-overlay
-      #   fenix.overlays.default
-      # ];
+      # builds fup host attrset while inheriting custom lib functions
+      hosts = lib.mkHosts ./hosts;
 
-      # hostDefaults.modules = [
-      #   home-manager.nixosModules.home-manager
-      #   agenix.nixosModule
-      #   ./modules/secrets.nix
-      # ];
-
+      #.modules = [ ];
       # hosts = pkgs.lib.mkMerge [
       #   {
       #     Hydrogen.modules = [
