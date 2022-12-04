@@ -23,7 +23,9 @@
     ../modules/system/security/hardened.nix
 
     ../modules/ui/boot.nix
+    ../modules/ui/cli.nix
     ../modules/ui/fonts.nix
+    ../modules/ui/launcher.nix
     ../modules/ui/login.nix
     ../modules/ui/wm.nix
 

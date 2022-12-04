@@ -5,8 +5,7 @@ let
   gtkIconTheme = "Paper";
   gtkCursorTheme = "Paper";
 in {
-  home.configFile = {
-    # GTK
+  os.user.home.configFile = {
     "gtk-3.0/settings.ini".text = ''
       [Settings]
       gtk-theme-name=${gtkTheme}
@@ -25,5 +24,6 @@ in {
       gtk-font-name="Sans 10"
     '';
   };
-  user.packages = with pkgs; [ dracula-theme paper-icon-theme ];
+
+  os.user.packages = with pkgs; [ dracula-theme paper-icon-theme ];
 }

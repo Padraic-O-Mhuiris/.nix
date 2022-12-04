@@ -25,6 +25,7 @@ with lib.os;
       jq
       steam-run
       dconf
+      zlib
     ];
   };
 }

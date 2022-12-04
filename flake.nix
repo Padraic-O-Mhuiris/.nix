@@ -42,7 +42,7 @@
 
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager
-        agenix.nixosModule
+        #agenix.nixosModule
         #./modules/secrets.nix
       ];
 

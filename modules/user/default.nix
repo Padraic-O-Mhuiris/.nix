@@ -6,17 +6,26 @@ with lib.os;
 {
   options.os.user = {
     name = mkOpt types.str "nixos";
+    hashedPassword = mkOpt types.str "";
+    contactInfo = {
+      email = mkOpt types.str "nixos@nixos";
+      github = mkOpt types.str "nixos";
+    };
+    keys = {
+      ssh = mkOpt types.str "";
+      gpg = mkOpt types.str "";
+    };
     packages = mkOpt (types.listOf types.package) [ ];
     shell = mkOpt (types.enum [ "bash" "zsh" ]) "zsh";
-    hashedPassword = mkOpt types.str "";
+    editor = mkOpt (types.enum [ "vim" "emacs" ]) "vim";
+    browser = mkOpt (types.enum [ "brave" "firefox" ]) "brave";
+    terminal = mkOpt (types.enum [ "alacritty" ]) "alacritty";
     home = {
       file = mkOpt types.attrs { };
       configFile = mkOpt types.attrs { };
       dataFile = mkOpt types.attrs { };
     };
-    # default = {
-    #   editor = mkOpt
-    # }
+    hm = mkOpt types.attrs { };
   };
 
   config = {
@@ -36,11 +45,11 @@ with lib.os;
       #passwordFile = config.user.passwordFile;
       hashedPassword = config.os.user.hashedPassword;
       packages = config.os.user.packages;
-      #openssh.authorizedKeys.keys = config.user.ssh.authorizedKeys;
+      openssh.authorizedKeys.keys = [ config.os.user.keys.ssh ];
     };
 
     home-manager = {
-      users.${config.os.user.name} = {
+      users.${config.os.user.name} = config.os.user.hm // {
         home = {
           file = config.os.user.home.file;
           enableNixpkgsReleaseCheck = false;
@@ -60,6 +69,9 @@ with lib.os;
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_BIN_HOME = "$HOME/.local/bin";
       PATH = [ "${XDG_BIN_HOME}" ];
+      EDITOR = if !config.os.ui.active then "vim" else config.os.user.editor;
+      BROWSER = config.os.user.browser;
+      TERMINAL = config.os.user.terminal;
     };
   };
 }
