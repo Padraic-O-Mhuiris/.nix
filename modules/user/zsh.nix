@@ -62,4 +62,6 @@
     lolcat
     screenfetch
   ];
+
+  os.user.home.configFile."zsh/.zshrc".text = "";
 }
