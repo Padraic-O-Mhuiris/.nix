@@ -21,6 +21,7 @@
     ../modules/system/security/firewall.nix
 
     #../modules/ui/boot.nix
+    ../modules/ui/backlight.nix
     ../modules/ui/cli.nix
     ../modules/ui/fonts.nix
     ../modules/ui/launcher.nix
@@ -36,7 +37,6 @@
     ../modules/user/libreoffice.nix
     ../modules/user/login.nix
     ../modules/user/pass.nix
-    ../modules/user/redshift.nix
     ../modules/user/spotify.nix
     ../modules/user/steam.nix
     ../modules/user/telegram.nix

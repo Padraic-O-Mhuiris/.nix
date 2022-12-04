@@ -155,8 +155,7 @@ in {
     };
   };
 
-  programs.light.enable = true;
-  environment.systemPackages = with pkgs; [ xorg.xdpyinfo xorg.xbacklight ];
+  environment.systemPackages = with pkgs; [ xorg.xdpyinfo ];
 
   environment.variables = {
     GDK_SCALE = "2";

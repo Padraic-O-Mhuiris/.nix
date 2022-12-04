@@ -15,4 +15,6 @@
       night = 3700;
     };
   };
+
+  #programs.light.enable = true;
 }
