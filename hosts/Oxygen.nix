@@ -22,7 +22,6 @@
     ../modules/system/security/admin.nix
     ../modules/system/security/antivirus.nix
     ../modules/system/security/firewall.nix
-    ../modules/system/security/hardened.nix
 
     ../modules/ui/boot.nix
     ../modules/ui/cli.nix
