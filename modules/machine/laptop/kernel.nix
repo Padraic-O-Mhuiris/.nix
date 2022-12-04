@@ -2,7 +2,7 @@
 
 {
   boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.kernelModules = [ "kvm-amd" ];
+    [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.kernelPackages = config.os.machine.kernel;
 }

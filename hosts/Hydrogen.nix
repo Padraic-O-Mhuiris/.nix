@@ -2,13 +2,9 @@
 
 {
   imports = [
-    ../modules/machine/pc/boot.nix
-    ../modules/machine/pc/cpu.nix
-    ../modules/machine/pc/filesystem.nix
-    ../modules/machine/pc/kernel.nix
-    ../modules/machine/pc/monitors.nix
-    ../modules/machine/pc/zfs.nix
-
+    ../modules/machine/laptop/boot.nix
+    ../modules/machine/laptop/cpu.nix
+    ../modules/machine/laptop/filesystem.nix
     ../modules/machine/nvidia.nix
 
     ../modules/system/aliases.nix
@@ -68,7 +64,7 @@
   };
 
   os = {
-    machine.cores = 32;
+    machine.cores = 20;
     user = {
       name = "padraic";
       email = "patrick.morris.310@gmail.com";
