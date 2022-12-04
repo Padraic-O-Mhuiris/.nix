@@ -7,10 +7,8 @@ with lib.os;
   options.os.user = {
     name = mkOpt types.str "nixos";
     hashedPassword = mkOpt types.str "";
-    contactInfo = {
-      email = mkOpt types.str "nixos@nixos";
-      github = mkOpt types.str "nixos";
-    };
+    email = mkOpt types.str "nixos@nixos";
+    github = mkOpt types.str "nixos";
     keys = {
       ssh = mkOpt types.str "";
       gpg = mkOpt types.str "";

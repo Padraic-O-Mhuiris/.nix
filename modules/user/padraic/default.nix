@@ -31,10 +31,8 @@
 
   os.user = {
     name = "padraic";
-    contactInfo = {
-      email = "patrick.morris.310@gmail.com";
-      github = "Padraic-O-Mhuiris";
-    };
+    email = "patrick.morris.310@gmail.com";
+    github = "Padraic-O-Mhuiris";
     keys = {
       gpg = "9A51DBF629888EE75982008D9DCE7055406806F8";
       ssh =

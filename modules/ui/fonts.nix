@@ -30,7 +30,7 @@ with lib.os;
       fontconfig = {
         enable = true;
         defaultFonts = {
-          monospace = [ confg.os.ui.fonts.monospace ];
+          monospace = [ config.os.ui.fonts.monospace ];
           sansSerif = [ config.os.ui.fonts.sansSerif ];
           serif = [ config.os.ui.fonts.serif ];
         };

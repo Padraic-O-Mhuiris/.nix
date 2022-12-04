@@ -9,18 +9,18 @@
     gitAndTools.git-crypt
   ];
 
-  os.home.configFile = {
+  os.user.home.configFile = {
     "git/config".text = ''
       [user]
-        name = ${config.user.github}
-        email = ${config.user.email}
-        signingKey = ${config.user.key.gpg}
+        name = ${config.os.user.name}
+        email = ${config.os.user.email}
+        signingKey = ${config.os.user.keys.gpg}
       [core]
         whitespace = trailing-space
       [init]
         defaultBranch = main
       [github]
-        user = ${config.user.github}
+        user = ${config.os.user.github}
       [rebase]
         autosquash = true
       [push]

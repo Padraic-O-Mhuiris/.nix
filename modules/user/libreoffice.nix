@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  user.packages = with pkgs; [ libreoffice ];
+  os.user.packages = with pkgs; [ libreoffice ];
 }

@@ -3,7 +3,7 @@
 {
   services.emacs = {
     enable = true;
-    package = pkgs.emacsNativeComp;
+    package = pkgs.emacsUnstable;
   };
 
   fonts.fonts = with pkgs; [ pkgs.emacs-all-the-icons-fonts ];
