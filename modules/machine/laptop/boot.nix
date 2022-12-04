@@ -3,7 +3,7 @@
 {
   networking.hostId = "3f90d23a";
   boot = {
-    boot.supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = [ "zfs" ];
     loader = {
       efi = {
         efiSysMountPoint = "/boot/efi";
