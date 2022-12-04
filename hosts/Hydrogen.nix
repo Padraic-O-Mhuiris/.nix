@@ -41,6 +41,7 @@
     ../modules/user/steam.nix
     ../modules/user/telegram.nix
     ../modules/user/video.nix
+    ../modules/user/zsh.nix
 
     ../modules/user/browsers/brave.nix
     ../modules/user/browsers/firefox.nix
