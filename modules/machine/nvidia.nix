@@ -25,7 +25,7 @@ in {
       driSupport32Bit = true;
     };
     nvidia = {
-      #package = config.os.machine.kernel.nvidiaPackages.latest;
+      package = config.os.machine.kernel.nvidiaPackages.latest;
       modesetting.enable = true;
       prime = {
         offload.enable = true;

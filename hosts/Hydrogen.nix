@@ -5,6 +5,7 @@
     ../modules/machine/laptop/boot.nix
     ../modules/machine/laptop/cpu.nix
     ../modules/machine/laptop/filesystem.nix
+    ../modules/machine/laptop/kernel.nix
     ../modules/machine/nvidia.nix
 
     ../modules/system/aliases.nix
@@ -19,7 +20,7 @@
     ../modules/system/security/antivirus.nix
     ../modules/system/security/firewall.nix
 
-    ../modules/ui/boot.nix
+    #../modules/ui/boot.nix
     ../modules/ui/cli.nix
     ../modules/ui/fonts.nix
     ../modules/ui/launcher.nix
