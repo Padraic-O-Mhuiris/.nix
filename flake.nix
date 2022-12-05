@@ -18,7 +18,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager
-    , sops, hardware, emacs, fup, agenix, deploy-rs, fenix, ... }@inputs:
+    , sops, hardware, emacs, fup, deploy-rs, fenix, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
