@@ -12,13 +12,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
-    agenix.url = "github:ryantm/agenix";
     deploy-rs.url = "github:serokell/deploy-rs";
     fenix.url = "github:nix-community/fenix";
+    sops.url = "github:Mic92/sops-nix";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager
-    , hardware, emacs, fup, agenix, deploy-rs, fenix, ... }@inputs:
+    , sops, hardware, emacs, fup, agenix, deploy-rs, fenix, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -42,6 +42,7 @@
 
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager
+        sops.nixosModules.sops
         #agenix.nixosModule
         #./modules/secrets.nix
       ];
