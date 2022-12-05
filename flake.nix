@@ -40,12 +40,8 @@
 
       hostDefaults.system = "x86_64-linux";
 
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
-        sops.nixosModules.sops
-        #agenix.nixosModule
-        #./modules/secrets.nix
-      ];
+      hostDefaults.modules =
+        [ home-manager.nixosModules.home-manager sops.nixosModules.sops ];
 
       sharedOverlays = [
         (self: super: {
@@ -58,22 +54,39 @@
 
       hosts = lib.mkHosts ./hosts;
 
-      # outputsBuilder = channels:
-      #   let pkgs = channels.nixpkgs;
-      #   in {
-      #     devShells = let
-      #       ls = builtins.readDir ./shells;
-      #       files = builtins.filter (name: ls.${name} == "regular")
-      #         (builtins.attrNames ls);
-      #       shellNames = builtins.map
-      #         (filename: builtins.head (builtins.split "\\." filename)) files;
-      #       nameToValue = name:
-      #         import (./shells + "/${name}.nix") { inherit pkgs inputs; };
-      #     in builtins.listToAttrs (builtins.map (name: {
-      #       inherit name;
-      #       value = nameToValue name;
-      #     }) shellNames);
-      #   };
+      outputsBuilder = channels:
+        let pkgs = channels.nixpkgs;
+        in {
+          devShells.default = pkgs.devshell.mkShell {
+            name = "secrets";
+            packages = with pkgs; [ sops age ssh-to-age ];
+            env = [
+              {
+                name = "SOPS_AGE_KEY";
+                eval =
+                  ''$(ssh-to-age -private-key -i "$HOME/.ssh/id_ed25519")'';
+              }
+              {
+                name = "EDITOR";
+                value = "vim";
+              }
+            ];
+          };
+        };
+
+      # = let
+      #   ls = builtins.readDir ./shells;
+      #   files = builtins.filter (name: ls.${name} == "regular")
+      #     (builtins.attrNames ls);
+      #   shellNames = builtins.map
+      #     (filename: builtins.head (builtins.split "\\." filename)) files;
+      #   nameToValue = name:
+      #     import (./shells + "/${name}.nix") { inherit pkgs inputs; };
+      # in builtins.listToAttrs (builtins.map (name: {
+      #   inherit name;
+      #   value = nameToValue name;
+      # }) shellNames);
+      #};
 
       # deploy = {
       #   autoRollback = true;

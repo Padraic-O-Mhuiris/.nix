@@ -6,7 +6,7 @@ with lib.os;
 {
   options.os.user = {
     name = mkOpt types.str "nixos";
-    hashedPassword = mkOpt types.str "";
+    passwordFile = mkOpt (types.nullOr types.str) null;
     email = mkOpt types.str "nixos@nixos";
     github = mkOpt types.str "nixos";
     groups = mkOpt (types.listOf types.str) [ ];
@@ -37,12 +37,9 @@ with lib.os;
       isNormalUser = true;
       home = "/home/${config.os.user.name}";
       shell = if config.os.user.shell == "zsh" then pkgs.zsh else pkgs.bash;
-      #group = config.user.group;
-      #description = config.user.fullName;
       extraGroups = [ "wheel" ] ++ config.os.user.groups;
       uid = 1000;
-      #passwordFile = config.user.passwordFile;
-      hashedPassword = config.os.user.hashedPassword;
+      passwordFile = config.user.passwordFile;
       packages = config.os.user.packages;
       openssh.authorizedKeys.keys = [ config.os.user.keys.ssh ];
     };

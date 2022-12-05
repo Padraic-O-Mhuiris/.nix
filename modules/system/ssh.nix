@@ -12,4 +12,5 @@
       comment = "${config.networking.hostName}";
     }];
   };
+  programs.ssh.startAgent = true;
 }
