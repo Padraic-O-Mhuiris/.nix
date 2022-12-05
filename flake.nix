@@ -51,26 +51,29 @@
         (self: super: {
           nix-direnv = super.nix-direnv.override { enableFlakes = true; };
         })
+        devshell.overlay
         emacs.overlay
         fenix.overlays.default
       ];
 
       hosts = lib.mkHosts ./hosts;
 
-      outputsBuilder = channels:
-        let pkgs = channels.nixpkgs;
-        in {
-          devShell.default = devshell.mkShell { name = "knnkn"; };
-
-          # pkgs.mkShell {
-          #   name = "deploy";
-          #   packages = pkgs;
-          #   buildInputs = [ sops ];
-          #   shellHook = ''
-          #     echo "Hi"
-          #   '';
-          # };
-        };
+      # outputsBuilder = channels:
+      #   let pkgs = channels.nixpkgs;
+      #   in {
+      #     devShells = let
+      #       ls = builtins.readDir ./shells;
+      #       files = builtins.filter (name: ls.${name} == "regular")
+      #         (builtins.attrNames ls);
+      #       shellNames = builtins.map
+      #         (filename: builtins.head (builtins.split "\\." filename)) files;
+      #       nameToValue = name:
+      #         import (./shells + "/${name}.nix") { inherit pkgs inputs; };
+      #     in builtins.listToAttrs (builtins.map (name: {
+      #       inherit name;
+      #       value = nameToValue name;
+      #     }) shellNames);
+      #   };
 
       # deploy = {
       #   autoRollback = true;

@@ -6,8 +6,11 @@
 
     mkHosts = path:
       (listToAttrs (map (hostFile:
-        nameValuePair (removeSuffix ".nix" hostFile) {
-          modules = [ (path + "/${hostFile}") ../modules/os.nix ../secrets ];
+        let
+          hostFileName = (removeSuffix ".nix" hostFile);
+          hostPath = (path + "./hostFileName");
+        in (nameValuePair hostFileName {
+          modules = [ hostPath ../modules/os.nix ../secrets ];
           specialArgs = ({ lib = lib // { inherit (self) os; }; });
-        }) (attrNames (readDir path))));
+        }) (attrNames (readDir path)))));
   })
