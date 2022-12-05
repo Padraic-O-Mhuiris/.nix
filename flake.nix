@@ -15,14 +15,14 @@
     deploy-rs.url = "github:serokell/deploy-rs";
     fenix.url = "github:nix-community/fenix";
     sops.url = "github:Mic92/sops-nix";
+    devshell.url = "github:numtide/devshell";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager
-    , sops, hardware, emacs, fup, deploy-rs, fenix, ... }@inputs:
+    , sops, hardware, emacs, fup, deploy-rs, fenix, devshell, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
-      pkgs = nixpkgs;
       lib = nixpkgs.lib.extend (import ./lib);
 
     in mkFlake {
@@ -57,13 +57,20 @@
 
       hosts = lib.mkHosts ./hosts;
 
-      outputsBuilder = channels: {
-        devShell = channels.nixpkgs.mkShell {
-          name = "deploy";
-          packages = with channels.nixpkgs; [ sops age ];
-        };
+      outputsBuilder = channels:
+        let pkgs = channels.nixpkgs;
+        in {
+          devShell.default = devshell.mkShell { name = "knnkn"; };
 
-      };
+          # pkgs.mkShell {
+          #   name = "deploy";
+          #   packages = pkgs;
+          #   buildInputs = [ sops ];
+          #   shellHook = ''
+          #     echo "Hi"
+          #   '';
+          # };
+        };
 
       # deploy = {
       #   autoRollback = true;
