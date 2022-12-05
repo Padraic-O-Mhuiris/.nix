@@ -55,34 +55,15 @@
         fenix.overlays.default
       ];
 
-      # builds fup host attrset while inheriting custom lib functions
       hosts = lib.mkHosts ./hosts;
 
-      #.modules = [ ];
-      # hosts = pkgs.lib.mkMerge [
-      #   {
-      #     Hydrogen.modules = [
-      #       ./profiles/personal.nix
-      #       ./hosts/Hydrogen
-      #       hardware.nixosModules.dell-xps-15-9500
-      #     ];
-      #   }
-      #   (lib.mkHost {
-      #     name = "Oxygen";
-      #     modules = [ ./hardware/Oxygen ./system/local ./user/padraic ];
-      #   })
-      #   # Oxygen = {
-      #   #   modules = [
-      #   #     ./hardware/Oxygen
-      #   #     ./system/local
-      #   #     ./user/padraic
-      #   #     #./profiles/ethereum
-      #   #     #./profiles/ngrok.nix
-      #   #   ];
-      #   #   specialArgs = { lib = lib // { host = (lib.local.host "Oxygen"); }; };
-      #   # };
-      #   # Nitrogen = { modules = [ ./hosts/Nitrogen ]; };
-      # ];
+      outputsBuilder = channels: {
+        devShell = channels.nixpkgs.mkShell {
+          name = "deploy";
+          packages = with channels.nixpkgs; [ sops age ];
+        };
+
+      };
 
       # deploy = {
       #   autoRollback = true;

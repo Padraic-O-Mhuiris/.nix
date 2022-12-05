@@ -5,6 +5,7 @@
     ../modules/machine/laptop/boot.nix
     ../modules/machine/laptop/cpu.nix
     ../modules/machine/laptop/filesystem.nix
+    ../modules/machine/laptop/hardware.nix
     ../modules/machine/laptop/kernel.nix
     ../modules/machine/nvidia.nix
 
