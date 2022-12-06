@@ -14,6 +14,7 @@
     ../../profiles/system/audio.nix
     ../../profiles/system/bluetooth.nix
     ../../profiles/system/keyboard.nix
+    ../../profiles/system/locale.nix
     ../../profiles/system/networking.nix
     ../../profiles/system/secrets.nix
     ../../profiles/system/ssh.nix
@@ -57,14 +58,6 @@
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/neovim.nix
   ];
-
-  time.timeZone = "Europe/Dublin";
-  i18n.defaultLocale = "en_IE.UTF-8";
-
-  location = {
-    latitude = 53.28;
-    longitude = -9.03;
-  };
 
   os = {
     ui = {
