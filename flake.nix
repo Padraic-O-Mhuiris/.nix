@@ -16,10 +16,12 @@
     fenix.url = "github:nix-community/fenix";
     sops.url = "github:Mic92/sops-nix";
     devshell.url = "github:numtide/devshell";
+    foundry.url = "github:shazow/foundry.nix";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager
-    , sops, hardware, emacs, fup, deploy-rs, fenix, devshell, ... }@inputs:
+    , sops, hardware, emacs, fup, deploy-rs, fenix, devshell, foundry, ...
+    }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -50,6 +52,7 @@
         devshell.overlay
         emacs.overlay
         fenix.overlays.default
+        foundry.overlay
       ];
 
       hosts = lib.mkHosts ./hosts { inherit inputs; };
