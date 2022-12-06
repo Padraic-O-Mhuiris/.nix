@@ -14,6 +14,7 @@
     ../../profiles/system/aliases.nix
     ../../profiles/system/audio.nix
     ../../profiles/system/bluetooth.nix
+    ../../profiles/system/ethereum.nix
     ../../profiles/system/keyboard.nix
     ../../profiles/system/locale.nix
     ../../profiles/system/networking.nix
@@ -22,7 +23,7 @@
     ../../profiles/system/virtualisation.nix
 
     ../../profiles/system/security/admin.nix
-    ../../profiles/system/security/antivirus.nix
+    #../../profiles/system/security/antivirus.nix
     ../../profiles/system/security/firewall.nix
 
     #../../profiles/ui/boot.nix
