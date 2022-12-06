@@ -39,7 +39,7 @@ with lib.os;
       shell = if config.os.user.shell == "zsh" then pkgs.zsh else pkgs.bash;
       extraGroups = [ "wheel" ] ++ config.os.user.groups;
       uid = 1000;
-      passwordFile = config.user.passwordFile;
+      passwordFile = config.os.user.passwordFile;
       packages = config.os.user.packages;
       openssh.authorizedKeys.keys = [ config.os.user.keys.ssh ];
     };

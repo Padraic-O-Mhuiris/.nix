@@ -52,7 +52,7 @@
         fenix.overlays.default
       ];
 
-      hosts = lib.mkHosts ./hosts;
+      hosts = lib.mkHosts ./hosts { inherit inputs; };
 
       outputsBuilder = channels:
         let pkgs = channels.nixpkgs;

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./machine ./user ./system ./ui ];
+  imports = [ ./machine.nix ./user.nix ./system.nix ./ui.nix ];
 
   nix = {
     extraOptions = "experimental-features = nix-command flakes";

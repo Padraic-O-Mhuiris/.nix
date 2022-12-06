@@ -2,58 +2,59 @@
 
 {
   imports = [
-    ../../modules/machine/laptop/boot.nix
-    ../../modules/machine/laptop/cpu.nix
-    ../../modules/machine/laptop/filesystem.nix
-    #../../modules/machine/laptop/hardware.nix
-    ../../modules/machine/laptop/kernel.nix
-    ../../modules/machine/nvidia.nix
+    ../../profiles/machine/laptop/boot.nix
+    ../../profiles/machine/laptop/cpu.nix
+    ../../profiles/machine/laptop/filesystem.nix
+    ../../profiles/machine/laptop/hardware.nix
+    ../../profiles/machine/laptop/kernel.nix
 
-    ../../modules/system/aliases.nix
-    ../../modules/system/audio.nix
-    ../../modules/system/bluetooth.nix
-    ../../modules/system/keyboard.nix
-    ../../modules/system/networking.nix
-    ../../modules/system/ssh.nix
-    ../../modules/system/virtualisation.nix
+    ../../profiles/machine/nvidia.nix
 
-    ../../modules/system/security/admin.nix
-    ../../modules/system/security/antivirus.nix
-    ../../modules/system/security/firewall.nix
+    ../../profiles/system/aliases.nix
+    ../../profiles/system/audio.nix
+    ../../profiles/system/bluetooth.nix
+    ../../profiles/system/keyboard.nix
+    ../../profiles/system/networking.nix
+    ../../profiles/system/ssh.nix
+    ../../profiles/system/virtualisation.nix
 
-    #../../modules/ui/boot.nix
-    ../../modules/ui/backlight.nix
-    ../../modules/ui/cli.nix
-    ../../modules/ui/fonts.nix
-    ../../modules/ui/launcher.nix
-    ../../modules/ui/login.nix
-    ../../modules/ui/wm.nix
+    ../../profiles/system/security/admin.nix
+    ../../profiles/system/security/antivirus.nix
+    ../../profiles/system/security/firewall.nix
 
-    ../../modules/user/bittorrent.nix
-    ../../modules/user/bitwarden.nix
-    ../../modules/user/fileManager.nix
-    ../../modules/user/flameshot.nix
-    ../../modules/user/git.nix
-    ../../modules/user/gpg.nix
-    ../../modules/user/libreoffice.nix
-    ../../modules/user/login.nix
-    ../../modules/user/pass.nix
-    ../../modules/user/spotify.nix
-    ../../modules/user/steam.nix
-    ../../modules/user/telegram.nix
-    ../../modules/user/video.nix
-    ../../modules/user/zsh.nix
+    #../../profiles/ui/boot.nix
+    ../../profiles/ui/backlight.nix
+    ../../profiles/ui/cli.nix
+    ../../profiles/ui/fonts.nix
+    ../../profiles/ui/launcher.nix
+    ../../profiles/ui/login.nix
+    ../../profiles/ui/wm.nix
 
-    ../../modules/user/browsers/brave.nix
-    ../../modules/user/browsers/firefox.nix
+    ../../profiles/user/bittorrent.nix
+    ../../profiles/user/bitwarden.nix
+    ../../profiles/user/fileManager.nix
+    ../../profiles/user/flameshot.nix
+    ../../profiles/user/git.nix
+    ../../profiles/user/gpg.nix
+    ../../profiles/user/libreoffice.nix
+    ../../profiles/user/login.nix
+    ../../profiles/user/pass.nix
+    ../../profiles/user/spotify.nix
+    ../../profiles/user/steam.nix
+    ../../profiles/user/telegram.nix
+    ../../profiles/user/video.nix
+    ../../profiles/user/zsh.nix
 
-    ../../modules/user/dev/javascript.nix
-    ../../modules/user/dev/python.nix
-    ../../modules/user/dev/rust.nix
-    ../../modules/user/dev/bash.nix
+    ../../profiles/user/browsers/brave.nix
+    ../../profiles/user/browsers/firefox.nix
 
-    ../../modules/user/editors/emacs.nix
-    ../../modules/user/editors/neovim.nix
+    ../../profiles/user/dev/javascript.nix
+    ../../profiles/user/dev/python.nix
+    ../../profiles/user/dev/rust.nix
+    ../../profiles/user/dev/bash.nix
+
+    ../../profiles/user/editors/emacs.nix
+    ../../profiles/user/editors/neovim.nix
 
     ./secrets
   ];
