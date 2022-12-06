@@ -15,6 +15,7 @@
     ../../profiles/system/bluetooth.nix
     ../../profiles/system/keyboard.nix
     ../../profiles/system/networking.nix
+    ../../profiles/system/secrets.nix
     ../../profiles/system/ssh.nix
     ../../profiles/system/virtualisation.nix
 

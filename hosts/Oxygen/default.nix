@@ -16,6 +16,7 @@
     ../../profiles/system/bluetooth.nix
     ../../profiles/system/keyboard.nix
     ../../profiles/system/networking.nix
+    ../../profiles/system/secrets.nix
     ../../profiles/system/ssh.nix
     ../../profiles/system/virtualisation.nix
 
@@ -23,7 +24,8 @@
     ../../profiles/system/security/antivirus.nix
     ../../profiles/system/security/firewall.nix
 
-    ../../profiles/ui/boot.nix
+    #../../profiles/ui/boot.nix
+    ../../profiles/ui/backlight.nix
     ../../profiles/ui/cli.nix
     ../../profiles/ui/fonts.nix
     ../../profiles/ui/launcher.nix
@@ -39,11 +41,11 @@
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
     ../../profiles/user/pass.nix
-    ../../profiles/user/redshift.nix
     ../../profiles/user/spotify.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix
     ../../profiles/user/video.nix
+    ../../profiles/user/zsh.nix
 
     ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix
@@ -56,6 +58,7 @@
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/neovim.nix
 
+    ./secrets
   ];
 
   time.timeZone = "Europe/Dublin";
@@ -77,8 +80,7 @@
         ssh =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7";
       };
-      hashedPassword =
-        "$6$WKUDwwy/o3eiT$6UlydAIEdlQR9giydcDDKxiyI7z7RZZThEAOyk192AmmQC5Mqo0TJcglb85IJH69/UOWKNY322l2SzMntZ0Ck1";
+      passwordFile = config.sops.secrets.user.path;
       editor = "emacs";
     };
   };
