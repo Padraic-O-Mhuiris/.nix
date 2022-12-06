@@ -9,7 +9,7 @@
     ../../profiles/machine/pc/monitors.nix
     ../../profiles/machine/pc/zfs.nix
 
-    ../../profiles/machine/nvidia.nix
+    #../../profiles/machine/nvidia.nix
 
     ../../profiles/system/aliases.nix
     ../../profiles/system/audio.nix
@@ -61,13 +61,7 @@
     ../../profiles/user/editors/neovim.nix
   ];
 
-  time.timeZone = "Europe/Dublin";
-  i18n.defaultLocale = "en_IE.UTF-8";
-
-  location = {
-    latitude = 53.28;
-    longitude = -9.03;
-  };
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   os = {
     machine.cores = 32;

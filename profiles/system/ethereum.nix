@@ -10,12 +10,16 @@ in {
 
   sops.secrets = {
     jwt = {
-      mode = "0440";
+      mode = "0444";
+      owner = "prysmbeacon";
+      group = "prysmbeacon";
+      path = "/var/lib/ethereum/jwt.hex";
       restartUnits = [ "prysmbeacon.service" "prysmvalidator.service" ];
     };
     walletPassword = {
       restartUnits = [ "prysmvalidator.service" ];
-      mode = "0440";
+      owner = "prysmvalidator";
+      group = "prysmvalidator";
     };
   };
 
