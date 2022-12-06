@@ -54,6 +54,7 @@
     ../../profiles/user/dev/python.nix
     ../../profiles/user/dev/rust.nix
     ../../profiles/user/dev/bash.nix
+    ../../profiles/user/dev/solidity.nix
 
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/neovim.nix
