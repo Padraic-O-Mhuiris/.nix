@@ -35,7 +35,7 @@ in {
       };
       authrpc = {
         enable = true;
-        jwtsecret = config.age.secrets.jwt.path;
+        jwtsecret = config.sops.secrets.jwt.path;
       };
       metrics.enable = false;
       syncmode = "full";
@@ -70,7 +70,7 @@ in {
       Restart = "always";
       RestartSec = "5";
       ExecStart =
-        "${beaconChainPkg}/bin/prysmbeacon --datadir=${beaconChainDir} --execution-endpoint=http://localhost:8551 --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256 --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E --jwt-secret=${config.age.secrets.jwt.path}";
+        "${beaconChainPkg}/bin/prysmbeacon --datadir=${beaconChainDir} --execution-endpoint=http://localhost:8551 --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256 --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E --jwt-secret=${config.sops.secrets.jwt.path}";
       SupplementaryGroups = [ config.users.groups.keys.name ];
     };
   };
@@ -102,7 +102,7 @@ in {
       Restart = "always";
       RestartSec = "5";
       ExecStart =
-        "${validatorPkg}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${config.age.secrets.walletPassword.path} --accept-terms-of-use --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
+        "${validatorPkg}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${config.sops.secrets.walletPassword.path} --accept-terms-of-use --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
       SupplementaryGroups = [ config.users.groups.keys.name ];
     };
   };
