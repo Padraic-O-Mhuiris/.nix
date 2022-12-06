@@ -57,8 +57,6 @@
 
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/neovim.nix
-
-    ./secrets
   ];
 
   time.timeZone = "Europe/Dublin";
