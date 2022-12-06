@@ -14,5 +14,6 @@
     sqlite
     nixfmt
     proselint
+    pandoc
   ];
 }

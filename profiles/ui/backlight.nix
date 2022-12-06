@@ -9,20 +9,23 @@ with lib.os;
     night = mkOpt types.number 0.5;
   };
 
-  services.geoclue2.enable = true;
-  services.geoclue2.appConfig.redshift.isAllowed = true;
+  config = {
 
-  services.redshift = {
-    enable = true;
-    brightness = {
-      day = builtins.toString config.os.ui.backlight.day;
-      night = builtins.toString config.os.ui.backlight.night;
+    services.geoclue2.enable = true;
+    services.geoclue2.appConfig.redshift.isAllowed = true;
+
+    services.redshift = {
+      enable = true;
+      brightness = {
+        day = builtins.toString config.os.ui.backlight.day;
+        night = builtins.toString config.os.ui.backlight.night;
+      };
+      temperature = {
+        day = config.os.ui.backlight.day * 5000;
+        night = config.os.ui.backlight.night * 5000;
+      };
     };
-    temperature = {
-      day = config.os.ui.backlight.day * 5000;
-      night = config.os.ui.backlight.night * 5000;
-    };
+
   };
-
   #programs.light.enable = true;
 }
