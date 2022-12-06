@@ -138,9 +138,43 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "locked": {
+        "lastModified": 1644229661,
+        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "foundry": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1670317997,
+        "narHash": "sha256-OTFXqaTBoGe4KO5tdzsNRBAEv9PjsEtwnP0b6KrE+ho=",
+        "owner": "shazow",
+        "repo": "foundry.nix",
+        "rev": "2f01a62b357c1e5d2da49e19fb32cc439aed1f0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shazow",
+        "repo": "foundry.nix",
+        "type": "github"
+      }
+    },
     "fup": {
       "inputs": {
-        "flake-utils": "flake-utils_3"
+        "flake-utils": "flake-utils_4"
       },
       "locked": {
         "lastModified": 1657226504,
@@ -305,6 +339,20 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1666753130,
+        "narHash": "sha256-Wff1dGPFSneXJLI2c0kkdWTgxnQ416KE6X4KnFkgPYQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f540aeda6f677354f1e7144ab04352f61aaa0118",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1670104339,
         "narHash": "sha256-212aAMSy5uxzrUbHmvUm3oHh8c02wXJ7lyNjDa5NSAM=",
         "owner": "NixOS",
@@ -319,7 +367,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1670086663,
         "narHash": "sha256-hT8C8AQB74tdoCPwz4nlJypLMD7GI2F5q+vn+VE/qQk=",
@@ -341,10 +389,11 @@
         "devshell": "devshell",
         "emacs": "emacs",
         "fenix": "fenix",
+        "foundry": "foundry",
         "fup": "fup",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops": "sops"
@@ -369,7 +418,7 @@
     },
     "sops": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {

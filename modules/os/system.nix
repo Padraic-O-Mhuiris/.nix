@@ -30,6 +30,7 @@ with lib.os;
       iw
       jq
       lm_sensors
+      nc
       nix-index
       pciutils
       patchelf
