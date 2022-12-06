@@ -26,6 +26,7 @@ with lib.os;
       steam-run
       dconf
       zlib
+      dmidecode
     ];
   };
 }
