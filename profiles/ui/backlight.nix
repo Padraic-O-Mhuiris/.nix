@@ -1,18 +1,26 @@
 { config, lib, pkgs, ... }:
 
+with lib;
+with lib.os;
+
 {
+  options.os.ui.backlight = {
+    day = mkOpt types.number 1;
+    night = mkOpt types.number 0.5;
+  };
+
   services.geoclue2.enable = true;
   services.geoclue2.appConfig.redshift.isAllowed = true;
 
   services.redshift = {
     enable = true;
     brightness = {
-      day = "1";
-      night = "0.5";
+      day = builtins.toString config.os.ui.backlight.day;
+      night = builtins.toString config.os.ui.backlight.night;
     };
     temperature = {
-      day = 5500;
-      night = 3700;
+      day = config.os.ui.backlight.day * 5000;
+      night = config.os.ui.backlight.night * 5000;
     };
   };
 

@@ -65,6 +65,11 @@
 
   os = {
     machine.cores = 32;
+    ui = {
+      cli.font.size = 13;
+      backlight.day = 1;
+      backlight.night = 1;
+    };
     user = {
       name = "padraic";
       email = "patrick.morris.310@gmail.com";
