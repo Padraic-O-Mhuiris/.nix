@@ -24,7 +24,7 @@
 
     ../../profiles/system/security/admin.nix
     #../../profiles/system/security/antivirus.nix
-    ../../profiles/system/security/firewall.nix
+    #../../profiles/system/security/firewall.nix
 
     #../../profiles/ui/boot.nix
     ../../profiles/ui/backlight.nix
@@ -67,9 +67,9 @@
   os = {
     machine.cores = 32;
     ui = {
-      cli.font.size = 13;
-      backlight.day = 1;
-      backlight.night = 1;
+      cli.font.size = 12;
+      backlight.day = 1.0;
+      backlight.night = 0.7;
     };
     user = {
       name = "padraic";

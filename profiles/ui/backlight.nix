@@ -5,8 +5,9 @@ with lib.os;
 
 {
   options.os.ui.backlight = {
-    day = mkOpt types.number 1;
-    night = mkOpt types.number 0.5;
+    day = mkOpt types.float 1.0;
+    night = mkOpt types.float 0.5;
+
   };
 
   config = {
@@ -21,8 +22,8 @@ with lib.os;
         night = builtins.toString config.os.ui.backlight.night;
       };
       temperature = {
-        day = config.os.ui.backlight.day * 5000;
-        night = config.os.ui.backlight.night * 5000;
+        day = 5000;
+        night = 3000;
       };
     };
 
