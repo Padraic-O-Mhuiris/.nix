@@ -12,10 +12,11 @@ with lib.os;
       bc
       bind
       binutils
-      coreutils
-      clang
       cached-nix-shell
       cachix
+      coreutils
+      clang
+      curl
       dmidecode
       exa
       gcc
