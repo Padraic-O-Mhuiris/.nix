@@ -62,7 +62,7 @@
 
   os = {
     ui = {
-      dpi = 192;
+      dpi = 180;
       cli.font.size = 7;
     };
     machine.cores = 20;

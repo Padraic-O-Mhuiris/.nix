@@ -158,7 +158,7 @@ in {
   environment.systemPackages = with pkgs; [ xorg.xdpyinfo ];
 
   environment.variables = {
-    GDK_SCALE = "1";
+    GDK_SCALE = "2";
     GDK_DPI_SCALE = "0.5";
   };
 
