@@ -16,5 +16,8 @@
     proselint
     pandoc
     emacsPackages.pdf-tools
+    fava
+    beancount
+    beancount-language-server
   ];
 }
