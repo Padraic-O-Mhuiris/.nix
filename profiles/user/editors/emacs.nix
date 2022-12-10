@@ -15,5 +15,6 @@
     nixfmt
     proselint
     pandoc
+    emacsPackages.pdf-tools
   ];
 }
