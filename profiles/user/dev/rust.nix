@@ -9,6 +9,7 @@
       "rustc"
       "rustfmt"
     ])
+    hyperfine
     rust-analyzer-nightly
   ];
 }

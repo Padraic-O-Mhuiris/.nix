@@ -4,10 +4,13 @@ let
   pythonPkgs = pkgs.python310.withPackages
     (p: with p; [ black poetry pip cython pytest nose pyflakes isort ]);
 in {
-  os.user.packages = [
+  os.user.packages = with pkgs; [
     pythonPkgs
-    pkgs.python-language-server
-    pkgs.nodePackages.pyright
-    pkgs.pipenv
+    python-language-server
+    nodePackages.pyright
+    pipenv
+    fava
+    beancount
+    beancount-language-server
   ];
 }
