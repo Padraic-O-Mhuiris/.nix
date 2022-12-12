@@ -10,7 +10,5 @@ in {
     nodePackages.pyright
     pipenv
     fava
-    beancount
-    beancount-language-server
   ];
 }
