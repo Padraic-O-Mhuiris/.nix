@@ -3,7 +3,7 @@
 {
 
   os.user.packages = with pkgs.unstable; [
-    nodejs-14_x
+    nodejs
     nodePackages.yalc
     nodePackages.typescript-language-server
     nodePackages.javascript-typescript-langserver
