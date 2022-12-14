@@ -3,6 +3,8 @@
 {
   services.openssh = {
     enable = true;
+    openFirewall = !config.services.tailscale.enable;
+    useDns = true;
     passwordAuthentication = false;
     permitRootLogin = "no";
     hostKeys = [{
