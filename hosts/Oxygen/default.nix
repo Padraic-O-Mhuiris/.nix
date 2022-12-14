@@ -24,7 +24,6 @@
     ../../profiles/system/virtualisation.nix
 
     ../../profiles/system/security/admin.nix
-
     #../../profiles/system/security/antivirus.nix
     ../../profiles/system/security/firewall.nix
 
@@ -48,9 +47,9 @@
     ../../profiles/user/spotify.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix
+    ../../profiles/user/tmux.nix
     ../../profiles/user/video.nix
     ../../profiles/user/zsh.nix
-    ../../profiles/user/tmux.nix
 
     ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix

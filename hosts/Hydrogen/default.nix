@@ -18,6 +18,7 @@
     ../../profiles/system/networking.nix
     ../../profiles/system/secrets.nix
     ../../profiles/system/ssh.nix
+    ../../profiles/system/tailscale.nix
     ../../profiles/system/virtualisation.nix
 
     ../../profiles/system/security/admin.nix
@@ -44,6 +45,7 @@
     ../../profiles/user/spotify.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix
+    ../../profiles/user/tmux.nix
     ../../profiles/user/video.nix
     ../../profiles/user/zsh.nix
 
