@@ -20,11 +20,13 @@
     ../../profiles/system/networking.nix
     ../../profiles/system/secrets.nix
     ../../profiles/system/ssh.nix
+    ../../profiles/system/tailscale.nix
     ../../profiles/system/virtualisation.nix
 
     ../../profiles/system/security/admin.nix
+
     #../../profiles/system/security/antivirus.nix
-    #../../profiles/system/security/firewall.nix
+    ../../profiles/system/security/firewall.nix
 
     #../../profiles/ui/boot.nix
     ../../profiles/ui/backlight.nix
