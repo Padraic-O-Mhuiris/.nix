@@ -5,17 +5,17 @@ keys:
   - &nixos age17upq8al832e9vmk7m2ymwc8hhxdjmj5twzavekzczgg56h0a8eeq2wauq4
   - &Nitrogen age1qdr25peulwhzwvy6x73aytlfgmkxdya84at7v4q5ka6s6ecv9ygs28vzzh
 creation_rules:
-  - path_regex: hosts/Hydrogen.yaml$
+  - path_regex: hosts/Hydrogen/secrets.yaml$
     key_groups:
     - age:
       - *padraic
       - *Hydrogen
-  - path_regex: hosts/Oxygen.yaml$
+  - path_regex: hosts/Oxygen/secrets.yaml$
     key_groups:
     - age:
       - *padraic
       - *Oxygen
-  - path_regex: hosts/Nitrogen.yaml$
+  - path_regex: hosts/Nitrogen/secrets.yaml$
     key_groups:
     - age:
       - *nixos
