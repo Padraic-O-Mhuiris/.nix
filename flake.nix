@@ -66,7 +66,7 @@
             hostname = "nitrogen.tail69d72.ts.net";
             user = "nixos";
             sshUser = "nixos";
-            tempPath = "/home/nixos/.deploy";
+            sudo = "sudo";
             profiles = {
               system.path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.Nitrogen;
