@@ -10,7 +10,7 @@
     #../../profiles/system/networking.nix
     ../../profiles/system/secrets.nix
     ../../profiles/system/ssh.nix
-    #../../profiles/system/tailscale.nix
+    ../../profiles/system/tailscale.nix
 
     ../../profiles/system/security/admin.nix
     #../../profiles/system/security/antivirus.nix
