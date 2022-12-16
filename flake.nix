@@ -57,6 +57,26 @@
 
       hosts = lib.mkHosts ./hosts { inherit inputs; };
 
+      deploy = {
+        autoRollback = true;
+        remoteBuild = true;
+        fastConnection = false;
+        nodes = {
+          Nitrogen = {
+            hostname = "nitrogen.tail69d72.ts.net";
+            user = "nixos";
+            tempPath = "/home/nixos/.deploy-rs";
+            profiles = {
+              system = {
+                path = deploy-rs.lib.x86_64-linux.activate.nixos
+                  self.nixosConfigurations.Nitrogen;
+              };
+
+            };
+          };
+        };
+      };
+
       outputsBuilder = channels:
         let pkgs = channels.nixpkgs;
         in {
@@ -93,43 +113,8 @@
           };
         };
 
-      # = let
-      #   ls = builtins.readDir ./shells;
-      #   files = builtins.filter (name: ls.${name} == "regular")
-      #     (builtins.attrNames ls);
-      #   shellNames = builtins.map
-      #     (filename: builtins.head (builtins.split "\\." filename)) files;
-      #   nameToValue = name:
-      #     import (./shells + "/${name}.nix") { inherit pkgs inputs; };
-      # in builtins.listToAttrs (builtins.map (name: {
-      #   inherit name;
-      #   value = nameToValue name;
-      # }) shellNames);
-      #};
-
-      # deploy = {
-      #   autoRollback = true;
-      #   tempPath = "/home/padraic/.deploy-rs";
-      #   remoteBuild = true;
-      #   fastConnection = false;
-      #   user = "root";
-      #   sshUser = "padraic";
-      #   nodes = {
-      #     Nitrogen = {
-      #       hostname = "ec2-3-250-174-155.eu-west-1.compute.amazonaws.com";
-      #       profiles = {
-      #         system = {
-      #           path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #             self.nixosConfigurations.Nitrogen;
-      #         };
-
-      #       };
-      #     };
-      #   };
-      # };
-
-      # checks = builtins.mapAttrs
-      #   (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       # outputsBuilder = (channels: {
       #   devShell = channels.nixpkgs.mkShell {
