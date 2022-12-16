@@ -17,7 +17,9 @@
     ../../profiles/system/locale.nix
     ../../profiles/system/networking.nix
     ../../profiles/system/secrets.nix
+
     ../../profiles/system/ssh.nix
+
     ../../profiles/system/tailscale.nix
     ../../profiles/system/virtualisation.nix
 

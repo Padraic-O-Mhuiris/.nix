@@ -60,20 +60,36 @@
       outputsBuilder = channels:
         let pkgs = channels.nixpkgs;
         in {
-          devShells.default = pkgs.devshell.mkShell {
-            name = "secrets";
-            packages = with pkgs; [ sops age ssh-to-age ];
-            env = [
-              {
-                name = "SOPS_AGE_KEY";
-                eval =
-                  ''$(ssh-to-age -private-key -i "$HOME/.ssh/id_ed25519")'';
-              }
-              {
-                name = "EDITOR";
-                value = "vim";
-              }
-            ];
+          devShells = {
+            default = pkgs.devshell.mkShell {
+              name = "secrets";
+              packages = with pkgs; [ sops age ssh-to-age ];
+              env = [
+                {
+                  name = "SOPS_AGE_KEY";
+                  eval =
+                    ''$(ssh-to-age -private-key -i "$HOME/.ssh/id_ed25519")'';
+                }
+                {
+                  name = "EDITOR";
+                  value = "vim";
+                }
+              ];
+            };
+            nixos = pkgs.devshell.mkShell {
+              name = "secrets";
+              packages = with pkgs; [ sops age ssh-to-age ];
+              env = [
+                {
+                  name = "SOPS_AGE_KEY";
+                  eval = "$(pass show machines/user/nixos/age)";
+                }
+                {
+                  name = "EDITOR";
+                  value = "vim";
+                }
+              ];
+            };
           };
         };
 
