@@ -65,6 +65,7 @@
           Nitrogen = {
             hostname = "nitrogen.tail69d72.ts.net";
             user = "nixos";
+            sshUser = "nixos";
             tempPath = "/home/nixos/.deploy-rs";
             profiles = {
               system = {
