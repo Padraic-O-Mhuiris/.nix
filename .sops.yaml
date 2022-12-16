@@ -19,4 +19,4 @@ creation_rules:
     key_groups:
     - age:
       - *nixos
-      - *Oxygen
+      - *Nitrogen
