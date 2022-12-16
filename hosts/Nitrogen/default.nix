@@ -21,7 +21,6 @@
     ../../profiles/user/pass.nix
     ../../profiles/user/tmux.nix
     ../../profiles/user/zsh.nix
-
   ];
 
   os = {
