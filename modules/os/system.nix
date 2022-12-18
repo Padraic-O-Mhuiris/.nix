@@ -33,6 +33,7 @@ with lib.os;
       lm_sensors
       netcat
       nix-index
+      openssl
       pciutils
       patchelf
       stdenv.cc.cc.lib

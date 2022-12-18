@@ -23,6 +23,20 @@
     ../../profiles/user/zsh.nix
   ];
 
+  # services.geth = {
+  #   mainnet = {
+  #     enable = true;
+  #     http.enable = true;
+  #     http.apis = [ "personal" "eth" "net" "web3" "txpool" ];
+  #     authrpc.enable = true;
+  #     authrpc.jwtsecret = config.sops.secrets.jwt.path;
+
+  #     metrics.enable = false;
+  #     syncmode = "full";
+  #     package = pkgs.unstable.go-ethereum.geth;
+  #   };
+  # };
+
   os = {
     machine.cores = 4;
     user = {
