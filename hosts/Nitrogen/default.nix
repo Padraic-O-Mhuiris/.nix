@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let jwtPath = "/tmp/jwtsecret";
-in {
+{
   imports = [
     ../../profiles/machine/aws.nix
 
@@ -24,14 +23,23 @@ in {
     ../../profiles/user/zsh.nix
   ];
 
-  sops.secrets.jwt.path = jwtPath;
+  sops.secrets.jwt = { };
+
+  systemd.services.lighthouse-beacon = {
+    serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
+  };
+
+  systemd.services.geth-mainnet = {
+    serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
+  };
+
   services.geth = {
     mainnet = {
       enable = true;
       http.enable = true;
       http.apis = [ "personal" "eth" "net" "web3" "txpool" ];
       authrpc.enable = true;
-      authrpc.jwtsecret = jwtPath;
+      authrpc.jwtsecret = config.sops.secrets.path;
       metrics.enable = true;
       package = pkgs.master.go-ethereum.geth;
     };
@@ -40,7 +48,7 @@ in {
   services.lighthouse = {
     beacon = {
       enable = true;
-      execution = { inherit jwtPath; };
+      execution.jwtPath = config.services.geth.mainnet.authrpc.jwtsecret;
       http.enable = true;
       metrics.enable = true;
       openFirewall = true;
