@@ -23,7 +23,7 @@
     ../../profiles/user/zsh.nix
   ];
 
-  sops.secrets.jwt = { };
+  sops.secrets.jwt.owner = "geth-mainnet";
   services.geth = {
     mainnet = {
       enable = true;
