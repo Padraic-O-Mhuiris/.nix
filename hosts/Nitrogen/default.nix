@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
-{
+let jwtPath = "/tmp/jwtsecret";
+in {
   imports = [
     ../../profiles/machine/aws.nix
 
@@ -23,16 +24,31 @@
     ../../profiles/user/zsh.nix
   ];
 
-  sops.secrets.jwt.owner = "geth-mainnet";
+  sops.secrets.jwt.path = jwtPath;
   services.geth = {
     mainnet = {
       enable = true;
       http.enable = true;
       http.apis = [ "personal" "eth" "net" "web3" "txpool" ];
       authrpc.enable = true;
-      authrpc.jwtsecret = config.sops.secrets.jwt.path;
+      authrpc.jwtsecret = jwtPath;
       metrics.enable = true;
       package = pkgs.master.go-ethereum.geth;
+    };
+  };
+
+  services.lighthouse = {
+    beacon = {
+      enable = true;
+      execution = { inherit jwtPath; };
+      http.enable = true;
+      metrics.enable = true;
+      openFirewall = true;
+      extraArgs = "--checkpoint-sync-url https://mainnet.checkpoint.sigp.io";
+    };
+    validator = {
+      enable = true;
+      metrics.enable = true;
     };
   };
 
