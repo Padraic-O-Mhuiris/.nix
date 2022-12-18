@@ -64,9 +64,8 @@
         nodes = {
           Nitrogen = {
             hostname = "nitrogen.tail69d72.ts.net";
-            user = "nixos";
-            sshUser = "nixos";
-            sudo = "sudo";
+            user = "root";
+            sshUser = "root";
             profiles = {
               system.path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.Nitrogen;
