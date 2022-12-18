@@ -7,7 +7,7 @@
     useDns = true;
     passwordAuthentication = false;
     permitRootLogin =
-      if config.os.system.isDesktop then "no" else "probit-password";
+      if config.os.system.isDesktop then "no" else "prohibit-password";
     hostKeys = [{
       type = "ed25519";
       path = "/etc/ssh/ssh_host_ed25519_key";
