@@ -9,4 +9,6 @@ with lib.os;
     loginMgr = mkOpt (types.nullOr types.str) null;
     dpi = mkOpt types.int 110;
   };
+
+  environment.systemPackages = with pkgs; [ feh ];
 }
