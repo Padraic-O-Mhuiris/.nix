@@ -23,7 +23,7 @@
     ../../profiles/user/zsh.nix
   ];
 
-  sops.secrets.jwt = { };
+  sops.secrets.jwt.mode = "0444";
 
   systemd.services.lighthouse-beacon = {
     serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
@@ -39,7 +39,7 @@
       http.enable = true;
       http.apis = [ "personal" "eth" "net" "web3" "txpool" ];
       authrpc.enable = true;
-      authrpc.jwtsecret = config.sops.secrets.path;
+      authrpc.jwtsecret = config.sops.secrets.jwt.path;
       metrics.enable = true;
       package = pkgs.master.go-ethereum.geth;
     };
