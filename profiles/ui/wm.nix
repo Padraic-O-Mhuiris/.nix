@@ -5,6 +5,15 @@ let
   # spotifyDimensions =
   #   if config.networking.hostName == "Oxygen" then "1600 900" else "2500 1600";
 
+  i3ScratchpadConfig = ''
+    for_window [instance="TmuxTerm"] floating enable
+    for_window [instance="TmuxTerm"] resize set 1600 900
+    for_window [instance="TmuxTerm"] move scratchpad
+    for_window [instance="TmuxTerm"] border pixel 5
+    bindsym $mod+u [instance="TmuxTerm"] scratchpad show; [instance="TmuxTerm"] move position center
+    exec --no-startup-id ${pkgs.alacritty}/bin/alacritty --class TmuxTerm -e tmux
+  '';
+
   i3Config = pkgs.writeTextFile {
     name = "i3Config";
     executable = true;
@@ -27,6 +36,8 @@ let
       bindsym $mod+Return exec i3-sensible-terminal
 
       bindsym $mod+q kill
+
+      ${i3ScratchpadConfig}
 
       bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
 
