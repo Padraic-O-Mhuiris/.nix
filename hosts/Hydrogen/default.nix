@@ -73,7 +73,7 @@
     };
     machine = {
       cores = 20;
-      kernel = pkgs.master.linuxPackages_latest;
+      kernel = pkgs.linuxPackages_latest;
     };
     user = {
       name = "padraic";

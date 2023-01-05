@@ -33,7 +33,11 @@ let
 
       floating_modifier $mod
 
-      bindsym $mod+Return exec i3-sensible-terminal
+      bindsym $mod+Return exec $TERMINAL
+
+      bindsym $mod+x exec $TERMINAL --class floating_term
+      bindsym $mod+x scratchpad show
+      for_window [class="floating_term"] floating toggle
 
       bindsym $mod+q kill
 
