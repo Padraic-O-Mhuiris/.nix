@@ -29,7 +29,7 @@ let
     class = i3SpNavClass;
     bind = "$mod+n";
     cmd =
-      "${pkgs.alacritty}/bin/alacritty --class ${i3SpNavClass} -e ${pkgs.nnn}/bin/nnn";
+      "${pkgs.alacritty}/bin/alacritty --class ${i3SpNavClass} -e ${pkgs.ranger}/bin/ranger";
   };
 
   i3SpMusicClass = "Spotify";
