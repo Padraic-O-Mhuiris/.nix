@@ -46,7 +46,6 @@
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
     ../../profiles/user/pass.nix
-    ../../profiles/user/spotify.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix
     ../../profiles/user/tmux.nix

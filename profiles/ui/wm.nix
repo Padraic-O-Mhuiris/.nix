@@ -5,13 +5,48 @@ let
   # spotifyDimensions =
   #   if config.networking.hostName == "Oxygen" then "1600 900" else "2500 1600";
 
+  i3SpLabel = "scratchpad::";
+
+  mkI3SpCmd = { class, bind, cmd, dimX ? 2560, dimY ? 1600 }: ''
+    for_window [class="${class}"] floating enable
+    for_window [class="${class}"] resize set ${toString dimX} ${toString dimY}
+    for_window [class="${class}"] move scratchpad
+    for_window [class="${class}"] border pixel 5
+    exec_always --no-startup-id ${cmd}
+    bindsym ${bind} [class="${class}"] scratchpad show; [class="${class}"] move position center
+  '';
+
+  i3SpTermClass = "${i3SpLabel}Term";
+  i3SpTerm = mkI3SpCmd {
+    class = i3SpTermClass;
+    bind = "$mod+x";
+    cmd =
+      "${pkgs.alacritty}/bin/alacritty --class ${i3SpTermClass} -e ${pkgs.tmux}/bin/tmux";
+  };
+
+  i3SpNavClass = "${i3SpLabel}Nav";
+  i3SpNav = mkI3SpCmd {
+    class = i3SpNavClass;
+    bind = "$mod+n";
+    cmd =
+      "${pkgs.alacritty}/bin/alacritty --class ${i3SpNavClass} -e ${pkgs.nnn}/bin/nnn";
+  };
+
+  i3SpMusicClass = "Spotify";
+  i3SpMusic = mkI3SpCmd {
+    class = i3SpMusicClass;
+    bind = "$mod+m";
+    cmd = "${pkgs.spotify}/bin/spotify --force-device-scale-factor=1.35";
+    dimX = 3200;
+    dimY = 1800;
+  };
+
   i3ScratchpadConfig = ''
-    for_window [instance="TmuxTerm"] floating enable
-    for_window [instance="TmuxTerm"] resize set 1600 900
-    for_window [instance="TmuxTerm"] move scratchpad
-    for_window [instance="TmuxTerm"] border pixel 5
-    bindsym $mod+u [instance="TmuxTerm"] scratchpad show; [instance="TmuxTerm"] move position center
-    exec --no-startup-id ${pkgs.alacritty}/bin/alacritty --class TmuxTerm -e tmux
+    ${i3SpTerm}
+    ${i3SpNav}
+    ${i3SpMusic}
+
+    bindsym $mod+q [con_id="__focused__" class="^(?!(${i3SpTermClass}|${i3SpNavClass}|${i3SpMusicClass})).*$"] kill
   '';
 
   i3Config = pkgs.writeTextFile {
@@ -33,13 +68,7 @@ let
 
       floating_modifier $mod
 
-      bindsym $mod+Return exec $TERMINAL
-
-      bindsym $mod+x exec $TERMINAL --class floating_term
-      bindsym $mod+x scratchpad show
-      for_window [class="floating_term"] floating toggle
-
-      bindsym $mod+q kill
+      bindsym $mod+Shift+q kill
 
       ${i3ScratchpadConfig}
 
@@ -58,7 +87,7 @@ let
       bindsym $mod+Shift+j move left
       bindsym $mod+Shift+k move down
       bindsym $mod+Shift+l move up
-      bindsym $mod+Shift+semicolon move right
+
 
       bindsym $mod+Shift+Left move left
       bindsym $mod+Shift+Down move down

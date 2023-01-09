@@ -4,7 +4,7 @@ with lib;
 with lib.os;
 
 {
-  #imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   options.os.machine = {
     kernel = mkOpt types.attrs pkgs.linuxPackages_latest;
