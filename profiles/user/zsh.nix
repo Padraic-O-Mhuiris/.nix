@@ -61,6 +61,8 @@
     ripgrep
     lolcat
     screenfetch
+    neofetch
+    asciinema
   ];
 
   os.user.home.configFile."zsh/.zshrc".text = "";

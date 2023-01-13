@@ -16,7 +16,7 @@
     fenix.url = "github:nix-community/fenix";
     sops.url = "github:Mic92/sops-nix";
     devshell.url = "github:numtide/devshell";
-    foundry.url = "github:shazow/foundry.nix";
+    foundry.url = "github:shazow/foundry.nix/monthly";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager

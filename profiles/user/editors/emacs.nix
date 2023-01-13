@@ -14,6 +14,7 @@
     sqlite
     nixfmt
     proselint
+    nodePackages_latest.markdownlint-cli
     pandoc
     emacsPackages.pdf-tools
     fava

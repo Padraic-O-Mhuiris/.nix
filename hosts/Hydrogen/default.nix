@@ -63,6 +63,7 @@
 
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/neovim.nix
+    ../../profiles/user/editors/helix.nix
   ];
 
   os = {
