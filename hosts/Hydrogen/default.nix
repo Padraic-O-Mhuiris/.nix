@@ -38,6 +38,7 @@
     ../../profiles/user/bittorrent.nix
     ../../profiles/user/bitwarden.nix
     ../../profiles/user/deploy.nix
+    ../../profiles/user/direnv.nix
     ../../profiles/user/fileManager.nix
     ../../profiles/user/flameshot.nix
     ../../profiles/user/git.nix
@@ -45,6 +46,7 @@
     ../../profiles/user/graphviz.nix
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
+    ../../profiles/user/matrix.nix
     ../../profiles/user/pass.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix
@@ -55,11 +57,11 @@
     ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix
 
-    ../../profiles/user/dev/javascript.nix
+    # ../../profiles/user/dev/javascript.nix
     ../../profiles/user/dev/python.nix
-    ../../profiles/user/dev/rust.nix
+    #../../profiles/user/dev/rust.nix
     ../../profiles/user/dev/bash.nix
-    ../../profiles/user/dev/solidity.nix
+    #../../profiles/user/dev/solidity.nix
 
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/neovim.nix

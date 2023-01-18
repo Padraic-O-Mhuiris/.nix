@@ -41,6 +41,15 @@ let
     dimY = 1800;
   };
 
+  i3SpEditorClass = "editor";
+  i3SpEditor = mkI3SpCmd {
+    class = i3SpEditorClass;
+    bind = "$mod+z";
+    cmd = "$EDITOR";
+    dimX = 3840;
+    dimY = 2160;
+  };
+
   i3ScratchpadConfig = ''
     ${i3SpTerm}
     ${i3SpNav}

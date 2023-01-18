@@ -11,8 +11,6 @@
   ];
 
   os.user.home.configFile."helix/config.toml".text = ''
-    theme = "onedark"
-
     [editor]
     line-number = "relative"
     mouse = false
