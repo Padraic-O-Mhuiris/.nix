@@ -2,8 +2,7 @@
   description = "Padraic-O-Mhuiris - NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware";
     emacs.url = "github:nix-community/emacs-overlay";
@@ -20,9 +19,8 @@
     nix-ld.url = "github:Mic92/nix-ld";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager
-    , sops, hardware, emacs, fup, deploy-rs, fenix, devshell, foundry, nix-ld
-    , ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-master, home-manager, sops, hardware, emacs
+    , fup, deploy-rs, fenix, devshell, foundry, nix-ld, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -31,10 +29,9 @@
     in mkFlake {
       inherit self inputs lib;
 
-      channels.unstable.input = nixpkgs-unstable;
       channels.master.input = nixpkgs-master;
       channels.nixpkgs.overlaysBuilder = channels:
-        [ (final: prev: { inherit (channels) unstable master; }) ];
+        [ (final: prev: { inherit (channels) master; }) ];
 
       channelsConfig = {
         allowBroken = true;

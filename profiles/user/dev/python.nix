@@ -9,6 +9,5 @@ in {
     python-language-server
     nodePackages.pyright
     pipenv
-    fava
   ];
 }

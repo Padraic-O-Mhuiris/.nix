@@ -43,7 +43,7 @@ in {
       };
       metrics.enable = false;
       syncmode = "full";
-      package = pkgs.unstable.go-ethereum.geth;
+      package = pkgs.go-ethereum.geth;
     };
   };
 

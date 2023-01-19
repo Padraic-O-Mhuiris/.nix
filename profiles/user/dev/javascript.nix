@@ -2,7 +2,7 @@
 
 {
 
-  os.user.packages = with pkgs.unstable; [
+  os.user.packages = with pkgs; [
     nodejs
     nodePackages.yalc
     nodePackages.typescript-language-server

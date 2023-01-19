@@ -1,5 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  environment.systemPackages = with pkgs.unstable; [ deploy-rs ];
+  environment.systemPackages = with pkgs; [ deploy-rs ];
 }

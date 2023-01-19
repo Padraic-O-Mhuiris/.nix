@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  os.user.packages = with pkgs.unstable; [
+  os.user.packages = with pkgs; [
     helix
     #################
     ###    LSP    ###

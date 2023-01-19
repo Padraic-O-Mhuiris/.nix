@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  os.user.packages = with pkgs.unstable; [ nodePackages.bash-language-server ];
+  os.user.packages = with pkgs; [ nodePackages.bash-language-server ];
 }
