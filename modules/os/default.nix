@@ -17,8 +17,6 @@
     };
   };
 
-  #programs.nix-ld.enable = true;
-
   home-manager = {
     useGlobalPkgs = lib.mkDefault true;
     useUserPackages = lib.mkDefault true;
