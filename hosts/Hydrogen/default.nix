@@ -44,6 +44,7 @@
     ../../profiles/user/git.nix
     ../../profiles/user/gpg.nix
     ../../profiles/user/graphviz.nix
+    ../../profiles/user/latex.nix
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
     ../../profiles/user/matrix.nix
@@ -57,9 +58,9 @@
     ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix
 
-    # ../../profiles/user/dev/javascript.nix
+    ../../profiles/user/dev/javascript.nix
     ../../profiles/user/dev/python.nix
-    #../../profiles/user/dev/rust.nix
+    # ../../profiles/user/dev/rust.nix
     ../../profiles/user/dev/bash.nix
     #../../profiles/user/dev/solidity.nix
 

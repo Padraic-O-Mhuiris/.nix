@@ -43,6 +43,7 @@
     ../../profiles/user/git.nix
     ../../profiles/user/gpg.nix
     ../../profiles/user/graphviz.nix
+    ../../profiles/user/latex.nix
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
     ../../profiles/user/pass.nix

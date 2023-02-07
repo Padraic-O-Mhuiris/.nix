@@ -3,7 +3,7 @@
 {
   services.emacs = {
     enable = true;
-    package = pkgs.emacsUnstable;
+    package = pkgs.emacsPgtk;
   };
 
   fonts.fonts = with pkgs; [ emacs-all-the-icons-fonts ];
@@ -17,8 +17,9 @@
     nodePackages_latest.markdownlint-cli
     pandoc
     emacsPackages.pdf-tools
-    fava
     beancount
     beancount-language-server
+    ispell
+    jupyter
   ];
 }

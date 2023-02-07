@@ -3,7 +3,7 @@
 {
   services.ntp.enable = true;
 
-  time.timeZone = "Europe/Paris";
+  time.timeZone = "Europe/Dublin";
   i18n.defaultLocale = "en_IE.UTF-8";
 
   location = {

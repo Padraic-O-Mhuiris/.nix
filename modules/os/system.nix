@@ -18,6 +18,7 @@ with lib.os;
       clang
       curl
       dmidecode
+      entr
       exa
       gcc
       gnumake
@@ -37,6 +38,7 @@ with lib.os;
       openssl
       pciutils
       patchelf
+      simple-http-server
       stdenv.cc.cc.lib
       tree
       unzip

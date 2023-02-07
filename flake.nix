@@ -16,11 +16,10 @@
     sops.url = "github:Mic92/sops-nix";
     devshell.url = "github:numtide/devshell";
     foundry.url = "github:shazow/foundry.nix/monthly";
-    nix-ld.url = "github:Mic92/nix-ld";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, home-manager, sops, hardware, emacs
-    , fup, deploy-rs, fenix, devshell, foundry, nix-ld, ... }@inputs:
+    , fup, deploy-rs, fenix, devshell, foundry, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -40,11 +39,8 @@
 
       hostDefaults.system = "x86_64-linux";
 
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
-        sops.nixosModules.sops
-        nix-ld.nixosModules.nix-ld
-      ];
+      hostDefaults.modules =
+        [ home-manager.nixosModules.home-manager sops.nixosModules.sops ];
 
       sharedOverlays = [
         (self: super: {

@@ -8,4 +8,7 @@
   };
 
   os.user.groups = [ "docker" ];
+
+  os.user.packages = with pkgs;
+    [ nodePackages_latest.dockerfile-language-server-nodejs ];
 }
