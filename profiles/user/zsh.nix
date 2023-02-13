@@ -20,7 +20,6 @@
         "aliases"
         "sudo"
         "direnv"
-        "emacs"
         "emoji"
         "encode64"
         "jsontools"
