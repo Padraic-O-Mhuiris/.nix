@@ -58,6 +58,7 @@
     ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix
 
+    ../../profiles/user/dev/bash.nix
     ../../profiles/user/dev/javascript.nix
     ../../profiles/user/dev/python.nix
     # ../../profiles/user/dev/rust.nix
