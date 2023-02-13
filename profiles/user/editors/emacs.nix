@@ -3,13 +3,22 @@
 {
   services.emacs = {
     enable = true;
-    package = pkgs.emacsPgtk;
+    package = with pkgs;
+      ((emacsPackagesFor emacsNativeComp).emacsWithPackages
+        (epkgs: [ epkgs.vterm ]));
   };
 
   fonts.fonts = with pkgs; [ emacs-all-the-icons-fonts ];
 
   os.user.packages = with pkgs; [
+    binutils
+    git
     (ripgrep.override { withPCRE2 = true; })
+    gnutls
+    fd
+    imagemagick
+    zstd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
     editorconfig-core-c
     sqlite
     nixfmt
@@ -22,4 +31,5 @@
     ispell
     jupyter
   ];
+
 }
