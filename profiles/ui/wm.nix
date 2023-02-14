@@ -7,7 +7,10 @@ let
 
   i3SpLabel = "scratchpad::";
 
-  mkI3SpCmd = { class, bind, cmd, dimX ? 2560, dimY ? 1600 }: ''
+  defaultX = if config.networking.hostName == "Hydrogen" then 2560 else 1800;
+  defaultY = if config.networking.hostName == "Hydrogen" then 2560 else 900;
+
+  mkI3SpCmd = { class, bind, cmd, dimX ? defaultX, dimY ? defaultY }: ''
     for_window [class="${class}"] floating enable
     for_window [class="${class}"] resize set ${toString dimX} ${toString dimY}
     for_window [class="${class}"] move scratchpad
@@ -32,13 +35,21 @@ let
       "${pkgs.alacritty}/bin/alacritty --class ${i3SpNavClass} -e ${pkgs.ranger}/bin/ranger";
   };
 
+  spotifyScaleFactor =
+    if config.networking.hostName == "Hydrogen" then 1.35 else 0.8;
+
+  spotifyX = if config.networking.hostName == "Hydrogen" then 2560 else 1800;
+  spotifyY = if config.networking.hostName == "Hydrogen" then 2560 else 900;
+
   i3SpMusicClass = "Spotify";
   i3SpMusic = mkI3SpCmd {
     class = i3SpMusicClass;
     bind = "$mod+m";
-    cmd = "${pkgs.spotify}/bin/spotify --force-device-scale-factor=1.35";
-    dimX = 3200;
-    dimY = 1800;
+    cmd = "${pkgs.spotify}/bin/spotify --force-device-scale-factor=${
+        toString spotifyScaleFactor
+      }";
+    dimX = defaultX;
+    dimY = defaultY;
   };
 
   i3SpEditorClass = "editor";

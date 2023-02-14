@@ -38,6 +38,7 @@
     ../../profiles/user/bittorrent.nix
     ../../profiles/user/bitwarden.nix
     ../../profiles/user/deploy.nix
+    ../../profiles/user/direnv.nix
     ../../profiles/user/fileManager.nix
     ../../profiles/user/flameshot.nix
     ../../profiles/user/git.nix
