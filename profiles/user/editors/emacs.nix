@@ -4,7 +4,7 @@
   services.emacs = {
     enable = true;
     package = with pkgs;
-      ((emacsPackagesFor emacsNativeComp).emacsWithPackages
+      ((emacsPackagesFor emacsUnstable).emacsWithPackages
         (epkgs: [ epkgs.vterm ]));
   };
 
