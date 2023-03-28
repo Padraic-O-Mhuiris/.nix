@@ -56,9 +56,7 @@ let
   i3SpEditor = mkI3SpCmd {
     class = i3SpEditorClass;
     bind = "$mod+z";
-    cmd = "$EDITOR";
-    dimX = 3840;
-    dimY = 2160;
+    cmd = "${pkgs.helix}/bin/hx";
   };
 
   i3ScratchpadConfig = ''

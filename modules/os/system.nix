@@ -16,6 +16,7 @@ with lib.os;
       cachix
       coreutils
       clang
+      cmake
       curl
       dmidecode
       entr
@@ -24,14 +25,12 @@ with lib.os;
       gnumake
       git
       file
-      htop
       libsecret
       libgcc
       libgccjit
       i7z
       iw
       jq
-      lm_sensors
       netcat
       nix-index
       nix-tree

@@ -16,10 +16,11 @@
     sops.url = "github:Mic92/sops-nix";
     devshell.url = "github:numtide/devshell";
     foundry.url = "github:shazow/foundry.nix/monthly";
+    neovim.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, home-manager, sops, hardware, emacs
-    , fup, deploy-rs, fenix, devshell, foundry, ... }@inputs:
+    , fup, deploy-rs, fenix, devshell, foundry, neovim, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -50,6 +51,7 @@
         emacs.overlay
         fenix.overlays.default
         foundry.overlay
+        neovim.overlay
       ];
 
       hosts = lib.mkHosts ./hosts { inherit inputs; };

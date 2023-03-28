@@ -15,6 +15,7 @@
     ../../profiles/system/audio.nix
     ../../profiles/system/bluetooth.nix
     ../../profiles/system/ethereum.nix
+    ../../profiles/system/health.nix
     ../../profiles/system/keyboard.nix
     ../../profiles/system/locale.nix
     ../../profiles/system/networking.nix
@@ -64,7 +65,8 @@
     #../../profiles/user/dev/solidity.nix
 
     ../../profiles/user/editors/emacs.nix
-    ../../profiles/user/editors/neovim.nix
+    ../../profiles/user/editors/helix.nix
+    ../../profiles/user/editors/neovim
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];

@@ -3,12 +3,13 @@
 with pkgs;
 stdenv.mkDerivation rec {
   name = "prysmbeacon";
-  version = "3.1.0";
+  version = "4.0.0";
 
   src = fetchurl {
     url =
       "https://github.com/prysmaticlabs/prysm/releases/download/v${version}/beacon-chain-v${version}-linux-amd64";
-    sha256 = "f76aed03c207c2e4ade1c1cde47cbc0828bb7fb9b44d5518e6f13a9b39dacc42";
+    sha256 =
+      "2842cbf43980cec9f51e1c83c21a598c35ccff4d22de2f6f482df010c2bda806 ";
   };
 
   nativeBuildInputs = [ makeWrapper ];

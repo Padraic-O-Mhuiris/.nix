@@ -24,6 +24,7 @@
     nixfmt
     proselint
     nodePackages_latest.markdownlint-cli
+    lua-language-server
     pandoc
     emacsPackages.pdf-tools
     beancount

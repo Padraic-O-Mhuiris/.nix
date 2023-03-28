@@ -1,14 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  os.user.packages = with pkgs; [
-    helix
-    #################
-    ###    LSP    ###
-    #################
-    marksman # markdown
-    nil # nix
-  ];
+  os.user.packages = with pkgs; [ helix marksman nil ];
 
   os.user.home.configFile."helix/config.toml".text = ''
     [editor]
