@@ -8,8 +8,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/prysmaticlabs/prysm/releases/download/v${version}/beacon-chain-v${version}-linux-amd64";
-    sha256 =
-      "2842cbf43980cec9f51e1c83c21a598c35ccff4d22de2f6f482df010c2bda806 ";
+    sha256 = "2842cbf43980cec9f51e1c83c21a598c35ccff4d22de2f6f482df010c2bda806";
   };
 
   nativeBuildInputs = [ makeWrapper ];
