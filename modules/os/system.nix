@@ -38,6 +38,7 @@ with lib.os;
       pciutils
       patchelf
       simple-http-server
+      sd
       stdenv.cc.cc.lib
       tree
       unzip
