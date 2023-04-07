@@ -34,7 +34,7 @@
     ../../profiles/ui/fonts.nix
     ../../profiles/ui/launcher.nix
     ../../profiles/ui/login.nix
-    ../../profiles/ui/wm.nix
+    ../../profiles/ui/wm/sway.nix
 
     ../../profiles/user/bittorrent.nix
     ../../profiles/user/bitwarden.nix
@@ -66,7 +66,7 @@
 
     ../../profiles/user/editors/emacs.nix
     ../../profiles/user/editors/helix.nix
-    ../../profiles/user/editors/neovim
+    # ../../profiles/user/editors/neovim
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -77,6 +77,7 @@
       kernel = pkgs.master.linuxPackages_latest;
     };
     ui = {
+      dpi = 108;
       cli.font.size = 12;
       backlight.day = 1.0;
       backlight.night = 0.7;

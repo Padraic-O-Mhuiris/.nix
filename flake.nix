@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.11";
     hardware.url = "github:NixOS/nixos-hardware";
     emacs.url = "github:nix-community/emacs-overlay";
     home-manager = {
@@ -14,13 +15,12 @@
     deploy-rs.url = "github:serokell/deploy-rs";
     fenix.url = "github:nix-community/fenix";
     sops.url = "github:Mic92/sops-nix";
-    devshell.url = "github:numtide/devshell";
     foundry.url = "github:shazow/foundry.nix/monthly";
-    neovim.url = "github:nix-community/neovim-nightly-overlay";
+    # neovim.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-master, home-manager, sops, hardware, emacs
-    , fup, deploy-rs, fenix, devshell, foundry, neovim, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-master, nixpkgs-stable, home-manager, sops
+    , hardware, emacs, fup, deploy-rs, fenix, foundry, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -30,8 +30,11 @@
       inherit self inputs lib;
 
       channels.master.input = nixpkgs-master;
-      channels.nixpkgs.overlaysBuilder = channels:
-        [ (final: prev: { inherit (channels) master; }) ];
+      channels.stable.input = nixpkgs-stable;
+      channels.nixpkgs.overlaysBuilder = channels: [
+        (final: prev: { inherit (channels) master; })
+        (final: prev: { inherit (channels) stable; })
+      ];
 
       channelsConfig = {
         allowBroken = true;
@@ -47,11 +50,13 @@
         (self: super: {
           nix-direnv = super.nix-direnv.override { enableFlakes = true; };
         })
-        devshell.overlay
+        (self: super: {
+          fcitx-engines = self.fcitx5;
+        }) # https://discourse.nixos.org/t/error-when-upgrading-nixos-related-to-fcitx-engines/26940/8
         emacs.overlay
         fenix.overlays.default
         foundry.overlay
-        neovim.overlay
+        # neovim.overlay
       ];
 
       hosts = lib.mkHosts ./hosts { inherit inputs; };

@@ -34,7 +34,7 @@
     ../../profiles/ui/fonts.nix
     ../../profiles/ui/launcher.nix
     ../../profiles/ui/login.nix
-    ../../profiles/ui/wm.nix
+    ../../profiles/ui/wm/i3.nix
 
     ../../profiles/user/bittorrent.nix
     ../../profiles/user/bitwarden.nix
@@ -67,7 +67,7 @@
     #../../profiles/user/dev/solidity.nix
 
     ../../profiles/user/editors/emacs.nix
-    ../../profiles/user/editors/neovim
+    # ../../profiles/user/editors/neovim
     ../../profiles/user/editors/helix.nix
   ];
 

@@ -8,7 +8,7 @@ let
   i3SpLabel = "scratchpad::";
 
   defaultX = if config.networking.hostName == "Hydrogen" then 2560 else 1800;
-  defaultY = if config.networking.hostName == "Hydrogen" then 2560 else 900;
+  defaultY = if config.networking.hostName == "Hydrogen" then 2560 else 1200;
 
   mkI3SpCmd = { class, bind, cmd, dimX ? defaultX, dimY ? defaultY }: ''
     for_window [class="${class}"] floating enable
@@ -218,10 +218,4 @@ in {
   };
 
   environment.systemPackages = with pkgs; [ xorg.xdpyinfo ];
-
-  environment.variables = {
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
-  };
-
 }
