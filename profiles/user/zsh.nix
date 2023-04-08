@@ -62,7 +62,10 @@
     screenfetch
     neofetch
     asciinema
+    zoxide
   ];
 
-  os.user.home.configFile."zsh/.zshrc".text = "";
+  os.user.home.configFile."zsh/.zshrc".text = ''
+    eval "$(zoxide init zsh)"
+  '';
 }
