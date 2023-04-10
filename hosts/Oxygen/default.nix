@@ -6,7 +6,6 @@
     ../../profiles/machine/pc/cpu.nix
     ../../profiles/machine/pc/filesystem.nix
     ../../profiles/machine/pc/kernel.nix
-    ../../profiles/machine/pc/monitors.nix
     ../../profiles/machine/pc/zfs.nix
 
     #../../profiles/machine/nvidia.nix
@@ -33,8 +32,7 @@
     ../../profiles/ui/cli.nix
     ../../profiles/ui/fonts.nix
     ../../profiles/ui/launcher.nix
-    ../../profiles/ui/login.nix
-    ../../profiles/ui/wm/sway.nix
+    ../../profiles/ui/wm/i3.nix
 
     ../../profiles/user/bittorrent.nix
     ../../profiles/user/bitwarden.nix
@@ -48,6 +46,7 @@
     ../../profiles/user/latex.nix
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
+    ../../profiles/user/notes.nix
     ../../profiles/user/pass.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix

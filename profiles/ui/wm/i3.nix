@@ -206,9 +206,36 @@ let
   };
 in {
   os.ui.active = true;
+
   services.xserver = {
     enable = true;
     dpi = config.os.ui.dpi;
+    displayManager = lib.mkMerge [
+      ({
+        lightdm = {
+          enable = true;
+          greeters.gtk = {
+            enable = true;
+            theme = {
+              package = pkgs.nordic;
+              name = "Nordic";
+            };
+            iconTheme = {
+              package = pkgs.numix-icon-theme-circle;
+              name = "Numix-Circle";
+            };
+          };
+        };
+      })
+      (lib.mkIf (config.networking.hostName == "Oxygen") {
+        setupCommands = ''
+          LEFT='HDMI-0'
+          CENTER='DP-0'
+          ${pkgs.xorg.xrandr}/bin/xrandr --output $CENTER --mode 5120x1440 --rate 60 --output $LEFT --mode 1920x1080 --rotate right --left-of $CENTER
+        '';
+      })
+
+    ];
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
@@ -219,3 +246,4 @@ in {
 
   environment.systemPackages = with pkgs; [ xorg.xdpyinfo ];
 }
+

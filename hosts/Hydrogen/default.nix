@@ -33,7 +33,6 @@
     ../../profiles/ui/cli.nix
     ../../profiles/ui/fonts.nix
     ../../profiles/ui/launcher.nix
-    ../../profiles/ui/login.nix
     ../../profiles/ui/wm/i3.nix
 
     ../../profiles/user/bittorrent.nix
