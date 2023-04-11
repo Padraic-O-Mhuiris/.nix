@@ -231,7 +231,7 @@ in {
         setupCommands = ''
           LEFT='HDMI-0'
           CENTER='DP-0'
-          ${pkgs.xorg.xrandr}/bin/xrandr --output $CENTER --mode 5120x1440 --rate 60 --output $LEFT --mode 1920x1080 --rotate right --left-of $CENTER
+          ${pkgs.xorg.xrandr}/bin/xrandr --output $CENTER --primary --mode 5120x1440 --rate 60 --output $LEFT --mode 1920x1080 --rotate right --left-of $CENTER
         '';
       })
 

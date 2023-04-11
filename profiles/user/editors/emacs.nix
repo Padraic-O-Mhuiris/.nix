@@ -1,11 +1,9 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   services.emacs = {
     enable = true;
-    package = with pkgs;
-      ((emacsPackagesFor emacsUnstable).emacsWithPackages
-        (epkgs: [ epkgs.vterm ]));
+    package = pkgs.emacsUnstable;
   };
 
   fonts.fonts = with pkgs; [ emacs-all-the-icons-fonts ];
@@ -32,5 +30,4 @@
     ispell
     jupyter
   ];
-
 }

@@ -16,6 +16,7 @@
     fenix.url = "github:nix-community/fenix";
     sops.url = "github:Mic92/sops-nix";
     foundry.url = "github:shazow/foundry.nix/monthly";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     # neovim.url = "github:nix-community/neovim-nightly-overlay";
   };
 
@@ -25,7 +26,7 @@
       inherit (fup.lib) mkFlake;
 
       lib = nixpkgs.lib.extend (import ./lib);
-
+    
     in mkFlake {
       inherit self inputs lib;
 

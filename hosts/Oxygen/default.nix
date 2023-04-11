@@ -46,7 +46,6 @@
     ../../profiles/user/latex.nix
     ../../profiles/user/libreoffice.nix
     ../../profiles/user/login.nix
-    ../../profiles/user/notes.nix
     ../../profiles/user/pass.nix
     ../../profiles/user/steam.nix
     ../../profiles/user/telegram.nix
