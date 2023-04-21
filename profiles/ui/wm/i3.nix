@@ -227,6 +227,12 @@ in {
           };
         };
       })
+      ({
+        autoLogin = {
+          enable = true;
+          user = config.os.user.name;
+        };
+      })
       (lib.mkIf (config.networking.hostName == "Oxygen") {
         setupCommands = ''
           LEFT='HDMI-0'

@@ -17,7 +17,7 @@ with lib.os;
     packages = mkOpt (types.listOf types.package) [ ];
     shell = mkOpt (types.enum [ "bash" "zsh" ]) "zsh";
     editor = mkOpt (types.enum [ "vim" "emacs" ]) "vim";
-    browser = mkOpt (types.enum [ "brave" "firefox" ]) "brave";
+    browser = mkOpt (types.enum [ "brave" "firefox" ]) "firefox";
     terminal = mkOpt (types.enum [ "alacritty" ]) "alacritty";
     home = {
       file = mkOpt types.attrs { };
