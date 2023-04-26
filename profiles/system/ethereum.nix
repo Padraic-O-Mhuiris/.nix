@@ -1,12 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   beaconChainDir = "/var/lib/prysm/beacon";
-  beaconChainPkg = import ../../packages/prysmbeacon.nix { inherit pkgs; };
-
   validatorDir = "/var/lib/prysm/validator";
-  validatorPkg = import ../../packages/prysmvalidator.nix { inherit pkgs; };
+  prysm = inputs.ethereum.packages.${pkgs.system}.prysm;
 in {
+  environment.systemPackages = [ prysm ];
 
   sops.secrets = {
     jwt = {
@@ -48,7 +47,6 @@ in {
   };
 
   ##### BEACON ####
-  environment.systemPackages = [ beaconChainPkg ];
 
   users.extraUsers = {
     prysmbeacon = {
@@ -74,7 +72,7 @@ in {
       Restart = "always";
       RestartSec = "5";
       ExecStart =
-        "${beaconChainPkg}/bin/prysmbeacon --datadir=${beaconChainDir} --execution-endpoint=http://localhost:8551 --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256 --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E --jwt-secret=${config.sops.secrets.jwt.path}";
+        "${prysm}/bin/beacon-chain --datadir=${beaconChainDir} --execution-endpoint=http://localhost:8551 --p2p-max-peers=100 --log-format=journald --accept-terms-of-use --block-batch-limit 256 --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E --jwt-secret=${config.sops.secrets.jwt.path}";
       SupplementaryGroups = [ config.users.groups.keys.name ];
     };
   };
@@ -106,7 +104,7 @@ in {
       Restart = "always";
       RestartSec = "5";
       ExecStart =
-        "${validatorPkg}/bin/prysmvalidator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${config.sops.secrets.walletPassword.path} --accept-terms-of-use --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
+        "${prysm}/bin/validator --datadir=${validatorDir} --wallet-dir=${validatorDir}/wallet --wallet-password-file=${config.sops.secrets.walletPassword.path} --accept-terms-of-use --suggested-fee-recipient=0xFB18b8F2bBE88c4C29ca5a12ee404DB4d640fe4E";
       SupplementaryGroups = [ config.users.groups.keys.name ];
     };
   };
