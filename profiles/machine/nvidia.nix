@@ -18,7 +18,6 @@ in {
   ];
 
   hardware = {
-    video.hidpi.enable = true;
     opengl = {
       enable = true;
       driSupport = true;
