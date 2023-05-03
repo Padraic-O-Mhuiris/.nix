@@ -5,7 +5,7 @@
   services.zfs.autoSnapshot.enable = true;
 
   boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.enableUnstable = true;
+  boot.zfs.enableUnstable = false;
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
   boot.initrd.supportedFilesystems = [ "zfs" ];

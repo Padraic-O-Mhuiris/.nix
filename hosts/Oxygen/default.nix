@@ -70,10 +70,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   os = {
-    machine = {
-      cores = 32;
-      kernel = pkgs.master.linuxPackages_latest;
-    };
+    machine = { cores = 32; };
     ui = {
       dpi = 108;
       cli.font.size = 12;

@@ -5,7 +5,7 @@ with lib.os;
 
 {
   options.os.ui.fonts = {
-    monospace = mkOpt types.str "Iosevka Slab Terminal";
+    monospace = mkOpt types.str "Iosevka";
     sansSerif = mkOpt types.str "Roboto";
     serif = mkOpt types.str "Roboto";
   };
@@ -15,20 +15,7 @@ with lib.os;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
         corefonts
-        (iosevka.override {
-          privateBuildPlan = ''
-            [buildPlans.iosevka-slab-terminal]
-            family = "Iosevka Slab Terminal"
-            spacing = "term"
-            serifs = "slab"
-            no-cv-ss = true
-            export-glyph-names = false
-
-            [buildPlans.iosevka-slab-terminal.ligations]
-            inherits = "dlig"
-          '';
-          set = "slab-terminal";
-        })
+        iosevka
         ubuntu_font_family
         dejavu_fonts
         liberation_ttf

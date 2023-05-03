@@ -75,10 +75,7 @@
       dpi = 180;
       cli.font.size = 7;
     };
-    machine = {
-      cores = 20;
-      kernel = pkgs.linuxPackages_latest;
-    };
+    machine = { cores = 20; };
     user = {
       name = "padraic";
       email = "patrick.morris.310@gmail.com";
