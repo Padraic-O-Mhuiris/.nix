@@ -24,7 +24,8 @@ in {
       driSupport32Bit = true;
     };
     nvidia = {
-      package = config.os.machine.kernel.nvidiaPackages.latest;
+      package =
+        config.boot.zfs.package.latestCompatibleLinuxPackages.nvidiaPackages.latest;
       modesetting.enable = true;
       prime = {
         offload.enable = true;

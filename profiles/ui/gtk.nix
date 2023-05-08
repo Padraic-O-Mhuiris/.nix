@@ -11,6 +11,7 @@ in {
       gtk-theme-name=${gtkTheme}
       gtk-icon-theme-name=${gtkIconTheme}
       gtk-cursor-theme-name=${gtkCursorTheme}
+      gtk-cursor-theme-size=32
       gtk-fallback-icon-theme=gnome
       gtk-application-prefer-dark-theme=true
       gtk-xft-hinting=1

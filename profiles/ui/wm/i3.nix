@@ -7,8 +7,8 @@ let
 
   i3SpLabel = "scratchpad::";
 
-  defaultX = if config.networking.hostName == "Hydrogen" then 2560 else 1800;
-  defaultY = if config.networking.hostName == "Hydrogen" then 2560 else 1200;
+  defaultX = if config.networking.hostName == "Hydrogen" then 2880 else 1800;
+  defaultY = if config.networking.hostName == "Hydrogen" then 1620 else 1200;
 
   mkI3SpCmd = { class, bind, cmd, dimX ? defaultX, dimY ? defaultY }: ''
     for_window [class="${class}"] floating enable
@@ -38,8 +38,9 @@ let
   spotifyScaleFactor =
     if config.networking.hostName == "Hydrogen" then 1.35 else 0.8;
 
-  spotifyX = if config.networking.hostName == "Hydrogen" then 2560 else 1800;
-  spotifyY = if config.networking.hostName == "Hydrogen" then 2560 else 900;
+  spotifyX =
+    if config.networking.hostName == "Hydrogen" then defaultX else 1800;
+  spotifyY = if config.networking.hostName == "Hydrogen" then defaultY else 900;
 
   i3SpMusicClass = "Spotify";
   i3SpMusic = mkI3SpCmd {
