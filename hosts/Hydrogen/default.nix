@@ -54,7 +54,7 @@
     ../../profiles/user/video.nix
     ../../profiles/user/zsh.nix
 
-    ../../profiles/user/browsers/brave.nix
+    # ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix
 
     ../../profiles/user/dev/bash.nix

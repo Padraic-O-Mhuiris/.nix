@@ -21,7 +21,6 @@ with lib.os;
         liberation_ttf
         roboto
         fira-code
-        fira-code-symbols
         jetbrains-mono
         siji
         font-awesome

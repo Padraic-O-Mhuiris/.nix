@@ -21,11 +21,12 @@
       url = "github:nix-community/ethereum.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # neovim.url = "github:nix-community/neovim-nightly-overlay";
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, nixpkgs-stable, home-manager, sops
-    , hardware, emacs, fup, deploy-rs, fenix, foundry, ethereum, ... }@inputs:
+    , hardware, emacs, fup, deploy-rs, fenix, foundry, ethereum, nur, ...
+    }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -61,7 +62,7 @@
         emacs.overlay
         fenix.overlays.default
         foundry.overlay
-        # neovim.overlay
+        nur.overlay
       ];
 
       hosts = lib.mkHosts ./hosts { inherit inputs; };

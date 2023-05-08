@@ -38,6 +38,7 @@
     ../../profiles/user/bitwarden.nix
     ../../profiles/user/deploy.nix
     ../../profiles/user/direnv.nix
+    ../../profiles/user/discord.nix
     ../../profiles/user/fileManager.nix
     ../../profiles/user/flameshot.nix
     ../../profiles/user/git.nix
@@ -53,7 +54,7 @@
     ../../profiles/user/video.nix
     ../../profiles/user/zsh.nix
 
-    ../../profiles/user/browsers/brave.nix
+    # ../../profiles/user/browsers/brave.nix
     ../../profiles/user/browsers/firefox.nix
 
     ../../profiles/user/dev/bash.nix

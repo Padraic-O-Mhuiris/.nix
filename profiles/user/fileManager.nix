@@ -6,6 +6,7 @@
   #   # launches udiskie on display start and mounts drives
   #   udiskie -Ns &
   # '';
+  services.gvfs.enable = true;
 
   services.udisks2.enable = true;
   services.udisks2.mountOnMedia = true;

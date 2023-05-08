@@ -16,7 +16,6 @@
       set-environment -g COLORTERM "truecolor"
 
       set-option -g mouse on
-
     '';
   };
 }
