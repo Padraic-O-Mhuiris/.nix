@@ -13,7 +13,7 @@
     ../../profiles/system/aliases.nix
     ../../profiles/system/audio.nix
     ../../profiles/system/bluetooth.nix
-    ../../profiles/system/ethereum.nix
+    # ../../profiles/system/ethereum.nix
     ../../profiles/system/health.nix
     ../../profiles/system/keyboard.nix
     ../../profiles/system/locale.nix
