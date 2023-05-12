@@ -22,11 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, nixpkgs-stable, home-manager, sops
-    , hardware, emacs, fup, deploy-rs, fenix, foundry, ethereum, nur, ...
-    }@inputs:
+    , hardware, emacs, fup, deploy-rs, fenix, foundry, ethereum, nur, hyprland
+    , ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 

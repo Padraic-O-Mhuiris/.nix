@@ -65,7 +65,7 @@ with lib.os;
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_BIN_HOME = "$HOME/.local/bin";
       PATH = [ "${XDG_BIN_HOME}" ];
-      EDITOR = if !config.os.ui.active then "vim" else config.os.user.editor;
+      EDITOR = config.os.user.editor;
       BROWSER = config.os.user.browser;
       TERMINAL = config.os.user.terminal;
     };

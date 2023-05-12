@@ -206,8 +206,6 @@ let
     '';
   };
 in {
-  os.ui.active = true;
-
   services.xserver = {
     enable = true;
     dpi = config.os.ui.dpi;
