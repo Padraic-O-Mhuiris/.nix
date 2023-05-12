@@ -33,12 +33,13 @@
     ../../profiles/ui/cli.nix
     ../../profiles/ui/fonts.nix
     ../../profiles/ui/launcher.nix
-    # ../../profiles/ui/wm/i3.nix
-    ../../profiles/ui/wm/hyprland.nix
+    ../../profiles/ui/wm/i3.nix
+    # ../../profiles/ui/wm/hyprland.nix
 
     ../../profiles/user/bittorrent.nix
     ../../profiles/user/bitwarden.nix
     ../../profiles/user/deploy.nix
+    ../../profiles/user/discord.nix
     ../../profiles/user/direnv.nix
     ../../profiles/user/fileManager.nix
     ../../profiles/user/flameshot.nix
