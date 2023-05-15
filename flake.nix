@@ -23,11 +23,12 @@
     };
     nur.url = "github:nix-community/NUR";
     hyprland.url = "github:hyprwm/Hyprland";
+    devshell.url = "github:numtide/devshell";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, nixpkgs-stable, home-manager, sops
     , hardware, emacs, fup, deploy-rs, fenix, foundry, ethereum, nur, hyprland
-    , ... }@inputs:
+    , devshell, ... }@inputs:
     let
       inherit (fup.lib) mkFlake;
 
@@ -64,6 +65,7 @@
         fenix.overlays.default
         foundry.overlay
         nur.overlay
+        devshell.overlays.default
       ];
 
       hosts = lib.mkHosts ./hosts { inherit inputs; };
@@ -85,41 +87,41 @@
         };
       };
 
-      # outputsBuilder = channels:
-      #   let pkgs = channels.nixpkgs;
-      #   in {
-      #     devShells = {
-      #       default = pkgs.devshell.mkShell {
-      #         name = "secrets";
-      #         packages = with pkgs; [ sops age ssh-to-age ];
-      #         env = [
-      #           {
-      #             name = "SOPS_AGE_KEY";
-      #             eval =
-      #               ''$(ssh-to-age -private-key -i "$HOME/.ssh/id_ed25519")'';
-      #           }
-      #           {
-      #             name = "EDITOR";
-      #             value = "vim";
-      #           }
-      #         ];
-      #       };
-      #       nixos = pkgs.devshell.mkShell {
-      #         name = "secrets";
-      #         packages = with pkgs; [ sops age ssh-to-age ];
-      #         env = [
-      #           {
-      #             name = "SOPS_AGE_KEY";
-      #             eval = "$(pass show machines/user/nixos/age)";
-      #           }
-      #           {
-      #             name = "EDITOR";
-      #             value = "vim";
-      #           }
-      #         ];
-      #       };
-      #     };
-      #   };
+      outputsBuilder = channels:
+        let pkgs = channels.nixpkgs;
+        in {
+          devShells = {
+            default = pkgs.devshell.mkShell {
+              name = "secrets";
+              packages = with pkgs; [ sops age ssh-to-age ];
+              env = [
+                {
+                  name = "SOPS_AGE_KEY";
+                  eval =
+                    ''$(ssh-to-age -private-key -i "$HOME/.ssh/id_ed25519")'';
+                }
+                {
+                  name = "EDITOR";
+                  value = "vim";
+                }
+              ];
+            };
+            nixos = pkgs.devshell.mkShell {
+              name = "secrets";
+              packages = with pkgs; [ sops age ssh-to-age ];
+              env = [
+                {
+                  name = "SOPS_AGE_KEY";
+                  eval = "$(pass show machines/user/nixos/age)";
+                }
+                {
+                  name = "EDITOR";
+                  value = "vim";
+                }
+              ];
+            };
+          };
+        };
 
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
